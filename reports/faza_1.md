@@ -94,26 +94,84 @@ python scripts/audit_examples.py
 
 - Jami: 52, aniq mos: **26/52**, `None`: 15/52, matn farq: 11/52
 
-**ENG MUHIM TOPILMA (metodologik):** 26 ta "mos" natijaning **26 tasi
-ham aylanma (circular)** — hech biri haqiqiy morfologik derivatsiya orqali
-emas. Sabab: `load_ch2_evx_examples()` shu ro'yxatning har bir so'zini
-UB_en_w'ga to'g'ridan-to'g'ri headword sifatida yozib qo'yadi; bitta so'zli
-kirish uchun tizim shu YOZUVNI o'qib qaytaradi, morfologiya ishlamaydi.
-Bu `smart_parse().method` orqali aniq ajratildi
-(`is_direct_seed_hit`/`n_match_derived=0`). **Xulosa: II bob "namunalari"
-hozircha algoritmning morfologik qobiliyatini umuman SINAMAYDI** — bu
-audit_examples.py ning eng qimmatli natijasi, chunki u tashqi ko'rinishda
-"52 tadan 26 tasi ishlaydi" degan noto'g'ri taassurotni fosh qiladi.
+**ENG MUHIM TOPILMA (metodologik) — "aylanma" so'zining aniqlashtirilgan
+ma'nosi:** dastlabki hisobotda "26/26 aylanma" deyilgan edi; foydalanuvchi
+so'rovi bilan bu da'vo HAR BIR misol darajasida tekshirildi (pastdagi
+jadval — `scripts/audit_examples.py` bilan qayta ishlab chiqariladi,
+`_provenance_for()`/`_load_independent_source_headwords()` funksiyalari,
+haqiqiy `UB_en_w.db` dan faqat SELECT bilan o'qiydi). **Natija: 25/26
+haqiqatan HAM to'liq aylanma, 1/26 ("much") esa MUSTAQIL manbadan ekan —
+dastlabki "26/26" da'vosi noto'g'ri edi, shu bilan TUZATILDI.**
 
-Topshiriqda nomlab o'tilgan 4 ta misol:
-- `capabilityies`, `leafes`, `schoolboys` — CH2_EVX_EXAMPLES da topildi,
-  "mos keldi" — LEKIN yuqoridagi aylanma sabab bilan.
+**Metodika:** har bir to'g'ridan-mos misol uchun (1) `UB_en_w.db`dagi
+BARCHA qatorlar (id, tarjima, POS, `source`) o'qildi, (2) qaysi qator
+`translate_phrase()` tomonidan tanlangani aniqlandi, (3) shu inglizcha
+bosh so'z ikkita `CH2_EVX_EXAMPLES`dan MUSTAQIL inson-manba faylida
+(`data/1500_EN_UZ_6_POS_sorted.20.json` — 1500-so'zlik lug'at,
+`data/100_soz.json`) ham bor-yo'qligi tekshirildi. **Git tarixi bo'yicha:**
+`CH2_EVX_EXAMPLES` ro'yxati va uni yuklaydigan barcha boshqa kod BITTA
+"Initial commit"da (`841d174`, 2026-09-08) qo'shilgan — so'z darajasida
+ma'noli git sana/tarix solishtiruvi YO'Q (`.db` fayllarining o'zi esa
+umuman git'da kuzatilmaydi, Faza 0). Shu sabab "oldin/keyin" ustuni git
+sanasiga emas, kodning DETERMINISTIK yuklash tartibiga asoslangan:
+`setup_database()` (1500-so'zlik JSON/docx) `scripts/build_db.py`da HAR
+DOIM `load_ch2_evx_examples()`dan OLDIN ishga tushadi — demak mustaqil
+manbadagi so'z UB_en_w'ga CH2 ro'yxatidan OLDIN yozilgan bo'lardi.
+
+| Misol (en) | UB_en_w qatorlari (id, tarjima, POS, source) | Tanlangan qator | Mustaqil manbada? | Xulosa |
+|---|---|---|---|---|
+| processes | id=1545 'jarayonlar' Ot src=chapter2_evx | id=1545 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| an example | id=1547 'misol' Ot src=chapter2_evx | id=1547 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| capabilityies | id=1550 'imkonyatlar' Ot src=chapter2_evx | id=1550 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| delays | id=1551 'kechikishlar' Ot src=chapter2_evx | id=1551 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| leafes | id=1552 'barglar' Ot src=chapter2_evx | id=1552 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| men | id=1553 'erkaklar' Ot src=chapter2_evx | id=1553 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| customhouses | id=1554 'Bojxonalar' Ot src=chapter2_evx | id=1554 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| schoolboys | id=1555 'Bojxonalar' Ot src=chapter2_evx | id=1555 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| information | id=1556 'Axborot' Ot src=chapter2_evx | id=1556 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| contents | id=1557 'mazmun' Ot src=chapter2_evx | id=1557 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| student's | id=1558 'studentning' Ot src=chapter2_evx | id=1558 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| cleverer | id=1573 'aqilliroq' Sifat src=chapter2_evx | id=1573 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| cleverest | id=1574 'eng aqilli' Sifat src=chapter2_evx | id=1574 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| busier | id=1575 'kattaroq' Sifat src=chapter2_evx | id=1575 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| busiest | id=1576 'eng katta' Sifat src=chapter2_evx | id=1576 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| gayer | id=1577 "sho'xroq" Sifat src=chapter2_evx; id=1578 "eng sho'x" Sifat src=chapter2_evx | id=1577 src=chapter2_evx | yo'q | TO'LIQ AYLANMA (2 qator, ikkalasi ham chapter2_evx) |
+| here | id=1581 'shu yerda' Ravish src=chapter2_evx | id=1581 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| faster | id=1582 'tezroq' Ravish src=chapter2_evx | id=1582 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| fastest | id=1583 'eng tez' Ravish src=chapter2_evx | id=1583 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| inside | id=1584 'ichkarida' Ravish src=chapter2_evx | id=1584 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| today | id=1585 'bugun' Ravish src=chapter2_evx | id=1585 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| **much** | id=424 "Ko'p" **Ot src=json**; id=1586 "ko'p" Ravish src=chapter2_evx | **id=424 src=json** | **1500_EN_UZ_6_POS_sorted.20.json** | **MUSTAQIL MANBA** — CH2_EVX_EXAMPLES EMAS |
+| quietly | id=1587 'tinchgina' Ravish src=chapter2_evx | id=1587 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| fifteen | id=1589 "o'n besh" Son src=chapter2_evx | id=1589 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| eighty | id=1590 'sakson' Son src=chapter2_evx | id=1590 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+| hundredth | id=1594 'yuzinchi' Son src=chapter2_evx | id=1594 src=chapter2_evx | yo'q | TO'LIQ AYLANMA |
+
+**Jadvaldan chiqadigan xulosa (umumlashtirilgan bayondan emas):**
+25/26 qatorda `source` ustuni FAQAT `chapter2_evx` — bu so'zlar
+`UB_en_w`ga boshqa hech qanday yo'l bilan kirmagan, faqat
+`load_ch2_evx_examples()` orqali; shu sabab ular uchun `translate_phrase()`
+ning "mos javobi" hech narsani sinamaydi — funksiya shu YOZUVNI o'qib
+qaytaryapti. Bitta qatorda (`much`) esa `source` ustuni ikkita qiymatga
+ega (`json` va `chapter2_evx`) va TANLANGAN (birinchi, eng kichik `id`)
+qator aynan `json`-manbali — demak bu bitta holatda "mos javob"
+`CH2_EVX_EXAMPLES`ga bog'liq emas, mustaqil 1500-so'zlik lug'atdan kelgan
+(garchi bu ham morfologik derivatsiya emas, oddiy to'g'ridan-to'g'ri
+lug'at izlashi bo'lsa-da). **Tuzatilgan xulosa: 26 tadan 25 tasi to'liq
+aylanma, 1 tasi mustaqil manbali to'g'ridan izlash, 0 tasi morfologik
+derivatsiya.**
+
+Topshiriqda nomlab o'tilgan 4 ta misol (jadvaldagi tegishli qatorlarga
+asoslanib):
+- `capabilityies`, `leafes`, `schoolboys` — jadvalda TO'LIQ AYLANMA
+  (source=chapter2_evx, boshqa manbada yo'q).
 - `more comfortable` — CH2_EVX_EXAMPLES da bor, `translate_phrase` `None`
   qaytaradi (haqiqiy, kutilgan muvaffaqiyatsizlik — "more X" analitik
   qiyosiy shakl qo'llab-quvvatlanmaydi).
 - `will return` — CH2_EVX_EXAMPLES da YO'Q (faqat "will" alohida bor).
 
-To'liq jadval: `reports/faza_1_audit_examples.md`.
+To'liq (avtomatik qayta hisoblanadigan) jadval: `reports/faza_1_audit_examples.md`
+(buyruq: `python scripts/audit_examples.py` yoki `make audit`).
 
 ### 5. CI
 
@@ -135,9 +193,10 @@ faqat test/hisobot bilan QAYD ETILDI:
    ga faqat affiks matni ("er") uzatiladi, `derived_pos` (Ot vs Sifat)
    YO'Q. `tests/test_smart_parse.py::test_smart_parse_agentive_er_uses_wrong_fallback_suffix_data_bug`
    da qayd etilgan.
-3. **II bob "namunalari" morfologik testni sinamaydi** (aylanma tekshiruv
-   muammosi, yuqoriga qarang) — `scripts/audit_examples.py` ning asosiy
-   topilmasi.
+3. **II bob "namunalarining" 25/26 to'g'ridan mos kelgan hollari morfologik
+   testni umuman SINAMAYDI** (to'liq aylanma — jadval va tuzatilgan xulosa
+   yuqorida) — `scripts/audit_examples.py` ning asosiy topilmasi. (1/26,
+   `much`, mustaqil manbali — bu istisno ham jadvalda aniq ko'rsatilgan.)
 4. **`translate_phrase()` to'liq zanjirida yo'q ot "?" bilan belgilanmaydi,
    balki noto'g'ri qayta tartiblanadi** ("Dan bizning" kabi) —
    `translate_phrase_kkt()` darajasida (xfail testlar) kutilgan `None`
