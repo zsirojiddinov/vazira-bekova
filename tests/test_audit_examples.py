@@ -51,3 +51,44 @@ def test_schoolboys_reference_is_the_known_data_bug(isolated_kkt_module):
 
 def test_normalize_available_from_common_module():
     assert script.normalize("Bojxonalar") == "bojxonalar"
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# Aylanma (circular) tekshiruv — provenance funksiyalari.
+#
+# DIQQAT: `_provenance_for()` ataylab REPO ILDIZIDAGI HAQIQIY UB_en_w.db
+# ni o'qiydi (faqat SELECT — repo bazasi buzilmasin degan Faza 0 qoidasi
+# shu sabab BUZILMAYDI: bu funksiya hech qachon yozmaydi, faqat o'qiydi).
+# Bu testlar ham shu sababli `isolated_kkt_module` FIXTURE'siz — haqiqiy
+# repo bazasi ustida — ishlaydi.
+# ─────────────────────────────────────────────────────────────────────────
+
+def test_provenance_for_schoolboys_is_fully_circular():
+    """"schoolboys" UB_en_w'da FAQAT bitta qatorga ega va u source='chapter2_evx'
+    — ya'ni bu so'z faqat load_ch2_evx_examples() orqali kirgan, boshqa
+    hech qanday mustaqil manbada yo'q (reports/faza_1.md dagi batafsil
+    jadvalning asosi)."""
+    rows = script._provenance_for("schoolboys")
+    assert len(rows) == 1
+    _id, translation, pos, source = rows[0]
+    assert source == "chapter2_evx"
+
+
+def test_provenance_for_much_has_independent_json_source():
+    """"much" — 26 ta aylanma-nomzoddan YAGONA istisno: UB_en_w'da IKKITA
+    qatorga ega, biri source='json' (1500-so'zlik lug'atdan, CH2_EVX_EXAMPLES'ga
+    aloqasi yo'q) — va aynan SHU qator translate_phrase() tomonidan
+    tanlanadi (birinchi qator, id bo'yicha eng kichik)."""
+    rows = script._provenance_for("much")
+    sources = {r[3] for r in rows}
+    assert "json" in sources
+    assert "chapter2_evx" in sources
+    # birinchi (eng kichik id) qator tanlanadi (psb_select_meaning: rows[0])
+    assert rows[0][3] == "json"
+
+
+def test_load_independent_source_headwords_includes_common_words():
+    sources = script._load_independent_source_headwords()
+    words_1500 = sources["data/1500_EN_UZ_6_POS_sorted.20.json"]
+    assert "much" in words_1500
+    assert "schoolboys" not in words_1500  # aylanma da'vosining manfiy nazorati
