@@ -1,0 +1,62 @@
+name: tests
+
+# Faza 1: "CI da har commit-da ishlasin" talabi. `main`ga push va har bir
+# pull request'da ishga tushadi.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python 3.14 o'rnatish
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Bog'liqliklarni o'rnatish
+        run: pip install -r requirements.txt
+
+      - name: Testlarni ishga tushirish (izolyatsiyalangan, repo bazalariga tegmaydi)
+        run: pytest tests/ -v
+
+  scripts-smoke:
+    # tests/ HAR DOIM izolyatsiyalangan nusxada ishlaydi (repo .db
+    # fayllariga tegmaydi — reports/faza_0.md). Bu alohida job esa
+    # scripts/check_100_soz.py va scripts/audit_examples.py ni HAQIQIY
+    # (make db bilan qurilgan) bazaga qarshi ishga tushirib, ular xatosiz
+    # tugashini tekshiradi (natija RAQAMLARI CI'ni qulatmaydi — bu shunchaki
+    # "skript ishlayaptimi" tekshiruvi, Faza 4 ga qadar chegara/threshold
+    # qo'yilmagan).
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python 3.14 o'rnatish
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Bog'liqliklarni o'rnatish
+        run: pip install -r requirements.txt
+
+      - name: Bazalarni noldan qurish
+        run: make db
+
+      - name: 100_soz.docx gold-runner (smoke)
+        run: python scripts/check_100_soz.py
+
+      - name: II bob audit skripti (smoke)
+        run: python scripts/audit_examples.py
+
+      - name: Generatsiya qilingan hisobotlarni artifact sifatida saqlash
+        uses: actions/upload-artifact@v4
+        with:
+          name: faza1-reports
+          path: |
+            reports/faza_1_100soz_baseline.md
+            reports/faza_1_audit_examples.md

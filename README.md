@@ -78,8 +78,9 @@ python3 scripts/build_db.py
 ```
 
 Bu GUI ochmaydi — faqat bazani to'ldiradi va konsolga statistika chiqaradi.
-Qayta ishlab chiqarilishi (git'dagi versiyalar bilan bit-ma-bit solishtirib)
-tasdiqlangan: `reports/db_reproducibility.md`.
+Qayta ishlab chiqarilishi (git'dagi versiyalar bilan kontent darajasida —
+sxema + har bir qator — solishtirib, md5 EMAS) tasdiqlangan:
+`reports/db_reproducibility.md`.
 
 ## Ishga tushirish (GUI)
 
@@ -125,8 +126,44 @@ noldan quradi (`tests/conftest.py`). Sabab: yuqoridagi yon ta'sir — birinchi
 marta bu izolyatsiya bo'lmagan holda test yozilganda repo bazalari
 tasodifan ifloslangan edi (voqea: `reports/faza_0.md`).
 
-Faza 0 da faqat infratuzilma testlari bor (modul import, GUI'siz ishlash).
-Tarjima SIFATINI tekshiruvchi to'liq regression to'plam — Faza 1.
+Faza 0 da faqat infratuzilma testlari bor edi. Faza 1'dan boshlab tarjima
+mantig'ining o'zi (uz_stem, make_uzbek, MORPH_RULES, smart_parse,
+translate_phrase_kkt/general) uchun ham regression testlar bor — barchasi
+xuddi shu izolyatsiya qoidasiga bo'ysunadi va DB'ga yozadigan chaqiruvlar
+`readonly_mode()` orqali ishlaydi. CI (`.github/workflows/tests.yml`) har
+push/PR'da `pytest tests/`ni ishga tushiradi.
+
+### Read-only rejim (audit/o'lchov skriptlari uchun)
+
+`translate_phrase()`/`smart_parse()` — yon ta'sirga ega (yuqoriga qarang).
+Bazani o'zgartirmasdan ko'p marta tarjima qilish kerak bo'lganda:
+
+```python
+from kkt_v20_soz_tartibi import translate_phrase, readonly_mode
+
+with readonly_mode():
+    natija = translate_phrase(matn)
+# yoki qulay yorliq:
+natija = translate_phrase(matn, allow_write=False)
+```
+
+### Gold-set va audit skriptlari (Faza 1)
+
+- `python scripts/check_100_soz.py` — `data/100_soz.docx` dagi 100 ta
+  INSON tayyorlagan etalon juftlikni to'g'ridan-to'g'ri docx'dan o'qib,
+  `translate_phrase(..., allow_write=False)` bilan solishtiradi (apostrof+
+  bosh harf normalizatsiyasi bilan). Natija: `reports/faza_1_100soz_baseline.md`.
+- `python scripts/audit_examples.py` — dissertatsiya II bobidan
+  `kkt_v20_soz_tartibi.py:CH2_EVX_EXAMPLES` ga qo'lda ko'chirilgan 52 ta
+  misolni tekshiradi (xom `so_zlar_bazasi_un.docx` repoda yo'q — mazmuni
+  literal ro'yxat sifatida allaqachon bor). Natija:
+  `reports/faza_1_audit_examples.md` — jumladan **aylanma (circular)
+  tekshiruv** ogohlantirishi (bitta-so'zli misollar shu jadvaldan
+  to'g'ridan-to'g'ri o'qilgani uchun "mos kelishi" ko'pincha morfologik
+  ishlaganini ISBOTLAMAYDI).
+
+Ikkalasi ham hech qanday raqamni qo'lda kiritmaydi — har safar joriy kod
+va joriy bazadan qayta hisoblaydi.
 
 ## Ma'lum holat va cheklovlar
 
