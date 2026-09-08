@@ -4,7 +4,7 @@ ISHGA TUSHIRISH:
   python mt_system_v5.py
 """
 
-import sqlite3, os, re, sys, glob
+import sqlite3, os, re, sys, glob, contextlib
 from datetime import datetime
 
 try:
@@ -41,6 +41,64 @@ except Exception:
 finally:
     try: socket.setdefaulttimeout(_old_timeout)
     except Exception: pass
+
+# ═══════════════════════════════════════════════════════════════════
+#  O'QISH-FAQAT (READ-ONLY) REJIM
+# ═══════════════════════════════════════════════════════════════════
+# translate_phrase() (aniqrog'i uning ichki chaqiruv zanjiri —
+# translate_phrase_general -> _chunk_phrase -> parse_sentence ->
+# smart_parse -> _smart_parse_core) NOMA'LUM so'zlarni/qo'shimchalarni
+# avtomatik xulosa chiqarib, natijani to'g'ridan-to'g'ri diskdagi .db
+# fayllarga YOZIB QO'YADI (o'z-o'zini keshlash — db_insert, qm_confirm_or_add,
+# bm_get_or_create_pos_model, bm_get_or_create_affix_model). Bu GUI orqali
+# qo'lda ishlatilganda maqsadli xatti-harakat, lekin O'LCHOV/AUDIT
+# skriptlari (scripts/audit_examples.py, gold-test runner va h.k.) uchun
+# XAVFLI: ular tarjimani ko'p marta, ko'p matn ustida qayta-qayta ishga
+# tushiradi va shu jarayonning o'zi bazani o'zgartirib qo'yishi mumkin
+# (bu aynan Faza 0 da bir marta yuz berdi — qarang: reports/faza_0.md).
+#
+# readonly_mode() shu 4 ta yozish-nuqtasini (write-primitive) global
+# ravishda o'chiradi — lekin ULARNING KESHLASH MANTIG'INI EMAS: har bir
+# funksiya baribir mos vazn/KKT-belgi qiymatini hisoblab qaytaradi (shu
+# sabab tarjima NATIJASI readonly_mode ichida ham, tashqarisida ham bir
+# xil bo'ladi — faqat sqlite'ga yozilmaydi). Har bir chaqiruv zanjirini
+# alohida "allow_write" parametri bilan o'rab chiqish o'rniga (bu ~15 ta
+# oraliq funksiya imzosini o'zgartirishni talab qilardi — katta va xavfli
+# diff), yagona umumiy holat (global chuqurlik hisoblagichi) ishlatildi —
+# bu translate_phrase() dan tashqari smart_parse()/parse_sentence() kabi
+# funksiyalarni to'g'ridan-to'g'ri chaqiradigan skriptlarni ham qamrab
+# oladi.
+_READONLY_DEPTH = 0
+
+def is_readonly() -> bool:
+    """True bo'lsa — db_insert/qm_confirm_or_add/bm_get_or_create_pos_model/
+    bm_get_or_create_affix_model hech qanday INSERT/COMMIT qilmaydi."""
+    return _READONLY_DEPTH > 0
+
+@contextlib.contextmanager
+def readonly_mode():
+    """
+    Kontekst-menejer: ichida translate_phrase() (va uni chaqiradigan yoki u
+    chaqiradigan hamma joy — smart_parse(), parse_sentence() ham) diskdagi
+    .db fayllarga HECH QANDAY yozuv qilmaydi. Ichma-ich chaqirilishi
+    (nesting) xavfsiz — hisoblagich orqali qo'llab-quvvatlanadi.
+
+    O'lchov/audit skriptlari SHU REJIMDA ishlashi SHART:
+
+        from kkt_v20_soz_tartibi import translate_phrase, readonly_mode
+        with readonly_mode():
+            natija = translate_phrase(matn)
+
+    Yoki, faqat translate_phrase() uchun qulay yorliq:
+
+        translate_phrase(matn, allow_write=False)
+    """
+    global _READONLY_DEPTH
+    _READONLY_DEPTH += 1
+    try:
+        yield
+    finally:
+        _READONLY_DEPTH -= 1
 
 # ═══════════════════════════════════════════════════════════════════
 #  SOZLAMALAR
@@ -965,7 +1023,10 @@ def db_lookup(english):
     except: return None
 
 def db_insert(english, uzbek, pos, source="auto"):
-    """Yangi juftlikni UB_en_w va UB_uz_w bazalariga (har biriga o'z yo'nalishida) qo'shadi."""
+    """Yangi juftlikni UB_en_w va UB_uz_w bazalariga (har biriga o'z yo'nalishida) qo'shadi.
+    readonly_mode() ichida hech narsa yozmaydi, False qaytaradi (chunki
+    haqiqatan ham hech narsa qo'shilmadi)."""
+    if is_readonly(): return False
     try:
         conn=sqlite3.connect(DB_UB_EN); cur=conn.cursor()
         cur.execute("INSERT OR IGNORE INTO words(headword,translation,pos,source) VALUES(?,?,?,?)",
@@ -1036,12 +1097,16 @@ def psb_select_meaning(rows, domain=None):
 
 def qm_confirm_or_add(db_path, affix_text, pos, is_prefix, kkt_symbol_hint=None):
     """8-9 / 10-11-qadam: QM_en_w(yoki QM_uz_w)da qo'shimcha borligini tekshiradi;
-    topilmasa — YANGI qo'shimcha sifatida bazaga yozadi (o'z-o'zini rivojlantirish)."""
+    topilmasa — YANGI qo'shimcha sifatida bazaga yozadi (o'z-o'zini rivojlantirish).
+    readonly_mode() ichida topilmagan holatda hech narsa yaratmaydi, None
+    qaytaradi (xuddi hozircha ham topilmagan/yaratilmagandagidek — chaqiruvchi
+    tomon buni allaqachon "topilmadi" deb talqin qiladi, natija o'zgarmaydi)."""
     val = (affix_text+"-") if is_prefix else ("-"+affix_text)
     try:
         conn=sqlite3.connect(db_path); cur=conn.cursor()
         row=cur.execute("SELECT id,kkt_symbol,weight FROM affixes WHERE value=?",(val,)).fetchone()
         if row: conn.close(); return row
+        if is_readonly(): conn.close(); return None
         sym = kkt_symbol_hint or "A1"
         cur.execute("INSERT OR IGNORE INTO affixes(pos,category,kkt_symbol,value,weight) VALUES(?,?,?,?,NULL)",
                     (pos,sym,sym,val))
@@ -1079,12 +1144,16 @@ def qm_uz_equivalent(en_affix_id, pos):
 def bm_get_or_create_pos_model(db_path, pos):
     """13/16-qadam: BM_en_w/BM_uz_w dan so'z turkumining formal modelini (KKT
     belgi + vazn) qidiradi; topilmasa — 14-qadam: KKT qoidalari asosida yangi
-    model yaratib bazaga yozadi."""
+    model yaratib bazaga yozadi. readonly_mode() ichida yaratmaydi, lekin
+    default kkt_symbol/vazn'ni BARIBIR hisoblab qaytaradi — shu sabab
+    tarjima natijasi (vazn asosidagi hisob-kitob) readonly rejimda ham
+    o'zgarmaydi, faqat sqlite'ga yozilmaydi ("created" har doim False)."""
     try:
         conn=sqlite3.connect(db_path); cur=conn.cursor()
         row=cur.execute("SELECT kkt_symbol,v2_weight FROM pos_weight WHERE pos=?",(pos,)).fetchone()
         if row: conn.close(); return {"kkt_symbol":row[0],"weight":row[1],"created":False}
         sym=POS_KKT.get(pos,"C"); wt=POS_V2.get(pos,0.5)
+        if is_readonly(): conn.close(); return {"kkt_symbol":sym,"weight":wt,"created":False}
         cur.execute("INSERT OR IGNORE INTO pos_weight(pos,kkt_symbol,v2_weight) VALUES(?,?,?)",(pos,sym,wt))
         conn.commit(); conn.close()
         return {"kkt_symbol":sym,"weight":wt,"created":True}
@@ -1092,11 +1161,14 @@ def bm_get_or_create_pos_model(db_path, pos):
 
 def bm_get_or_create_affix_model(db_path, affix_text, kkt_symbol_hint="A1", default_weight=0.001):
     """13/14-qadam: BM_en_w/BM_uz_w.formal_model'dan qo'shimchaning KKT vaznini
-    qidiradi; topilmasa — yangisini yaratib bazaga yozadi."""
+    qidiradi; topilmasa — yangisini yaratib bazaga yozadi. readonly_mode()
+    ichida yaratmaydi, lekin default qiymatlarni baribir qaytaradi (tarjima
+    natijasi o'zgarmasligi uchun — izoh yuqoridagi funksiyada)."""
     try:
         conn=sqlite3.connect(db_path); cur=conn.cursor()
         row=cur.execute("SELECT kkt_symbol,v3_weight FROM formal_model WHERE affix=?",(affix_text,)).fetchone()
         if row: conn.close(); return {"kkt_symbol":row[0],"weight":row[1],"created":False}
+        if is_readonly(): conn.close(); return {"kkt_symbol":kkt_symbol_hint,"weight":default_weight,"created":False}
         cur.execute("INSERT OR IGNORE INTO formal_model(affix,kkt_symbol,v3_weight) VALUES(?,?,?)",
                     (affix_text,kkt_symbol_hint,default_weight))
         conn.commit(); conn.close()
@@ -2311,7 +2383,7 @@ def _translate_compound_clauses(text):
     return None
 
 
-def translate_phrase(text):
+def translate_phrase(text, allow_write=True):
     """
     Ibora tarjimasining YAGONA kirish nuqtasi — GUI shu funksiyani chaqiradi.
     Tartib:
@@ -2325,7 +2397,21 @@ def translate_phrase(text):
          oldindan koʻrilmagan, IXTIYORIY yangi iboralar uchun ham ishlaydi.
     Uchalasi ham mos kelmasa None — GUI so'zma-so'z (parse_sentence)
     natijasini ko'rsatadi.
+
+    allow_write=False (standart: True) — readonly_mode() ning qulay yorlig'i:
+    ichki chaqiruv zanjiri (translate_phrase_general -> _chunk_phrase ->
+    parse_sentence -> smart_parse) noma'lum so'z/qo'shimchani avtomatik
+    xulosa qilsa ham, natijani .db fayllarga YOZMAYDI. Tarjima natijasi
+    (matn) allow_write qiymatidan qat'i nazar bir xil bo'ladi — faqat
+    yon ta'sir (bazaga yozish) farq qiladi. O'lchov/audit skriptlari
+    (scripts/audit_examples.py va h.k.) shu bilan chaqirishi kerak:
+    `translate_phrase(matn, allow_write=False)`.
     """
+    if not allow_write:
+        with readonly_mode():
+            return (_translate_compound_clauses(text)
+                    or translate_phrase_kkt(text)
+                    or translate_phrase_general(text))
     return (_translate_compound_clauses(text)
             or translate_phrase_kkt(text)
             or translate_phrase_general(text))
