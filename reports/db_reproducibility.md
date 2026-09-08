@@ -2,10 +2,19 @@
 
 **Sana:** 2026-09-08
 **Maqsad:** git'ga commit qilingan 9 ta `.db` faylni tracking'dan chiqarishdan oldin, ular
-`data/` dagi manba fayllardan **noldan, xato-siz, bit-ma-bit bir xil** qayta qurilishini
-isbotlash (foydalanuvchi talabi).
+`data/` dagi manba fayllardan **noldan, xato-siz** qayta qurilishini isbotlash
+(foydalanuvchi talabi).
 
-## Uslub
+## Uslub — ANIQLASHTIRISH (foydalanuvchi savoli bo'yicha)
+
+**Asosiy tekshiruv usuli — fayl md5'i EMAS, jadval KONTENTINI qator-ma-qator
+solishtirish edi.** Sabab: ikkita SQLite fayli bir xil MANTIQIY kontentga ega
+bo'lsa ham (bir xil jadvallar, bir xil qatorlar), **bayt darajasida farq
+qilishi mumkin** — sahifa (page) joylashuvi, ichki freelist holati, yozish
+tartibi kabi omillarga bog'liq. Shuning uchun md5 solishtiruvi **noto'g'ri
+salbiy natija** (false negative — kontent bir xil bo'lsa ham "farq bor" deb
+ko'rsatishi) berishi mumkin edi. To'g'ri usul — SQL orqali o'qib, KONTENTni
+solishtirish, va aynan shu ishlatildi:
 
 1. `kkt_v20_soz_tartibi.py`, `data_loader.py` va butun `data/` papkasi izolyatsiya qilingan
    vaqtinchalik papkaga nusxalandi (repo ildizidagi haqiqiy `.db` fayllarga tegilmadi).
@@ -14,12 +23,54 @@ isbotlash (foydalanuvchi talabi).
    find_bazalar_docx/load_bazalar_docx → seed_core_demo_data →
    find_bazalar_affixes_docx/load_bazalar_affixes_docx → load_pdf_kkt_bazalar →
    load_ch2_evx_examples → resync_all_ids → mdb_seed_if_empty`.
-3. Har bir `.db` fayl uchun: sxema (`sqlite_master`), jadval ro'yxati, har jadvaldagi
-   yozuvlar soni va **hamma qatorning to'liq kontenti** (barqaror solishtirish uchun
-   qator-mazmuniga qarab saralangan) git'dagi nusxa bilan solishtirildi.
+3. Har bir `.db` fayl uchun: sxema (`SELECT name,sql FROM sqlite_master`), jadval ro'yxati,
+   har jadvaldagi yozuvlar soni va **hamma qatorning to'liq kontenti**
+   (`SELECT * FROM <jadval>`, barqaror solishtirish uchun qator-mazmuniga qarab saralangan,
+   Python tuple sifatida) git'dagi nusxa bilan solishtirildi — **fayl baytlari emas,
+   Python obyektlari (tuple/list) taqqoslandi**.
 
 Skript: `scripts/build_db.py` (Faza 0 bilan birga qo'shiladi) + vaqtinchalik solishtiruv
-skripti (`compare_db.py`, faqat shu tekshiruv uchun, repoga kirmaydi).
+skripti (`compare_db.py`, faqat shu tekshiruv uchun, repoga kirmaydi, kodi pastda).
+
+<details>
+<summary>compare_db.py — kontent-solishtiruv yadrosi (arxiv uchun)</summary>
+
+```python
+def dump(path):
+    con = sqlite3.connect(path); cur = con.cursor()
+    cur.execute("SELECT name, sql FROM sqlite_master WHERE type='table' ORDER BY name")
+    schema = cur.fetchall()
+    tables = {}
+    for name, sql in schema:
+        cur.execute(f'SELECT * FROM "{name}"')
+        rows = sorted(cur.fetchall(), key=lambda r: [(x is None, x) for x in r])
+        tables[name] = rows
+    con.close()
+    return schema, tables
+
+# ... git'dagi va qayta qurilgan nusxa uchun dump() natijalari (schema, tables)
+# Python == bilan solishtirildi (fayl baytlari EMAS).
+```
+</details>
+
+### Qo'shimcha (keyinroq, foydalanuvchi savoli bo'yicha) tekshirilgan: md5 ham mos keldimi?
+
+Yuqoridagi asosiy (kontent-darajasidagi) tekshiruvdan keyin, qiziqish
+uchun md5 checksumlari ham solishtirildi (izolyatsiyalangan qayta qurilgan
+nusxa vs git'dagi haqiqiy fayl):
+
+| Baza | md5 bir xilmi | Kontent bir xilmi |
+|---|---|---|
+| BM_en_w.db / BM_uz_w.db / MDB_uz_w.db / PSB_en_w.db / PSB_uz_w.db / QM_en_w.db / QM_uz_w.db / UB_en_w.db / UB_uz_w.db | **Ha (barchasi)** | **Ha (barchasi)** |
+
+Bu holatda md5 HAM mos chiqdi (SQLite yozish tartibi shu muhitda
+deterministik bo'lib chiqdi). **Lekin bu tasodifiy/qo'shimcha natija —
+metodologiya md5'ga TAYANMAYDI**, chunki: (a) turli SQLite versiyalari,
+(b) VACUUM/ANALYZE ishga tushirilgan-tushirilmaganligi, (c) qatorlarni
+qo'shish tartibidagi kichik farqlar — bularning har biri kontentni
+o'zgartirmasdan baytlarni o'zgartirishi mumkin. Keyingi (Faza 1+) qayta
+tekshiruvlar HAM kontent-darajasidagi solishtiruvga tayanishi kerak, md5'ga
+emas.
 
 ## Natija
 
@@ -70,6 +121,18 @@ qayta qurishda git'dagi nusxa bilan **to'liq mos keldi**. Farq topilmadi.
 
 ## Xulosa
 
-Farq topilmadi → foydalanuvchi ko'rsatmasiga ko'ra, `.db` fayllarni `git rm --cached` bilan
-tracking'dan chiqarish va `.gitignore` ga `*.db` qo'shish **xavfsiz**: keyingi
-`make db` buyrug'i git tarixidan olib tashlangan fayllarni bit-ma-bit tiklaydi.
+Kontent darajasida (sxema + har bir qator) farq topilmadi → foydalanuvchi ko'rsatmasiga
+ko'ra, `.db` fayllarni `git rm --cached` bilan tracking'dan chiqarish va `.gitignore` ga
+`*.db` qo'shish **xavfsiz**: keyingi `make db` buyrug'i git tarixidan olib tashlangan
+fayllarni kontent jihatidan bir xil tiklaydi (bu muhitda qo'shimcha tekshiruv shuni ham
+ko'rsatdiki, hatto bayt darajasida — md5 — ham bir xil chiqdi, lekin bu kafolat emas,
+yuqoridagi ogohlantirishga qarang).
+
+## Qo'shimcha savol: git'dagi asl bazalarda `source='auto'` nechta?
+
+`SELECT COUNT(*) FROM words WHERE source='auto'` — **0** (ikkalasida ham: `UB_en_w.db`
+va `UB_uz_w.db`). To'liq `source` taqsimoti (1596 ta yozuvning hammasi): `json`(1513),
+`chapter2_evx`(52), `docx`(31) — uchtasi ham qayta ishlab chiqariladigan, kod/data
+manbali kategoriyalar; `auto` yoki `user` kategoriyali (ya'ni ishga tushirish vaqtida
+qo'shilgan) yozuv git HEAD'da **yo'q**. Batafsil izoh va bu savolning nima uchun
+so'ralgani: `reports/faza_0.md`, "Ikkita savolga javob" bo'limi.

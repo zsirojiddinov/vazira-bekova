@@ -28,6 +28,17 @@
    izolyatsiyalangan muhitda ishlaydi (pastdagi hodisaga qarang).
 8. **`.db` fayllar git tracking'dan chiqarildi** (`git rm --cached`),
    avval qayta ishlab chiqarilishi isbotlangandan keyin (pastga qarang).
+9. **Read-only rejim** (`readonly_mode()` kontekst-menejer,
+   `translate_phrase(text, allow_write=False)`) — foydalanuvchi so'rovi
+   bo'yicha Faza 0 yakunida qo'shildi, Faza 1'dan oldingi xavfsizlik
+   chorasi. To'rtta yozish-nuqtasini (`db_insert`, `qm_confirm_or_add`,
+   `bm_get_or_create_pos_model`, `bm_get_or_create_affix_model`) global
+   bayroq orqali o'chiradi — keshlash MANTIG'INI (vazn/kkt_symbol
+   hisoblashni) saqlab qolgan holda, faqat sqlite'ga yozishni bloklaydi.
+   5 test bilan tasdiqlangan (`tests/test_readonly_mode.py`), jumladan
+   tarjima natijasi ikkala rejimda ham bir xilligi. Batafsil: alohida
+   commit xabari. Faza 1'dagi `scripts/audit_examples.py` va gold-test
+   runner shu rejimda ishlashi SHART.
 
 ## Kutilmagan hodisa: birinchi test yozuvi repo bazalarini "ifloslagan" edi
 
@@ -80,6 +91,73 @@ Muhim shart: qayta ishlab chiqarish faqat `data_loader.py` skript bilan
 bir joyda bo'lganda ishlaydi — aks holda kod **jimgina** boshqa (docx
 zaxira) yo'lga o'tib, boshqa sonlar beradi (xato chiqarmaydi). Bu README'da
 alohida ta'kidlangan va Faza 2/8 uchun topilma sifatida qayd etilgan.
+
+## Ikkita savolga javob (foydalanuvchi so'rovi)
+
+**1. Git'dagi (asl) bazalarda `SELECT COUNT(*) FROM words WHERE source='auto'` nechchi?**
+
+**0** — ikkalasida ham (`UB_en_w.db` va `UB_uz_w.db`). Tekshirildi bevosita
+git HEAD holatidagi (hozirgi ishchi papkadagi, `git status` toza ekani
+tasdiqlangan) fayllarda. To'liq `source` taqsimoti (1596 ta yozuvning
+hammasi): `json`(1513), `chapter2_evx`(52), `docx`(31). `auto` yoki `user`
+manbali (ya'ni dastur ishlayotganda runtime'da qo'shilgan) birorta ham
+yozuv git'da saqlanmagan — bazalar faqat qurish-vaqtidagi (build-time)
+manbalardan iborat. (Bu Faza 0 dagi yuqoridagi hodisada MEN o'zim
+qo'shib qo'ygan `books/kitoblar` qatoridan FARQLI — o'sha `git checkout`
+bilan allaqachon olib tashlangan edi, shu tekshiruv o'sha tozalashdan
+KEYIN, alohida, qayta tasdiqlash sifatida bajarildi.)
+
+**2. "Bit-ma-bit bir xil" qanday tekshirilgan — md5 bilanmi, kontent bilanmi?**
+
+**Kontent bilan, md5 bilan EMAS.** Asosiy tekshiruv (`reports/db_reproducibility.md`)
+har bir jadvalni `SELECT *` orqali o'qib, qatorlarni (Python tuple sifatida,
+barqaror tartiblab) git'dagi nusxa bilan solishtirdi — fayl baytlarini emas.
+Bu ataylab shunday tanlangan: SQLite fayllari bir xil MANTIQIY kontentga
+ega bo'lsa ham sahifa joylashuvi/freelist holati farqi sababli bayt
+darajasida farqlanishi mumkin — md5 shu sababli soxta "farq" ko'rsatishi
+mumkin edi. Foydalanuvchi so'rovidan keyin qo'shimcha tekshiruv sifatida
+md5 HAM solishtirildi — bu aniq holatda **md5 ham mos chiqdi** (barcha 9
+baza), lekin bu tasodifiy natija, metodologiya asosi emas. To'liq
+tafsilot va jadval: `reports/db_reproducibility.md` ("Uslub — ANIQLASHTIRISH"
+bo'limi, yangilangan).
+
+**Xulosa:** hisobotlarda ishlatilgan "bit-ma-bit bir xil" iborasi ikki xil
+narsaga tegishli edi — (a) `git checkout` bilan asl holatga qaytarish
+(bu HAQIQATAN HAM bit-ma-bit, git'ning o'zi kafolatlaydi) va (b) qayta
+qurilgan bazani asl bilan solishtirish (bu KONTENT darajasida, md5 emas).
+Bu ikkisi noaniq aralashtirilgani uchun yuqoridagi ikkala hisobotda
+so'z birikmasi aniqlashtirildi.
+
+## Tasdiqlanmagan (eski) natijalar — hali yakuniy DEB HISOBLANMASIN
+
+Topshiriqda keltirilgan sonlar — **100 ta etalon ustida to'liq lug'at bilan
+56/100; yetishmayotgan 3 ta ot (`school`, `program`, `article`)
+qo'shilgandan keyin 80/100** — foydalanuvchining o'zi tomonidan, mustaqil
+ravishda, DASTURNING BU JORIY holatidan OLDIN, qo'lda o'tkazilgan sinovlar
+edi. Bu sonlar:
+
+- **hech qanday skript bilan qayta ishlab chiqarilmagan** (repoda bunday
+  skript hozircha yo'q — `scripts/audit_examples.py` va gold-test runner
+  Faza 1/3 da yoziladi);
+- **read-only rejimsiz** olingan bo'lishi mumkin (ya'ni sinov jarayonining
+  o'zi bazani o'zgartirgan bo'lishi mumkin — xuddi Faza 0 dagi hodisadagi
+  kabi), demak sinov N va sinov N+1 bir xil sharoitda o'tkazilgan
+  ekanligiga kafolat yo'q;
+- **qaysi baza holatida** (qaysi commit, qaysi qo'shimcha so'zlar bilan)
+  olinganligi hujjatlashtirilmagan.
+
+Shu sabablarga ko'ra, **56/100 va 80/100 raqamlari BU HISOBOTDA HAM,
+kelajakdagi hech qanday hisobotda ham YAKUNIY natija sifatida
+ko'rsatilmaydi.** Ular faqat "boshlang'ich gipoteza / kutilayotgan taxminiy
+tartib" sifatida eslatilishi mumkin, aniq manba (foydalanuvchining qo'lda
+sinovi, sana ko'rsatilmagan) bilan birga.
+
+Faza 1 da (`audit_examples.py` va gold-test runner tayyor bo'lgach) bu
+son **read-only rejimda** (`translate_phrase(text, allow_write=False)`),
+**toza, `make db` bilan qaytadan qurilgan bazada**, 100_soz.docx/json dan
+avtomatik o'qilgan holda qaytadan hisoblanadi va natija shu aniq
+buyruq/commit bilan bog'liq holda qayd etiladi. O'sha yangi son — birinchi
+RASMAN tasdiqlangan natija bo'ladi.
 
 ## Yangi topilmalar (keyingi fazalar uchun qayd)
 
