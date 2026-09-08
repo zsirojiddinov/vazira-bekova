@@ -26,14 +26,13 @@ from __future__ import annotations
 
 import argparse
 import os
-import re
 import sys
-import unicodedata
 from datetime import datetime, timezone
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
 sys.path.insert(0, REPO_ROOT)
+sys.path.insert(0, SCRIPT_DIR)
 
 try:
     from docx import Document
@@ -41,25 +40,7 @@ except ImportError:
     print("XATOLIK: python-docx o'rnatilmagan (pip install -r requirements.txt).", file=sys.stderr)
     raise SystemExit(1)
 
-# Barcha apostrof-shakldagi belgilarni (turli manbalarda turlicha yoziladi:
-# ASCII ', tipografik ' va ', o'zbek modifikator ʻ/ʼ) BITTA kanonik belgiga
-# ("'") tenglashtiramiz — solishtiruv shu YOZILISH farqidan aziyat
-# chekmasligi uchun. Bu foydalanuvchi so'ragan "apostrof normalizatsiyasi".
-_APOSTROPHE_CHARS = "'‘’ʻʼ′`"
-_APOSTROPHE_RE = re.compile("[" + re.escape(_APOSTROPHE_CHARS) + "]")
-
-
-def normalize(s: str | None) -> str | None:
-    """Solishtirish uchun: Unicode NFC normalizatsiya, bosh harfni kichik
-    harfga o'tkazish, barcha apostrof-shakldagi belgilarni bittasiga
-    tenglashtirish, ortiqcha bo'shliqlarni siqish."""
-    if s is None:
-        return None
-    s = unicodedata.normalize("NFC", s)
-    s = s.lower()
-    s = _APOSTROPHE_RE.sub("'", s)
-    s = re.sub(r"\s+", " ", s).strip()
-    return s
+from _common import normalize  # scripts/_common.py — check_100_soz.py va audit_examples.py umumiy
 
 
 def load_gold_set(docx_path: str) -> list[dict]:
