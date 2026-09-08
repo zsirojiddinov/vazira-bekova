@@ -6,8 +6,20 @@ ISHGA TUSHIRISH:
 
 import sqlite3, os, re, sys, glob
 from datetime import datetime
-import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
+
+try:
+    # GUI (Tkinter) ixtiyoriy: tarjima mantig'i (translate_phrase va uning
+    # bog'liqliklari) tkinter'siz muhitda (masalan CI/server, Tk kutubxonasi
+    # o'rnatilmagan konteyner) ham ishlashi kerak — shuning uchun bu import
+    # majburiy emas. HAS_TK=False bo'lsa, faqat GUI (MTSystem klassi va uni
+    # ochuvchi main()) ishlamaydi; tarjima funksiyalari va baza qurish
+    # (scripts/build_db.py) ta'sirlanmaydi.
+    import tkinter as tk
+    from tkinter import ttk, filedialog, messagebox
+    HAS_TK = True
+except Exception:
+    HAS_TK = False
+    tk = ttk = filedialog = messagebox = None
 
 try:
     from docx import Document; HAS_DOCX = True
@@ -48,9 +60,12 @@ _dialog_root = None
 
 def show_error_dialog(title, message):
     """Har qanday xatolikni konsolga chop etish bilan bir qatorda
-    foydalanuvchiga tushunarli xabar oynasi (dialog) sifatida ham chiqaradi."""
+    foydalanuvchiga tushunarli xabar oynasi (dialog) sifatida ham chiqaradi.
+    Tkinter mavjud bo'lmagan muhitda (HAS_TK=False) faqat konsolga yozadi."""
     global _dialog_root
     print(f"  [XATOLIK] {title}: {message}")
+    if not HAS_TK:
+        return
     try:
         if getattr(tk, "_default_root", None) is None:
             # Hali birorta ham Tk oynasi yaratilmagan (masalan, bazalar
@@ -3096,330 +3111,332 @@ F_SMALL=("Segoe UI",18);        F_CARD_N=("Segoe UI",16,"bold")
 F_CARD_L=("Segoe UI",11);       F_BTN  =("Segoe UI",18,"bold")
 F_HDR  =("Segoe UI",18,"bold")
 
-# ═══════════════════════════════════════════════════════════════════
-#  ASOSIY ILOVA — GUI
-# ═══════════════════════════════════════════════════════════════════
-class MTSystem(tk.Tk):
-    def __init__(self):
-        super().__init__()
-        self.title("Kengayuvchi kirish tili asosida rasmiy modellar bilan kompyuter tarjimasi")
-        # Sarlavha panelidan belgichani (qush pati ikonkasini) olib tashlash
-        try:
-            self.iconbitmap(default='')
-        except Exception:
-            pass
-        # ── Ekranga moslashuvchi oyna o'lchami ──────────────────────
-        # Eski kodda oyna doim "1100x700" qilib ochilardi. Agar
-        # foydalanuvchi ekrani (yoki Windows displey masshtabi/DPI
-        # scaling) buning uchun torroq bo'lsa, oynaning pastki/o'ng
-        # qismi ekrandan tashqarida qolib, "yarmi ko'rinmaydi" edi.
-        # Endi ekran o'lchami so'raladi va oyna shunga qarab (hamda
-        # taskbar uchun joy qoldirib) markazlashtirilib ochiladi.
-        self.update_idletasks()
-        scr_w = self.winfo_screenwidth(); scr_h = self.winfo_screenheight()
-        win_w = min(1100, scr_w - 60)
-        win_h = min(700, scr_h - 90)   # taskbar/oyna sarlavhasi uchun joy
-        pos_x = max(0, (scr_w - win_w) // 2)
-        pos_y = max(0, (scr_h - win_h) // 2)
-        self.geometry(f"{win_w}x{win_h}+{pos_x}+{pos_y}")
-        self.minsize(min(920, win_w), min(600, win_h))
-        self.configure(bg=BG); self.resizable(True,True)
-        self._last_analyses=[]; self._build_ui(); self._show_welcome()
+if HAS_TK:
 
-    def report_callback_exception(self, exc, val, tb):
-        """Tkinter'ning standart xatti-harakati — tugma bosish, matn
-        kiritish va boshqa har qanday GUI hodisasi (callback) ichida
-        yuzaga kelgan xatolikni faqat konsolga chop etadi. Bu yerda
-        UNI QAYTA ANIQLAB, har qanday shunday xatolik ENDI foydalanuvchiga
-        tushunarli xabar oynasi (dialog) sifatida ham ko'rsatiladi."""
-        import traceback
-        traceback.print_exception(exc, val, tb)
-        show_error_dialog("Kutilmagan xatolik", str(val) or exc.__name__)
+    # ═══════════════════════════════════════════════════════════════════
+    #  ASOSIY ILOVA — GUI
+    # ═══════════════════════════════════════════════════════════════════
+    class MTSystem(tk.Tk):
+        def __init__(self):
+            super().__init__()
+            self.title("Kengayuvchi kirish tili asosida rasmiy modellar bilan kompyuter tarjimasi")
+            # Sarlavha panelidan belgichani (qush pati ikonkasini) olib tashlash
+            try:
+                self.iconbitmap(default='')
+            except Exception:
+                pass
+            # ── Ekranga moslashuvchi oyna o'lchami ──────────────────────
+            # Eski kodda oyna doim "1100x700" qilib ochilardi. Agar
+            # foydalanuvchi ekrani (yoki Windows displey masshtabi/DPI
+            # scaling) buning uchun torroq bo'lsa, oynaning pastki/o'ng
+            # qismi ekrandan tashqarida qolib, "yarmi ko'rinmaydi" edi.
+            # Endi ekran o'lchami so'raladi va oyna shunga qarab (hamda
+            # taskbar uchun joy qoldirib) markazlashtirilib ochiladi.
+            self.update_idletasks()
+            scr_w = self.winfo_screenwidth(); scr_h = self.winfo_screenheight()
+            win_w = min(1100, scr_w - 60)
+            win_h = min(700, scr_h - 90)   # taskbar/oyna sarlavhasi uchun joy
+            pos_x = max(0, (scr_w - win_w) // 2)
+            pos_y = max(0, (scr_h - win_h) // 2)
+            self.geometry(f"{win_w}x{win_h}+{pos_x}+{pos_y}")
+            self.minsize(min(920, win_w), min(600, win_h))
+            self.configure(bg=BG); self.resizable(True,True)
+            self._last_analyses=[]; self._build_ui(); self._show_welcome()
 
-    def _build_ui(self):
-        self._build_header(); self._build_io_section()
-        self._build_stats_cards(); self._build_phrase_model_bar()
-        self._build_parse_panels()
-        self._build_status_bar()
+        def report_callback_exception(self, exc, val, tb):
+            """Tkinter'ning standart xatti-harakati — tugma bosish, matn
+            kiritish va boshqa har qanday GUI hodisasi (callback) ichida
+            yuzaga kelgan xatolikni faqat konsolga chop etadi. Bu yerda
+            UNI QAYTA ANIQLAB, har qanday shunday xatolik ENDI foydalanuvchiga
+            tushunarli xabar oynasi (dialog) sifatida ham ko'rsatiladi."""
+            import traceback
+            traceback.print_exception(exc, val, tb)
+            show_error_dialog("Kutilmagan xatolik", str(val) or exc.__name__)
 
-    def _build_phrase_model_bar(self):
-        # Butun IBORANING (bir nechta so'zdan tuzilgan zanjirning) rasmiy
-        # KKT modeli — har bir so'zning o'z alohida KKT MM qutisidan farqli
-        # o'laroq, shu yerda D+M2+C+X kabi TO'LIQ zanjir ko'rinadi.
-        bar=tk.Frame(self,bg=GOLD,padx=14,pady=1); bar.pack(fill="x")
-        self._phrase_model_var=tk.StringVar(value="")
-        self._phrase_model_lbl=tk.Label(bar,textvariable=self._phrase_model_var,
-            font=("Consolas",13,"bold"),bg=GOLD,fg=DARK,anchor="w",justify="left",
-            wraplength=1400)
-        self._phrase_model_lbl.pack(fill="x",padx=6,pady=2)
+        def _build_ui(self):
+            self._build_header(); self._build_io_section()
+            self._build_stats_cards(); self._build_phrase_model_bar()
+            self._build_parse_panels()
+            self._build_status_bar()
 
-    def _build_header(self):
-        hdr=tk.Frame(self,bg=DARK,pady=14); hdr.pack(fill="x")
-        tk.Label(hdr,
-            text="INGLIZ TILIDAN O'ZBEK TILIGA RASMIY MODELLAR ASOSIDA TARJIMA MODULI",
-            font=("Segoe UI",18,"bold"),bg=DARK,fg=WHITE).pack()
+        def _build_phrase_model_bar(self):
+            # Butun IBORANING (bir nechta so'zdan tuzilgan zanjirning) rasmiy
+            # KKT modeli — har bir so'zning o'z alohida KKT MM qutisidan farqli
+            # o'laroq, shu yerda D+M2+C+X kabi TO'LIQ zanjir ko'rinadi.
+            bar=tk.Frame(self,bg=GOLD,padx=14,pady=1); bar.pack(fill="x")
+            self._phrase_model_var=tk.StringVar(value="")
+            self._phrase_model_lbl=tk.Label(bar,textvariable=self._phrase_model_var,
+                font=("Consolas",13,"bold"),bg=GOLD,fg=DARK,anchor="w",justify="left",
+                wraplength=1400)
+            self._phrase_model_lbl.pack(fill="x",padx=6,pady=2)
 
-    def _build_io_section(self):
-        outer=tk.Frame(self,bg=BG,padx=14,pady=8); outer.pack(fill="x")
-        outer.columnconfigure(0,weight=1); outer.columnconfigure(1,weight=1)
-        left=self._card(outer); left.grid(row=0,column=0,sticky="nsew",padx=(0,7))
-        tk.Label(left,text="Ingliz tilida so'zni kiritish:",
-                 font=F_LABEL,bg=WHITE,fg=DARK).pack(anchor="w",padx=10,pady=(7,3))
-        iw=tk.Frame(left,bg=GREEN,padx=2,pady=2); iw.pack(fill="x",padx=10,pady=(0,5))
-        self.input_box=tk.Text(iw,height=2,font=F_INPUT,bg=WHITE,fg=DARK,
-                               relief="flat",wrap="word",padx=7,pady=5,insertbackground=GREEN)
-        self.input_box.pack(fill="x")
-        def _ret(e): self._translate(); return "break"
-        self.input_box.bind("<Return>",_ret); self.input_box.focus()
-        br=tk.Frame(left,bg=WHITE); br.pack(anchor="w",padx=10,pady=(0,8))
-        self._btn(br,"  OK  ",self._translate,GREEN).pack(side="left",padx=(0,7))
-        self._btn(br," Tozala ",self._clear,GRAY).pack(side="left")
-        right=self._card(outer); right.grid(row=0,column=1,sticky="nsew",padx=(7,0))
-        tk.Label(right,text="O'zbekcha tarjima (KKT asosida):",
-                 font=F_LABEL,bg=WHITE,fg=DARK).pack(anchor="w",padx=10,pady=(7,3))
-        rw=tk.Frame(right,bg=GREEN,padx=2,pady=2); rw.pack(fill="x",padx=10,pady=(0,5))
-        self.result_box=tk.Text(rw,height=2,font=F_RESULT,bg=WHITE,fg=GRN_DK,
-                                relief="flat",wrap="word",padx=7,pady=5,state="disabled")
-        self.result_box.pack(fill="x")
-        ar=tk.Frame(right,bg=WHITE); ar.pack(anchor="e",padx=10,pady=(0,8))
-        self._btn(ar,"+ Yangi so'z",self._open_add_dialog,TEAL).pack()
+        def _build_header(self):
+            hdr=tk.Frame(self,bg=DARK,pady=14); hdr.pack(fill="x")
+            tk.Label(hdr,
+                text="INGLIZ TILIDAN O'ZBEK TILIGA RASMIY MODELLAR ASOSIDA TARJIMA MODULI",
+                font=("Segoe UI",18,"bold"),bg=DARK,fg=WHITE).pack()
 
-    def _build_stats_cards(self):
-        row=tk.Frame(self,bg=BG,padx=14,pady=1); row.pack(fill="x")
-        self._sc_words =self._stat_card(row,"-","So'zlar soni",CARD1)
-        self._sc_affiks=self._stat_card(row,"-","Affiks/Prefiks",CARD2)
-        self._sc_acc   =self._stat_card(row,"-","O'rtacha aniqlik",CARD3)
-        self._sc_auto  =self._stat_card(row,"-","Jami(V2+V3)",CARD4)
-        for sc in (self._sc_words,self._sc_affiks,self._sc_acc,self._sc_auto):
-            sc["frame"].pack(side="left",expand=True,fill="x",padx=2)
+        def _build_io_section(self):
+            outer=tk.Frame(self,bg=BG,padx=14,pady=8); outer.pack(fill="x")
+            outer.columnconfigure(0,weight=1); outer.columnconfigure(1,weight=1)
+            left=self._card(outer); left.grid(row=0,column=0,sticky="nsew",padx=(0,7))
+            tk.Label(left,text="Ingliz tilida so'zni kiritish:",
+                     font=F_LABEL,bg=WHITE,fg=DARK).pack(anchor="w",padx=10,pady=(7,3))
+            iw=tk.Frame(left,bg=GREEN,padx=2,pady=2); iw.pack(fill="x",padx=10,pady=(0,5))
+            self.input_box=tk.Text(iw,height=2,font=F_INPUT,bg=WHITE,fg=DARK,
+                                   relief="flat",wrap="word",padx=7,pady=5,insertbackground=GREEN)
+            self.input_box.pack(fill="x")
+            def _ret(e): self._translate(); return "break"
+            self.input_box.bind("<Return>",_ret); self.input_box.focus()
+            br=tk.Frame(left,bg=WHITE); br.pack(anchor="w",padx=10,pady=(0,8))
+            self._btn(br,"  OK  ",self._translate,GREEN).pack(side="left",padx=(0,7))
+            self._btn(br," Tozala ",self._clear,GRAY).pack(side="left")
+            right=self._card(outer); right.grid(row=0,column=1,sticky="nsew",padx=(7,0))
+            tk.Label(right,text="O'zbekcha tarjima (KKT asosida):",
+                     font=F_LABEL,bg=WHITE,fg=DARK).pack(anchor="w",padx=10,pady=(7,3))
+            rw=tk.Frame(right,bg=GREEN,padx=2,pady=2); rw.pack(fill="x",padx=10,pady=(0,5))
+            self.result_box=tk.Text(rw,height=2,font=F_RESULT,bg=WHITE,fg=GRN_DK,
+                                    relief="flat",wrap="word",padx=7,pady=5,state="disabled")
+            self.result_box.pack(fill="x")
+            ar=tk.Frame(right,bg=WHITE); ar.pack(anchor="e",padx=10,pady=(0,8))
+            self._btn(ar,"+ Yangi so'z",self._open_add_dialog,TEAL).pack()
 
-    def _build_parse_panels(self):
-        row=tk.Frame(self,bg=BG,padx=14,pady=4); row.pack(fill="both",expand=True)
-        row.columnconfigure(0,weight=1); row.columnconfigure(1,weight=1)
-        L=self._card(row); L.grid(row=0,column=0,sticky="nsew",padx=(0,7))
-        lhdr=tk.Frame(L,bg=GREEN,pady=7,padx=10); lhdr.pack(fill="x")
-        tk.Label(lhdr,text="Ingliz tili so'zni Parsinglash",
-                 font=F_HDR,bg=GREEN,fg=WHITE).pack(anchor="w")
-        self.in_tree=tk.Text(L,font=F_MONO,bg=WHITE,fg=DARK,
-                             relief="flat",padx=6,pady=5,wrap="word",state="disabled")
-        sb_l=ttk.Scrollbar(L,command=self.in_tree.yview)
-        self.in_tree.config(yscrollcommand=sb_l.set)
-        sb_l.pack(side="right",fill="y")
-        self.in_tree.pack(fill="both",expand=True)
-        self._setup_tags(self.in_tree)
-        R=self._card(row); R.grid(row=0,column=1,sticky="nsew",padx=(7,0))
-        rhdr=tk.Frame(R,bg=BLUE,pady=7,padx=10); rhdr.pack(fill="x")
-        tk.Label(rhdr,text="O'zbek tili so'zni Parsinglash",
-                 font=F_HDR,bg=BLUE,fg=WHITE).pack(anchor="w")
-        self.out_tree=tk.Text(R,font=F_MONO,bg=WHITE,fg=DARK,
-                              relief="flat",padx=6,pady=5,wrap="word",state="disabled")
-        sb_r=ttk.Scrollbar(R,command=self.out_tree.yview)
-        self.out_tree.config(yscrollcommand=sb_r.set)
-        sb_r.pack(side="right",fill="y")
-        self.out_tree.pack(fill="both",expand=True)
-        self._setup_tags(self.out_tree)
+        def _build_stats_cards(self):
+            row=tk.Frame(self,bg=BG,padx=14,pady=1); row.pack(fill="x")
+            self._sc_words =self._stat_card(row,"-","So'zlar soni",CARD1)
+            self._sc_affiks=self._stat_card(row,"-","Affiks/Prefiks",CARD2)
+            self._sc_acc   =self._stat_card(row,"-","O'rtacha aniqlik",CARD3)
+            self._sc_auto  =self._stat_card(row,"-","Jami(V2+V3)",CARD4)
+            for sc in (self._sc_words,self._sc_affiks,self._sc_acc,self._sc_auto):
+                sc["frame"].pack(side="left",expand=True,fill="x",padx=2)
 
-    def _build_status_bar(self):
-        bar=tk.Frame(self,bg=DARK,pady=4); bar.pack(fill="x",side="bottom")
-        self._status=tk.StringVar(value="  Tayyor. Inglizcha so'z yozing va OK tugmasini bosing.")
-        tk.Label(bar,textvariable=self._status,font=F_SMALL,bg=DARK,fg=WHITE,anchor="w").pack(side="left",padx=10)
-        self._bar_right=tk.Label(bar,text="",font=F_SMALL,bg=DARK,fg=WHITE)
-        self._bar_right.pack(side="right",padx=10); self._refresh_bar()
+        def _build_parse_panels(self):
+            row=tk.Frame(self,bg=BG,padx=14,pady=4); row.pack(fill="both",expand=True)
+            row.columnconfigure(0,weight=1); row.columnconfigure(1,weight=1)
+            L=self._card(row); L.grid(row=0,column=0,sticky="nsew",padx=(0,7))
+            lhdr=tk.Frame(L,bg=GREEN,pady=7,padx=10); lhdr.pack(fill="x")
+            tk.Label(lhdr,text="Ingliz tili so'zni Parsinglash",
+                     font=F_HDR,bg=GREEN,fg=WHITE).pack(anchor="w")
+            self.in_tree=tk.Text(L,font=F_MONO,bg=WHITE,fg=DARK,
+                                 relief="flat",padx=6,pady=5,wrap="word",state="disabled")
+            sb_l=ttk.Scrollbar(L,command=self.in_tree.yview)
+            self.in_tree.config(yscrollcommand=sb_l.set)
+            sb_l.pack(side="right",fill="y")
+            self.in_tree.pack(fill="both",expand=True)
+            self._setup_tags(self.in_tree)
+            R=self._card(row); R.grid(row=0,column=1,sticky="nsew",padx=(7,0))
+            rhdr=tk.Frame(R,bg=BLUE,pady=7,padx=10); rhdr.pack(fill="x")
+            tk.Label(rhdr,text="O'zbek tili so'zni Parsinglash",
+                     font=F_HDR,bg=BLUE,fg=WHITE).pack(anchor="w")
+            self.out_tree=tk.Text(R,font=F_MONO,bg=WHITE,fg=DARK,
+                                  relief="flat",padx=6,pady=5,wrap="word",state="disabled")
+            sb_r=ttk.Scrollbar(R,command=self.out_tree.yview)
+            self.out_tree.config(yscrollcommand=sb_r.set)
+            sb_r.pack(side="right",fill="y")
+            self.out_tree.pack(fill="both",expand=True)
+            self._setup_tags(self.out_tree)
 
-    def _translate(self):
-        raw=self.input_box.get("1.0","end").strip()
-        if not raw: return
-        kkt_r = translate_phrase(raw)
-        aa=parse_sentence(raw)
-        if not aa: return
-        self._last_analyses=aa
-        parts=[a["uz"] if a["found"] else "["+a["word"]+"?]" for a in aa]
-        self._set_text(self.result_box,"  "+"   ".join(parts))
-        total=len(aa); affixed=sum(1 for a in aa if a["suffix"] or a.get("prefix"))
-        avg_c=(sum(a["conf"] for a in aa)/total*100) if total else 0
-        fl=[a for a in aa if a["found"]]
-        avg_t=sum(kkt_en(a)["total"] for a in fl)/len(fl) if fl else 0.0
-        self._sc_words["lbl"].config(text=str(total))
-        self._sc_affiks["lbl"].config(text=str(affixed))
-        self._sc_acc["lbl"].config(text=str(round(avg_c,1))+"%")
-        self._sc_auto["lbl"].config(text=f"{avg_t:.4f}")
-        self._draw_en_parse(aa); self._draw_uz_parse(aa)
-        found=sum(1 for a in aa if a["found"])
-        if kkt_r:
-            self._set_text(self.result_box,"  "+kkt_r["natija"])
-            self._status.set(f"  KKT formal model: {kkt_r['model']}")
-            self._phrase_model_var.set("  IBORANING RASMIY MODELI:  "+kkt_r["model"])
-        else:
-            self._status.set(f"  '{raw[:45]}' → {found}/{total} so'z, {affixed} ta affiks/prefiks.")
-            self._phrase_model_var.set("")
-        self._refresh_bar()
+        def _build_status_bar(self):
+            bar=tk.Frame(self,bg=DARK,pady=4); bar.pack(fill="x",side="bottom")
+            self._status=tk.StringVar(value="  Tayyor. Inglizcha so'z yozing va OK tugmasini bosing.")
+            tk.Label(bar,textvariable=self._status,font=F_SMALL,bg=DARK,fg=WHITE,anchor="w").pack(side="left",padx=10)
+            self._bar_right=tk.Label(bar,text="",font=F_SMALL,bg=DARK,fg=WHITE)
+            self._bar_right.pack(side="right",padx=10); self._refresh_bar()
 
-    def _draw_en_parse(self,aa):
-        t=self.in_tree; t.config(state="normal"); t.delete("1.0","end")
-        for i,a in enumerate(aa,1):
-            found=a["found"]; pfx=a.get("prefix",""); sfx=a.get("suffix",""); em=kkt_en(a)
-            t.insert("end",f"\n  {i}. ","dim")
-            t.insert("end",a["word"].upper()+"\n","bold_green" if found else "red")
-            if found:
-                pos=a.get("pos","Ot"); ks=POS_KKT.get(pos,"C")
-                t.insert("end","  ├─ Ildiz:   ","dim"); t.insert("end",a["root"].capitalize()+"\n","green")
-                t.insert("end","  ├─ Prefiks: ","dim")
-                if pfx: t.insert("end",pfx+"-","orange"); t.insert("end","  [T, V3=0.01]\n","dim")
-                else:   t.insert("end","yo'q\n","dim")
-                t.insert("end","  ├─ Suffiks: ","dim")
-                if sfx:
-                    sk=em["sfx_kkt"]; sv=EN_AFF_V3.get(sfx,("",0))[1]
-                    t.insert("end",f"-{sfx}  ","orange"); t.insert("end",f"[{sk}, V3={sv:.5f}]\n","dim")
-                else:   t.insert("end","yo'q\n","dim")
-                t.insert("end","  ├─ Turkum:  ","dim"); t.insert("end",f"{pos}  [{ks}]\n","blue")
-                meanings=a.get("meanings") or []
-                if len(meanings)>1:
-                    alts=", ".join(m["uz"] for m in meanings)
-                    t.insert("end","  ├─ Ma'nolar:","dim"); t.insert("end",f" {alts}  ({len(meanings)} ta)\n","orange")
-                t.insert("end","  ├─ Aniqlik: ","dim")
-                t.insert("end",f"{round(a['conf']*100,1)}%\n","orange" if (sfx or pfx) else "green")
-                t.insert("end","  │\n","dim")
-                t.insert("end","  ╔══ KKT MM (INGLIZ) ═══════════════╗\n","gold")
-                t.insert("end","  ║  ","gold"); t.insert("end",f"MM: {em['mm']}\n","kkt")
-                t.insert("end","  ╠═══════════════════════════════════╣\n","gold")
-                t.insert("end","  ║  ","gold"); t.insert("end",f"V2  = {em['v2']:.5f}","bold_green")
-                t.insert("end",f"  [{pos}={ks}]\n","dim")
-                t.insert("end","  ║  ","gold"); t.insert("end",f"V3  = {em['v3']:.5f}","orange")
-                if sfx:   t.insert("end",f"  [-{sfx}={em['sfx_kkt']}]\n","dim")
-                elif pfx: t.insert("end",f"  [{pfx}-=T]\n","dim")
-                else:     t.insert("end","  [affiksiz]\n","dim")
-                t.insert("end","  ╠═══════════════════════════════════╣\n","gold")
-                t.insert("end","  ║  ","gold"); t.insert("end",f"V2+V3 = {em['total']:.5f}\n","gold")
-                t.insert("end","  ╚═══════════════════════════════════╝\n","gold")
+        def _translate(self):
+            raw=self.input_box.get("1.0","end").strip()
+            if not raw: return
+            kkt_r = translate_phrase(raw)
+            aa=parse_sentence(raw)
+            if not aa: return
+            self._last_analyses=aa
+            parts=[a["uz"] if a["found"] else "["+a["word"]+"?]" for a in aa]
+            self._set_text(self.result_box,"  "+"   ".join(parts))
+            total=len(aa); affixed=sum(1 for a in aa if a["suffix"] or a.get("prefix"))
+            avg_c=(sum(a["conf"] for a in aa)/total*100) if total else 0
+            fl=[a for a in aa if a["found"]]
+            avg_t=sum(kkt_en(a)["total"] for a in fl)/len(fl) if fl else 0.0
+            self._sc_words["lbl"].config(text=str(total))
+            self._sc_affiks["lbl"].config(text=str(affixed))
+            self._sc_acc["lbl"].config(text=str(round(avg_c,1))+"%")
+            self._sc_auto["lbl"].config(text=f"{avg_t:.4f}")
+            self._draw_en_parse(aa); self._draw_uz_parse(aa)
+            found=sum(1 for a in aa if a["found"])
+            if kkt_r:
+                self._set_text(self.result_box,"  "+kkt_r["natija"])
+                self._status.set(f"  KKT formal model: {kkt_r['model']}")
+                self._phrase_model_var.set("  IBORANING RASMIY MODELI:  "+kkt_r["model"])
             else:
-                t.insert("end","  └─ Bazada topilmadi\n","red")
-        t.config(state="disabled")
+                self._status.set(f"  '{raw[:45]}' → {found}/{total} so'z, {affixed} ta affiks/prefiks.")
+                self._phrase_model_var.set("")
+            self._refresh_bar()
 
-    def _draw_uz_parse(self,aa):
-        t=self.out_tree; t.config(state="normal"); t.delete("1.0","end")
-        for i,a in enumerate(aa,1):
-            found=a["found"]; em=kkt_en(a); um=kkt_uz(a)
-            t.insert("end",f"\n  {i}. ","dim")
-            ud=(a.get("uz") or a["word"]).upper() if found else "["+a["word"]+"?]"
-            t.insert("end",ud+"\n","bold_blue" if found else "red")
-            if found:
-                us=um["sfx"]; uk=um["sfx_kkt"]
-                t.insert("end","  ├─ O'z ildiz:","dim"); t.insert("end"," "+um["root"]+"\n","blue")
-                t.insert("end","  ├─ O'z affiks:","dim")
-                if us and us!="eng":
-                    t.insert("end",f" -{us}  ","orange"); t.insert("end",f"[{uk}, V3={um['v3']:.5f}]\n","dim")
-                elif us=="eng":
-                    t.insert("end"," eng  [P2_D=0.07]\n","orange")
-                else: t.insert("end"," yo'q\n","dim")
-                t.insert("end","  ├─ Turkum:   ","dim"); t.insert("end",f"{a.get('pos','Ot')}  [{um['kkt']}]\n","blue")
-                t.insert("end","  │\n","dim")
-                t.insert("end","  ╔══ KKT MM (O'ZBEK) ══════════════╗\n","bold_blue")
-                t.insert("end","  ║  ","bold_blue"); t.insert("end",f"MM: {um['mm']}\n","kkt")
-                t.insert("end","  ╠══════════════════════════════════╣\n","bold_blue")
-                t.insert("end","  ║  ","bold_blue"); t.insert("end",f"V2_1 = {um['v2']:.5f}","bold_green")
-                t.insert("end",f"  [{a.get('pos','Ot')}={um['kkt']}]\n","dim")
-                t.insert("end","  ║  ","bold_blue"); t.insert("end",f"V3_1 = {um['v3']:.5f}","orange")
-                if us and us!="eng": t.insert("end",f"  [-{us}={uk}]\n","dim")
-                else: t.insert("end","  [affiksiz]\n","dim")
-                t.insert("end","  ╠══════════════════════════════════╣\n","bold_blue")
-                t.insert("end","  ║  ","bold_blue"); t.insert("end",f"V2_1+V3_1 = {um['total']:.5f}\n","bold_blue")
-                t.insert("end","  ╠══════════════════════════════════╣\n","bold_blue")
-                diff=abs(em["total"]-um["total"])
-                dt="green" if diff<0.001 else ("orange" if diff<=0.26 else "red")
-                t.insert("end","  ║  ","bold_blue")
-                t.insert("end",f"FARQ = |{em['total']:.5f}-{um['total']:.5f}| = {diff:.5f}  ",dt)
-                if diff<0.00001:  t.insert("end","✓ Bir xil\n","green")
-                elif diff<=0.26:  t.insert("end","≈ Maqbul\n","orange")
-                else:             t.insert("end","✗ Katta farq!\n","red")
-                t.insert("end","  ╠══════════════════════════════════╣\n","bold_blue")
-                # 8-9-QADAM: SSM metrikasi asosida sifat baholash
-                ssm_v = a.get("ssm_uz"); ssm_g = a.get("ssm_grade","—")
-                qflag = a.get("quality_flag","green")
-                qtag = {"green":"green","orange":"orange","red":"red"}.get(qflag,"dim")
-                t.insert("end","  ║  ","bold_blue")
-                if ssm_v is not None:
-                    t.insert("end",f"SSM = {ssm_v:.5f}  ({ssm_g})",qtag)
+        def _draw_en_parse(self,aa):
+            t=self.in_tree; t.config(state="normal"); t.delete("1.0","end")
+            for i,a in enumerate(aa,1):
+                found=a["found"]; pfx=a.get("prefix",""); sfx=a.get("suffix",""); em=kkt_en(a)
+                t.insert("end",f"\n  {i}. ","dim")
+                t.insert("end",a["word"].upper()+"\n","bold_green" if found else "red")
+                if found:
+                    pos=a.get("pos","Ot"); ks=POS_KKT.get(pos,"C")
+                    t.insert("end","  ├─ Ildiz:   ","dim"); t.insert("end",a["root"].capitalize()+"\n","green")
+                    t.insert("end","  ├─ Prefiks: ","dim")
+                    if pfx: t.insert("end",pfx+"-","orange"); t.insert("end","  [T, V3=0.01]\n","dim")
+                    else:   t.insert("end","yo'q\n","dim")
+                    t.insert("end","  ├─ Suffiks: ","dim")
+                    if sfx:
+                        sk=em["sfx_kkt"]; sv=EN_AFF_V3.get(sfx,("",0))[1]
+                        t.insert("end",f"-{sfx}  ","orange"); t.insert("end",f"[{sk}, V3={sv:.5f}]\n","dim")
+                    else:   t.insert("end","yo'q\n","dim")
+                    t.insert("end","  ├─ Turkum:  ","dim"); t.insert("end",f"{pos}  [{ks}]\n","blue")
+                    meanings=a.get("meanings") or []
+                    if len(meanings)>1:
+                        alts=", ".join(m["uz"] for m in meanings)
+                        t.insert("end","  ├─ Ma'nolar:","dim"); t.insert("end",f" {alts}  ({len(meanings)} ta)\n","orange")
+                    t.insert("end","  ├─ Aniqlik: ","dim")
+                    t.insert("end",f"{round(a['conf']*100,1)}%\n","orange" if (sfx or pfx) else "green")
+                    t.insert("end","  │\n","dim")
+                    t.insert("end","  ╔══ KKT MM (INGLIZ) ═══════════════╗\n","gold")
+                    t.insert("end","  ║  ","gold"); t.insert("end",f"MM: {em['mm']}\n","kkt")
+                    t.insert("end","  ╠═══════════════════════════════════╣\n","gold")
+                    t.insert("end","  ║  ","gold"); t.insert("end",f"V2  = {em['v2']:.5f}","bold_green")
+                    t.insert("end",f"  [{pos}={ks}]\n","dim")
+                    t.insert("end","  ║  ","gold"); t.insert("end",f"V3  = {em['v3']:.5f}","orange")
+                    if sfx:   t.insert("end",f"  [-{sfx}={em['sfx_kkt']}]\n","dim")
+                    elif pfx: t.insert("end",f"  [{pfx}-=T]\n","dim")
+                    else:     t.insert("end","  [affiksiz]\n","dim")
+                    t.insert("end","  ╠═══════════════════════════════════╣\n","gold")
+                    t.insert("end","  ║  ","gold"); t.insert("end",f"V2+V3 = {em['total']:.5f}\n","gold")
+                    t.insert("end","  ╚═══════════════════════════════════╝\n","gold")
                 else:
-                    t.insert("end","SSM = —","dim")
-                if a.get("mdb_used"):
-                    t.insert("end",f"   [MDB_uz_w, |farq|={a.get('mdb_diff')}]","orange")
-                t.insert("end","\n")
-                t.insert("end","  ╚══════════════════════════════════╝\n","bold_blue")
-            else:
-                t.insert("end","  └─ Topilmadi\n","red")
-        t.config(state="disabled")
+                    t.insert("end","  └─ Bazada topilmadi\n","red")
+            t.config(state="disabled")
 
-    def _open_add_dialog(self):
-        dlg=tk.Toplevel(self); dlg.title("Yangi so'z qo'shish")
-        dlg.geometry("480x310"); dlg.configure(bg=WHITE)
-        dlg.resizable(False,False); dlg.grab_set()
-        hdr=tk.Frame(dlg,bg=TEAL,pady=10); hdr.pack(fill="x")
-        tk.Label(hdr,text="  + Bazaga yangi so'z qo'shish",
-                 font=F_LABEL,bg=TEAL,fg=WHITE).pack(anchor="w")
-        body=tk.Frame(dlg,bg=WHITE,padx=20,pady=14); body.pack(fill="both",expand=True)
-        for lbl,attr in [("Inglizcha:","_en"),("O'zbekcha:","_uz")]:
-            tk.Label(body,text=lbl,font=F_LABEL,bg=WHITE,fg=DARK).pack(anchor="w",pady=(5,2))
-            v=tk.StringVar(); setattr(self,"_dlg"+attr,v)
-            tk.Entry(body,textvariable=v,font=F_INPUT,bg=GRAY_LT,fg=DARK,relief="flat",bd=3).pack(fill="x",ipady=5)
-        tk.Label(body,text="So'z turkumi:",font=F_LABEL,bg=WHITE,fg=DARK).pack(anchor="w",pady=(7,2))
-        pv=tk.StringVar(value="Ot"); self._dlg_pos=pv
-        ttk.Combobox(body,textvariable=pv,values=list(POS_MAP.values()),
-                     state="readonly",font=F_NORMAL,width=28).pack(anchor="w")
-        mv=tk.StringVar(); tk.Label(body,textvariable=mv,font=F_SMALL,bg=WHITE,fg=GRN_DK).pack(pady=(6,0))
-        def do():
-            en=self._dlg_en.get().strip(); uz=self._dlg_uz.get().strip()
-            if not en or not uz: mv.set("Ikkala maydon to'ldirilsin!"); return
-            if db_insert(en,uz,pv.get(),"user"):
-                mv.set(f"'{en}' [{POS_KKT.get(pv.get(),'?')}] qo'shildi!")
-                self._dlg_en.set(""); self._dlg_uz.set(""); self._refresh_bar()
-            else: mv.set(f"'{en}' allaqachon mavjud.")
-        br=tk.Frame(body,bg=WHITE); br.pack(pady=(8,0))
-        self._btn(br," Qo'shish ",do,TEAL).pack(side="left",padx=5)
-        self._btn(br," Yopish ",dlg.destroy,GRAY).pack(side="left")
+        def _draw_uz_parse(self,aa):
+            t=self.out_tree; t.config(state="normal"); t.delete("1.0","end")
+            for i,a in enumerate(aa,1):
+                found=a["found"]; em=kkt_en(a); um=kkt_uz(a)
+                t.insert("end",f"\n  {i}. ","dim")
+                ud=(a.get("uz") or a["word"]).upper() if found else "["+a["word"]+"?]"
+                t.insert("end",ud+"\n","bold_blue" if found else "red")
+                if found:
+                    us=um["sfx"]; uk=um["sfx_kkt"]
+                    t.insert("end","  ├─ O'z ildiz:","dim"); t.insert("end"," "+um["root"]+"\n","blue")
+                    t.insert("end","  ├─ O'z affiks:","dim")
+                    if us and us!="eng":
+                        t.insert("end",f" -{us}  ","orange"); t.insert("end",f"[{uk}, V3={um['v3']:.5f}]\n","dim")
+                    elif us=="eng":
+                        t.insert("end"," eng  [P2_D=0.07]\n","orange")
+                    else: t.insert("end"," yo'q\n","dim")
+                    t.insert("end","  ├─ Turkum:   ","dim"); t.insert("end",f"{a.get('pos','Ot')}  [{um['kkt']}]\n","blue")
+                    t.insert("end","  │\n","dim")
+                    t.insert("end","  ╔══ KKT MM (O'ZBEK) ══════════════╗\n","bold_blue")
+                    t.insert("end","  ║  ","bold_blue"); t.insert("end",f"MM: {um['mm']}\n","kkt")
+                    t.insert("end","  ╠══════════════════════════════════╣\n","bold_blue")
+                    t.insert("end","  ║  ","bold_blue"); t.insert("end",f"V2_1 = {um['v2']:.5f}","bold_green")
+                    t.insert("end",f"  [{a.get('pos','Ot')}={um['kkt']}]\n","dim")
+                    t.insert("end","  ║  ","bold_blue"); t.insert("end",f"V3_1 = {um['v3']:.5f}","orange")
+                    if us and us!="eng": t.insert("end",f"  [-{us}={uk}]\n","dim")
+                    else: t.insert("end","  [affiksiz]\n","dim")
+                    t.insert("end","  ╠══════════════════════════════════╣\n","bold_blue")
+                    t.insert("end","  ║  ","bold_blue"); t.insert("end",f"V2_1+V3_1 = {um['total']:.5f}\n","bold_blue")
+                    t.insert("end","  ╠══════════════════════════════════╣\n","bold_blue")
+                    diff=abs(em["total"]-um["total"])
+                    dt="green" if diff<0.001 else ("orange" if diff<=0.26 else "red")
+                    t.insert("end","  ║  ","bold_blue")
+                    t.insert("end",f"FARQ = |{em['total']:.5f}-{um['total']:.5f}| = {diff:.5f}  ",dt)
+                    if diff<0.00001:  t.insert("end","✓ Bir xil\n","green")
+                    elif diff<=0.26:  t.insert("end","≈ Maqbul\n","orange")
+                    else:             t.insert("end","✗ Katta farq!\n","red")
+                    t.insert("end","  ╠══════════════════════════════════╣\n","bold_blue")
+                    # 8-9-QADAM: SSM metrikasi asosida sifat baholash
+                    ssm_v = a.get("ssm_uz"); ssm_g = a.get("ssm_grade","—")
+                    qflag = a.get("quality_flag","green")
+                    qtag = {"green":"green","orange":"orange","red":"red"}.get(qflag,"dim")
+                    t.insert("end","  ║  ","bold_blue")
+                    if ssm_v is not None:
+                        t.insert("end",f"SSM = {ssm_v:.5f}  ({ssm_g})",qtag)
+                    else:
+                        t.insert("end","SSM = —","dim")
+                    if a.get("mdb_used"):
+                        t.insert("end",f"   [MDB_uz_w, |farq|={a.get('mdb_diff')}]","orange")
+                    t.insert("end","\n")
+                    t.insert("end","  ╚══════════════════════════════════╝\n","bold_blue")
+                else:
+                    t.insert("end","  └─ Topilmadi\n","red")
+            t.config(state="disabled")
 
-    def _show_welcome(self):
-        for t in (self.in_tree,self.out_tree):
-            t.config(state="normal"); t.delete("1.0","end"); t.config(state="disabled")
+        def _open_add_dialog(self):
+            dlg=tk.Toplevel(self); dlg.title("Yangi so'z qo'shish")
+            dlg.geometry("480x310"); dlg.configure(bg=WHITE)
+            dlg.resizable(False,False); dlg.grab_set()
+            hdr=tk.Frame(dlg,bg=TEAL,pady=10); hdr.pack(fill="x")
+            tk.Label(hdr,text="  + Bazaga yangi so'z qo'shish",
+                     font=F_LABEL,bg=TEAL,fg=WHITE).pack(anchor="w")
+            body=tk.Frame(dlg,bg=WHITE,padx=20,pady=14); body.pack(fill="both",expand=True)
+            for lbl,attr in [("Inglizcha:","_en"),("O'zbekcha:","_uz")]:
+                tk.Label(body,text=lbl,font=F_LABEL,bg=WHITE,fg=DARK).pack(anchor="w",pady=(5,2))
+                v=tk.StringVar(); setattr(self,"_dlg"+attr,v)
+                tk.Entry(body,textvariable=v,font=F_INPUT,bg=GRAY_LT,fg=DARK,relief="flat",bd=3).pack(fill="x",ipady=5)
+            tk.Label(body,text="So'z turkumi:",font=F_LABEL,bg=WHITE,fg=DARK).pack(anchor="w",pady=(7,2))
+            pv=tk.StringVar(value="Ot"); self._dlg_pos=pv
+            ttk.Combobox(body,textvariable=pv,values=list(POS_MAP.values()),
+                         state="readonly",font=F_NORMAL,width=28).pack(anchor="w")
+            mv=tk.StringVar(); tk.Label(body,textvariable=mv,font=F_SMALL,bg=WHITE,fg=GRN_DK).pack(pady=(6,0))
+            def do():
+                en=self._dlg_en.get().strip(); uz=self._dlg_uz.get().strip()
+                if not en or not uz: mv.set("Ikkala maydon to'ldirilsin!"); return
+                if db_insert(en,uz,pv.get(),"user"):
+                    mv.set(f"'{en}' [{POS_KKT.get(pv.get(),'?')}] qo'shildi!")
+                    self._dlg_en.set(""); self._dlg_uz.set(""); self._refresh_bar()
+                else: mv.set(f"'{en}' allaqachon mavjud.")
+            br=tk.Frame(body,bg=WHITE); br.pack(pady=(8,0))
+            self._btn(br," Qo'shish ",do,TEAL).pack(side="left",padx=5)
+            self._btn(br," Yopish ",dlg.destroy,GRAY).pack(side="left")
 
-    def _clear(self):
-        self.input_box.delete("1.0","end"); self._set_text(self.result_box,"")
-        for sc in (self._sc_words,self._sc_affiks,self._sc_acc,self._sc_auto):
-            sc["lbl"].config(text="-")
-        self._show_welcome(); self._status.set("  Maydon tozalandi."); self.input_box.focus()
+        def _show_welcome(self):
+            for t in (self.in_tree,self.out_tree):
+                t.config(state="normal"); t.delete("1.0","end"); t.config(state="disabled")
 
-    def _refresh_bar(self):
-        s=db_stats()
-        self._bar_right.config(text=f"Baza: {s['total']} so'z  |  Affiks en:{s['aff_en']} uz:{s['aff_uz']}  ")
+        def _clear(self):
+            self.input_box.delete("1.0","end"); self._set_text(self.result_box,"")
+            for sc in (self._sc_words,self._sc_affiks,self._sc_acc,self._sc_auto):
+                sc["lbl"].config(text="-")
+            self._show_welcome(); self._status.set("  Maydon tozalandi."); self.input_box.focus()
 
-    def _setup_tags(self,w):
-        w.tag_config("dim",       foreground=GRAY,   font=F_MONO)
-        w.tag_config("green",     foreground=GREEN,  font=F_MONO)
-        w.tag_config("bold_green",foreground=GRN_DK, font=F_MONO_B)
-        w.tag_config("blue",      foreground=BLUE,   font=F_MONO)
-        w.tag_config("bold_blue", foreground=BLUE,   font=F_MONO_B)
-        w.tag_config("orange",    foreground=ORANGE, font=F_MONO)
-        w.tag_config("red",       foreground=RED_C,  font=F_MONO)
-        w.tag_config("gold",      foreground=GOLD,   font=F_MONO_B)
-        w.tag_config("kkt",       foreground="#1a6b00",font=F_MONO_B)
+        def _refresh_bar(self):
+            s=db_stats()
+            self._bar_right.config(text=f"Baza: {s['total']} so'z  |  Affiks en:{s['aff_en']} uz:{s['aff_uz']}  ")
 
-    @staticmethod
-    def _card(p):
-        return tk.Frame(p,bg=WHITE,highlightbackground=BORDER,highlightthickness=1)
-    @staticmethod
-    def _btn(p,text,cmd,color):
-        return tk.Button(p,text=text,command=cmd,font=F_BTN,bg=color,fg=WHITE,
-                         relief="flat",padx=12,pady=6,cursor="hand2",
-                         activebackground=color,activeforeground=WHITE)
-    def _stat_card(self,p,value,label,color):
-        frame=tk.Frame(p,bg=color,pady=3,padx=5)
-        lbl=tk.Label(frame,text=value,font=F_CARD_N,bg=color,fg=WHITE); lbl.pack()
-        tk.Label(frame,text=label,font=F_CARD_L,bg=color,fg=WHITE).pack()
-        return {"frame":frame,"lbl":lbl}
-    @staticmethod
-    def _set_text(widget,text):
-        widget.config(state="normal"); widget.delete("1.0","end")
-        if text: widget.insert("1.0",text)
-        widget.config(state="disabled")
+        def _setup_tags(self,w):
+            w.tag_config("dim",       foreground=GRAY,   font=F_MONO)
+            w.tag_config("green",     foreground=GREEN,  font=F_MONO)
+            w.tag_config("bold_green",foreground=GRN_DK, font=F_MONO_B)
+            w.tag_config("blue",      foreground=BLUE,   font=F_MONO)
+            w.tag_config("bold_blue", foreground=BLUE,   font=F_MONO_B)
+            w.tag_config("orange",    foreground=ORANGE, font=F_MONO)
+            w.tag_config("red",       foreground=RED_C,  font=F_MONO)
+            w.tag_config("gold",      foreground=GOLD,   font=F_MONO_B)
+            w.tag_config("kkt",       foreground="#1a6b00",font=F_MONO_B)
+
+        @staticmethod
+        def _card(p):
+            return tk.Frame(p,bg=WHITE,highlightbackground=BORDER,highlightthickness=1)
+        @staticmethod
+        def _btn(p,text,cmd,color):
+            return tk.Button(p,text=text,command=cmd,font=F_BTN,bg=color,fg=WHITE,
+                             relief="flat",padx=12,pady=6,cursor="hand2",
+                             activebackground=color,activeforeground=WHITE)
+        def _stat_card(self,p,value,label,color):
+            frame=tk.Frame(p,bg=color,pady=3,padx=5)
+            lbl=tk.Label(frame,text=value,font=F_CARD_N,bg=color,fg=WHITE); lbl.pack()
+            tk.Label(frame,text=label,font=F_CARD_L,bg=color,fg=WHITE).pack()
+            return {"frame":frame,"lbl":lbl}
+        @staticmethod
+        def _set_text(widget,text):
+            widget.config(state="normal"); widget.delete("1.0","end")
+            if text: widget.insert("1.0",text)
+            widget.config(state="disabled")
 
 # ═══════════════════════════════════════════════════════════════════
 def _safe_step(label, fn, *args, **kwargs):
@@ -3512,6 +3529,13 @@ def main():
 
     mdb_added = _safe_step("MDB_uz_w boshlang'ich to'ldirish (mdb_seed_if_empty)", mdb_seed_if_empty) or 0
     if mdb_added: print(f"  MDB_uz_w: {mdb_added} ta boshlang'ich nomzod qo'shildi (SSM-asosidagi qayta izlash uchun).")
+
+    if not HAS_TK:
+        print("  DIQQAT: tkinter bu muhitda mavjud emas — GUI ochilmaydi.")
+        print("          Bazalar/tarjima mantig'i baribir tayyor (scripts/build_db.py,")
+        print("          translate_phrase() import qilib ishlatilishi mumkin).")
+        print("="*65)
+        return
 
     print("  Interfeys ochilmoqda ..."); print("="*65)
 
