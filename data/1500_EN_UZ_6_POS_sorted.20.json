@@ -1,0 +1,7102 @@
+{
+  "title": "1500 ta inglizcha–o‘zbekcha so‘z (6 ta so‘z turkumiga ajratilgan)",
+  "categories": {
+    "NOUNS (OTLAR)": [
+      {
+        "no": 1,
+        "english": "Abduction",
+        "uzbek": "Abduksiya (Mantiqiy xulosa chiqarish turi)"
+      },
+      {
+        "no": 2,
+        "english": "Ability",
+        "uzbek": "Qobiliyat"
+      },
+      {
+        "no": 3,
+        "english": "Abstract",
+        "uzbek": "Mavhum"
+      },
+      {
+        "no": 4,
+        "english": "Abstraction",
+        "uzbek": "Abstraksiya / Mavhumlik"
+      },
+      {
+        "no": 5,
+        "english": "Abstrusion",
+        "uzbek": "Mavhumlashtirish"
+      },
+      {
+        "no": 6,
+        "english": "Acceleration",
+        "uzbek": "Tezlashish"
+      },
+      {
+        "no": 7,
+        "english": "Acceptance",
+        "uzbek": "Qabul qilish"
+      },
+      {
+        "no": 8,
+        "english": "Access",
+        "uzbek": "Kirish / Foydalanish huquqi"
+      },
+      {
+        "no": 9,
+        "english": "Accuracy",
+        "uzbek": "Aniqlik"
+      },
+      {
+        "no": 10,
+        "english": "Accurate",
+        "uzbek": "Aniq"
+      },
+      {
+        "no": 11,
+        "english": "Acquisition",
+        "uzbek": "Egallash / Ma'lumot to'plash"
+      },
+      {
+        "no": 12,
+        "english": "Action",
+        "uzbek": "Harakat"
+      },
+      {
+        "no": 13,
+        "english": "Activation",
+        "uzbek": "Faollashuv"
+      },
+      {
+        "no": 14,
+        "english": "Activation",
+        "uzbek": "Faollashtirish"
+      },
+      {
+        "no": 15,
+        "english": "Actuator",
+        "uzbek": "Aktuator / Ijro etuvchi qurilma"
+      },
+      {
+        "no": 16,
+        "english": "Adaboost",
+        "uzbek": "Adaboost (algoritm nomi)"
+      },
+      {
+        "no": 17,
+        "english": "Adaptation",
+        "uzbek": "Moslashish"
+      },
+      {
+        "no": 18,
+        "english": "Addition",
+        "uzbek": "Qo'shimcha"
+      },
+      {
+        "no": 19,
+        "english": "Adequate",
+        "uzbek": "Yetarli / Mos"
+      },
+      {
+        "no": 20,
+        "english": "Administration",
+        "uzbek": "Ma'muriyat"
+      },
+      {
+        "no": 21,
+        "english": "Advanced",
+        "uzbek": "Mukammal / Ilg‘or"
+      },
+      {
+        "no": 22,
+        "english": "Advocate",
+        "uzbek": "Tarafdor / Himoyachi"
+      },
+      {
+        "no": 23,
+        "english": "Affiliated",
+        "uzbek": "Bog‘langan / A’zo"
+      },
+      {
+        "no": 24,
+        "english": "After",
+        "uzbek": "Keyin"
+      },
+      {
+        "no": 25,
+        "english": "Agency",
+        "uzbek": "Agentlik"
+      },
+      {
+        "no": 26,
+        "english": "Aggregate",
+        "uzbek": "Agregat / Yig‘indi"
+      },
+      {
+        "no": 27,
+        "english": "Aggregated",
+        "uzbek": "Jamlangan"
+      },
+      {
+        "no": 28,
+        "english": "Algorithm",
+        "uzbek": "Algoritm"
+      },
+      {
+        "no": 29,
+        "english": "Aligned",
+        "uzbek": "Tekislangan"
+      },
+      {
+        "no": 30,
+        "english": "All",
+        "uzbek": "Hamma / Barcha"
+      },
+      {
+        "no": 31,
+        "english": "Allocate",
+        "uzbek": "Ajratmoq (resursni)"
+      },
+      {
+        "no": 32,
+        "english": "Allocation",
+        "uzbek": "Taqsimlash"
+      },
+      {
+        "no": 33,
+        "english": "Almost",
+        "uzbek": "Deyarli"
+      },
+      {
+        "no": 34,
+        "english": "Also",
+        "uzbek": "Shuningdek"
+      },
+      {
+        "no": 35,
+        "english": "Always",
+        "uzbek": "Har doim"
+      },
+      {
+        "no": 36,
+        "english": "Ambiguity",
+        "uzbek": "Mavhumlik / Ikki ma'nolilik"
+      },
+      {
+        "no": 37,
+        "english": "Amplitude",
+        "uzbek": "Amplituada / Kenglik"
+      },
+      {
+        "no": 38,
+        "english": "Analogy",
+        "uzbek": "O‘xshashlik"
+      },
+      {
+        "no": 39,
+        "english": "Analogy",
+        "uzbek": "O'xshashlik / Analogiya"
+      },
+      {
+        "no": 40,
+        "english": "Analysis",
+        "uzbek": "Tahlil"
+      },
+      {
+        "no": 41,
+        "english": "Analyst",
+        "uzbek": "Tahlilchi"
+      },
+      {
+        "no": 42,
+        "english": "Ancestor",
+        "uzbek": "Ajdod (daraxtsimon tuzilmada)"
+      },
+      {
+        "no": 43,
+        "english": "Annotation",
+        "uzbek": "Izoh / Annotatsiya"
+      },
+      {
+        "no": 44,
+        "english": "Another",
+        "uzbek": "Boshqa"
+      },
+      {
+        "no": 45,
+        "english": "Antiquity",
+        "uzbek": "Qadimiylik"
+      },
+      {
+        "no": 46,
+        "english": "Any",
+        "uzbek": "Har qanday"
+      },
+      {
+        "no": 47,
+        "english": "Anybody",
+        "uzbek": "Kimdir / Har kim"
+      },
+      {
+        "no": 48,
+        "english": "Anything",
+        "uzbek": "Har qanday narsa"
+      },
+      {
+        "no": 49,
+        "english": "Anywhere",
+        "uzbek": "Har qayerda"
+      },
+      {
+        "no": 50,
+        "english": "Appendices",
+        "uzbek": "Ilovalar"
+      },
+      {
+        "no": 51,
+        "english": "Application",
+        "uzbek": "Ilova / Tadbiq"
+      },
+      {
+        "no": 52,
+        "english": "Approach",
+        "uzbek": "Yondashuv"
+      },
+      {
+        "no": 53,
+        "english": "Approximation",
+        "uzbek": "Yaqinlashish"
+      },
+      {
+        "no": 54,
+        "english": "Architecture",
+        "uzbek": "Arxitektura / Tuzilish"
+      },
+      {
+        "no": 55,
+        "english": "Architecture",
+        "uzbek": "Arxitektura"
+      },
+      {
+        "no": 56,
+        "english": "Area",
+        "uzbek": "Hudud / Soha"
+      },
+      {
+        "no": 57,
+        "english": "Array",
+        "uzbek": "Massiv / Qator"
+      },
+      {
+        "no": 58,
+        "english": "Array",
+        "uzbek": "Massiv"
+      },
+      {
+        "no": 59,
+        "english": "Artifact",
+        "uzbek": "Artefakt / Sun’iy ob’ekt"
+      },
+      {
+        "no": 60,
+        "english": "As",
+        "uzbek": "Sifatida / Chunki"
+      },
+      {
+        "no": 61,
+        "english": "As a result",
+        "uzbek": "Natijada"
+      },
+      {
+        "no": 62,
+        "english": "As if",
+        "uzbek": "Go'yoki"
+      },
+      {
+        "no": 63,
+        "english": "As long as",
+        "uzbek": "Modomiki"
+      },
+      {
+        "no": 64,
+        "english": "As long as",
+        "uzbek": "Modomiki / ...-gan taqdirda"
+      },
+      {
+        "no": 65,
+        "english": "As though",
+        "uzbek": "Go'yo"
+      },
+      {
+        "no": 66,
+        "english": "Aspect",
+        "uzbek": "Jihat"
+      },
+      {
+        "no": 67,
+        "english": "Assistance",
+        "uzbek": "Yordam"
+      },
+      {
+        "no": 68,
+        "english": "Associated",
+        "uzbek": "Bog'langan"
+      },
+      {
+        "no": 69,
+        "english": "Association",
+        "uzbek": "Assotsiatsiya / Bog'liqlik"
+      },
+      {
+        "no": 70,
+        "english": "Assuming that",
+        "uzbek": "Deb hisoblaganda"
+      },
+      {
+        "no": 71,
+        "english": "Assumption",
+        "uzbek": "Taxmin"
+      },
+      {
+        "no": 72,
+        "english": "Attribute",
+        "uzbek": "Atribut / Belgisi"
+      },
+      {
+        "no": 73,
+        "english": "Augmentation",
+        "uzbek": "Kengaytirish / To‘ldirish"
+      },
+      {
+        "no": 74,
+        "english": "Authority",
+        "uzbek": "Vakolat / Rahbariyat"
+      },
+      {
+        "no": 75,
+        "english": "Automation",
+        "uzbek": "Avtomatlashtirish"
+      },
+      {
+        "no": 76,
+        "english": "Availability",
+        "uzbek": "Mavjudlik"
+      },
+      {
+        "no": 77,
+        "english": "Average",
+        "uzbek": "O‘rtacha"
+      },
+      {
+        "no": 78,
+        "english": "Aware",
+        "uzbek": "Xabardor"
+      },
+      {
+        "no": 79,
+        "english": "Axiom",
+        "uzbek": "Akxioma"
+      },
+      {
+        "no": 80,
+        "english": "Background",
+        "uzbek": "Fon / Orqa fon"
+      },
+      {
+        "no": 81,
+        "english": "Backpropagation",
+        "uzbek": "Teskari tarqalish (xatolikni qayta hisoblash)"
+      },
+      {
+        "no": 82,
+        "english": "Backtrack",
+        "uzbek": "Orqaga qaytmoq (yechim izlashda)"
+      },
+      {
+        "no": 83,
+        "english": "Backtracking",
+        "uzbek": "Orqaga qaytish (algoritmda)"
+      },
+      {
+        "no": 84,
+        "english": "Backward",
+        "uzbek": "Orqaga yo‘nalgan"
+      },
+      {
+        "no": 85,
+        "english": "Backwards",
+        "uzbek": "Orqaga qarab"
+      },
+      {
+        "no": 86,
+        "english": "Balanced",
+        "uzbek": "Muvozanatlangan"
+      },
+      {
+        "no": 87,
+        "english": "Basis",
+        "uzbek": "Asos / Baza"
+      },
+      {
+        "no": 88,
+        "english": "Batch",
+        "uzbek": "Paket / To'plam (ma'lumotlar to'plami)"
+      },
+      {
+        "no": 89,
+        "english": "Bayes",
+        "uzbek": "Bayes (olim nomi/ehtimollik nazariyasi)"
+      },
+      {
+        "no": 90,
+        "english": "Bayesian",
+        "uzbek": "Bayesga oid (ehtimolli)"
+      },
+      {
+        "no": 91,
+        "english": "Bayes’ Theorem",
+        "uzbek": "Bayes teoremasi"
+      },
+      {
+        "no": 92,
+        "english": "Before",
+        "uzbek": "Oldin"
+      },
+      {
+        "no": 93,
+        "english": "Beforehand",
+        "uzbek": "Oldindan"
+      },
+      {
+        "no": 94,
+        "english": "Behavior",
+        "uzbek": "Xatti-harakat / Hulq-atvor"
+      },
+      {
+        "no": 95,
+        "english": "Belief",
+        "uzbek": "Ishonch / Tasavvur"
+      },
+      {
+        "no": 96,
+        "english": "Believe",
+        "uzbek": "Ishonmoq (bilimlar bazasida)"
+      },
+      {
+        "no": 97,
+        "english": "Below",
+        "uzbek": "Pastda"
+      },
+      {
+        "no": 98,
+        "english": "Benchmark",
+        "uzbek": "Etalon test / Mezon"
+      },
+      {
+        "no": 99,
+        "english": "Benefit",
+        "uzbek": "Foyda"
+      },
+      {
+        "no": 100,
+        "english": "Besides",
+        "uzbek": "Bundan tashqari"
+      },
+      {
+        "no": 101,
+        "english": "Best",
+        "uzbek": "Eng yaxshi"
+      },
+      {
+        "no": 102,
+        "english": "Beyond",
+        "uzbek": "Tashqarisida / Narida"
+      },
+      {
+        "no": 103,
+        "english": "Bias",
+        "uzbek": "Moyillik / Chetlanish"
+      },
+      {
+        "no": 104,
+        "english": "Biased",
+        "uzbek": "Moyilligi bor / Xatoli"
+      },
+      {
+        "no": 105,
+        "english": "Bioinformatics",
+        "uzbek": "Bioinformatika"
+      },
+      {
+        "no": 106,
+        "english": "Bipartite",
+        "uzbek": "Ikki qismli"
+      },
+      {
+        "no": 107,
+        "english": "Blackbox",
+        "uzbek": "\"Qora quti\" (ichki ishlashi noma'lum tizim)"
+      },
+      {
+        "no": 108,
+        "english": "Blind",
+        "uzbek": "Ko‘r-ko‘rona (qidiruv usuli)"
+      },
+      {
+        "no": 109,
+        "english": "Block",
+        "uzbek": "Blok / To‘siq"
+      },
+      {
+        "no": 110,
+        "english": "Bold",
+        "uzbek": "Qalin / Jasur"
+      },
+      {
+        "no": 111,
+        "english": "Boolean",
+        "uzbek": "Bul mantiqiy o‘zgaruvchisi"
+      },
+      {
+        "no": 112,
+        "english": "Boosting",
+        "uzbek": "Busting (kuchaytirish usuli)"
+      },
+      {
+        "no": 113,
+        "english": "Bot",
+        "uzbek": "Bot / Robot dastur"
+      },
+      {
+        "no": 114,
+        "english": "Both",
+        "uzbek": "Ikkalasi ham"
+      },
+      {
+        "no": 115,
+        "english": "Branch",
+        "uzbek": "Tarmoq / Shox"
+      },
+      {
+        "no": 116,
+        "english": "Brief",
+        "uzbek": "Qisqa"
+      },
+      {
+        "no": 117,
+        "english": "Buffer",
+        "uzbek": "Bufer / Oraqliq xotira"
+      },
+      {
+        "no": 118,
+        "english": "Byhand",
+        "uzbek": "Qo‘lda (avtomatik emas)"
+      },
+      {
+        "no": 119,
+        "english": "Capacity",
+        "uzbek": "Sig‘im / Imkoniyat"
+      },
+      {
+        "no": 120,
+        "english": "Category",
+        "uzbek": "Turkum / Toifa"
+      },
+      {
+        "no": 121,
+        "english": "Cell",
+        "uzbek": "Katak / Uyali bo'lak"
+      },
+      {
+        "no": 122,
+        "english": "Center",
+        "uzbek": "Markaz"
+      },
+      {
+        "no": 123,
+        "english": "Centroid",
+        "uzbek": "Sentroid (geometrik markaz)"
+      },
+      {
+        "no": 124,
+        "english": "Certain",
+        "uzbek": "Aniq / Ishonchli"
+      },
+      {
+        "no": 125,
+        "english": "Certainty",
+        "uzbek": "Aniqlik / Ishonch"
+      },
+      {
+        "no": 126,
+        "english": "Chain",
+        "uzbek": "Zanjir"
+      },
+      {
+        "no": 127,
+        "english": "Challenge",
+        "uzbek": "Qiyinchilik / Chorlov"
+      },
+      {
+        "no": 128,
+        "english": "Channel",
+        "uzbek": "Kanal"
+      },
+      {
+        "no": 129,
+        "english": "Chapter",
+        "uzbek": "Bob"
+      },
+      {
+        "no": 130,
+        "english": "Chapter",
+        "uzbek": "Bob / Bo'lim"
+      },
+      {
+        "no": 131,
+        "english": "Character",
+        "uzbek": "Belgisi / Simvol"
+      },
+      {
+        "no": 132,
+        "english": "Circuit",
+        "uzbek": "Sxema / Zanjir (elektr)"
+      },
+      {
+        "no": 133,
+        "english": "Circular",
+        "uzbek": "Doiraviy"
+      },
+      {
+        "no": 134,
+        "english": "Circumstance",
+        "uzbek": "Holat / Vaziyat"
+      },
+      {
+        "no": 135,
+        "english": "Civil",
+        "uzbek": "Fuqarolik"
+      },
+      {
+        "no": 136,
+        "english": "Class",
+        "uzbek": "Sinf / Toifa"
+      },
+      {
+        "no": 137,
+        "english": "Classification",
+        "uzbek": "Tasniflash"
+      },
+      {
+        "no": 138,
+        "english": "Clause",
+        "uzbek": "Band / Modda"
+      },
+      {
+        "no": 139,
+        "english": "Clean",
+        "uzbek": "Toza"
+      },
+      {
+        "no": 140,
+        "english": "Click",
+        "uzbek": "Bosmoq (sichqonchani)"
+      },
+      {
+        "no": 141,
+        "english": "Clique",
+        "uzbek": "Klika (graf nazariyasida to'liq bog'langan qism)"
+      },
+      {
+        "no": 142,
+        "english": "Cluster",
+        "uzbek": "Klaster / To'da"
+      },
+      {
+        "no": 143,
+        "english": "Clustered",
+        "uzbek": "Guruhlangan"
+      },
+      {
+        "no": 144,
+        "english": "Code",
+        "uzbek": "Kod / Kodeks"
+      },
+      {
+        "no": 145,
+        "english": "Cognition",
+        "uzbek": "Bilish / Kognitsiya"
+      },
+      {
+        "no": 146,
+        "english": "Cohesion",
+        "uzbek": "Jipslashuv"
+      },
+      {
+        "no": 147,
+        "english": "Collection",
+        "uzbek": "To'plam"
+      },
+      {
+        "no": 148,
+        "english": "Collision",
+        "uzbek": "To'qnashuv / Kolliziya"
+      },
+      {
+        "no": 149,
+        "english": "Column",
+        "uzbek": "Ustun"
+      },
+      {
+        "no": 150,
+        "english": "Combination",
+        "uzbek": "Kombinatsiya"
+      },
+      {
+        "no": 151,
+        "english": "Combined",
+        "uzbek": "Birlashgan"
+      },
+      {
+        "no": 152,
+        "english": "Command",
+        "uzbek": "Buyruq"
+      },
+      {
+        "no": 153,
+        "english": "Commission",
+        "uzbek": "Komissiya"
+      },
+      {
+        "no": 154,
+        "english": "Common",
+        "uzbek": "Umumiy"
+      },
+      {
+        "no": 155,
+        "english": "Common",
+        "uzbek": "Umumiy / Oddiy"
+      },
+      {
+        "no": 156,
+        "english": "Communication",
+        "uzbek": "Muloqot / Aloqa"
+      },
+      {
+        "no": 157,
+        "english": "Community",
+        "uzbek": "Jamiyat / Hamjamiyat"
+      },
+      {
+        "no": 158,
+        "english": "Comparison",
+        "uzbek": "Taqqoslash"
+      },
+      {
+        "no": 159,
+        "english": "Complex",
+        "uzbek": "Murakkab"
+      },
+      {
+        "no": 160,
+        "english": "Complex",
+        "uzbek": "Majmua"
+      },
+      {
+        "no": 161,
+        "english": "Complexity",
+        "uzbek": "Murakkablik"
+      },
+      {
+        "no": 162,
+        "english": "Composite",
+        "uzbek": "Murakkab tarkibli"
+      },
+      {
+        "no": 163,
+        "english": "Compound",
+        "uzbek": "Birikma"
+      },
+      {
+        "no": 164,
+        "english": "Computation",
+        "uzbek": "Hisoblash"
+      },
+      {
+        "no": 165,
+        "english": "Concave",
+        "uzbek": "Botiq"
+      },
+      {
+        "no": 166,
+        "english": "Concept",
+        "uzbek": "Tushuncha"
+      },
+      {
+        "no": 167,
+        "english": "Conclusion",
+        "uzbek": "Xulosa"
+      },
+      {
+        "no": 168,
+        "english": "Condition",
+        "uzbek": "Sharoit / Holat"
+      },
+      {
+        "no": 169,
+        "english": "Condition",
+        "uzbek": "Shart / Holat"
+      },
+      {
+        "no": 170,
+        "english": "Conduct",
+        "uzbek": "O'tkazmoq (tadqiqot va h.k.)"
+      },
+      {
+        "no": 171,
+        "english": "Confer",
+        "uzbek": "Maslahatlashmoq / Berish"
+      },
+      {
+        "no": 172,
+        "english": "Configuration",
+        "uzbek": "Konfiguratsiya / Sozlama"
+      },
+      {
+        "no": 173,
+        "english": "Conflict",
+        "uzbek": "Ziddiyat / Konflikt"
+      },
+      {
+        "no": 174,
+        "english": "Connected",
+        "uzbek": "Bog‘langan"
+      },
+      {
+        "no": 175,
+        "english": "Connection",
+        "uzbek": "Bog‘lanish / Aloqa"
+      },
+      {
+        "no": 176,
+        "english": "Consequence",
+        "uzbek": "Oqibat"
+      },
+      {
+        "no": 177,
+        "english": "Consistency",
+        "uzbek": "Izchillik / Ziddiyatsizlik"
+      },
+      {
+        "no": 178,
+        "english": "Constitution",
+        "uzbek": "Konstitutsiya / Tuzilish"
+      },
+      {
+        "no": 179,
+        "english": "Constrained",
+        "uzbek": "Cheklangan"
+      },
+      {
+        "no": 180,
+        "english": "Constraint",
+        "uzbek": "Cheklov"
+      },
+      {
+        "no": 181,
+        "english": "Construction",
+        "uzbek": "Qurilish / Tuzilma"
+      },
+      {
+        "no": 182,
+        "english": "Consultation",
+        "uzbek": "Maslahatlashuv"
+      },
+      {
+        "no": 183,
+        "english": "Consumer",
+        "uzbek": "Iste'molchi"
+      },
+      {
+        "no": 184,
+        "english": "Consumption",
+        "uzbek": "Iste’mol"
+      },
+      {
+        "no": 185,
+        "english": "Context",
+        "uzbek": "Kontekst"
+      },
+      {
+        "no": 186,
+        "english": "Context",
+        "uzbek": "Kontekst / Matn mazmuni"
+      },
+      {
+        "no": 187,
+        "english": "Contingency",
+        "uzbek": "Tasodifiylik / Kutilmagan holat"
+      },
+      {
+        "no": 188,
+        "english": "Continuity",
+        "uzbek": "Uzluksizlik"
+      },
+      {
+        "no": 189,
+        "english": "Contour",
+        "uzbek": "Kontur / Chiziq"
+      },
+      {
+        "no": 190,
+        "english": "Contract",
+        "uzbek": "Shartnoma"
+      },
+      {
+        "no": 191,
+        "english": "Contracted",
+        "uzbek": "Qisqargan"
+      },
+      {
+        "no": 192,
+        "english": "Contractor",
+        "uzbek": "Pudratchi"
+      },
+      {
+        "no": 193,
+        "english": "Contradiction",
+        "uzbek": "Ziddiyat / Qarama-qarshilik"
+      },
+      {
+        "no": 194,
+        "english": "Contradictory",
+        "uzbek": "Ziddiyatli"
+      },
+      {
+        "no": 195,
+        "english": "Contribution",
+        "uzbek": "Hissa"
+      },
+      {
+        "no": 196,
+        "english": "Control",
+        "uzbek": "Nazorat / Boshqaruv"
+      },
+      {
+        "no": 197,
+        "english": "Convergence",
+        "uzbek": "Yaqinlashish / Konvergentsiya"
+      },
+      {
+        "no": 198,
+        "english": "Conversion",
+        "uzbek": "Konvertatsiya / Aylantirish"
+      },
+      {
+        "no": 199,
+        "english": "Convex",
+        "uzbek": "Qabariq"
+      },
+      {
+        "no": 200,
+        "english": "Convexity",
+        "uzbek": "Qabariqlik"
+      },
+      {
+        "no": 201,
+        "english": "Convey",
+        "uzbek": "Yetkazmoq (ma'no/xabar)"
+      },
+      {
+        "no": 202,
+        "english": "Coordinate",
+        "uzbek": "Koordinata"
+      },
+      {
+        "no": 203,
+        "english": "Coordination",
+        "uzbek": "Muvofiqlashtirish"
+      },
+      {
+        "no": 204,
+        "english": "Core",
+        "uzbek": "Mag‘iz / Asos"
+      },
+      {
+        "no": 205,
+        "english": "Corporate",
+        "uzbek": "Korporativ"
+      },
+      {
+        "no": 206,
+        "english": "Corpus",
+        "uzbek": "Korpus (matnlar to‘plami)"
+      },
+      {
+        "no": 207,
+        "english": "Correlation",
+        "uzbek": "Korrelyatsiya / O‘zaro bog‘liqlik"
+      },
+      {
+        "no": 208,
+        "english": "Correspondence",
+        "uzbek": "Yozishma / Moslik"
+      },
+      {
+        "no": 209,
+        "english": "Cost",
+        "uzbek": "Qiymat / Xarajat"
+      },
+      {
+        "no": 210,
+        "english": "Counter",
+        "uzbek": "Hisoblagich"
+      },
+      {
+        "no": 211,
+        "english": "Counterfeit",
+        "uzbek": "Soxta"
+      },
+      {
+        "no": 212,
+        "english": "Credit",
+        "uzbek": "Kredit / Ishonch"
+      },
+      {
+        "no": 213,
+        "english": "Criteria",
+        "uzbek": "Mezonlar"
+      },
+      {
+        "no": 214,
+        "english": "Crossover",
+        "uzbek": "Krossover (genetik algoritmlarda chatishish)"
+      },
+      {
+        "no": 215,
+        "english": "Crossplatform",
+        "uzbek": "Ko‘p platformali"
+      },
+      {
+        "no": 216,
+        "english": "Crossvalidation",
+        "uzbek": "Kross-validatsiya (modelni tekshirish usuli)"
+      },
+      {
+        "no": 217,
+        "english": "Cryptography",
+        "uzbek": "Kriptografiya / Maxfiy yozuv"
+      },
+      {
+        "no": 218,
+        "english": "Cube",
+        "uzbek": "Kub"
+      },
+      {
+        "no": 219,
+        "english": "Culture",
+        "uzbek": "Madaniyat"
+      },
+      {
+        "no": 220,
+        "english": "Currency",
+        "uzbek": "Valyuta"
+      },
+      {
+        "no": 221,
+        "english": "Curve",
+        "uzbek": "Egri chiziq"
+      },
+      {
+        "no": 222,
+        "english": "Custom",
+        "uzbek": "Maxsus tayyorlangan"
+      },
+      {
+        "no": 223,
+        "english": "Cybernetics",
+        "uzbek": "Kibernetika"
+      },
+      {
+        "no": 224,
+        "english": "Cycle",
+        "uzbek": "Sikl / Davr"
+      },
+      {
+        "no": 225,
+        "english": "Cylinder",
+        "uzbek": "Silindr"
+      },
+      {
+        "no": 226,
+        "english": "Dark",
+        "uzbek": "Qorong‘u / To‘q"
+      },
+      {
+        "no": 227,
+        "english": "Dashboard",
+        "uzbek": "Boshqaruv paneli"
+      },
+      {
+        "no": 228,
+        "english": "Data",
+        "uzbek": "Ma'lumotlar"
+      },
+      {
+        "no": 229,
+        "english": "Database",
+        "uzbek": "Ma'lumotlar bazasi"
+      },
+      {
+        "no": 230,
+        "english": "Dataset",
+        "uzbek": "Ma’lumotlar to‘plami"
+      },
+      {
+        "no": 231,
+        "english": "Dead",
+        "uzbek": "O‘lik / Ishlamayotgan"
+      },
+      {
+        "no": 232,
+        "english": "Deadline",
+        "uzbek": "Yakuniy muddat"
+      },
+      {
+        "no": 233,
+        "english": "Debate",
+        "uzbek": "Bahs / Munozara"
+      },
+      {
+        "no": 234,
+        "english": "Decade",
+        "uzbek": "O‘n yillik"
+      },
+      {
+        "no": 235,
+        "english": "Decay",
+        "uzbek": "Yemirilish / Pasayish"
+      },
+      {
+        "no": 236,
+        "english": "Decision",
+        "uzbek": "Qaror"
+      },
+      {
+        "no": 237,
+        "english": "Declare",
+        "uzbek": "E’lon qilmoq (o‘zgaruvchini)"
+      },
+      {
+        "no": 238,
+        "english": "Decomposition",
+        "uzbek": "Parchalanish / Dekompozitsiya"
+      },
+      {
+        "no": 239,
+        "english": "Deduction",
+        "uzbek": "Xulosa / Chegirma"
+      },
+      {
+        "no": 240,
+        "english": "Deep",
+        "uzbek": "Chuqur"
+      },
+      {
+        "no": 241,
+        "english": "Default",
+        "uzbek": "Standart holat / Birlamchi qiymat"
+      },
+      {
+        "no": 242,
+        "english": "Defect",
+        "uzbek": "Nuqson / Xato"
+      },
+      {
+        "no": 243,
+        "english": "Definition",
+        "uzbek": "Ta'rif"
+      },
+      {
+        "no": 244,
+        "english": "Delicate",
+        "uzbek": "Nozik"
+      },
+      {
+        "no": 245,
+        "english": "Dense",
+        "uzbek": "Zich"
+      },
+      {
+        "no": 246,
+        "english": "Dependency",
+        "uzbek": "Bog‘liqlik / Qaramlik"
+      },
+      {
+        "no": 247,
+        "english": "Depth",
+        "uzbek": "Chuqurlik"
+      },
+      {
+        "no": 248,
+        "english": "Derivation",
+        "uzbek": "Kelib chiqish / Hosila"
+      },
+      {
+        "no": 249,
+        "english": "Description",
+        "uzbek": "Tavsif"
+      },
+      {
+        "no": 250,
+        "english": "Description",
+        "uzbek": "Tavsif / Ta’rif"
+      },
+      {
+        "no": 251,
+        "english": "Design",
+        "uzbek": "Loyiha / Dizayn"
+      },
+      {
+        "no": 252,
+        "english": "Desired",
+        "uzbek": "Istalgan"
+      },
+      {
+        "no": 253,
+        "english": "Despite",
+        "uzbek": "Qaramasdan (Bog‘lovchi)"
+      },
+      {
+        "no": 254,
+        "english": "Detailed",
+        "uzbek": "Batafsil"
+      },
+      {
+        "no": 255,
+        "english": "Detection",
+        "uzbek": "Aniqlash / Deteksiya"
+      },
+      {
+        "no": 256,
+        "english": "Deviation",
+        "uzbek": "Og‘ish / Chetlanish"
+      },
+      {
+        "no": 257,
+        "english": "Device",
+        "uzbek": "Qurilma"
+      },
+      {
+        "no": 258,
+        "english": "Diagnosis",
+        "uzbek": "Diagnoz / Tashxis"
+      },
+      {
+        "no": 259,
+        "english": "Diagram",
+        "uzbek": "Diagramma / Chizma"
+      },
+      {
+        "no": 260,
+        "english": "Dialogue",
+        "uzbek": "Muloqot / Dialog"
+      },
+      {
+        "no": 261,
+        "english": "Diameter",
+        "uzbek": "Diametr"
+      },
+      {
+        "no": 262,
+        "english": "Difference",
+        "uzbek": "Farq"
+      },
+      {
+        "no": 263,
+        "english": "Difficulty",
+        "uzbek": "Qiyinchilik"
+      },
+      {
+        "no": 264,
+        "english": "Diffusion",
+        "uzbek": "Diffuziya / Tarqalish"
+      },
+      {
+        "no": 265,
+        "english": "Digit",
+        "uzbek": "Raqam / Razryad"
+      },
+      {
+        "no": 266,
+        "english": "Dimension",
+        "uzbek": "O‘lcham / Dimensiya"
+      },
+      {
+        "no": 267,
+        "english": "Dimensions",
+        "uzbek": "O'lchamoq (ba'zan ot: o'lcham)"
+      },
+      {
+        "no": 268,
+        "english": "Direct",
+        "uzbek": "To‘g‘ridan-to‘g‘ri"
+      },
+      {
+        "no": 269,
+        "english": "Direction",
+        "uzbek": "Yo'nalish"
+      },
+      {
+        "no": 270,
+        "english": "Direction",
+        "uzbek": "Yo‘nalish"
+      },
+      {
+        "no": 271,
+        "english": "Disabled",
+        "uzbek": "Faolsizlantirilgan / Imkoniyati cheklangan"
+      },
+      {
+        "no": 272,
+        "english": "Discovery",
+        "uzbek": "kashfiyot"
+      },
+      {
+        "no": 273,
+        "english": "Discovery",
+        "uzbek": "Kashfiyot"
+      },
+      {
+        "no": 274,
+        "english": "Discrepancy",
+        "uzbek": "Tafovut / Mos kelmaslik"
+      },
+      {
+        "no": 275,
+        "english": "Discrete",
+        "uzbek": "Diskret / Uzlukli"
+      },
+      {
+        "no": 276,
+        "english": "Discussion",
+        "uzbek": "Muhokama"
+      },
+      {
+        "no": 277,
+        "english": "Disjoint",
+        "uzbek": "Kesishmaydigan"
+      },
+      {
+        "no": 278,
+        "english": "Distance",
+        "uzbek": "Masofa"
+      },
+      {
+        "no": 279,
+        "english": "Distinct",
+        "uzbek": "Alohida / Farqli"
+      },
+      {
+        "no": 280,
+        "english": "Distinction",
+        "uzbek": "Farqlanish"
+      },
+      {
+        "no": 281,
+        "english": "Distribution",
+        "uzbek": "Ta'qsimot"
+      },
+      {
+        "no": 282,
+        "english": "Diverse",
+        "uzbek": "Turli-tuman"
+      },
+      {
+        "no": 283,
+        "english": "Diversity",
+        "uzbek": "Turli-tumanlik"
+      },
+      {
+        "no": 284,
+        "english": "Division",
+        "uzbek": "Bo'linish / Bo'lim"
+      },
+      {
+        "no": 285,
+        "english": "Domain",
+        "uzbek": "Soha / Domen"
+      },
+      {
+        "no": 286,
+        "english": "Downstream",
+        "uzbek": "Quyi oqim / Keyingi bosqich"
+      },
+      {
+        "no": 287,
+        "english": "Draft",
+        "uzbek": "Qoralama"
+      },
+      {
+        "no": 288,
+        "english": "Drift",
+        "uzbek": "Siljish / Drift (ma'lumotlar o'zgarishi)"
+      },
+      {
+        "no": 289,
+        "english": "Duality",
+        "uzbek": "Ikkilik / Dualizm"
+      },
+      {
+        "no": 290,
+        "english": "Due",
+        "uzbek": "Tegishli / Muddatli"
+      },
+      {
+        "no": 291,
+        "english": "Dull",
+        "uzbek": "Xira / Zerikarli"
+      },
+      {
+        "no": 292,
+        "english": "Dumb",
+        "uzbek": "Soqov / Aqlli bo'lmagan"
+      },
+      {
+        "no": 293,
+        "english": "Dump",
+        "uzbek": "Tashlamoq / Nusxa olmoq (xotiradan)"
+      },
+      {
+        "no": 294,
+        "english": "Duration",
+        "uzbek": "Davomiylik"
+      },
+      {
+        "no": 295,
+        "english": "Dynamics",
+        "uzbek": "Dinamika"
+      },
+      {
+        "no": 296,
+        "english": "Each",
+        "uzbek": "Har biri"
+      },
+      {
+        "no": 297,
+        "english": "Each",
+        "uzbek": "Har bir (Olmosh)"
+      },
+      {
+        "no": 298,
+        "english": "Each other",
+        "uzbek": "Bir-birini"
+      },
+      {
+        "no": 299,
+        "english": "Eager",
+        "uzbek": "Ishtiyoqmand"
+      },
+      {
+        "no": 300,
+        "english": "Easy",
+        "uzbek": "Oson"
+      },
+      {
+        "no": 301,
+        "english": "Effect",
+        "uzbek": "Ta'sir / Natija"
+      },
+      {
+        "no": 302,
+        "english": "Effect",
+        "uzbek": "Ta'sir / Effekt"
+      },
+      {
+        "no": 303,
+        "english": "Efficiency",
+        "uzbek": "Samaradorlik"
+      },
+      {
+        "no": 304,
+        "english": "Eigenvector",
+        "uzbek": "Xos vektor (matematik tushuncha)"
+      },
+      {
+        "no": 305,
+        "english": "Either",
+        "uzbek": "Shuningdek (inkor gapda)"
+      },
+      {
+        "no": 306,
+        "english": "Else",
+        "uzbek": "Yana / Boshqa"
+      },
+      {
+        "no": 307,
+        "english": "Elsewhere",
+        "uzbek": "Boshqa yerda"
+      },
+      {
+        "no": 308,
+        "english": "Embedded",
+        "uzbek": "O'rnatilgan / Singdirilgan"
+      },
+      {
+        "no": 309,
+        "english": "Embedding",
+        "uzbek": "Singdirish / Embedding (vektorli tasvir)"
+      },
+      {
+        "no": 310,
+        "english": "Emotion",
+        "uzbek": "Hissiyot"
+      },
+      {
+        "no": 311,
+        "english": "Emphasis",
+        "uzbek": "Urg'u / Ta'kid"
+      },
+      {
+        "no": 312,
+        "english": "Empiricism",
+        "uzbek": "Empirizm / Tajribaviylik"
+      },
+      {
+        "no": 313,
+        "english": "Encoder",
+        "uzbek": "Kodlovchi / Enkoder"
+      },
+      {
+        "no": 314,
+        "english": "Encryption",
+        "uzbek": "Shifrlash"
+      },
+      {
+        "no": 315,
+        "english": "Enough",
+        "uzbek": "Yetarli"
+      },
+      {
+        "no": 316,
+        "english": "Ensemble",
+        "uzbek": "Ansambl (modellar to'plami)"
+      },
+      {
+        "no": 317,
+        "english": "Entity",
+        "uzbek": "Ob'ekt / Mohiyat"
+      },
+      {
+        "no": 318,
+        "english": "Entropy",
+        "uzbek": "Entropiya (tartibsizlik o'lchovi)"
+      },
+      {
+        "no": 319,
+        "english": "Epoch",
+        "uzbek": "Era / Epoxa (o'qitish davri)"
+      },
+      {
+        "no": 320,
+        "english": "Equality",
+        "uzbek": "Tenglik"
+      },
+      {
+        "no": 321,
+        "english": "Equation",
+        "uzbek": "Tenglama"
+      },
+      {
+        "no": 322,
+        "english": "Equilibrium",
+        "uzbek": "Muvozanat"
+      },
+      {
+        "no": 323,
+        "english": "Error",
+        "uzbek": "Xatolik"
+      },
+      {
+        "no": 324,
+        "english": "Estimate",
+        "uzbek": "Hisob-kitob / Baho"
+      },
+      {
+        "no": 325,
+        "english": "Ethics",
+        "uzbek": "Etika / Odob-axloq"
+      },
+      {
+        "no": 326,
+        "english": "Evaluation",
+        "uzbek": "Baholash"
+      },
+      {
+        "no": 327,
+        "english": "Even",
+        "uzbek": "Hatto"
+      },
+      {
+        "no": 328,
+        "english": "Even if",
+        "uzbek": "Agarda ... bo'lsa ham"
+      },
+      {
+        "no": 329,
+        "english": "Even though",
+        "uzbek": "Garchi ... bo'lsa-da"
+      },
+      {
+        "no": 330,
+        "english": "Ever",
+        "uzbek": "Hech qachon / Qachondir"
+      },
+      {
+        "no": 331,
+        "english": "Every",
+        "uzbek": "Har bir"
+      },
+      {
+        "no": 332,
+        "english": "Everybody",
+        "uzbek": "Hamma (odamlar)"
+      },
+      {
+        "no": 333,
+        "english": "Everywhere",
+        "uzbek": "Hamma joyda (Ravish)"
+      },
+      {
+        "no": 334,
+        "english": "Evidence",
+        "uzbek": "Dalil / Isbot"
+      },
+      {
+        "no": 335,
+        "english": "Evolution",
+        "uzbek": "Evolyutsiya"
+      },
+      {
+        "no": 336,
+        "english": "Example",
+        "uzbek": "Misol"
+      },
+      {
+        "no": 337,
+        "english": "Exception",
+        "uzbek": "Istisno"
+      },
+      {
+        "no": 338,
+        "english": "Exclusion",
+        "uzbek": "Istisno"
+      },
+      {
+        "no": 339,
+        "english": "Execution",
+        "uzbek": "Ijro etish"
+      },
+      {
+        "no": 340,
+        "english": "Expansion",
+        "uzbek": "Kengayish"
+      },
+      {
+        "no": 341,
+        "english": "Expectation",
+        "uzbek": "Kutish / Matematik kutilma"
+      },
+      {
+        "no": 342,
+        "english": "Expert",
+        "uzbek": "Ekspert / Mutaxassis"
+      },
+      {
+        "no": 343,
+        "english": "Expertise",
+        "uzbek": "Ekspertiza / Malaka"
+      },
+      {
+        "no": 344,
+        "english": "Explanation",
+        "uzbek": "Tushuntirish"
+      },
+      {
+        "no": 345,
+        "english": "Explicit",
+        "uzbek": "Ochiq / Aniq"
+      },
+      {
+        "no": 346,
+        "english": "Export",
+        "uzbek": "Eksport"
+      },
+      {
+        "no": 347,
+        "english": "Factor",
+        "uzbek": "Omil"
+      },
+      {
+        "no": 348,
+        "english": "Feature",
+        "uzbek": "Xususiyat"
+      },
+      {
+        "no": 349,
+        "english": "Feature",
+        "uzbek": "Xususiyat / Jihat"
+      },
+      {
+        "no": 350,
+        "english": "Few",
+        "uzbek": "Kam / Bir nechta"
+      },
+      {
+        "no": 351,
+        "english": "Filter",
+        "uzbek": "Saralamoq / Filtrlash"
+      },
+      {
+        "no": 352,
+        "english": "Finance",
+        "uzbek": "Moliya"
+      },
+      {
+        "no": 353,
+        "english": "Focus",
+        "uzbek": "Markaz / Diqqat"
+      },
+      {
+        "no": 354,
+        "english": "For",
+        "uzbek": "Uchun"
+      },
+      {
+        "no": 355,
+        "english": "For instance",
+        "uzbek": "Misol uchun"
+      },
+      {
+        "no": 356,
+        "english": "Formula",
+        "uzbek": "Formula"
+      },
+      {
+        "no": 357,
+        "english": "Function",
+        "uzbek": "Vazifa / Funksiya"
+      },
+      {
+        "no": 358,
+        "english": "Fuzzy",
+        "uzbek": "Noaniq (Fuzzy logic)"
+      },
+      {
+        "no": 359,
+        "english": "Growth",
+        "uzbek": "O'sish"
+      },
+      {
+        "no": 360,
+        "english": "Hence",
+        "uzbek": "Shunday qilib"
+      },
+      {
+        "no": 361,
+        "english": "Herself",
+        "uzbek": "O‘zi (ayol)"
+      },
+      {
+        "no": 362,
+        "english": "Herself",
+        "uzbek": "O'zi (ayol)"
+      },
+      {
+        "no": 363,
+        "english": "Hidden",
+        "uzbek": "Yashirin"
+      },
+      {
+        "no": 364,
+        "english": "Himself",
+        "uzbek": "O'zi (erkak)"
+      },
+      {
+        "no": 365,
+        "english": "Himself",
+        "uzbek": "O‘zi (Olmosh)"
+      },
+      {
+        "no": 366,
+        "english": "His",
+        "uzbek": "Uning (erkak)"
+      },
+      {
+        "no": 367,
+        "english": "Hypothesis",
+        "uzbek": "Gipoteza / Taxmin"
+      },
+      {
+        "no": 368,
+        "english": "Impact",
+        "uzbek": "Ta'sir"
+      },
+      {
+        "no": 369,
+        "english": "In addition",
+        "uzbek": "Qo'shimcha ravishda"
+      },
+      {
+        "no": 370,
+        "english": "In addition to",
+        "uzbek": "Bundan tashqari"
+      },
+      {
+        "no": 371,
+        "english": "In case",
+        "uzbek": "Mabodo / Agar"
+      },
+      {
+        "no": 372,
+        "english": "In conclusion",
+        "uzbek": "Xulosa o'rnida"
+      },
+      {
+        "no": 373,
+        "english": "In order that",
+        "uzbek": "Maqsadida"
+      },
+      {
+        "no": 374,
+        "english": "In order to",
+        "uzbek": "... maqsadida"
+      },
+      {
+        "no": 375,
+        "english": "In so far as",
+        "uzbek": "Qanchalik / Darajada"
+      },
+      {
+        "no": 376,
+        "english": "In spite of",
+        "uzbek": "Shunga qaramay"
+      },
+      {
+        "no": 377,
+        "english": "In terms of",
+        "uzbek": "Nuqtai nazaridan"
+      },
+      {
+        "no": 378,
+        "english": "Income",
+        "uzbek": "Daromad"
+      },
+      {
+        "no": 379,
+        "english": "Increase",
+        "uzbek": "Ko'payish / O'sish"
+      },
+      {
+        "no": 380,
+        "english": "Indication",
+        "uzbek": "Ko'rsatkich / Ishora"
+      },
+      {
+        "no": 381,
+        "english": "Industry",
+        "uzbek": "Sanoat"
+      },
+      {
+        "no": 382,
+        "english": "Insofar",
+        "uzbek": "Qanchalik (Bog‘lovchi)"
+      },
+      {
+        "no": 383,
+        "english": "Instance",
+        "uzbek": "Misol / Holat"
+      },
+      {
+        "no": 384,
+        "english": "Instead of",
+        "uzbek": "O'rniga"
+      },
+      {
+        "no": 385,
+        "english": "Institute",
+        "uzbek": "Institut"
+      },
+      {
+        "no": 386,
+        "english": "Institution",
+        "uzbek": "Muassasa / Institut"
+      },
+      {
+        "no": 387,
+        "english": "Integrate",
+        "uzbek": "Integratsiyalash"
+      },
+      {
+        "no": 388,
+        "english": "Interest",
+        "uzbek": "Qiziqish / Foiz"
+      },
+      {
+        "no": 389,
+        "english": "Internalize",
+        "uzbek": "Ichki qabul qilmoq (Fe'l - bu ro'yxatda muhim)"
+      },
+      {
+        "no": 390,
+        "english": "Interpretation",
+        "uzbek": "Talqin / Izoh"
+      },
+      {
+        "no": 391,
+        "english": "Issue",
+        "uzbek": "Muammo / Masala"
+      },
+      {
+        "no": 392,
+        "english": "Item",
+        "uzbek": "Buyum / Punkt"
+      },
+      {
+        "no": 393,
+        "english": "Its",
+        "uzbek": "Uning (jonsiz)"
+      },
+      {
+        "no": 394,
+        "english": "Itself",
+        "uzbek": "O'zi (jonsiz)"
+      },
+      {
+        "no": 395,
+        "english": "Labor",
+        "uzbek": "Mehnat"
+      },
+      {
+        "no": 396,
+        "english": "Layer",
+        "uzbek": "Qatlam"
+      },
+      {
+        "no": 397,
+        "english": "Leader",
+        "uzbek": "Rahbar / Yetakchi"
+      },
+      {
+        "no": 398,
+        "english": "Legislation",
+        "uzbek": "Qonunchilik"
+      },
+      {
+        "no": 399,
+        "english": "Lest",
+        "uzbek": "... bo‘lmasligi uchun"
+      },
+      {
+        "no": 400,
+        "english": "Level",
+        "uzbek": "Daraja"
+      },
+      {
+        "no": 401,
+        "english": "Likewise",
+        "uzbek": "Shuningdek (Ravish)"
+      },
+      {
+        "no": 402,
+        "english": "Linear",
+        "uzbek": "Chiziqli"
+      },
+      {
+        "no": 403,
+        "english": "Little",
+        "uzbek": "Oz / Kam"
+      },
+      {
+        "no": 404,
+        "english": "Location",
+        "uzbek": "Joylashuv"
+      },
+      {
+        "no": 405,
+        "english": "Maintenance",
+        "uzbek": "Texnik xizmat / Saqlash"
+      },
+      {
+        "no": 406,
+        "english": "Major",
+        "uzbek": "Asosiy / Yirik"
+      },
+      {
+        "no": 407,
+        "english": "Major",
+        "uzbek": "Asosiy yo'nalish"
+      },
+      {
+        "no": 408,
+        "english": "Majority",
+        "uzbek": "Ko'pchilik"
+      },
+      {
+        "no": 409,
+        "english": "Many",
+        "uzbek": "Ko'p"
+      },
+      {
+        "no": 410,
+        "english": "Margin",
+        "uzbek": "Chekka / Foyda chegarasi"
+      },
+      {
+        "no": 411,
+        "english": "Market",
+        "uzbek": "Bozor"
+      },
+      {
+        "no": 412,
+        "english": "Me",
+        "uzbek": "Meni / Menga"
+      },
+      {
+        "no": 413,
+        "english": "Measure",
+        "uzbek": "Chora / O'lchov"
+      },
+      {
+        "no": 414,
+        "english": "Mechanism",
+        "uzbek": "Mexanizm"
+      },
+      {
+        "no": 415,
+        "english": "Media",
+        "uzbek": "Ommaviy axborot vositalari"
+      },
+      {
+        "no": 416,
+        "english": "Membership",
+        "uzbek": "A'zolik"
+      },
+      {
+        "no": 417,
+        "english": "Memory",
+        "uzbek": "Xotira"
+      },
+      {
+        "no": 418,
+        "english": "Message",
+        "uzbek": "Xabar"
+      },
+      {
+        "no": 419,
+        "english": "Method",
+        "uzbek": "Usul"
+      },
+      {
+        "no": 420,
+        "english": "Mine",
+        "uzbek": "Meniki"
+      },
+      {
+        "no": 421,
+        "english": "Model",
+        "uzbek": "Model / Namuna"
+      },
+      {
+        "no": 422,
+        "english": "Modern",
+        "uzbek": "Zamonaviy"
+      },
+      {
+        "no": 423,
+        "english": "Module",
+        "uzbek": "Modul"
+      },
+      {
+        "no": 424,
+        "english": "Most",
+        "uzbek": "Eng ko'p / Aksariyat"
+      },
+      {
+        "no": 425,
+        "english": "Much",
+        "uzbek": "Ko'p"
+      },
+      {
+        "no": 426,
+        "english": "Multiple",
+        "uzbek": "Ko'plab"
+      },
+      {
+        "no": 427,
+        "english": "My",
+        "uzbek": "Mening"
+      },
+      {
+        "no": 428,
+        "english": "Myself",
+        "uzbek": "O'zim"
+      },
+      {
+        "no": 429,
+        "english": "Nature",
+        "uzbek": "Tabiat / Mohiyat"
+      },
+      {
+        "no": 430,
+        "english": "Neither",
+        "uzbek": "Na u, na bu"
+      },
+      {
+        "no": 431,
+        "english": "Neither nor",
+        "uzbek": "Na u... na bu"
+      },
+      {
+        "no": 432,
+        "english": "No one",
+        "uzbek": "Hech kim"
+      },
+      {
+        "no": 433,
+        "english": "Nobody",
+        "uzbek": "Hech kim"
+      },
+      {
+        "no": 434,
+        "english": "None",
+        "uzbek": "Hech qaysi biri"
+      },
+      {
+        "no": 435,
+        "english": "Nor",
+        "uzbek": "Na (inkor ma'nosida)"
+      },
+      {
+        "no": 436,
+        "english": "Notion",
+        "uzbek": "Tushuncha / Tasavvur"
+      },
+      {
+        "no": 437,
+        "english": "Now that",
+        "uzbek": "Modomiki"
+      },
+      {
+        "no": 438,
+        "english": "Nuclear",
+        "uzbek": "Yadroviy"
+      },
+      {
+        "no": 439,
+        "english": "Observation",
+        "uzbek": "Kuzatuv"
+      },
+      {
+        "no": 440,
+        "english": "Obstacle",
+        "uzbek": "To'siq"
+      },
+      {
+        "no": 441,
+        "english": "Occurrence",
+        "uzbek": "Hodisa / Sodir bo'lish"
+      },
+      {
+        "no": 442,
+        "english": "On the other hand",
+        "uzbek": "Boshqa tomondan"
+      },
+      {
+        "no": 443,
+        "english": "Once",
+        "uzbek": "Bo‘lishi bilan / Bir marta"
+      },
+      {
+        "no": 444,
+        "english": "One",
+        "uzbek": "Biri / Bitta"
+      },
+      {
+        "no": 445,
+        "english": "One another",
+        "uzbek": "Bir-birini"
+      },
+      {
+        "no": 446,
+        "english": "Ongoing",
+        "uzbek": "Davom etayotgan"
+      },
+      {
+        "no": 447,
+        "english": "Opposite",
+        "uzbek": "Qarama-qarshi"
+      },
+      {
+        "no": 448,
+        "english": "Option",
+        "uzbek": "Tanlov / Variant"
+      },
+      {
+        "no": 449,
+        "english": "Or else",
+        "uzbek": "Aks holda"
+      },
+      {
+        "no": 450,
+        "english": "Orientation",
+        "uzbek": "Yo'nalish"
+      },
+      {
+        "no": 451,
+        "english": "Other",
+        "uzbek": "Boshqa"
+      },
+      {
+        "no": 452,
+        "english": "Others",
+        "uzbek": "Boshqalar"
+      },
+      {
+        "no": 453,
+        "english": "Our",
+        "uzbek": "Bizning"
+      },
+      {
+        "no": 454,
+        "english": "Ours",
+        "uzbek": "Bizniki"
+      },
+      {
+        "no": 455,
+        "english": "Ourselves",
+        "uzbek": "O'zimiz"
+      },
+      {
+        "no": 456,
+        "english": "Outcome",
+        "uzbek": "Natija"
+      },
+      {
+        "no": 457,
+        "english": "Output",
+        "uzbek": "Chiqish / Mahsulot"
+      },
+      {
+        "no": 458,
+        "english": "Overall",
+        "uzbek": "Umumiy"
+      },
+      {
+        "no": 459,
+        "english": "Ownership",
+        "uzbek": "Egalik huquqi"
+      },
+      {
+        "no": 460,
+        "english": "Parallel",
+        "uzbek": "Parallel / O'xshash"
+      },
+      {
+        "no": 461,
+        "english": "Partner",
+        "uzbek": "Sherik"
+      },
+      {
+        "no": 462,
+        "english": "Partnership",
+        "uzbek": "Sheriklik"
+      },
+      {
+        "no": 463,
+        "english": "Percentage",
+        "uzbek": "Foiz miqdori"
+      },
+      {
+        "no": 464,
+        "english": "Perception",
+        "uzbek": "Idrok / Tasavvur"
+      },
+      {
+        "no": 465,
+        "english": "Period",
+        "uzbek": "Davr / Muddat"
+      },
+      {
+        "no": 466,
+        "english": "Phase",
+        "uzbek": "Bosqich / Faza"
+      },
+      {
+        "no": 467,
+        "english": "Phenomenon",
+        "uzbek": "Hodisa"
+      },
+      {
+        "no": 468,
+        "english": "Philosophy",
+        "uzbek": "Falsafa"
+      },
+      {
+        "no": 469,
+        "english": "Plus",
+        "uzbek": "Plyus / Qo'shimcha (Bog'lovchi)"
+      },
+      {
+        "no": 470,
+        "english": "Policy",
+        "uzbek": "Siyosat / Qoida"
+      },
+      {
+        "no": 471,
+        "english": "Population",
+        "uzbek": "Aholi"
+      },
+      {
+        "no": 472,
+        "english": "Position",
+        "uzbek": "Lavozim / Holat"
+      },
+      {
+        "no": 473,
+        "english": "Practice",
+        "uzbek": "Amaliyot"
+      },
+      {
+        "no": 474,
+        "english": "Precise",
+        "uzbek": "Lunda / Aniq"
+      },
+      {
+        "no": 475,
+        "english": "Precise",
+        "uzbek": "Aniq / Lunda"
+      },
+      {
+        "no": 476,
+        "english": "Precision",
+        "uzbek": "Aniqlik"
+      },
+      {
+        "no": 477,
+        "english": "Presence",
+        "uzbek": "Ishtirok / Mavjudlik"
+      },
+      {
+        "no": 478,
+        "english": "Pressure",
+        "uzbek": "Bosim"
+      },
+      {
+        "no": 479,
+        "english": "Principle",
+        "uzbek": "Tamoyil / Prinsip"
+      },
+      {
+        "no": 480,
+        "english": "Priority",
+        "uzbek": "Ustuvorlik"
+      },
+      {
+        "no": 481,
+        "english": "Procedure",
+        "uzbek": "Tartib / Jarayon"
+      },
+      {
+        "no": 482,
+        "english": "Process",
+        "uzbek": "Jarayon"
+      },
+      {
+        "no": 483,
+        "english": "Profit",
+        "uzbek": "Foyda"
+      },
+      {
+        "no": 484,
+        "english": "Project",
+        "uzbek": "Loyiha"
+      },
+      {
+        "no": 485,
+        "english": "Property",
+        "uzbek": "Mulk / Xususiyat"
+      },
+      {
+        "no": 486,
+        "english": "Protection",
+        "uzbek": "Himoya"
+      },
+      {
+        "no": 487,
+        "english": "Protocol",
+        "uzbek": "Protokol / Qoida"
+      },
+      {
+        "no": 488,
+        "english": "Provided",
+        "uzbek": "Basharti / Agar"
+      },
+      {
+        "no": 489,
+        "english": "Provided that",
+        "uzbek": "Agar ... sharti bilan"
+      },
+      {
+        "no": 490,
+        "english": "Psychology",
+        "uzbek": "Psixologiya"
+      },
+      {
+        "no": 491,
+        "english": "Publication",
+        "uzbek": "Nashr / Chop etish"
+      },
+      {
+        "no": 492,
+        "english": "Quality",
+        "uzbek": "Sifat"
+      },
+      {
+        "no": 493,
+        "english": "Quantity",
+        "uzbek": "Miqdor"
+      },
+      {
+        "no": 494,
+        "english": "Random",
+        "uzbek": "Tasodifiy"
+      },
+      {
+        "no": 495,
+        "english": "Range",
+        "uzbek": "Diapazon / Qamrov"
+      },
+      {
+        "no": 496,
+        "english": "Rapid",
+        "uzbek": "Tezkor"
+      },
+      {
+        "no": 497,
+        "english": "Rather than",
+        "uzbek": "Ko‘ra / O‘rniga"
+      },
+      {
+        "no": 498,
+        "english": "Ratio",
+        "uzbek": "Nisbat"
+      },
+      {
+        "no": 499,
+        "english": "Reaction",
+        "uzbek": "Reaksiya / Munosabat"
+      },
+      {
+        "no": 500,
+        "english": "Reality",
+        "uzbek": "Haqiqat / Reallik"
+      },
+      {
+        "no": 501,
+        "english": "Reason",
+        "uzbek": "Sabab / Mulohaza"
+      },
+      {
+        "no": 502,
+        "english": "Recognition",
+        "uzbek": "Tan olish"
+      },
+      {
+        "no": 503,
+        "english": "Reduction",
+        "uzbek": "Qisqartirish / Kamaytirish"
+      },
+      {
+        "no": 504,
+        "english": "Reference",
+        "uzbek": "Ma'lumotnoma / Havola"
+      },
+      {
+        "no": 505,
+        "english": "Reform",
+        "uzbek": "Islohot"
+      },
+      {
+        "no": 506,
+        "english": "Region",
+        "uzbek": "Hudud / Viloyat"
+      },
+      {
+        "no": 507,
+        "english": "Regulation",
+        "uzbek": "Tartibga solish"
+      },
+      {
+        "no": 508,
+        "english": "Relationship",
+        "uzbek": "Aloqa / Munosabat"
+      },
+      {
+        "no": 509,
+        "english": "Reliability",
+        "uzbek": "Ishonchlilik"
+      },
+      {
+        "no": 510,
+        "english": "Remote",
+        "uzbek": "Masofaviy / Olis"
+      },
+      {
+        "no": 511,
+        "english": "Research",
+        "uzbek": "Tadqiqot"
+      },
+      {
+        "no": 512,
+        "english": "Resolution",
+        "uzbek": "Qaror / Ruxsat (ekran uchun)"
+      },
+      {
+        "no": 513,
+        "english": "Resource",
+        "uzbek": "Resurs / Manba"
+      },
+      {
+        "no": 514,
+        "english": "Response",
+        "uzbek": "Javob / Munosabat"
+      },
+      {
+        "no": 515,
+        "english": "Result",
+        "uzbek": "Natija"
+      },
+      {
+        "no": 516,
+        "english": "Rigid",
+        "uzbek": "Qattiq / Egiluvchan bo'lmagan"
+      },
+      {
+        "no": 517,
+        "english": "Robust",
+        "uzbek": "Chidamli / Kuchli"
+      },
+      {
+        "no": 518,
+        "english": "Role",
+        "uzbek": "Rol / Vazifa"
+      },
+      {
+        "no": 519,
+        "english": "Routine",
+        "uzbek": "Kundalik / Odatiy"
+      },
+      {
+        "no": 520,
+        "english": "Sample",
+        "uzbek": "Namuna"
+      },
+      {
+        "no": 521,
+        "english": "Scale",
+        "uzbek": "Miqyos / Shkala"
+      },
+      {
+        "no": 522,
+        "english": "Scenario",
+        "uzbek": "Ssenariy / Holat"
+      },
+      {
+        "no": 523,
+        "english": "Scheme",
+        "uzbek": "Sxema / Reja"
+      },
+      {
+        "no": 524,
+        "english": "Science",
+        "uzbek": "Fan"
+      },
+      {
+        "no": 525,
+        "english": "Section",
+        "uzbek": "Bo'lim"
+      },
+      {
+        "no": 526,
+        "english": "Sector",
+        "uzbek": "Sektor"
+      },
+      {
+        "no": 527,
+        "english": "Secure",
+        "uzbek": "Xavfsiz"
+      },
+      {
+        "no": 528,
+        "english": "Security",
+        "uzbek": "Xavfsizlik"
+      },
+      {
+        "no": 529,
+        "english": "Seeing that",
+        "uzbek": "Modomiki / ...-gani uchun"
+      },
+      {
+        "no": 530,
+        "english": "Selection",
+        "uzbek": "Tanlov / Saralash"
+      },
+      {
+        "no": 531,
+        "english": "Sequence",
+        "uzbek": "Ketma-ketlik"
+      },
+      {
+        "no": 532,
+        "english": "Series",
+        "uzbek": "Seriya / Turkum"
+      },
+      {
+        "no": 533,
+        "english": "Shift",
+        "uzbek": "O'zgarish / Almashinuv"
+      },
+      {
+        "no": 534,
+        "english": "Significance",
+        "uzbek": "Ahamiyat"
+      },
+      {
+        "no": 535,
+        "english": "Similar",
+        "uzbek": "O'xshash"
+      },
+      {
+        "no": 536,
+        "english": "Simple",
+        "uzbek": "Oddiy"
+      },
+      {
+        "no": 537,
+        "english": "Simulation",
+        "uzbek": "Simulyatsiya / Taqlid"
+      },
+      {
+        "no": 538,
+        "english": "Site",
+        "uzbek": "Joy / Maydon / Sayt"
+      },
+      {
+        "no": 539,
+        "english": "Situation",
+        "uzbek": "Vaziyat"
+      },
+      {
+        "no": 540,
+        "english": "Skill",
+        "uzbek": "Ko'nikma / Mahorat"
+      },
+      {
+        "no": 541,
+        "english": "So that",
+        "uzbek": "... bo'lishi uchun"
+      },
+      {
+        "no": 542,
+        "english": "Some",
+        "uzbek": "Ba’zi"
+      },
+      {
+        "no": 543,
+        "english": "Somebody",
+        "uzbek": "Kimdir"
+      },
+      {
+        "no": 544,
+        "english": "Something",
+        "uzbek": "Nimadir"
+      },
+      {
+        "no": 545,
+        "english": "Somewhat",
+        "uzbek": "Biroz (Ravish)"
+      },
+      {
+        "no": 546,
+        "english": "Source",
+        "uzbek": "Manba"
+      },
+      {
+        "no": 547,
+        "english": "Space",
+        "uzbek": "Fazo / Bo'shliq"
+      },
+      {
+        "no": 548,
+        "english": "Species",
+        "uzbek": "Tur / Turdoshlar (biologiya)"
+      },
+      {
+        "no": 549,
+        "english": "Stability",
+        "uzbek": "Barqarorlik"
+      },
+      {
+        "no": 550,
+        "english": "Standard",
+        "uzbek": "Standart / Me'yor"
+      },
+      {
+        "no": 551,
+        "english": "Statistics",
+        "uzbek": "Statistika"
+      },
+      {
+        "no": 552,
+        "english": "Status",
+        "uzbek": "Maqom / Holat"
+      },
+      {
+        "no": 553,
+        "english": "Steady",
+        "uzbek": "Bir tekis / Doimiy"
+      },
+      {
+        "no": 554,
+        "english": "Still",
+        "uzbek": "Shunga qaramay / Haligacha"
+      },
+      {
+        "no": 555,
+        "english": "Storage",
+        "uzbek": "Ombor / Saqlash joyi"
+      },
+      {
+        "no": 556,
+        "english": "Strategy",
+        "uzbek": "Strategiya"
+      },
+      {
+        "no": 557,
+        "english": "Strict",
+        "uzbek": "Qattiqqo'l / Aniq"
+      },
+      {
+        "no": 558,
+        "english": "Structure",
+        "uzbek": "Tuzilma / Struktura"
+      },
+      {
+        "no": 559,
+        "english": "Study",
+        "uzbek": "Tadqiqot / O'qish"
+      },
+      {
+        "no": 560,
+        "english": "Submit",
+        "uzbek": "Topshirmoq (hujjat va h.k.)"
+      },
+      {
+        "no": 561,
+        "english": "Success",
+        "uzbek": "Muvaffaqiyat"
+      },
+      {
+        "no": 562,
+        "english": "Such",
+        "uzbek": "Shunday"
+      },
+      {
+        "no": 563,
+        "english": "Supplier",
+        "uzbek": "Ta'minotchi"
+      },
+      {
+        "no": 564,
+        "english": "Supposing",
+        "uzbek": "Faraz qilaylik"
+      },
+      {
+        "no": 565,
+        "english": "Surface",
+        "uzbek": "Sirt / Yuza"
+      },
+      {
+        "no": 566,
+        "english": "Survey",
+        "uzbek": "So'rovnoma / Tadqiqot"
+      },
+      {
+        "no": 567,
+        "english": "Target",
+        "uzbek": "Maqsad / Nishon"
+      },
+      {
+        "no": 568,
+        "english": "Team",
+        "uzbek": "Jamoa"
+      },
+      {
+        "no": 569,
+        "english": "Technique",
+        "uzbek": "Usul / Texnika"
+      },
+      {
+        "no": 570,
+        "english": "Tendency",
+        "uzbek": "Moyillik / Tendensiya"
+      },
+      {
+        "no": 571,
+        "english": "Tension",
+        "uzbek": "Kuchlanish / Ziddiyat"
+      },
+      {
+        "no": 572,
+        "english": "Than",
+        "uzbek": "Ko'ra (taqqoslashda)"
+      },
+      {
+        "no": 573,
+        "english": "Theirs",
+        "uzbek": "Ularniki"
+      },
+      {
+        "no": 574,
+        "english": "Themselves",
+        "uzbek": "Ularning o'zlari"
+      },
+      {
+        "no": 575,
+        "english": "Themselves",
+        "uzbek": "Ularning o‘zlari"
+      },
+      {
+        "no": 576,
+        "english": "Theory",
+        "uzbek": "Nazariya"
+      },
+      {
+        "no": 577,
+        "english": "Though",
+        "uzbek": "Garchi / ...-sa ham"
+      },
+      {
+        "no": 578,
+        "english": "Thus",
+        "uzbek": "Shunday qilib"
+      },
+      {
+        "no": 579,
+        "english": "Till",
+        "uzbek": "...-gacha"
+      },
+      {
+        "no": 580,
+        "english": "Together",
+        "uzbek": "Birgalikda"
+      },
+      {
+        "no": 581,
+        "english": "Trace",
+        "uzbek": "Iz / Belgi"
+      },
+      {
+        "no": 582,
+        "english": "Tradition",
+        "uzbek": "An'ana"
+      },
+      {
+        "no": 583,
+        "english": "Transfer",
+        "uzbek": "O'tkazish / Ko'chirish"
+      },
+      {
+        "no": 584,
+        "english": "Transition",
+        "uzbek": "O'tish / Almashish"
+      },
+      {
+        "no": 585,
+        "english": "Trend",
+        "uzbek": "Trend / Yo'nalish"
+      },
+      {
+        "no": 586,
+        "english": "Type",
+        "uzbek": "Tur / Toifa"
+      },
+      {
+        "no": 587,
+        "english": "Ultimate",
+        "uzbek": "Yakuniy / Eng so'nggi"
+      },
+      {
+        "no": 588,
+        "english": "Underneath",
+        "uzbek": "Pastda / Tagida"
+      },
+      {
+        "no": 589,
+        "english": "Unique",
+        "uzbek": "Betakror / Noyob"
+      },
+      {
+        "no": 590,
+        "english": "Unit",
+        "uzbek": "Birlik / Bo'lim"
+      },
+      {
+        "no": 591,
+        "english": "Until",
+        "uzbek": "...-guncha"
+      },
+      {
+        "no": 592,
+        "english": "User",
+        "uzbek": "Foydalanuvchi"
+      },
+      {
+        "no": 593,
+        "english": "Valid",
+        "uzbek": "Haqiqiy / Kuchga ega"
+      },
+      {
+        "no": 594,
+        "english": "Validate",
+        "uzbek": "Tasdiqlamo"
+      },
+      {
+        "no": 595,
+        "english": "Validity",
+        "uzbek": "Haqiqiylik / Asoslilik"
+      },
+      {
+        "no": 596,
+        "english": "Value",
+        "uzbek": "Qiymat / Ahamiyat"
+      },
+      {
+        "no": 597,
+        "english": "Variation",
+        "uzbek": "O'zgarish / Farq"
+      },
+      {
+        "no": 598,
+        "english": "Variety",
+        "uzbek": "Turli-tumanlik"
+      },
+      {
+        "no": 599,
+        "english": "Vast",
+        "uzbek": "Keng / Ulkan"
+      },
+      {
+        "no": 600,
+        "english": "Version",
+        "uzbek": "Versiya / Talqin"
+      },
+      {
+        "no": 601,
+        "english": "Violate",
+        "uzbek": "Buzmoq (qonunni)"
+      },
+      {
+        "no": 602,
+        "english": "Vision",
+        "uzbek": "Ko'rish / Qarash / Vizyon"
+      },
+      {
+        "no": 603,
+        "english": "Volume",
+        "uzbek": "Hajm"
+      },
+      {
+        "no": 604,
+        "english": "Weight",
+        "uzbek": "Og'irlik"
+      },
+      {
+        "no": 605,
+        "english": "What",
+        "uzbek": "Nima"
+      },
+      {
+        "no": 606,
+        "english": "Whatever",
+        "uzbek": "Nima bo'lganda ham"
+      },
+      {
+        "no": 607,
+        "english": "Whatever",
+        "uzbek": "Nima bo'lsa ham"
+      },
+      {
+        "no": 608,
+        "english": "When",
+        "uzbek": "Qachonki"
+      },
+      {
+        "no": 609,
+        "english": "Whenever",
+        "uzbek": "Qachonki"
+      },
+      {
+        "no": 610,
+        "english": "Where",
+        "uzbek": "Qayerda / Qaysiki"
+      },
+      {
+        "no": 611,
+        "english": "Whereby",
+        "uzbek": "Bu orqali (Bog'lovchi)"
+      },
+      {
+        "no": 612,
+        "english": "Wherever",
+        "uzbek": "Qayerdaki / Qayerga bo‘lmasin"
+      },
+      {
+        "no": 613,
+        "english": "Whether",
+        "uzbek": "...-mi yoki yo'q"
+      },
+      {
+        "no": 614,
+        "english": "Whichever",
+        "uzbek": "Qaysi biri bo'lsa ham"
+      },
+      {
+        "no": 615,
+        "english": "Whilst",
+        "uzbek": "...-gan vaqtda (rasmiyroq)"
+      },
+      {
+        "no": 616,
+        "english": "Whoever",
+        "uzbek": "Kim bo'lsa ham"
+      },
+      {
+        "no": 617,
+        "english": "Whom",
+        "uzbek": "Kimni / Kimga"
+      },
+      {
+        "no": 618,
+        "english": "Whomsoever",
+        "uzbek": "Kim bo'lishidan qat'i nazar"
+      },
+      {
+        "no": 619,
+        "english": "Whose",
+        "uzbek": "Kimning"
+      },
+      {
+        "no": 620,
+        "english": "Whosever",
+        "uzbek": "Kimniki bo'lsa ham"
+      },
+      {
+        "no": 621,
+        "english": "Whosoever",
+        "uzbek": "Kim bo'lishidan qat'i nazar"
+      },
+      {
+        "no": 622,
+        "english": "Why",
+        "uzbek": "Nima uchun"
+      },
+      {
+        "no": 623,
+        "english": "Width",
+        "uzbek": "Kenglik"
+      },
+      {
+        "no": 624,
+        "english": "With",
+        "uzbek": "Bilan"
+      },
+      {
+        "no": 625,
+        "english": "Worldwide",
+        "uzbek": "Butun dunyo bo'ylab"
+      },
+      {
+        "no": 626,
+        "english": "Your",
+        "uzbek": "Sizning"
+      },
+      {
+        "no": 627,
+        "english": "Yours",
+        "uzbek": "Sizniki"
+      },
+      {
+        "no": 628,
+        "english": "Yourself",
+        "uzbek": "O'zingiz"
+      },
+      {
+        "no": 629,
+        "english": "Yourselves",
+        "uzbek": "O'zlaringiz"
+      },
+      {
+        "no": 630,
+        "english": "Zone",
+        "uzbek": "Hudud / Zona"
+      }
+    ],
+    "VERBS (FE'LLAR)": [
+      {
+        "no": 1,
+        "english": "Abandon",
+        "uzbek": "Tashlab ketmoq / Voz kechmoq"
+      },
+      {
+        "no": 2,
+        "english": "Accommodate",
+        "uzbek": "Joylashtirmoq / Moslashtirmoq"
+      },
+      {
+        "no": 3,
+        "english": "Accomplish",
+        "uzbek": "Amalga oshirmoq / Bajarmoq"
+      },
+      {
+        "no": 4,
+        "english": "Accumulate",
+        "uzbek": "To‘plamoq"
+      },
+      {
+        "no": 5,
+        "english": "Achieve",
+        "uzbek": "Erishmoq"
+      },
+      {
+        "no": 6,
+        "english": "Acknowledge",
+        "uzbek": "Tan olmoq / Tasdiqlamoq"
+      },
+      {
+        "no": 7,
+        "english": "Acquire",
+        "uzbek": "Egasiga aylanmoq / Sotib olmoq"
+      },
+      {
+        "no": 8,
+        "english": "Activate",
+        "uzbek": "Faollashtirmoq"
+      },
+      {
+        "no": 9,
+        "english": "Adapt",
+        "uzbek": "Moslashmoq"
+      },
+      {
+        "no": 10,
+        "english": "Address",
+        "uzbek": "Murojaat qilmoq / Yo‘llamoq"
+      },
+      {
+        "no": 11,
+        "english": "Adjust",
+        "uzbek": "To'g'rilamoq / Moslamoq"
+      },
+      {
+        "no": 12,
+        "english": "Administrate",
+        "uzbek": "Boshqarmoq"
+      },
+      {
+        "no": 13,
+        "english": "Adopt",
+        "uzbek": "Qabul qilmoq / Farzandlikka olmoq"
+      },
+      {
+        "no": 14,
+        "english": "Advance",
+        "uzbek": "Ilgarilamoq"
+      },
+      {
+        "no": 15,
+        "english": "Advise",
+        "uzbek": "Maslahat bermoq"
+      },
+      {
+        "no": 16,
+        "english": "Affect",
+        "uzbek": "Ta'sir qilmoq"
+      },
+      {
+        "no": 17,
+        "english": "Aggregate",
+        "uzbek": "Jamlamoq / Birlashtirmoq"
+      },
+      {
+        "no": 18,
+        "english": "Agree",
+        "uzbek": "Kelishmoq"
+      },
+      {
+        "no": 19,
+        "english": "Aim",
+        "uzbek": "Maqsad qilmoq"
+      },
+      {
+        "no": 20,
+        "english": "Alert",
+        "uzbek": "Ogohlantirmoq"
+      },
+      {
+        "no": 21,
+        "english": "Align",
+        "uzbek": "Tekislamoq / Moslamoq"
+      },
+      {
+        "no": 22,
+        "english": "Allow",
+        "uzbek": "Ruxsat bermoq"
+      },
+      {
+        "no": 23,
+        "english": "Alter",
+        "uzbek": "O'zgartirmoq"
+      },
+      {
+        "no": 24,
+        "english": "Amplify",
+        "uzbek": "Kuchaytirmoq"
+      },
+      {
+        "no": 25,
+        "english": "Analyze",
+        "uzbek": "Tahlil qilmoq"
+      },
+      {
+        "no": 26,
+        "english": "Annotate",
+        "uzbek": "Izohlamoq"
+      },
+      {
+        "no": 27,
+        "english": "Appear",
+        "uzbek": "Paydo bo'lmoq"
+      },
+      {
+        "no": 28,
+        "english": "Append",
+        "uzbek": "Ilova qilmoq"
+      },
+      {
+        "no": 29,
+        "english": "Appoint",
+        "uzbek": "Tayinlamoq"
+      },
+      {
+        "no": 30,
+        "english": "Appreciate",
+        "uzbek": "Qadrlamoq"
+      },
+      {
+        "no": 31,
+        "english": "Appropriate",
+        "uzbek": "O'zlashtirmoq"
+      },
+      {
+        "no": 32,
+        "english": "Approximate",
+        "uzbek": "Yaqinlashmoq"
+      },
+      {
+        "no": 33,
+        "english": "Arrive",
+        "uzbek": "Yetib kelmoq"
+      },
+      {
+        "no": 34,
+        "english": "Ask",
+        "uzbek": "So'ramoq"
+      },
+      {
+        "no": 35,
+        "english": "Assemble",
+        "uzbek": "Yig‘moq"
+      },
+      {
+        "no": 36,
+        "english": "Assert",
+        "uzbek": "Tasdiqlamoq"
+      },
+      {
+        "no": 37,
+        "english": "Assign",
+        "uzbek": "Tayinlamoq"
+      },
+      {
+        "no": 38,
+        "english": "Assist",
+        "uzbek": "Yordam bermoq"
+      },
+      {
+        "no": 39,
+        "english": "Assume",
+        "uzbek": "Taxmin qilmoq"
+      },
+      {
+        "no": 40,
+        "english": "Assure",
+        "uzbek": "Ishontirmoq"
+      },
+      {
+        "no": 41,
+        "english": "Attach",
+        "uzbek": "Biriktirmoq"
+      },
+      {
+        "no": 42,
+        "english": "Attain",
+        "uzbek": "Erishmoq"
+      },
+      {
+        "no": 43,
+        "english": "Attend",
+        "uzbek": "Qatnashmoq"
+      },
+      {
+        "no": 44,
+        "english": "Augment",
+        "uzbek": "Kengaytirmoq / To'ldirmoq"
+      },
+      {
+        "no": 45,
+        "english": "Automate",
+        "uzbek": "Avtomatlashtirmoq"
+      },
+      {
+        "no": 46,
+        "english": "Avoid",
+        "uzbek": "Chetlashmoq / Qochmoq"
+      },
+      {
+        "no": 47,
+        "english": "Backpropagate",
+        "uzbek": "Xatolikni orqaga tarqatmoq"
+      },
+      {
+        "no": 48,
+        "english": "Balance",
+        "uzbek": "Muvozanatlamoq"
+      },
+      {
+        "no": 49,
+        "english": "Base",
+        "uzbek": "Asoslamoq"
+      },
+      {
+        "no": 50,
+        "english": "Behave",
+        "uzbek": "O‘zini tutmoq / Harakat qilmoq"
+      },
+      {
+        "no": 51,
+        "english": "Believe",
+        "uzbek": "Ishonmoq"
+      },
+      {
+        "no": 52,
+        "english": "Bind",
+        "uzbek": "Bog‘lamoq"
+      },
+      {
+        "no": 53,
+        "english": "Boost",
+        "uzbek": "Kuchaytirmoq / Oshirmoq"
+      },
+      {
+        "no": 54,
+        "english": "Borrow",
+        "uzbek": "Olamoq / Qarz olmoq"
+      },
+      {
+        "no": 55,
+        "english": "Bound",
+        "uzbek": "Chegaralamoq"
+      },
+      {
+        "no": 56,
+        "english": "Break",
+        "uzbek": "To‘xtatmoq / Sindirmoq"
+      },
+      {
+        "no": 57,
+        "english": "Brief",
+        "uzbek": "Qisqacha ma'lumot bermoq"
+      },
+      {
+        "no": 58,
+        "english": "Build",
+        "uzbek": "Qurmoq / Yaratmoq"
+      },
+      {
+        "no": 59,
+        "english": "Calculate",
+        "uzbek": "Hisoblamoq"
+      },
+      {
+        "no": 60,
+        "english": "Calibrate",
+        "uzbek": "Kalibrlamoq / Sozlamoq"
+      },
+      {
+        "no": 61,
+        "english": "Cancel",
+        "uzbek": "Bekor qilmoq"
+      },
+      {
+        "no": 62,
+        "english": "Capture",
+        "uzbek": "Egallamoq / Tutib olmoq"
+      },
+      {
+        "no": 63,
+        "english": "Carry",
+        "uzbek": "Tashimoq / Olib bormoq"
+      },
+      {
+        "no": 64,
+        "english": "Categorize",
+        "uzbek": "Turkumlarga ajratmoq"
+      },
+      {
+        "no": 65,
+        "english": "Cause",
+        "uzbek": "Sabab bo'lmoq"
+      },
+      {
+        "no": 66,
+        "english": "Change",
+        "uzbek": "O'zgartirmoq"
+      },
+      {
+        "no": 67,
+        "english": "Check",
+        "uzbek": "Tekshirmoq"
+      },
+      {
+        "no": 68,
+        "english": "Choose",
+        "uzbek": "Tanlamoq"
+      },
+      {
+        "no": 69,
+        "english": "Circulate",
+        "uzbek": "Aylantirmoq / Tarqatmoq"
+      },
+      {
+        "no": 70,
+        "english": "Cite",
+        "uzbek": "Iqtibos keltirmoq"
+      },
+      {
+        "no": 71,
+        "english": "Clarify",
+        "uzbek": "Oydinlik kiritmoq"
+      },
+      {
+        "no": 72,
+        "english": "Classify",
+        "uzbek": "Tasniflamoq / Turga ajratmoq"
+      },
+      {
+        "no": 73,
+        "english": "Clear",
+        "uzbek": "Tozalash / Bo'shatmoq"
+      },
+      {
+        "no": 74,
+        "english": "Close",
+        "uzbek": "Yopmoq"
+      },
+      {
+        "no": 75,
+        "english": "Coincide",
+        "uzbek": "Mos kelmoq"
+      },
+      {
+        "no": 76,
+        "english": "Collapse",
+        "uzbek": "Qulamoq"
+      },
+      {
+        "no": 77,
+        "english": "Collect",
+        "uzbek": "To‘plamoq"
+      },
+      {
+        "no": 78,
+        "english": "Combine",
+        "uzbek": "Birlashtirmoq"
+      },
+      {
+        "no": 79,
+        "english": "Communicate",
+        "uzbek": "Muloqot qilmoq"
+      },
+      {
+        "no": 80,
+        "english": "Compare",
+        "uzbek": "Taqqoslamoq"
+      },
+      {
+        "no": 81,
+        "english": "Compare",
+        "uzbek": "Solishtirmoq"
+      },
+      {
+        "no": 82,
+        "english": "Compensate",
+        "uzbek": "Qoplamoq / Kompensatsiya to'lamoq"
+      },
+      {
+        "no": 83,
+        "english": "Compete",
+        "uzbek": "Raqobatlashmoq"
+      },
+      {
+        "no": 84,
+        "english": "Compile",
+        "uzbek": "To'plamoq / Jamlamoq"
+      },
+      {
+        "no": 85,
+        "english": "Complete",
+        "uzbek": "Yakunlamoq"
+      },
+      {
+        "no": 86,
+        "english": "Complicate",
+        "uzbek": "Murakkablashtirmoq"
+      },
+      {
+        "no": 87,
+        "english": "Compose",
+        "uzbek": "Tarkib topmoq / Bastalamoq"
+      },
+      {
+        "no": 88,
+        "english": "Comprehend",
+        "uzbek": "Tushunmoq / Anglamoq"
+      },
+      {
+        "no": 89,
+        "english": "Comprise",
+        "uzbek": "O'z ichiga olmoq"
+      },
+      {
+        "no": 90,
+        "english": "Compute",
+        "uzbek": "Hisoblamoq"
+      },
+      {
+        "no": 91,
+        "english": "Concentrate",
+        "uzbek": "Diqqatni jamlamoq"
+      },
+      {
+        "no": 92,
+        "english": "Conclude",
+        "uzbek": "Xulosa qilmoq"
+      },
+      {
+        "no": 93,
+        "english": "Conclude",
+        "uzbek": "Xulosa yasamoq"
+      },
+      {
+        "no": 94,
+        "english": "Conduct",
+        "uzbek": "O'tkazmoq"
+      },
+      {
+        "no": 95,
+        "english": "Configure",
+        "uzbek": "Konfiguratsiya qilmoq"
+      },
+      {
+        "no": 96,
+        "english": "Confirm",
+        "uzbek": "Tasdiqlamoq"
+      },
+      {
+        "no": 97,
+        "english": "Confront",
+        "uzbek": "To'qnash kelmoq"
+      },
+      {
+        "no": 98,
+        "english": "Connect",
+        "uzbek": "Bog'lamoq"
+      },
+      {
+        "no": 99,
+        "english": "Consist",
+        "uzbek": "Iborat bo‘lmoq"
+      },
+      {
+        "no": 100,
+        "english": "Consolidate",
+        "uzbek": "Mustahkamlamoq"
+      },
+      {
+        "no": 101,
+        "english": "Construct",
+        "uzbek": "Qurmoq / Yasamoq"
+      },
+      {
+        "no": 102,
+        "english": "Consult",
+        "uzbek": "Maslahatlashmoq"
+      },
+      {
+        "no": 103,
+        "english": "Consume",
+        "uzbek": "Iste'mol qilmoq"
+      },
+      {
+        "no": 104,
+        "english": "Contain",
+        "uzbek": "O‘z ichiga olmoq"
+      },
+      {
+        "no": 105,
+        "english": "Continue",
+        "uzbek": "Davom etmoq"
+      },
+      {
+        "no": 106,
+        "english": "Contradict",
+        "uzbek": "Zid kelmoq"
+      },
+      {
+        "no": 107,
+        "english": "Contribute",
+        "uzbek": "Hissa qo'shmoq"
+      },
+      {
+        "no": 108,
+        "english": "Converge",
+        "uzbek": "Yaqinlashmoq"
+      },
+      {
+        "no": 109,
+        "english": "Convert",
+        "uzbek": "Aylantirmoq / O'zgartirmoq"
+      },
+      {
+        "no": 110,
+        "english": "Cope",
+        "uzbek": "Uddalamoq / Dosh bermoq"
+      },
+      {
+        "no": 111,
+        "english": "Copy",
+        "uzbek": "Nusxa ko‘chirmoq"
+      },
+      {
+        "no": 112,
+        "english": "Correct",
+        "uzbek": "To‘g‘rilamoq"
+      },
+      {
+        "no": 113,
+        "english": "Correspond",
+        "uzbek": "Mos kelmoq"
+      },
+      {
+        "no": 114,
+        "english": "Count",
+        "uzbek": "Sanamoq"
+      },
+      {
+        "no": 115,
+        "english": "Couple",
+        "uzbek": "Birlashtirmoq / Juftlamoq"
+      },
+      {
+        "no": 116,
+        "english": "Cover",
+        "uzbek": "Qoplamoq"
+      },
+      {
+        "no": 117,
+        "english": "Crack",
+        "uzbek": "Buzib kirmoq / Yormoq"
+      },
+      {
+        "no": 118,
+        "english": "Crash",
+        "uzbek": "Tizimning ishdan chiqishi / To‘qnashmoq"
+      },
+      {
+        "no": 119,
+        "english": "Create",
+        "uzbek": "Yaratmoq"
+      },
+      {
+        "no": 120,
+        "english": "Critique",
+        "uzbek": "Tanqidiy baholamoq"
+      },
+      {
+        "no": 121,
+        "english": "Cross",
+        "uzbek": "Kesib o‘tmoq"
+      },
+      {
+        "no": 122,
+        "english": "Cultivate",
+        "uzbek": "O'stirmoq / Shakllantirmoq"
+      },
+      {
+        "no": 123,
+        "english": "Customize",
+        "uzbek": "Moslamoq / Shaxsiylashtirmoq"
+      },
+      {
+        "no": 124,
+        "english": "Cut",
+        "uzbek": "Kesmoq"
+      },
+      {
+        "no": 125,
+        "english": "Damage",
+        "uzbek": "Zarar yetkazmoq"
+      },
+      {
+        "no": 126,
+        "english": "Dash",
+        "uzbek": "Tezgina harakat qilmoq"
+      },
+      {
+        "no": 127,
+        "english": "Debug",
+        "uzbek": "Xatoliklarni tuzatmoq"
+      },
+      {
+        "no": 128,
+        "english": "Decentralize",
+        "uzbek": "Markazsizlashtirmoq"
+      },
+      {
+        "no": 129,
+        "english": "Decide",
+        "uzbek": "Qaror qabul qilmoq"
+      },
+      {
+        "no": 130,
+        "english": "Decipher",
+        "uzbek": "Shifrni ochmoq"
+      },
+      {
+        "no": 131,
+        "english": "Decline",
+        "uzbek": "Rad etmoq / Pasaymoq"
+      },
+      {
+        "no": 132,
+        "english": "Decode",
+        "uzbek": "Koddan chiqarmoq"
+      },
+      {
+        "no": 133,
+        "english": "Decrease",
+        "uzbek": "Kamaytirmoq"
+      },
+      {
+        "no": 134,
+        "english": "Dedicate",
+        "uzbek": "Bag'ishlamoq"
+      },
+      {
+        "no": 135,
+        "english": "Deduce",
+        "uzbek": "Xulosa chiqarmoq"
+      },
+      {
+        "no": 136,
+        "english": "Deepen",
+        "uzbek": "Chuqurlashtirmoq"
+      },
+      {
+        "no": 137,
+        "english": "Defend",
+        "uzbek": "Himoya qilmoq"
+      },
+      {
+        "no": 138,
+        "english": "Define",
+        "uzbek": "Ta'riflamoq"
+      },
+      {
+        "no": 139,
+        "english": "Deform",
+        "uzbek": "Shaklini buzmoq"
+      },
+      {
+        "no": 140,
+        "english": "Delay",
+        "uzbek": "Kechiktirmoq"
+      },
+      {
+        "no": 141,
+        "english": "Delegate",
+        "uzbek": "Vakolat bermoq"
+      },
+      {
+        "no": 142,
+        "english": "Delete",
+        "uzbek": "O'chirmoq"
+      },
+      {
+        "no": 143,
+        "english": "Deliver",
+        "uzbek": "Yetkazib bermoq"
+      },
+      {
+        "no": 144,
+        "english": "Demolish",
+        "uzbek": "Buzib tashlamoq"
+      },
+      {
+        "no": 145,
+        "english": "Demonstrate",
+        "uzbek": "Ko'rsatib bermoq"
+      },
+      {
+        "no": 146,
+        "english": "Denote",
+        "uzbek": "Anglatmoq / Bildirmoq"
+      },
+      {
+        "no": 147,
+        "english": "Deny",
+        "uzbek": "Inkor etmoq"
+      },
+      {
+        "no": 148,
+        "english": "Depart",
+        "uzbek": "Jo‘nab ketmoq / Chetlanmoq"
+      },
+      {
+        "no": 149,
+        "english": "Depart",
+        "uzbek": "Jo'nab ketmoq"
+      },
+      {
+        "no": 150,
+        "english": "Depend",
+        "uzbek": "Bog‘liq bo‘lmoq"
+      },
+      {
+        "no": 151,
+        "english": "Depend",
+        "uzbek": "Bog'liq bo'lmoq"
+      },
+      {
+        "no": 152,
+        "english": "Depict",
+        "uzbek": "Tasvirlamoq"
+      },
+      {
+        "no": 153,
+        "english": "Deploy",
+        "uzbek": "Joylashtirmoq / Ishga tushirmoq"
+      },
+      {
+        "no": 154,
+        "english": "Depreciate",
+        "uzbek": "Qiymatini yo‘qotmoq"
+      },
+      {
+        "no": 155,
+        "english": "Deprive",
+        "uzbek": "Mahrum qilmoq"
+      },
+      {
+        "no": 156,
+        "english": "Derive",
+        "uzbek": "Kelib chiqmoq / Hosila olmoq"
+      },
+      {
+        "no": 157,
+        "english": "Derive",
+        "uzbek": "Kelib chiqmoq"
+      },
+      {
+        "no": 158,
+        "english": "Describe",
+        "uzbek": "Tasvirlamoq"
+      },
+      {
+        "no": 159,
+        "english": "Design",
+        "uzbek": "Loyihalashtirmoq"
+      },
+      {
+        "no": 160,
+        "english": "Designate",
+        "uzbek": "Belgilamoq / Tayinlamoq"
+      },
+      {
+        "no": 161,
+        "english": "Detach",
+        "uzbek": "Ajratmoq"
+      },
+      {
+        "no": 162,
+        "english": "Detect",
+        "uzbek": "Aniqlamoq / Payqamoq"
+      },
+      {
+        "no": 163,
+        "english": "Determine",
+        "uzbek": "Aniqlamoq / Qaror qilmoq"
+      },
+      {
+        "no": 164,
+        "english": "Develop",
+        "uzbek": "Rivojlantirmoq"
+      },
+      {
+        "no": 165,
+        "english": "Deviate",
+        "uzbek": "Og‘ishmoq / Chetlanmoq"
+      },
+      {
+        "no": 166,
+        "english": "Devise",
+        "uzbek": "Ishlab chiqmoq"
+      },
+      {
+        "no": 167,
+        "english": "Devise",
+        "uzbek": "Ishlab chiqmoq / O‘ylab topmoq"
+      },
+      {
+        "no": 168,
+        "english": "Devote",
+        "uzbek": "Bag'ishlamoq"
+      },
+      {
+        "no": 169,
+        "english": "Devote",
+        "uzbek": "Bag‘ishlamoq"
+      },
+      {
+        "no": 170,
+        "english": "Diagnose",
+        "uzbek": "Tashxis qo‘ymoq"
+      },
+      {
+        "no": 171,
+        "english": "Differ",
+        "uzbek": "Farq qilmoq"
+      },
+      {
+        "no": 172,
+        "english": "Differentiate",
+        "uzbek": "Differensiallamoq / Farqlamoq"
+      },
+      {
+        "no": 173,
+        "english": "Differentiate",
+        "uzbek": "Farqlamoq"
+      },
+      {
+        "no": 174,
+        "english": "Diffuse",
+        "uzbek": "Tarqalmoq"
+      },
+      {
+        "no": 175,
+        "english": "Digest",
+        "uzbek": "Hazm qilmoq / Qisqacha bayon qilmoq"
+      },
+      {
+        "no": 176,
+        "english": "Digitize",
+        "uzbek": "Raqamlashtirmoq"
+      },
+      {
+        "no": 177,
+        "english": "Diminish",
+        "uzbek": "Kamaymoq"
+      },
+      {
+        "no": 178,
+        "english": "Disable",
+        "uzbek": "O'chirib qo'ymoq"
+      },
+      {
+        "no": 179,
+        "english": "Discard",
+        "uzbek": "Tashlab yubormoq"
+      },
+      {
+        "no": 180,
+        "english": "Disclose",
+        "uzbek": "Oshkor qilmoq"
+      },
+      {
+        "no": 181,
+        "english": "Disconnect",
+        "uzbek": "Uzib qo'ymoq"
+      },
+      {
+        "no": 182,
+        "english": "Discover",
+        "uzbek": "Kashf qilmoq"
+      },
+      {
+        "no": 183,
+        "english": "Discriminate",
+        "uzbek": "Ajratmoq / Kamsitmoq"
+      },
+      {
+        "no": 184,
+        "english": "Discuss",
+        "uzbek": "Muhokama qilmoq"
+      },
+      {
+        "no": 185,
+        "english": "Disinfect",
+        "uzbek": "Dezinfeksiya qilmoq"
+      },
+      {
+        "no": 186,
+        "english": "Dismiss",
+        "uzbek": "Rad etmoq / Bo'shatmoq"
+      },
+      {
+        "no": 187,
+        "english": "Displace",
+        "uzbek": "Joyidan qo'zg'atmoq"
+      },
+      {
+        "no": 188,
+        "english": "Display",
+        "uzbek": "Ko'rsatmoq / Ekranga chiqarmoq"
+      },
+      {
+        "no": 189,
+        "english": "Dispose",
+        "uzbek": "Utilizatsiya qilmoq"
+      },
+      {
+        "no": 190,
+        "english": "Dispute",
+        "uzbek": "Bahslashmoq"
+      },
+      {
+        "no": 191,
+        "english": "Dissolve",
+        "uzbek": "Erimoq / Tarqalib ketmoq"
+      },
+      {
+        "no": 192,
+        "english": "Distinguish",
+        "uzbek": "Farqlamoq"
+      },
+      {
+        "no": 193,
+        "english": "Distort",
+        "uzbek": "Buzib ko'rsatmoq"
+      },
+      {
+        "no": 194,
+        "english": "Distribute",
+        "uzbek": "Tarqatmoq / Taqsimlamoq"
+      },
+      {
+        "no": 195,
+        "english": "Disturb",
+        "uzbek": "Bezovta qilmoq"
+      },
+      {
+        "no": 196,
+        "english": "Diverge",
+        "uzbek": "Uzoqlashmoq / Tarqalmoq"
+      },
+      {
+        "no": 197,
+        "english": "Divide",
+        "uzbek": "Bo'lmoq"
+      },
+      {
+        "no": 198,
+        "english": "Document",
+        "uzbek": "Hujjatlashtirmoq"
+      },
+      {
+        "no": 199,
+        "english": "Dominate",
+        "uzbek": "Ustunlik qilmoq"
+      },
+      {
+        "no": 200,
+        "english": "Double",
+        "uzbek": "Ikki barobar oshirmoq"
+      },
+      {
+        "no": 201,
+        "english": "Download",
+        "uzbek": "Yuklab olmoq"
+      },
+      {
+        "no": 202,
+        "english": "Drag",
+        "uzbek": "Sudramoq"
+      },
+      {
+        "no": 203,
+        "english": "Draw",
+        "uzbek": "Chizmoq"
+      },
+      {
+        "no": 204,
+        "english": "Drop",
+        "uzbek": "Tashlab yubormoq / To'xtatmoq"
+      },
+      {
+        "no": 205,
+        "english": "Duplicate",
+        "uzbek": "Nusxasini yaratmoq"
+      },
+      {
+        "no": 206,
+        "english": "Earn",
+        "uzbek": "Ishlab topmoq"
+      },
+      {
+        "no": 207,
+        "english": "Edit",
+        "uzbek": "Tahrirlamoq"
+      },
+      {
+        "no": 208,
+        "english": "Eliminate",
+        "uzbek": "Yo'qotmoq"
+      },
+      {
+        "no": 209,
+        "english": "Embed",
+        "uzbek": "Joylashtirmoq / Singdirmoq"
+      },
+      {
+        "no": 210,
+        "english": "Emerge",
+        "uzbek": "Paydo bo'lmoq"
+      },
+      {
+        "no": 211,
+        "english": "Emphasize",
+        "uzbek": "Ta'kidlamoq"
+      },
+      {
+        "no": 212,
+        "english": "Employ",
+        "uzbek": "Ishlatmoq / Ishga olmoq"
+      },
+      {
+        "no": 213,
+        "english": "Enable",
+        "uzbek": "Imkon bermoq"
+      },
+      {
+        "no": 214,
+        "english": "Encode",
+        "uzbek": "Kodlamoq"
+      },
+      {
+        "no": 215,
+        "english": "Enforce",
+        "uzbek": "Majburlamoq / Kuchga kiritmoq"
+      },
+      {
+        "no": 216,
+        "english": "Enhance",
+        "uzbek": "Yaxshilamoq / Kuchaytirmoq"
+      },
+      {
+        "no": 217,
+        "english": "Ensure",
+        "uzbek": "Ta'minlamoq"
+      },
+      {
+        "no": 218,
+        "english": "Establish",
+        "uzbek": "O'rnatmoq"
+      },
+      {
+        "no": 219,
+        "english": "Establish",
+        "uzbek": "O'rnatmoq / Tashkil etmoq"
+      },
+      {
+        "no": 220,
+        "english": "Evaluate",
+        "uzbek": "Baholamoq"
+      },
+      {
+        "no": 221,
+        "english": "Examine",
+        "uzbek": "Tekshirmoq"
+      },
+      {
+        "no": 222,
+        "english": "Explain",
+        "uzbek": "Tushuntirmoq"
+      },
+      {
+        "no": 223,
+        "english": "Expose",
+        "uzbek": "Ochib tashlamoq"
+      },
+      {
+        "no": 224,
+        "english": "Extract",
+        "uzbek": "Ajratib olmoq"
+      },
+      {
+        "no": 225,
+        "english": "Facilitate",
+        "uzbek": "Yengillashtirmoq"
+      },
+      {
+        "no": 226,
+        "english": "Generalize",
+        "uzbek": "Umumlashtirmoq"
+      },
+      {
+        "no": 227,
+        "english": "Generate",
+        "uzbek": "Ishlab chiqarmoq"
+      },
+      {
+        "no": 228,
+        "english": "Highlight",
+        "uzbek": "Ajratib ko'rsatmoq"
+      },
+      {
+        "no": 229,
+        "english": "Hypothesize",
+        "uzbek": "Taxmin qilmoq"
+      },
+      {
+        "no": 230,
+        "english": "Identify",
+        "uzbek": "Aniqlamoq"
+      },
+      {
+        "no": 231,
+        "english": "Illustrate",
+        "uzbek": "Tasvirlamoq"
+      },
+      {
+        "no": 232,
+        "english": "Illustrate",
+        "uzbek": "Tasvirlamoq / Misol keltirmoq"
+      },
+      {
+        "no": 233,
+        "english": "Implement",
+        "uzbek": "Amalga oshirmoq"
+      },
+      {
+        "no": 234,
+        "english": "Improve",
+        "uzbek": "Yaxshilamoq"
+      },
+      {
+        "no": 235,
+        "english": "Indicate",
+        "uzbek": "Ko'rsatmoq / Ishora qilmoq"
+      },
+      {
+        "no": 236,
+        "english": "Inhibit",
+        "uzbek": "To'sqinlik qilmoq"
+      },
+      {
+        "no": 237,
+        "english": "Initialize",
+        "uzbek": "Ishga tushirmoq / Boshlamoq"
+      },
+      {
+        "no": 238,
+        "english": "Initiate",
+        "uzbek": "Boshlamoq"
+      },
+      {
+        "no": 239,
+        "english": "Interact",
+        "uzbek": "Ta'sirlashmoq"
+      },
+      {
+        "no": 240,
+        "english": "Interpret",
+        "uzbek": "Sharhlamoq"
+      },
+      {
+        "no": 241,
+        "english": "Investigate",
+        "uzbek": "Tadqiq qilmoq"
+      },
+      {
+        "no": 242,
+        "english": "Justify",
+        "uzbek": "Oqlamoq"
+      },
+      {
+        "no": 243,
+        "english": "Maintain",
+        "uzbek": "Saqlab turmoq"
+      },
+      {
+        "no": 244,
+        "english": "Network",
+        "uzbek": "Tarmoq"
+      },
+      {
+        "no": 245,
+        "english": "Observe",
+        "uzbek": "Kuzatmoq"
+      },
+      {
+        "no": 246,
+        "english": "Obtain",
+        "uzbek": "Qo'lga kiritmoq"
+      },
+      {
+        "no": 247,
+        "english": "Occur",
+        "uzbek": "Sodir bo'lmoq"
+      },
+      {
+        "no": 248,
+        "english": "Optimize",
+        "uzbek": "Optimallashtirmoq"
+      },
+      {
+        "no": 249,
+        "english": "Participate",
+        "uzbek": "Qatnashmoq"
+      },
+      {
+        "no": 250,
+        "english": "Perceive",
+        "uzbek": "Idrok etmoq"
+      },
+      {
+        "no": 251,
+        "english": "Perform",
+        "uzbek": "Ijro etmoq / Bajarmoq"
+      },
+      {
+        "no": 252,
+        "english": "Persuade",
+        "uzbek": "Ishontirmoq / Ko'ndirmoq"
+      },
+      {
+        "no": 253,
+        "english": "Predict",
+        "uzbek": "Bashorat qilmoq"
+      },
+      {
+        "no": 254,
+        "english": "Prepare",
+        "uzbek": "Tayyorlamoq"
+      },
+      {
+        "no": 255,
+        "english": "Prevent",
+        "uzbek": "Oldini olmoq"
+      },
+      {
+        "no": 256,
+        "english": "Prioritize",
+        "uzbek": "Ustuvorlik bermoq"
+      },
+      {
+        "no": 257,
+        "english": "Produce",
+        "uzbek": "Ishlab chiqarmoq"
+      },
+      {
+        "no": 258,
+        "english": "Promote",
+        "uzbek": "Targ'ib qilmoq / Ko'tarmoq"
+      },
+      {
+        "no": 259,
+        "english": "Propose",
+        "uzbek": "Taklif qilmoq"
+      },
+      {
+        "no": 260,
+        "english": "Protect",
+        "uzbek": "Himoya qilmoq"
+      },
+      {
+        "no": 261,
+        "english": "Provide",
+        "uzbek": "Ta'minlamoq"
+      },
+      {
+        "no": 262,
+        "english": "Publish",
+        "uzbek": "Nashr etmoq"
+      },
+      {
+        "no": 263,
+        "english": "Purchase",
+        "uzbek": "Sotib olmoq"
+      },
+      {
+        "no": 264,
+        "english": "Pursue",
+        "uzbek": "Izlamoq / Ergashmoq"
+      },
+      {
+        "no": 265,
+        "english": "React",
+        "uzbek": "Munosabat bildirmoq"
+      },
+      {
+        "no": 266,
+        "english": "Recognize",
+        "uzbek": "Tan olmoq / Tanimoq"
+      },
+      {
+        "no": 267,
+        "english": "Recommend",
+        "uzbek": "Tavsiya qilmoq"
+      },
+      {
+        "no": 268,
+        "english": "Reduce",
+        "uzbek": "Kamaytirmoq"
+      },
+      {
+        "no": 269,
+        "english": "Reflect",
+        "uzbek": "Aks ettirmoq"
+      },
+      {
+        "no": 270,
+        "english": "Regulate",
+        "uzbek": "Tartibga solmoq"
+      },
+      {
+        "no": 271,
+        "english": "Reinforce",
+        "uzbek": "Kuchaytirmoq"
+      },
+      {
+        "no": 272,
+        "english": "Reject",
+        "uzbek": "Rad etmoq"
+      },
+      {
+        "no": 273,
+        "english": "Relate",
+        "uzbek": "Bog'lamoq"
+      },
+      {
+        "no": 274,
+        "english": "Release",
+        "uzbek": "Ozod qilmoq / Chiqarmoq"
+      },
+      {
+        "no": 275,
+        "english": "Remove",
+        "uzbek": "Olib tashlamoq"
+      },
+      {
+        "no": 276,
+        "english": "Replace",
+        "uzbek": "Almashtirmoq"
+      },
+      {
+        "no": 277,
+        "english": "Report",
+        "uzbek": "Hisobot bermoq"
+      },
+      {
+        "no": 278,
+        "english": "Represent",
+        "uzbek": "Vakillik qilmoq"
+      },
+      {
+        "no": 279,
+        "english": "Require",
+        "uzbek": "Talab qilmoq"
+      },
+      {
+        "no": 280,
+        "english": "Respond",
+        "uzbek": "Javob qaytarmoq"
+      },
+      {
+        "no": 281,
+        "english": "Retain",
+        "uzbek": "Saqlab qolmoq"
+      },
+      {
+        "no": 282,
+        "english": "Reveal",
+        "uzbek": "Oshkor qilmoq"
+      },
+      {
+        "no": 283,
+        "english": "Review",
+        "uzbek": "Ko'rib chiqmoq"
+      },
+      {
+        "no": 284,
+        "english": "Revise",
+        "uzbek": "Qayta ko'rib chiqmoq"
+      },
+      {
+        "no": 285,
+        "english": "Scan",
+        "uzbek": "Skanerlamoq / Ko'zdan kechirmoq"
+      },
+      {
+        "no": 286,
+        "english": "Select",
+        "uzbek": "Tanlamoq"
+      },
+      {
+        "no": 287,
+        "english": "Separate",
+        "uzbek": "Ajratmoq"
+      },
+      {
+        "no": 288,
+        "english": "Signify",
+        "uzbek": "Anglatmoq / Bildirmoq"
+      },
+      {
+        "no": 289,
+        "english": "Simulate",
+        "uzbek": "Modellashtirmoq"
+      },
+      {
+        "no": 290,
+        "english": "Specify",
+        "uzbek": "Aniq ko'rsatmoq"
+      },
+      {
+        "no": 291,
+        "english": "Succeed",
+        "uzbek": "Muvaffaqiyat qozonmoq"
+      },
+      {
+        "no": 292,
+        "english": "Suggest",
+        "uzbek": "Taklif qilmoq"
+      },
+      {
+        "no": 293,
+        "english": "Summarize",
+        "uzbek": "Xulosa qilmoq"
+      },
+      {
+        "no": 294,
+        "english": "Support",
+        "uzbek": "Qo'llab-quvvatlamoq"
+      },
+      {
+        "no": 295,
+        "english": "Survive",
+        "uzbek": "Omon qolmoq"
+      },
+      {
+        "no": 296,
+        "english": "Test",
+        "uzbek": "Sinab ko'rmoq"
+      },
+      {
+        "no": 297,
+        "english": "Transform",
+        "uzbek": "O'zgartirmoq / Transformatsiya qilmoq"
+      },
+      {
+        "no": 298,
+        "english": "Undergo",
+        "uzbek": "Boshdan kechirmoq"
+      },
+      {
+        "no": 299,
+        "english": "Understand",
+        "uzbek": "Tushunmoq"
+      },
+      {
+        "no": 300,
+        "english": "Update",
+        "uzbek": "Yangilamoq"
+      },
+      {
+        "no": 301,
+        "english": "Utilize",
+        "uzbek": "Foydalanmoq"
+      },
+      {
+        "no": 302,
+        "english": "Vary",
+        "uzbek": "Farqlanmoq / O'zgarmoq"
+      },
+      {
+        "no": 303,
+        "english": "Verify",
+        "uzbek": "Tasdiqlamoq / Tekshirmoq"
+      },
+      {
+        "no": 304,
+        "english": "View",
+        "uzbek": "Ko'rmoq / Qaramoq"
+      },
+      {
+        "no": 305,
+        "english": "Visualize",
+        "uzbek": "Tasavvur qilmoq"
+      },
+      {
+        "no": 306,
+        "english": "Wait",
+        "uzbek": "Kutmoq"
+      },
+      {
+        "no": 307,
+        "english": "Warn",
+        "uzbek": "Ogohlantirmoq"
+      },
+      {
+        "no": 308,
+        "english": "Waste",
+        "uzbek": "Isrof qilmoq"
+      },
+      {
+        "no": 309,
+        "english": "Watch",
+        "uzbek": "Kuzatmoq"
+      },
+      {
+        "no": 310,
+        "english": "Weigh",
+        "uzbek": "Tortib ko'rmoq / O'lchamoq"
+      },
+      {
+        "no": 311,
+        "english": "Welcome",
+        "uzbek": "Kutib olmoq"
+      },
+      {
+        "no": 312,
+        "english": "Win",
+        "uzbek": "G'alaba qozonmoq"
+      },
+      {
+        "no": 313,
+        "english": "Withdraw",
+        "uzbek": "Qaytib olmoq / Pul yechmoq"
+      },
+      {
+        "no": 314,
+        "english": "Wonder",
+        "uzbek": "Hayron qolmoq"
+      },
+      {
+        "no": 315,
+        "english": "Work",
+        "uzbek": "Ishlamoq"
+      },
+      {
+        "no": 316,
+        "english": "Write",
+        "uzbek": "Yozmoq"
+      },
+      {
+        "no": 317,
+        "english": "Yield",
+        "uzbek": "Hosil bermoq / Bo'sh kelmoq"
+      }
+    ],
+    "ADJECTIVES (SIFATLAR)": [
+      {
+        "no": 1,
+        "english": "Academic",
+        "uzbek": "Akademik / Ilmiy"
+      },
+      {
+        "no": 2,
+        "english": "Academic",
+        "uzbek": "Akademik"
+      },
+      {
+        "no": 3,
+        "english": "Acceptable",
+        "uzbek": "Qabul qilsa bo‘ladigan"
+      },
+      {
+        "no": 4,
+        "english": "Accessible",
+        "uzbek": "Foydalanishga qulay / Ochiq"
+      },
+      {
+        "no": 5,
+        "english": "Achievement",
+        "uzbek": "Yutuq"
+      },
+      {
+        "no": 6,
+        "english": "Active",
+        "uzbek": "Faol"
+      },
+      {
+        "no": 7,
+        "english": "Actual",
+        "uzbek": "Haqiqiy / Amaldagi"
+      },
+      {
+        "no": 8,
+        "english": "Adaptive",
+        "uzbek": "Moslashuvchan"
+      },
+      {
+        "no": 9,
+        "english": "Adaptive",
+        "uzbek": "Moslashuvchan tarzda"
+      },
+      {
+        "no": 10,
+        "english": "Additional",
+        "uzbek": "Qo‘shimcha"
+      },
+      {
+        "no": 11,
+        "english": "Additional",
+        "uzbek": "Qo'shimcha"
+      },
+      {
+        "no": 12,
+        "english": "Adjacent",
+        "uzbek": "Qo'shni / Yondosh"
+      },
+      {
+        "no": 13,
+        "english": "Adjustable",
+        "uzbek": "Moslanuvchi"
+      },
+      {
+        "no": 14,
+        "english": "Adjustment",
+        "uzbek": "Moslashish / To‘g‘rilash"
+      },
+      {
+        "no": 15,
+        "english": "Administrative",
+        "uzbek": "Ma'muriy"
+      },
+      {
+        "no": 16,
+        "english": "Adversarial",
+        "uzbek": "Raqobatdosh / Qarama-qarshi"
+      },
+      {
+        "no": 17,
+        "english": "Aesthetic",
+        "uzbek": "Estetik"
+      },
+      {
+        "no": 18,
+        "english": "Affordable",
+        "uzbek": "Hamyonbop"
+      },
+      {
+        "no": 19,
+        "english": "Agent",
+        "uzbek": "Agent / Vakil"
+      },
+      {
+        "no": 20,
+        "english": "Aggressive",
+        "uzbek": "Tajovuzkor"
+      },
+      {
+        "no": 21,
+        "english": "Agreement",
+        "uzbek": "Kelishuv"
+      },
+      {
+        "no": 22,
+        "english": "Algebraic",
+        "uzbek": "Algebraga oid"
+      },
+      {
+        "no": 23,
+        "english": "Algorithmic",
+        "uzbek": "Algoritmik"
+      },
+      {
+        "no": 24,
+        "english": "Alignment",
+        "uzbek": "Tekislash / Moslash"
+      },
+      {
+        "no": 25,
+        "english": "Alternative",
+        "uzbek": "Tanlov / Muqobil"
+      },
+      {
+        "no": 26,
+        "english": "Alternative",
+        "uzbek": "Muqobil"
+      },
+      {
+        "no": 27,
+        "english": "Ambiguous",
+        "uzbek": "Mavhum / Ikki ma'noli"
+      },
+      {
+        "no": 28,
+        "english": "Amendment",
+        "uzbek": "O‘zgartirish / Tuzatish"
+      },
+      {
+        "no": 29,
+        "english": "Analytical",
+        "uzbek": "Tahliliy"
+      },
+      {
+        "no": 30,
+        "english": "Ancient",
+        "uzbek": "Qadimiy"
+      },
+      {
+        "no": 31,
+        "english": "Annual",
+        "uzbek": "Yillik"
+      },
+      {
+        "no": 32,
+        "english": "Anomalous",
+        "uzbek": "G‘ayritabiiy"
+      },
+      {
+        "no": 33,
+        "english": "Anonymous",
+        "uzbek": "Anonim / Nomsiz"
+      },
+      {
+        "no": 34,
+        "english": "Apparent",
+        "uzbek": "Yaqqol / Ko‘rinib turgan"
+      },
+      {
+        "no": 35,
+        "english": "Applicable",
+        "uzbek": "Qo'llasa bo'ladigan"
+      },
+      {
+        "no": 36,
+        "english": "Arbitrary",
+        "uzbek": "Ixtiyoriy / Tasodifiy"
+      },
+      {
+        "no": 37,
+        "english": "Argument",
+        "uzbek": "Dalil / Bahs"
+      },
+      {
+        "no": 38,
+        "english": "Arithmetic",
+        "uzbek": "Arifmetika"
+      },
+      {
+        "no": 39,
+        "english": "Artificial",
+        "uzbek": "Sun'iy"
+      },
+      {
+        "no": 40,
+        "english": "Assessment",
+        "uzbek": "Baholash"
+      },
+      {
+        "no": 41,
+        "english": "Assignment",
+        "uzbek": "Topshiriq"
+      },
+      {
+        "no": 42,
+        "english": "Authentic",
+        "uzbek": "Haqiqiy / Asl"
+      },
+      {
+        "no": 43,
+        "english": "Autoassociative",
+        "uzbek": "Avtoassotsiativ (o‘z-o‘zini bog‘lovchi)"
+      },
+      {
+        "no": 44,
+        "english": "Automatic",
+        "uzbek": "Avtomatik"
+      },
+      {
+        "no": 45,
+        "english": "Autonomous",
+        "uzbek": "Mustaqil / Avtonom"
+      },
+      {
+        "no": 46,
+        "english": "Auxiliary",
+        "uzbek": "Yordamchi"
+      },
+      {
+        "no": 47,
+        "english": "Available",
+        "uzbek": "Mavjud / Bor"
+      },
+      {
+        "no": 48,
+        "english": "Avoidable",
+        "uzbek": "Oldini olsa bo‘ladigan"
+      },
+      {
+        "no": 49,
+        "english": "Axial",
+        "uzbek": "O‘qqa oid (o‘q chizig‘i)"
+      },
+      {
+        "no": 50,
+        "english": "Basic",
+        "uzbek": "Asosiy"
+      },
+      {
+        "no": 51,
+        "english": "Behavioral",
+        "uzbek": "Xulq-atvorga oid"
+      },
+      {
+        "no": 52,
+        "english": "Beneficial",
+        "uzbek": "Foydali"
+      },
+      {
+        "no": 53,
+        "english": "Bimodal",
+        "uzbek": "Bimodal (ikki cho‘qqili)"
+      },
+      {
+        "no": 54,
+        "english": "Binary",
+        "uzbek": "Ikkilik tizim"
+      },
+      {
+        "no": 55,
+        "english": "Biological",
+        "uzbek": "Biologik"
+      },
+      {
+        "no": 56,
+        "english": "Boundary",
+        "uzbek": "Chegara"
+      },
+      {
+        "no": 57,
+        "english": "Calculable",
+        "uzbek": "Hisoblab bo'ladigan"
+      },
+      {
+        "no": 58,
+        "english": "Canonical",
+        "uzbek": "Kanonik / Qat'iy namunali"
+      },
+      {
+        "no": 59,
+        "english": "Capable",
+        "uzbek": "Qobiliyatli"
+      },
+      {
+        "no": 60,
+        "english": "Categorical",
+        "uzbek": "Qat'iy / Kategorik"
+      },
+      {
+        "no": 61,
+        "english": "Causal",
+        "uzbek": "Sababiy"
+      },
+      {
+        "no": 62,
+        "english": "Central",
+        "uzbek": "Markaziy"
+      },
+      {
+        "no": 63,
+        "english": "Chemical",
+        "uzbek": "Kimyoviy"
+      },
+      {
+        "no": 64,
+        "english": "Classic",
+        "uzbek": "Tasniflamoq (ba'zan sifat)"
+      },
+      {
+        "no": 65,
+        "english": "Classical",
+        "uzbek": "Klassik / An'anaviy"
+      },
+      {
+        "no": 66,
+        "english": "Clinical",
+        "uzbek": "Klinik"
+      },
+      {
+        "no": 67,
+        "english": "Coefficient",
+        "uzbek": "Koeffitsient"
+      },
+      {
+        "no": 68,
+        "english": "Cognitive",
+        "uzbek": "Bilishga oid"
+      },
+      {
+        "no": 69,
+        "english": "Coherent",
+        "uzbek": "Mantiqiy / Bog'liq"
+      },
+      {
+        "no": 70,
+        "english": "Collaborative",
+        "uzbek": "Hamkorlikdagi"
+      },
+      {
+        "no": 71,
+        "english": "Collective",
+        "uzbek": "Jamoaviy"
+      },
+      {
+        "no": 72,
+        "english": "Comparable",
+        "uzbek": "Taqqoslanadigan"
+      },
+      {
+        "no": 73,
+        "english": "Comparative",
+        "uzbek": "Qiyosiy"
+      },
+      {
+        "no": 74,
+        "english": "Compatible",
+        "uzbek": "Mos keluvchi"
+      },
+      {
+        "no": 75,
+        "english": "Competitive",
+        "uzbek": "Raqobatbardosh"
+      },
+      {
+        "no": 76,
+        "english": "Component",
+        "uzbek": "Tarkibiy qism"
+      },
+      {
+        "no": 77,
+        "english": "Comprehensive",
+        "uzbek": "Har tomonlama / To‘liq"
+      },
+      {
+        "no": 78,
+        "english": "Computational",
+        "uzbek": "Hisoblashga oid"
+      },
+      {
+        "no": 79,
+        "english": "Concurrent",
+        "uzbek": "Bir vaqtda sodir bo‘luvchi"
+      },
+      {
+        "no": 80,
+        "english": "Conditional",
+        "uzbek": "Shartli"
+      },
+      {
+        "no": 81,
+        "english": "Confidential",
+        "uzbek": "Maxfiy"
+      },
+      {
+        "no": 82,
+        "english": "Configurable",
+        "uzbek": "Sozlanadigan"
+      },
+      {
+        "no": 83,
+        "english": "Consecutive",
+        "uzbek": "Ketma-ket keluvchi"
+      },
+      {
+        "no": 84,
+        "english": "Consequent",
+        "uzbek": "Natijaviy"
+      },
+      {
+        "no": 85,
+        "english": "Conservative",
+        "uzbek": "Konservativ / Ehtiyotkor"
+      },
+      {
+        "no": 86,
+        "english": "Considerable",
+        "uzbek": "Sezirarli"
+      },
+      {
+        "no": 87,
+        "english": "Consistent",
+        "uzbek": "Izchil / Doimiy"
+      },
+      {
+        "no": 88,
+        "english": "Consistent",
+        "uzbek": "Izchil"
+      },
+      {
+        "no": 89,
+        "english": "Constant",
+        "uzbek": "O‘zgarmas / Doimiy"
+      },
+      {
+        "no": 90,
+        "english": "Constitutional",
+        "uzbek": "Tuzilmaviy / Qonuniy"
+      },
+      {
+        "no": 91,
+        "english": "Constructive",
+        "uzbek": "Konstruktiv / Foydali"
+      },
+      {
+        "no": 92,
+        "english": "Consultant",
+        "uzbek": "Maslahatchi"
+      },
+      {
+        "no": 93,
+        "english": "Contemporary",
+        "uzbek": "Zamonaviy"
+      },
+      {
+        "no": 94,
+        "english": "Contextual",
+        "uzbek": "Kontekstga oid"
+      },
+      {
+        "no": 95,
+        "english": "Contiguous",
+        "uzbek": "Tutash / Qo‘shni"
+      },
+      {
+        "no": 96,
+        "english": "Continuous",
+        "uzbek": "Uzluksiz"
+      },
+      {
+        "no": 97,
+        "english": "Contrary",
+        "uzbek": "Teskari / Qarama-qarshi"
+      },
+      {
+        "no": 98,
+        "english": "Controllable",
+        "uzbek": "Boshqariladigan"
+      },
+      {
+        "no": 99,
+        "english": "Conventional",
+        "uzbek": "An’anaviy / Odatiy"
+      },
+      {
+        "no": 100,
+        "english": "Convergent",
+        "uzbek": "Yaqinlashuvchi"
+      },
+      {
+        "no": 101,
+        "english": "Convolutional",
+        "uzbek": "Konvolyutsion (neyrotarmoq turi)"
+      },
+      {
+        "no": 102,
+        "english": "Cooperative",
+        "uzbek": "Hamkorlikdagi"
+      },
+      {
+        "no": 103,
+        "english": "Correlative",
+        "uzbek": "O‘zaro bog‘liq"
+      },
+      {
+        "no": 104,
+        "english": "Countable",
+        "uzbek": "Sanaladigan"
+      },
+      {
+        "no": 105,
+        "english": "Creative",
+        "uzbek": "Ijodiy"
+      },
+      {
+        "no": 106,
+        "english": "Credible",
+        "uzbek": "Ishonchli"
+      },
+      {
+        "no": 107,
+        "english": "Critical",
+        "uzbek": "Tanqidiy / Muhim"
+      },
+      {
+        "no": 108,
+        "english": "Crucial",
+        "uzbek": "O‘ta muhim"
+      },
+      {
+        "no": 109,
+        "english": "Cryptographic",
+        "uzbek": "Kriptografik"
+      },
+      {
+        "no": 110,
+        "english": "Cultural",
+        "uzbek": "Madaniy"
+      },
+      {
+        "no": 111,
+        "english": "Cumulative",
+        "uzbek": "To‘planib boruvchi"
+      },
+      {
+        "no": 112,
+        "english": "Current",
+        "uzbek": "Joriy"
+      },
+      {
+        "no": 113,
+        "english": "Current",
+        "uzbek": "Hozirgi"
+      },
+      {
+        "no": 114,
+        "english": "Cyclic",
+        "uzbek": "Davriy"
+      },
+      {
+        "no": 115,
+        "english": "Dangerous",
+        "uzbek": "Xavfli"
+      },
+      {
+        "no": 116,
+        "english": "Decimal",
+        "uzbek": "O‘nlik (sanoq tizimi)"
+      },
+      {
+        "no": 117,
+        "english": "Decisive",
+        "uzbek": "Hal qiluvchi"
+      },
+      {
+        "no": 118,
+        "english": "Defective",
+        "uzbek": "Nuqsonli"
+      },
+      {
+        "no": 119,
+        "english": "Definitive",
+        "uzbek": "Yakuniy / Aniq"
+      },
+      {
+        "no": 120,
+        "english": "Department",
+        "uzbek": "Bo'lim / Fakultet"
+      },
+      {
+        "no": 121,
+        "english": "Dependent",
+        "uzbek": "Bog‘liq / Qaram"
+      },
+      {
+        "no": 122,
+        "english": "Descriptive",
+        "uzbek": "Tasviriy"
+      },
+      {
+        "no": 123,
+        "english": "Determinant",
+        "uzbek": "Determinant / Belovchi omil"
+      },
+      {
+        "no": 124,
+        "english": "Deterministic",
+        "uzbek": "Deterministik / Aniq belgilangan"
+      },
+      {
+        "no": 125,
+        "english": "Development",
+        "uzbek": "Rivojlanish"
+      },
+      {
+        "no": 126,
+        "english": "Diagnostic",
+        "uzbek": "Diagnostik"
+      },
+      {
+        "no": 127,
+        "english": "Diagonal",
+        "uzbek": "Diagonal"
+      },
+      {
+        "no": 128,
+        "english": "Dictionary",
+        "uzbek": "Lug‘at"
+      },
+      {
+        "no": 129,
+        "english": "Differentiable",
+        "uzbek": "Differensiallanuvchi"
+      },
+      {
+        "no": 130,
+        "english": "Digital",
+        "uzbek": "Raqamli"
+      },
+      {
+        "no": 131,
+        "english": "Diligent",
+        "uzbek": "Tirishqoq"
+      },
+      {
+        "no": 132,
+        "english": "Dimensional",
+        "uzbek": "O‘lchamli"
+      },
+      {
+        "no": 133,
+        "english": "Discriminant",
+        "uzbek": "Diskriminant"
+      },
+      {
+        "no": 134,
+        "english": "Discriminative",
+        "uzbek": "Diskriminativ / Farqlovchi"
+      },
+      {
+        "no": 135,
+        "english": "Distant",
+        "uzbek": "Olis / Uzoq"
+      },
+      {
+        "no": 136,
+        "english": "Distributive",
+        "uzbek": "Taqsimlovchi"
+      },
+      {
+        "no": 137,
+        "english": "Domestic",
+        "uzbek": "Ichki / Maishiy"
+      },
+      {
+        "no": 138,
+        "english": "Dominant",
+        "uzbek": "Ustunlik qiluvchi"
+      },
+      {
+        "no": 139,
+        "english": "Drastic",
+        "uzbek": "Keskin"
+      },
+      {
+        "no": 140,
+        "english": "Dual",
+        "uzbek": "Dual / Ikki tomonlama"
+      },
+      {
+        "no": 141,
+        "english": "Dynamic",
+        "uzbek": "Dinamik"
+      },
+      {
+        "no": 142,
+        "english": "Economic",
+        "uzbek": "Iqtisodiyot (soha sifatida)"
+      },
+      {
+        "no": 143,
+        "english": "Educational",
+        "uzbek": "Ta'limiy"
+      },
+      {
+        "no": 144,
+        "english": "Effective",
+        "uzbek": "Samarali"
+      },
+      {
+        "no": 145,
+        "english": "Efficient",
+        "uzbek": "Samarali"
+      },
+      {
+        "no": 146,
+        "english": "Elastic",
+        "uzbek": "Elastik / Egiluvchan"
+      },
+      {
+        "no": 147,
+        "english": "Electric",
+        "uzbek": "Elektrga oid"
+      },
+      {
+        "no": 148,
+        "english": "Electronic",
+        "uzbek": "Elektron"
+      },
+      {
+        "no": 149,
+        "english": "Elegant",
+        "uzbek": "Nafis / Mukammal"
+      },
+      {
+        "no": 150,
+        "english": "Element",
+        "uzbek": "Element"
+      },
+      {
+        "no": 151,
+        "english": "Element",
+        "uzbek": "Element / Bo'lak"
+      },
+      {
+        "no": 152,
+        "english": "Elementary",
+        "uzbek": "Boshlang'ich"
+      },
+      {
+        "no": 153,
+        "english": "Eligible",
+        "uzbek": "Munosib / Huquqli"
+      },
+      {
+        "no": 154,
+        "english": "Emergent",
+        "uzbek": "Kutilmaganda paydo bo'ladigan"
+      },
+      {
+        "no": 155,
+        "english": "Empirical",
+        "uzbek": "Tajribaviy / Empirik"
+      },
+      {
+        "no": 156,
+        "english": "Environment",
+        "uzbek": "Atrof-muhit"
+      },
+      {
+        "no": 157,
+        "english": "Equivalent",
+        "uzbek": "Teng kuchli / Ekvivalent"
+      },
+      {
+        "no": 158,
+        "english": "Equivocal",
+        "uzbek": "Ikki ma'noli"
+      },
+      {
+        "no": 159,
+        "english": "Essential",
+        "uzbek": "Muhim / Zarur"
+      },
+      {
+        "no": 160,
+        "english": "Establishment",
+        "uzbek": "Muassasa / O'rnatish"
+      },
+      {
+        "no": 161,
+        "english": "Evolutionary",
+        "uzbek": "Evolyutsion"
+      },
+      {
+        "no": 162,
+        "english": "Experiment",
+        "uzbek": "Tajriba"
+      },
+      {
+        "no": 163,
+        "english": "External",
+        "uzbek": "Tashqi"
+      },
+      {
+        "no": 164,
+        "english": "Final",
+        "uzbek": "Yakuniy imtihon"
+      },
+      {
+        "no": 165,
+        "english": "Fundamental",
+        "uzbek": "Asosiy"
+      },
+      {
+        "no": 166,
+        "english": "General",
+        "uzbek": "Umumiy"
+      },
+      {
+        "no": 167,
+        "english": "Global",
+        "uzbek": "Global / Umumjahon"
+      },
+      {
+        "no": 168,
+        "english": "Goal",
+        "uzbek": "Maqsad"
+      },
+      {
+        "no": 169,
+        "english": "Heuristic",
+        "uzbek": "Evristik"
+      },
+      {
+        "no": 170,
+        "english": "Hierarchical",
+        "uzbek": "Ierarxik / Bo'ysunuvchi"
+      },
+      {
+        "no": 171,
+        "english": "In summary",
+        "uzbek": "Xulosa qilib aytganda"
+      },
+      {
+        "no": 172,
+        "english": "Incremental",
+        "uzbek": "O'sib boruvchi"
+      },
+      {
+        "no": 173,
+        "english": "Individual",
+        "uzbek": "Shaxs / Individ"
+      },
+      {
+        "no": 174,
+        "english": "Inherent",
+        "uzbek": "Xos / Ichki"
+      },
+      {
+        "no": 175,
+        "english": "Initial",
+        "uzbek": "Dastlabki"
+      },
+      {
+        "no": 176,
+        "english": "Internal",
+        "uzbek": "Ichki"
+      },
+      {
+        "no": 177,
+        "english": "Investment",
+        "uzbek": "Investitsiya / Sarmoya"
+      },
+      {
+        "no": 178,
+        "english": "Journal",
+        "uzbek": "Jurnal / Kundalik"
+      },
+      {
+        "no": 179,
+        "english": "Judgment",
+        "uzbek": "Hukm / Mulohaza"
+      },
+      {
+        "no": 180,
+        "english": "Latent",
+        "uzbek": "Yashirin"
+      },
+      {
+        "no": 181,
+        "english": "Legal",
+        "uzbek": "Qonuniy"
+      },
+      {
+        "no": 182,
+        "english": "Liberal",
+        "uzbek": "Liberal"
+      },
+      {
+        "no": 183,
+        "english": "Logical",
+        "uzbek": "Mantiqiy"
+      },
+      {
+        "no": 184,
+        "english": "Management",
+        "uzbek": "Boshqaruv"
+      },
+      {
+        "no": 185,
+        "english": "Mental",
+        "uzbek": "Ruhiy / Aqliy (holat)"
+      },
+      {
+        "no": 186,
+        "english": "Military",
+        "uzbek": "Harbiy"
+      },
+      {
+        "no": 187,
+        "english": "Minimal",
+        "uzbek": "Minimal / Eng kam"
+      },
+      {
+        "no": 188,
+        "english": "Mutual",
+        "uzbek": "O'zaro"
+      },
+      {
+        "no": 189,
+        "english": "Negative",
+        "uzbek": "Salbiy"
+      },
+      {
+        "no": 190,
+        "english": "Neural",
+        "uzbek": "Neyronli / Neyronga oid"
+      },
+      {
+        "no": 191,
+        "english": "Neutral",
+        "uzbek": "Betaraf"
+      },
+      {
+        "no": 192,
+        "english": "Nevertheless",
+        "uzbek": "Shunga qaramay"
+      },
+      {
+        "no": 193,
+        "english": "Nonetheless",
+        "uzbek": "Shunga qaramay"
+      },
+      {
+        "no": 194,
+        "english": "Normal",
+        "uzbek": "Oddiy / Me'yoriy"
+      },
+      {
+        "no": 195,
+        "english": "Numerous",
+        "uzbek": "Ko'p sonli"
+      },
+      {
+        "no": 196,
+        "english": "Objective",
+        "uzbek": "Maqsad / Ob'ekt"
+      },
+      {
+        "no": 197,
+        "english": "Obvious",
+        "uzbek": "Aniq / Ravshan"
+      },
+      {
+        "no": 198,
+        "english": "Official",
+        "uzbek": "Rasmiy"
+      },
+      {
+        "no": 199,
+        "english": "Optimal",
+        "uzbek": "Maqbul / Optimal"
+      },
+      {
+        "no": 200,
+        "english": "Ordinary",
+        "uzbek": "Oddiy"
+      },
+      {
+        "no": 201,
+        "english": "Original",
+        "uzbek": "Asl / Dastlabki"
+      },
+      {
+        "no": 202,
+        "english": "Participant",
+        "uzbek": "Qatnashchi"
+      },
+      {
+        "no": 203,
+        "english": "Passive",
+        "uzbek": "Sust / Passiv"
+      },
+      {
+        "no": 204,
+        "english": "Percent",
+        "uzbek": "Foiz"
+      },
+      {
+        "no": 205,
+        "english": "Perspective",
+        "uzbek": "Nuqtai nazar / Istiqbol"
+      },
+      {
+        "no": 206,
+        "english": "Physical",
+        "uzbek": "Jismoniy"
+      },
+      {
+        "no": 207,
+        "english": "Potential",
+        "uzbek": "Salohiyat"
+      },
+      {
+        "no": 208,
+        "english": "Practical",
+        "uzbek": "Amaliy"
+      },
+      {
+        "no": 209,
+        "english": "Predictable",
+        "uzbek": "Bashorat qilib bo'ladigan"
+      },
+      {
+        "no": 210,
+        "english": "Preliminary",
+        "uzbek": "Dastlabki"
+      },
+      {
+        "no": 211,
+        "english": "Primary",
+        "uzbek": "Birlamchi"
+      },
+      {
+        "no": 212,
+        "english": "Principal",
+        "uzbek": "Asosiy"
+      },
+      {
+        "no": 213,
+        "english": "Probabilistic",
+        "uzbek": "Ehtimolli"
+      },
+      {
+        "no": 214,
+        "english": "Productive",
+        "uzbek": "Sermahsul"
+      },
+      {
+        "no": 215,
+        "english": "Professional",
+        "uzbek": "Professional / Kasbiy"
+      },
+      {
+        "no": 216,
+        "english": "Progressive",
+        "uzbek": "Rivojlanib borayotgan"
+      },
+      {
+        "no": 217,
+        "english": "Prominent",
+        "uzbek": "Taniqli / Ko'zga ko'ringan"
+      },
+      {
+        "no": 218,
+        "english": "Proposal",
+        "uzbek": "Taklif"
+      },
+      {
+        "no": 219,
+        "english": "Psychological",
+        "uzbek": "Psixologik"
+      },
+      {
+        "no": 220,
+        "english": "Radical",
+        "uzbek": "Keskin / Radikal"
+      },
+      {
+        "no": 221,
+        "english": "Rational",
+        "uzbek": "Oqilona"
+      },
+      {
+        "no": 222,
+        "english": "Realistic",
+        "uzbek": "Haqiqatga yaqin"
+      },
+      {
+        "no": 223,
+        "english": "Recursive",
+        "uzbek": "Rekursiv"
+      },
+      {
+        "no": 224,
+        "english": "Relevant",
+        "uzbek": "Aloqador / Muhim"
+      },
+      {
+        "no": 225,
+        "english": "Relevant",
+        "uzbek": "Aloqador"
+      },
+      {
+        "no": 226,
+        "english": "Reliable",
+        "uzbek": "Ishonchli"
+      },
+      {
+        "no": 227,
+        "english": "Representative",
+        "uzbek": "Vakillik qiluvchi"
+      },
+      {
+        "no": 228,
+        "english": "Requirement",
+        "uzbek": "Talab"
+      },
+      {
+        "no": 229,
+        "english": "Scientific",
+        "uzbek": "Ilmiy"
+      },
+      {
+        "no": 230,
+        "english": "Secondary",
+        "uzbek": "Ikkilamchi"
+      },
+      {
+        "no": 231,
+        "english": "Sensitive",
+        "uzbek": "Ta'sirchan / Nozik"
+      },
+      {
+        "no": 232,
+        "english": "Several",
+        "uzbek": "Bir qancha"
+      },
+      {
+        "no": 233,
+        "english": "Signal",
+        "uzbek": "Signal / Belgi"
+      },
+      {
+        "no": 234,
+        "english": "Significant",
+        "uzbek": "Sezirarli / Muhim"
+      },
+      {
+        "no": 235,
+        "english": "Specific",
+        "uzbek": "Maxsus"
+      },
+      {
+        "no": 236,
+        "english": "Stable",
+        "uzbek": "Barqaror"
+      },
+      {
+        "no": 237,
+        "english": "Statistical",
+        "uzbek": "Statistik"
+      },
+      {
+        "no": 238,
+        "english": "Stochastic",
+        "uzbek": "Tasodifiy / Stoxastik"
+      },
+      {
+        "no": 239,
+        "english": "Structural",
+        "uzbek": "Tarkibiy / Strukturali"
+      },
+      {
+        "no": 240,
+        "english": "Subjective",
+        "uzbek": "Sub'ektiv"
+      },
+      {
+        "no": 241,
+        "english": "Subsequent",
+        "uzbek": "Keyingi"
+      },
+      {
+        "no": 242,
+        "english": "Substantial",
+        "uzbek": "Muhim / Katta hajmli"
+      },
+      {
+        "no": 243,
+        "english": "Sufficient",
+        "uzbek": "Yetarli"
+      },
+      {
+        "no": 244,
+        "english": "Suitable",
+        "uzbek": "Mos / Muvofiq"
+      },
+      {
+        "no": 245,
+        "english": "Summary",
+        "uzbek": "Xulosa / Qisqacha mazmun"
+      },
+      {
+        "no": 246,
+        "english": "Sustainable",
+        "uzbek": "Barqaror (ekologik/iqtisodiy)"
+      },
+      {
+        "no": 247,
+        "english": "Symbolic",
+        "uzbek": "Ramziy"
+      },
+      {
+        "no": 248,
+        "english": "Systematic",
+        "uzbek": "Tizimli"
+      },
+      {
+        "no": 249,
+        "english": "Technical",
+        "uzbek": "Texnik"
+      },
+      {
+        "no": 250,
+        "english": "Temporary",
+        "uzbek": "Vaqtincha"
+      },
+      {
+        "no": 251,
+        "english": "Theoretical",
+        "uzbek": "Nazariy"
+      },
+      {
+        "no": 252,
+        "english": "Topic",
+        "uzbek": "Mavzu"
+      },
+      {
+        "no": 253,
+        "english": "Traditional",
+        "uzbek": "An'anaviy"
+      },
+      {
+        "no": 254,
+        "english": "Transferable",
+        "uzbek": "O'tkazsa bo'ladigan"
+      },
+      {
+        "no": 255,
+        "english": "Trial",
+        "uzbek": "Sinov"
+      },
+      {
+        "no": 256,
+        "english": "Typical",
+        "uzbek": "Odatiy / Xos"
+      },
+      {
+        "no": 257,
+        "english": "Universal",
+        "uzbek": "Umumjahon / Universal"
+      },
+      {
+        "no": 258,
+        "english": "Urgent",
+        "uzbek": "Shoshilinch"
+      },
+      {
+        "no": 259,
+        "english": "Variable",
+        "uzbek": "O'zgaruvchi"
+      },
+      {
+        "no": 260,
+        "english": "Virtual",
+        "uzbek": "Virtual"
+      },
+      {
+        "no": 261,
+        "english": "Visible",
+        "uzbek": "Ko'rinadigan"
+      },
+      {
+        "no": 262,
+        "english": "Visual",
+        "uzbek": "Vizual / Ko'ruvga oid"
+      }
+    ],
+    "ADVERBS (RAVISHLAR)": [
+      {
+        "no": 1,
+        "english": "Abruptly",
+        "uzbek": "To‘satdan"
+      },
+      {
+        "no": 2,
+        "english": "Absolutely",
+        "uzbek": "Mutlaqo"
+      },
+      {
+        "no": 3,
+        "english": "Abstractly",
+        "uzbek": "Mavhum tarzda"
+      },
+      {
+        "no": 4,
+        "english": "Accordingly",
+        "uzbek": "Shunga muvofiq (Ravish)"
+      },
+      {
+        "no": 5,
+        "english": "Accurately",
+        "uzbek": "Aniq qilib"
+      },
+      {
+        "no": 6,
+        "english": "Actively",
+        "uzbek": "Faol tarzda"
+      },
+      {
+        "no": 7,
+        "english": "Actually",
+        "uzbek": "Haqiqatda"
+      },
+      {
+        "no": 8,
+        "english": "Actually",
+        "uzbek": "Aslida"
+      },
+      {
+        "no": 9,
+        "english": "Adaptively",
+        "uzbek": "Moslashuvchan holda"
+      },
+      {
+        "no": 10,
+        "english": "Additionally",
+        "uzbek": "Bundan tashqari"
+      },
+      {
+        "no": 11,
+        "english": "Adequately",
+        "uzbek": "Yetarli darajada"
+      },
+      {
+        "no": 12,
+        "english": "Admittedly",
+        "uzbek": "To‘g‘risini aytganda (Ravish)"
+      },
+      {
+        "no": 13,
+        "english": "Adversely",
+        "uzbek": "Salbiy tarzda"
+      },
+      {
+        "no": 14,
+        "english": "Algorithmically",
+        "uzbek": "Algoritmik ravishda"
+      },
+      {
+        "no": 15,
+        "english": "Alternately",
+        "uzbek": "Navbati bilan"
+      },
+      {
+        "no": 16,
+        "english": "Alternatively",
+        "uzbek": "Muqobil ravishda"
+      },
+      {
+        "no": 17,
+        "english": "Anomaly",
+        "uzbek": "Anomaliya / Chetlanish"
+      },
+      {
+        "no": 18,
+        "english": "Anually",
+        "uzbek": "Yillik tarzda"
+      },
+      {
+        "no": 19,
+        "english": "Apply",
+        "uzbek": "Qo‘llamoq"
+      },
+      {
+        "no": 20,
+        "english": "Apply",
+        "uzbek": "Qo'llamoq / Ariza topshirmoq"
+      },
+      {
+        "no": 21,
+        "english": "Approximately",
+        "uzbek": "Taxminan"
+      },
+      {
+        "no": 22,
+        "english": "Assembly",
+        "uzbek": "Yig‘ilish / Majmua"
+      },
+      {
+        "no": 23,
+        "english": "Automatically",
+        "uzbek": "Avtomatik ravishda"
+      },
+      {
+        "no": 24,
+        "english": "Automatically",
+        "uzbek": "Avtomatik ravishda (Ravish)"
+      },
+      {
+        "no": 25,
+        "english": "Barely",
+        "uzbek": "Zo‘rg‘a / Arang"
+      },
+      {
+        "no": 26,
+        "english": "Basically",
+        "uzbek": "Asosan"
+      },
+      {
+        "no": 27,
+        "english": "Briefly",
+        "uzbek": "Qisqacha"
+      },
+      {
+        "no": 28,
+        "english": "Broadly",
+        "uzbek": "Keng ma'noda"
+      },
+      {
+        "no": 29,
+        "english": "Carefully",
+        "uzbek": "Ehtiyotkorlik bilan"
+      },
+      {
+        "no": 30,
+        "english": "Categorically",
+        "uzbek": "Qat'iyan"
+      },
+      {
+        "no": 31,
+        "english": "Centrally",
+        "uzbek": "Markaziy ravishda"
+      },
+      {
+        "no": 32,
+        "english": "Certainly",
+        "uzbek": "Albatta / Shubhasiz"
+      },
+      {
+        "no": 33,
+        "english": "Clearly",
+        "uzbek": "Aniq / Ravshan"
+      },
+      {
+        "no": 34,
+        "english": "Closely",
+        "uzbek": "Yaqindan / Diqqat bilan"
+      },
+      {
+        "no": 35,
+        "english": "Commonly",
+        "uzbek": "Odatda"
+      },
+      {
+        "no": 36,
+        "english": "Comparatively",
+        "uzbek": "Nisbatan / Qiyoslaganda"
+      },
+      {
+        "no": 37,
+        "english": "Completely",
+        "uzbek": "To'liq holda"
+      },
+      {
+        "no": 38,
+        "english": "Completely",
+        "uzbek": "To'liq"
+      },
+      {
+        "no": 39,
+        "english": "Comply",
+        "uzbek": "Amal qilmoq / Bo'ysunmoq"
+      },
+      {
+        "no": 40,
+        "english": "Computationally",
+        "uzbek": "Hisoblash jihatidan"
+      },
+      {
+        "no": 41,
+        "english": "Concurrently",
+        "uzbek": "Bir vaqtning o'zida"
+      },
+      {
+        "no": 42,
+        "english": "Consciously",
+        "uzbek": "Ongli ravishda"
+      },
+      {
+        "no": 43,
+        "english": "Consequently",
+        "uzbek": "Natijada"
+      },
+      {
+        "no": 44,
+        "english": "Consistently",
+        "uzbek": "Izchil ravishda"
+      },
+      {
+        "no": 45,
+        "english": "Constantly",
+        "uzbek": "Doimiy ravishda"
+      },
+      {
+        "no": 46,
+        "english": "Continually",
+        "uzbek": "To‘xtovsiz"
+      },
+      {
+        "no": 47,
+        "english": "Continuously",
+        "uzbek": "Uzluksiz ravishda"
+      },
+      {
+        "no": 48,
+        "english": "Conversely",
+        "uzbek": "Aksincha"
+      },
+      {
+        "no": 49,
+        "english": "Correctly",
+        "uzbek": "To'g'ri ravishda"
+      },
+      {
+        "no": 50,
+        "english": "Correspondingly",
+        "uzbek": "Shunga muvofiq"
+      },
+      {
+        "no": 51,
+        "english": "Costly",
+        "uzbek": "Qimmat"
+      },
+      {
+        "no": 52,
+        "english": "Critically",
+        "uzbek": "Tanqidiy ravishda / Jiddiy"
+      },
+      {
+        "no": 53,
+        "english": "Currently",
+        "uzbek": "Hozirda"
+      },
+      {
+        "no": 54,
+        "english": "Daily",
+        "uzbek": "Kundalik"
+      },
+      {
+        "no": 55,
+        "english": "Deeply",
+        "uzbek": "Chuqur"
+      },
+      {
+        "no": 56,
+        "english": "Definitely",
+        "uzbek": "Albatta / Aniq"
+      },
+      {
+        "no": 57,
+        "english": "Deliberately",
+        "uzbek": "Ataylab"
+      },
+      {
+        "no": 58,
+        "english": "Densely",
+        "uzbek": "Zich ravishda"
+      },
+      {
+        "no": 59,
+        "english": "Desperately",
+        "uzbek": "Umidsizlarcha"
+      },
+      {
+        "no": 60,
+        "english": "Differently",
+        "uzbek": "Boshqacha tarzda"
+      },
+      {
+        "no": 61,
+        "english": "Directly",
+        "uzbek": "To‘g‘ridan-to‘g‘ri"
+      },
+      {
+        "no": 62,
+        "english": "Directly",
+        "uzbek": "To'g'ridan-to'g'ri"
+      },
+      {
+        "no": 63,
+        "english": "Disorderly",
+        "uzbek": "Tartibsiz"
+      },
+      {
+        "no": 64,
+        "english": "Distinctly",
+        "uzbek": "Aniq-ravshan"
+      },
+      {
+        "no": 65,
+        "english": "Doubly",
+        "uzbek": "Ikki barobar"
+      },
+      {
+        "no": 66,
+        "english": "Dramatically",
+        "uzbek": "Keskin ravishda"
+      },
+      {
+        "no": 67,
+        "english": "Drastically",
+        "uzbek": "Keskin ravishda"
+      },
+      {
+        "no": 68,
+        "english": "Duly",
+        "uzbek": "Kerakli darajada / To‘g‘ri ravishda"
+      },
+      {
+        "no": 69,
+        "english": "Eagerly",
+        "uzbek": "Ishtiyoq bilan"
+      },
+      {
+        "no": 70,
+        "english": "Early",
+        "uzbek": "Erta"
+      },
+      {
+        "no": 71,
+        "english": "Easily",
+        "uzbek": "Osonlikcha"
+      },
+      {
+        "no": 72,
+        "english": "Easily",
+        "uzbek": "Osonlik bilan"
+      },
+      {
+        "no": 73,
+        "english": "Effectively",
+        "uzbek": "Samarali ravishda"
+      },
+      {
+        "no": 74,
+        "english": "Effectively",
+        "uzbek": "Samarali tarzda"
+      },
+      {
+        "no": 75,
+        "english": "Efficiently",
+        "uzbek": "Samarali tarzda"
+      },
+      {
+        "no": 76,
+        "english": "Elderly",
+        "uzbek": "Yoshi ulug'"
+      },
+      {
+        "no": 77,
+        "english": "Empirically",
+        "uzbek": "Tajriba yo'li bilan"
+      },
+      {
+        "no": 78,
+        "english": "Entirely",
+        "uzbek": "Butunlay"
+      },
+      {
+        "no": 79,
+        "english": "Equally",
+        "uzbek": "Teng ravishda"
+      },
+      {
+        "no": 80,
+        "english": "Especially",
+        "uzbek": "Ayniqsa"
+      },
+      {
+        "no": 81,
+        "english": "Essentially",
+        "uzbek": "Mohiyatan"
+      },
+      {
+        "no": 82,
+        "english": "Evenly",
+        "uzbek": "Tekis ravishda"
+      },
+      {
+        "no": 83,
+        "english": "Eventually",
+        "uzbek": "Oxir-oqibat"
+      },
+      {
+        "no": 84,
+        "english": "Exactly",
+        "uzbek": "Aynan / Aniq"
+      },
+      {
+        "no": 85,
+        "english": "Exclusively",
+        "uzbek": "Faqatgina"
+      },
+      {
+        "no": 86,
+        "english": "Explicitly",
+        "uzbek": "Aniq qilib"
+      },
+      {
+        "no": 87,
+        "english": "Extremely",
+        "uzbek": "O'ta darajada"
+      },
+      {
+        "no": 88,
+        "english": "Fairly",
+        "uzbek": "Adolatli / Ancha"
+      },
+      {
+        "no": 89,
+        "english": "Finally",
+        "uzbek": "Nihoyat"
+      },
+      {
+        "no": 90,
+        "english": "Frequently",
+        "uzbek": "Tez-tez"
+      },
+      {
+        "no": 91,
+        "english": "Generally",
+        "uzbek": "Odatda / Umuman"
+      },
+      {
+        "no": 92,
+        "english": "Greatly",
+        "uzbek": "Juda ham"
+      },
+      {
+        "no": 93,
+        "english": "Hardly",
+        "uzbek": "Zo'rg'a"
+      },
+      {
+        "no": 94,
+        "english": "Highly",
+        "uzbek": "Yuqori darajada"
+      },
+      {
+        "no": 95,
+        "english": "Immediately",
+        "uzbek": "Darhol"
+      },
+      {
+        "no": 96,
+        "english": "Implicitly",
+        "uzbek": "Bilvosita"
+      },
+      {
+        "no": 97,
+        "english": "Implicitly",
+        "uzbek": "Bilvosita / Yashirin tarzda"
+      },
+      {
+        "no": 98,
+        "english": "Imply",
+        "uzbek": "Nazarda tutmoq"
+      },
+      {
+        "no": 99,
+        "english": "Iteratively",
+        "uzbek": "Takroriy ravishda"
+      },
+      {
+        "no": 100,
+        "english": "Locally",
+        "uzbek": "Mahalliy tarzda"
+      },
+      {
+        "no": 101,
+        "english": "Mainly",
+        "uzbek": "Asosan"
+      },
+      {
+        "no": 102,
+        "english": "Mostly",
+        "uzbek": "Asosan / Ko'pincha"
+      },
+      {
+        "no": 103,
+        "english": "Mutually",
+        "uzbek": "O'zaro"
+      },
+      {
+        "no": 104,
+        "english": "Namely",
+        "uzbek": "Ya'ni / Xususan"
+      },
+      {
+        "no": 105,
+        "english": "Naturally",
+        "uzbek": "Tabiiyki"
+      },
+      {
+        "no": 106,
+        "english": "Nearly",
+        "uzbek": "Deyarli"
+      },
+      {
+        "no": 107,
+        "english": "Necessarily",
+        "uzbek": "Zarurat yuzasidan"
+      },
+      {
+        "no": 108,
+        "english": "Newly",
+        "uzbek": "Yaqinda / Yangidan"
+      },
+      {
+        "no": 109,
+        "english": "Normally",
+        "uzbek": "Odatda"
+      },
+      {
+        "no": 110,
+        "english": "Particularly",
+        "uzbek": "Ayniqsa / Alohida"
+      },
+      {
+        "no": 111,
+        "english": "Perfectly",
+        "uzbek": "Mukammal tarzda"
+      },
+      {
+        "no": 112,
+        "english": "Personally",
+        "uzbek": "Shaxsan"
+      },
+      {
+        "no": 113,
+        "english": "Physically",
+        "uzbek": "Jismonan"
+      },
+      {
+        "no": 114,
+        "english": "Possibly",
+        "uzbek": "Ehtimol"
+      },
+      {
+        "no": 115,
+        "english": "Potentially",
+        "uzbek": "Potentsial ravishda"
+      },
+      {
+        "no": 116,
+        "english": "Precisely",
+        "uzbek": "Aniq / Lunda"
+      },
+      {
+        "no": 117,
+        "english": "Precisely",
+        "uzbek": "Aniq"
+      },
+      {
+        "no": 118,
+        "english": "Previously",
+        "uzbek": "Avvalroq"
+      },
+      {
+        "no": 119,
+        "english": "Primarily",
+        "uzbek": "Birinchi navbatda"
+      },
+      {
+        "no": 120,
+        "english": "Primarily",
+        "uzbek": "Asosan"
+      },
+      {
+        "no": 121,
+        "english": "Probably",
+        "uzbek": "Ehtimol / Balki"
+      },
+      {
+        "no": 122,
+        "english": "Properly",
+        "uzbek": "To'g'ri ravishda"
+      },
+      {
+        "no": 123,
+        "english": "Purely",
+        "uzbek": "Shunchaki / Sof"
+      },
+      {
+        "no": 124,
+        "english": "Rapidly",
+        "uzbek": "Tezgina"
+      },
+      {
+        "no": 125,
+        "english": "Rarely",
+        "uzbek": "Kamdan-kam"
+      },
+      {
+        "no": 126,
+        "english": "Readily",
+        "uzbek": "Osonlikcha / Tayyor holda"
+      },
+      {
+        "no": 127,
+        "english": "Recently",
+        "uzbek": "Yaqinda"
+      },
+      {
+        "no": 128,
+        "english": "Recursively",
+        "uzbek": "Rekursiv ravishda"
+      },
+      {
+        "no": 129,
+        "english": "Regularly",
+        "uzbek": "Muntazam ravishda"
+      },
+      {
+        "no": 130,
+        "english": "Relatively",
+        "uzbek": "Nisbatan"
+      },
+      {
+        "no": 131,
+        "english": "Rely",
+        "uzbek": "Tayanmoq / Ishonmoq"
+      },
+      {
+        "no": 132,
+        "english": "Roughly",
+        "uzbek": "Taxminan"
+      },
+      {
+        "no": 133,
+        "english": "Seriously",
+        "uzbek": "Jiddiy"
+      },
+      {
+        "no": 134,
+        "english": "Significantly",
+        "uzbek": "Sezirarli darajada"
+      },
+      {
+        "no": 135,
+        "english": "Similarly",
+        "uzbek": "Shunga o'xshash"
+      },
+      {
+        "no": 136,
+        "english": "Similarly",
+        "uzbek": "Shunga o'xshash tarzda"
+      },
+      {
+        "no": 137,
+        "english": "Simultaneously",
+        "uzbek": "Bir vaqtda"
+      },
+      {
+        "no": 138,
+        "english": "Slightly",
+        "uzbek": "Bir oz"
+      },
+      {
+        "no": 139,
+        "english": "Slowly",
+        "uzbek": "Sekin"
+      },
+      {
+        "no": 140,
+        "english": "Specifically",
+        "uzbek": "Xususan / Aniq qilib"
+      },
+      {
+        "no": 141,
+        "english": "Strictly",
+        "uzbek": "Qat'iy"
+      },
+      {
+        "no": 142,
+        "english": "Strongly",
+        "uzbek": "Kuchli tarzda"
+      },
+      {
+        "no": 143,
+        "english": "Successfully",
+        "uzbek": "Muvaffaqiyatli"
+      },
+      {
+        "no": 144,
+        "english": "Suddenly",
+        "uzbek": "To'satdan"
+      },
+      {
+        "no": 145,
+        "english": "Surely",
+        "uzbek": "Albatta"
+      },
+      {
+        "no": 146,
+        "english": "Technicaly",
+        "uzbek": "Texnik jihatdan"
+      },
+      {
+        "no": 147,
+        "english": "Temporarily",
+        "uzbek": "Vaqtincha"
+      },
+      {
+        "no": 148,
+        "english": "Terribly",
+        "uzbek": "Juda yomon"
+      },
+      {
+        "no": 149,
+        "english": "Thoroughly",
+        "uzbek": "To'liq / Sinchiklab"
+      },
+      {
+        "no": 150,
+        "english": "Totally",
+        "uzbek": "Butunlay"
+      },
+      {
+        "no": 151,
+        "english": "Truly",
+        "uzbek": "Haqiqatdan"
+      },
+      {
+        "no": 152,
+        "english": "Typically",
+        "uzbek": "Odatda / Xos tarzda"
+      },
+      {
+        "no": 153,
+        "english": "Ultimately",
+        "uzbek": "Oxir-oqibat"
+      },
+      {
+        "no": 154,
+        "english": "Undoubtedly",
+        "uzbek": "Shubhasiz"
+      },
+      {
+        "no": 155,
+        "english": "Unfortunately",
+        "uzbek": "Afsuski"
+      },
+      {
+        "no": 156,
+        "english": "Unlikely",
+        "uzbek": "Ehtimoldan yiroq"
+      },
+      {
+        "no": 157,
+        "english": "Unusually",
+        "uzbek": "G'ayritabiiy / Odatdan tashqari"
+      },
+      {
+        "no": 158,
+        "english": "Utterly",
+        "uzbek": "Mutlaqo / Butunlay"
+      },
+      {
+        "no": 159,
+        "english": "Vaguely",
+        "uzbek": "Noaniq / G'ira-shira"
+      },
+      {
+        "no": 160,
+        "english": "Vastly",
+        "uzbek": "Juda ham / Ulkan darajada"
+      },
+      {
+        "no": 161,
+        "english": "Virtually",
+        "uzbek": "Deyarli / Virtual tarzda"
+      },
+      {
+        "no": 162,
+        "english": "Visibly",
+        "uzbek": "Ko'rinib turibdiki"
+      },
+      {
+        "no": 163,
+        "english": "Wholly",
+        "uzbek": "Butunlay / To'liq"
+      },
+      {
+        "no": 164,
+        "english": "Widely",
+        "uzbek": "Keng miqyosda"
+      },
+      {
+        "no": 165,
+        "english": "Willingly",
+        "uzbek": "Bajonidil"
+      },
+      {
+        "no": 166,
+        "english": "Wisely",
+        "uzbek": "Oqilona"
+      },
+      {
+        "no": 167,
+        "english": "Yearly",
+        "uzbek": "Har yili"
+      }
+    ],
+    "PRONOUNS (OLMOSHLAR)": [
+      {
+        "no": 1,
+        "english": "Anyone",
+        "uzbek": "Kimdir / Har kim"
+      },
+      {
+        "no": 2,
+        "english": "Anyone",
+        "uzbek": "Kim bo'lishidan qat'i nazar"
+      },
+      {
+        "no": 3,
+        "english": "Everyone",
+        "uzbek": "Hamma"
+      },
+      {
+        "no": 4,
+        "english": "Everything",
+        "uzbek": "Hamma narsa"
+      },
+      {
+        "no": 5,
+        "english": "He",
+        "uzbek": "U (erkak)"
+      },
+      {
+        "no": 6,
+        "english": "Her",
+        "uzbek": "Uni / Uniki (ayol)"
+      },
+      {
+        "no": 7,
+        "english": "Him",
+        "uzbek": "Uni (erkak)"
+      },
+      {
+        "no": 8,
+        "english": "It",
+        "uzbek": "U (jonsiz)"
+      },
+      {
+        "no": 9,
+        "english": "Nothing",
+        "uzbek": "Hech narsa"
+      },
+      {
+        "no": 10,
+        "english": "She",
+        "uzbek": "U (ayol)"
+      },
+      {
+        "no": 11,
+        "english": "Someone",
+        "uzbek": "Kimdir"
+      },
+      {
+        "no": 12,
+        "english": "That",
+        "uzbek": "O'sha"
+      },
+      {
+        "no": 13,
+        "english": "Them",
+        "uzbek": "Ularni / Ularga"
+      },
+      {
+        "no": 14,
+        "english": "These",
+        "uzbek": "Bular"
+      },
+      {
+        "no": 15,
+        "english": "They",
+        "uzbek": "Ular"
+      },
+      {
+        "no": 16,
+        "english": "This",
+        "uzbek": "Bu"
+      },
+      {
+        "no": 17,
+        "english": "Those",
+        "uzbek": "Ana ular"
+      },
+      {
+        "no": 18,
+        "english": "Us",
+        "uzbek": "Bizni / Bizga"
+      },
+      {
+        "no": 19,
+        "english": "We",
+        "uzbek": "Biz"
+      },
+      {
+        "no": 20,
+        "english": "Which",
+        "uzbek": "Qaysi biri"
+      },
+      {
+        "no": 21,
+        "english": "You",
+        "uzbek": "Siz"
+      }
+    ],
+    "CONJUNCTIONS & PREPOSITIONS (BOG'LOVCHI / KO'MAKCHI)": [
+      {
+        "no": 1,
+        "english": "Although",
+        "uzbek": "Garchi"
+      },
+      {
+        "no": 2,
+        "english": "And",
+        "uzbek": "Va"
+      },
+      {
+        "no": 3,
+        "english": "Because",
+        "uzbek": "Chunki"
+      },
+      {
+        "no": 4,
+        "english": "But",
+        "uzbek": "Lekin / Ammo"
+      },
+      {
+        "no": 5,
+        "english": "Furthermore",
+        "uzbek": "Bundan tashqari (Bog‘lovchi)"
+      },
+      {
+        "no": 6,
+        "english": "Furthermore",
+        "uzbek": "Bundan tashqari"
+      },
+      {
+        "no": 7,
+        "english": "However",
+        "uzbek": "Biroq / Lekin"
+      },
+      {
+        "no": 8,
+        "english": "If",
+        "uzbek": "Agar"
+      },
+      {
+        "no": 9,
+        "english": "Moreover",
+        "uzbek": "Bundan tashqari"
+      },
+      {
+        "no": 10,
+        "english": "Or",
+        "uzbek": "Yoki"
+      },
+      {
+        "no": 11,
+        "english": "Since",
+        "uzbek": "Beri / Chunki"
+      },
+      {
+        "no": 12,
+        "english": "So",
+        "uzbek": "Shuning uchun / Shunday qilib"
+      },
+      {
+        "no": 13,
+        "english": "Therefore",
+        "uzbek": "Shuning uchun"
+      },
+      {
+        "no": 14,
+        "english": "Unless",
+        "uzbek": "Agarda ... bo'lmasa"
+      },
+      {
+        "no": 15,
+        "english": "Unless",
+        "uzbek": "Agar ... bo‘lmasa"
+      },
+      {
+        "no": 16,
+        "english": "Whereas",
+        "uzbek": "Holbuki"
+      },
+      {
+        "no": 17,
+        "english": "While",
+        "uzbek": "... davomida / ... holda"
+      },
+      {
+        "no": 18,
+        "english": "While",
+        "uzbek": "... davomida / ...-ganida"
+      },
+      {
+        "no": 19,
+        "english": "Yet",
+        "uzbek": "Hali / Shunga qaramay"
+      },
+      {
+        "no": 20,
+        "english": "Yet",
+        "uzbek": "Shunga qaramay / Lekin"
+      }
+    ]
+  }
+}

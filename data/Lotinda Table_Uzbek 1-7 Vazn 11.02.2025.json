@@ -1,0 +1,672 @@
+{
+  "1-OT": [
+    {
+      "table": "Jadval-1",
+      "code": "C-A1",
+      "items": [
+        "- боз",
+        "- бон",
+        "- вачча",
+        "- гар",
+        "- гарчилик",
+        "- гоҳ",
+        "- гўй",
+        "- дон",
+        "- дор",
+        "- дош",
+        "- дўз",
+        "- зор",
+        "- ий",
+        "- истон",
+        "- каш",
+        "- кор",
+        "- лик",
+        "- лоқ",
+        "- нома",
+        "- обод",
+        "- паз",
+        "- параст",
+        "- парвар",
+        "- поя",
+        "- соз",
+        "- фуруш",
+        "- хон",
+        "- хона",
+        "- хўр",
+        "- чи",
+        "- чилик",
+        "- штириш",
+        "- шунос",
+        "bin",
+        "liq"
+      ]
+    },
+    {
+      "table": "Jadval-2",
+      "code": "C-AG",
+      "items": [
+        "at",
+        "v",
+        "vchi",
+        "gi",
+        "g'i",
+        "g'in",
+        "gich",
+        "g'ich",
+        "g'u",
+        "g'un",
+        "dak",
+        "diq",
+        "doq",
+        "ik",
+        "iq",
+        "ildoq",
+        "im",
+        "in",
+        "indi",
+        "inch",
+        "it",
+        "k",
+        "ki",
+        "kilik",
+        "kich",
+        "q",
+        "qi",
+        "qin",
+        "qich",
+        "qun",
+        "m",
+        "ma",
+        "mak",
+        "machoq",
+        "moq",
+        "ovchi",
+        "oq",
+        "uv"
+      ]
+    },
+    {
+      "table": "Jadval-3",
+      "code": "C-A4",
+      "items": [
+        "a",
+        "ak",
+        "garchilik",
+        "lik",
+        "chi",
+        "chilik"
+      ]
+    },
+    {
+      "table": "Jadval-4",
+      "code": "C-ADC",
+      "items": [
+        "ham"
+      ]
+    }
+  ],
+  "2-SIFAT": [
+    {
+      "table": "Jadval-1",
+      "code": "P-A1",
+      "items": [
+        "ag'on",
+        "ak",
+        "aki",
+        "arli",
+        "aro",
+        "baxsh",
+        "bop",
+        "viy",
+        "vor",
+        "g'",
+        "gar",
+        "gi",
+        "gin",
+        "g'in",
+        "gir",
+        "g'ir",
+        "g'oq",
+        "g'un",
+        "don",
+        "dor",
+        "dosh",
+        "i",
+        "iy",
+        "ik",
+        "iq",
+        "ildok",
+        "ildoq",
+        "imli",
+        "in",
+        "ishli",
+        "k",
+        "kay",
+        "kash",
+        "ki",
+        "kin",
+        "kir",
+        "kor",
+        "q",
+        "qa",
+        "qi",
+        "qin",
+        "qir",
+        "qun",
+        "qur",
+        "li",
+        "lik",
+        "loq",
+        "lom",
+        "m",
+        "ma",
+        "mand",
+        "mas",
+        "mon",
+        "msiq",
+        "ovchi",
+        "oq",
+        "omuz",
+        "ong'ich",
+        "parvar",
+        "rli",
+        "siz",
+        "simon",
+        "uk",
+        "uq",
+        "ch",
+        "cha",
+        "chak",
+        "chan",
+        "chiq",
+        "chil",
+        "choq",
+        "qoq",
+        "namo",
+        "parast",
+        "shumul"
+      ]
+    },
+    {
+      "table": "Jadval-2",
+      "code": "P-ADP",
+      "items": [
+        "ba",
+        "bad",
+        "bar",
+        "be",
+        "g'ayri",
+        "no",
+        "ser",
+        "xush"
+      ]
+    },
+    {
+      "table": "Jadval-3",
+      "code": "P-P1",
+      "items": [
+        "imtir",
+        "ish",
+        "ishroq",
+        "roq",
+        "sh"
+      ]
+    },
+    {
+      "table": "Jadval-4",
+      "code": "P-P2",
+      "items": [
+        "behad",
+        "g'oyatda",
+        "juda",
+        "nihoyatda"
+      ]
+    }
+  ],
+  "3-FE'L": [
+    {
+      "table": "Jadval-1",
+      "code": "G-A",
+      "items": [
+        "a",
+        "ay",
+        "ar",
+        "gila",
+        "g'ila",
+        "i",
+        "ik",
+        "iq",
+        "illa",
+        "imsira",
+        "inqra",
+        "ira",
+        "y",
+        "k",
+        "kila",
+        "q",
+        "qila",
+        "la",
+        "lan",
+        "lash",
+        "lashtir",
+        "r",
+        "sira",
+        "t"
+      ]
+    },
+    {
+      "table": "Jadval-2",
+      "code": "G-O",
+      "items": [
+        "az",
+        "ar",
+        "gaz",
+        "g'az",
+        "giz",
+        "g'iz",
+        "di",
+        "dir",
+        "iz",
+        "iz",
+        "il",
+        "in",
+        "ir",
+        "ish",
+        "kaz",
+        "kiz",
+        "qaz",
+        "qiz",
+        "l",
+        "lan",
+        "lash",
+        "n",
+        "sat",
+        "t",
+        "tir",
+        "sh"
+      ]
+    },
+    {
+      "table": "Jadval-3",
+      "code": "G-U1",
+      "items": [
+        "ma",
+        "yo'q",
+        "emas"
+      ]
+    },
+    {
+      "table": "Jadval-4",
+      "code": "G-N1",
+      "items": [
+        "ay",
+        "ayin",
+        "aylik",
+        "ar",
+        "ar ekan",
+        "gin",
+        "ing",
+        "ingiz",
+        "ishsa",
+        "y",
+        "yin",
+        "ylik",
+        "mas",
+        "moqchi",
+        "r",
+        "sa",
+        "sa edi",
+        "sak",
+        "salar",
+        "salaring",
+        "sam",
+        "sang",
+        "sangiz",
+        "sangizlar",
+        "sanglar",
+        "sin",
+        "sinlar",
+        "shsin",
+        "gan ekan",
+        "salaringiz"
+      ]
+    },
+    {
+      "table": "Jadval-5",
+      "code": "G-V1",
+      "items": [
+        "adi",
+        "adigan",
+        "ayotib",
+        "ayotir",
+        "ajak",
+        "ar",
+        "ar edi",
+        "ayap",
+        "b",
+        "gan",
+        "gan edi",
+        "di",
+        "di",
+        "digan",
+        "digan",
+        "yotib",
+        "yotir",
+        "ib",
+        "mak",
+        "moqda",
+        "moqchi",
+        "r",
+        "r edi",
+        "edi",
+        "yajak",
+        "yap",
+        "guvchi edi",
+        "yotgan edi",
+        "yotib edi",
+        "ib edi",
+        "moqda edi"
+      ]
+    },
+    {
+      "table": "Jadval-6",
+      "code": "G-L2",
+      "items": [
+        "ay",
+        "ayin",
+        "alik",
+        "gin",
+        "di",
+        "dilar",
+        "ing",
+        "ingiz",
+        "inglar",
+        "y",
+        "yin",
+        "k",
+        "lar",
+        "lik",
+        "m",
+        "man",
+        "miz",
+        "ng",
+        "ngiz",
+        "san",
+        "siz",
+        "sin",
+        "sinlar"
+      ]
+    }
+  ],
+  "4-RAVISH": [
+    {
+      "table": "Jadval-1",
+      "code": "N-A4",
+      "items": [
+        "aki",
+        "an",
+        "gani",
+        "gina",
+        "iga",
+        "in",
+        "kina",
+        "qina",
+        "lab",
+        "lay",
+        "layin",
+        "larcha",
+        "n",
+        "ona",
+        "roq",
+        "siga",
+        "siz",
+        "cha",
+        "chang",
+        "chasiga"
+      ]
+    },
+    {
+      "table": "Jadval-2",
+      "code": "N-AN",
+      "items": [
+        "be"
+      ]
+    },
+    {
+      "table": "Jadval-1",
+      "code": "F-A4",
+      "items": [
+        "ala",
+        "gina",
+        "inchi",
+        "lab",
+        "nchi",
+        "ov",
+        "ta",
+        "tagina",
+        "tadan",
+        "tacha"
+      ]
+    }
+  ],
+  "5-OLMOSH": [
+    {
+      "table": "Jadval-1",
+      "code": "M-M1",
+      "items": [
+        "biz",
+        "men",
+        "sen",
+        "siz",
+        "u",
+        "ular",
+        "Jadval-8",
+        "M-M5",
+        "bari",
+        "barcha",
+        "bugun",
+        "hamma",
+        "har",
+        "har kim",
+        "har qaysi",
+        "har qanday",
+        "har qancha",
+        "har nima"
+      ]
+    },
+    {
+      "table": "Jadval-2",
+      "code": "M-M2",
+      "items": [
+        "o'z",
+        "Jadval-9",
+        "M-M6",
+        "hech kim",
+        "hech qayer",
+        "hech qaysi",
+        "hech qanaqa",
+        "hech qancha",
+        "hech qachon",
+        "hech narsa",
+        "hech nima"
+      ]
+    },
+    {
+      "table": "Jadval-3",
+      "code": "M-M3",
+      "items": [
+        "bu",
+        "mana",
+        "mana shu",
+        "u",
+        "o'sha",
+        "ushbu",
+        "shu",
+        "Jadval-10",
+        "M-M7",
+        "allakim",
+        "allaqayer",
+        "allaqaysi",
+        "allaqancha",
+        "allaqanday",
+        "allaqancha",
+        "allaqachon",
+        "allanima"
+      ]
+    },
+    {
+      "table": "Jadval-4",
+      "code": "M-M3A",
+      "items": [
+        "dek",
+        "lar",
+        "naqa",
+        "nday",
+        "ndaqangi",
+        "ndoq",
+        "ncha",
+        "gina",
+        "naqangi",
+        "ndaqa"
+      ]
+    },
+    {
+      "table": "Jadval-5",
+      "code": "M-M4",
+      "items": [
+        "kim",
+        "qaysi",
+        "qanday",
+        "qani",
+        "qancha",
+        "qachon",
+        "nega",
+        "nechi",
+        "nima",
+        "nimaga"
+      ]
+    },
+    {
+      "table": "Jadval-6",
+      "code": "M-M9",
+      "items": [
+        "niki",
+        "iki",
+        "ning",
+        "ing"
+      ]
+    },
+    {
+      "table": "Jadval-7",
+      "code": "M-M4A",
+      "items": [
+        "da",
+        "daki",
+        "dir",
+        "i-ki",
+        "ki",
+        "nchi",
+        "sa",
+        "ta",
+        "tadan"
+      ]
+    }
+  ],
+  "6-SON": [
+    {
+      "table": "Jadval-1",
+      "code": "F-A4",
+      "items": [
+        "ala",
+        "gina",
+        "inchi",
+        "lab",
+        "ichi",
+        "ov",
+        "ta",
+        "tagina",
+        "tadan",
+        "tacha"
+      ]
+    }
+  ],
+  "7-BOSHQA": [
+    {
+      "table": "Jadval-1",
+      "code": "X",
+      "items": [
+        "lar"
+      ]
+    },
+    {
+      "table": "Jadval-2",
+      "code": "X3",
+      "items": [
+        "ga",
+        "da",
+        "dan",
+        "ni",
+        "ning"
+      ]
+    },
+    {
+      "table": "Jadval-3",
+      "code": "X2E",
+      "items": [
+        "i",
+        "im",
+        "ing",
+        "m",
+        "ng"
+      ]
+    },
+    {
+      "table": "Jadval-4",
+      "code": "X2M",
+      "items": [
+        "imiz",
+        "ingiz",
+        "lari",
+        "miz",
+        "ngiz"
+      ]
+    },
+    {
+      "table": "Jadval-5",
+      "code": "U",
+      "items": [
+        "a",
+        "gina",
+        "da",
+        "dir",
+        "yoq",
+        "ki",
+        "kim",
+        "kina",
+        "ku",
+        "qina",
+        "mi",
+        "oq",
+        "u",
+        "chi",
+        "yu",
+        "ya"
+      ]
+    },
+    {
+      "table": "Jadval-6",
+      "code": "U6",
+      "items": [
+        "axir",
+        "na",
+        "nah",
+        "nahotki",
+        "faqat",
+        "huddi",
+        "ham",
+        "hatto",
+        "hattoki"
+      ]
+    }
+  ]
+}
