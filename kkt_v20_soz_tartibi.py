@@ -37,6 +37,34 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR   = os.path.join(SCRIPT_DIR, "data")   # foydalanuvchi manba fayllarni shu yerga tashlaydi
 SEARCH_DIRS = [SCRIPT_DIR, DATA_DIR, os.getcwd()]
 
+# ═══════════════════════════════════════════════════════════════════
+#  XATOLIKLARNI DIALOG OYNASI SIFATIDA KO'RSATISH
+# ═══════════════════════════════════════════════════════════════════
+# Dastur hali GUI (MTSystem) ochilmagan bosqichda (bazalar/docx/xlsx
+# yuklanayotganda) yuzaga kelgan xatoliklar uchun ham, GUI ochilgandan
+# keyingi (tugma bosish va h.k.) xatoliklar uchun ham bitta umumiy
+# ko'rinishdagi xabar oynasi (messagebox) chiqarish uchun ishlatiladi.
+_dialog_root = None
+
+def show_error_dialog(title, message):
+    """Har qanday xatolikni konsolga chop etish bilan bir qatorda
+    foydalanuvchiga tushunarli xabar oynasi (dialog) sifatida ham chiqaradi."""
+    global _dialog_root
+    print(f"  [XATOLIK] {title}: {message}")
+    try:
+        if getattr(tk, "_default_root", None) is None:
+            # Hali birorta ham Tk oynasi yaratilmagan (masalan, bazalar
+            # yuklanayotgan bosqich) — dialogni ko'rsatish uchun vaqtinchalik
+            # yashirin ildiz oyna kerak.
+            if _dialog_root is None or not _dialog_root.winfo_exists():
+                _dialog_root = tk.Tk()
+                _dialog_root.withdraw()
+        messagebox.showerror(title, str(message))
+    except Exception as e:
+        # Dialog oynaning o'zi ham ochilmasa (masalan, displey yo'q muhitda),
+        # kamida konsolga yozib qo'yamiz — dastur bu sababli yiqilmasin.
+        print(f"  [DIQQAT] Xatolik dialogini ko'rsatib bo'lmadi: {e}")
+
 
 def _find_latest_by_pattern(patterns, dirs=None):
     """Berilgan glob patternlarga mos fayllarni SEARCH_DIRS ichida (skript
@@ -648,7 +676,8 @@ def _ensure_column(conn, table, column, coltype):
             conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {coltype}")
             conn.commit()
     except Exception as e:
-        print(f"  [DIQQAT] {table}.{column} ustunini tekshirishda xatolik: {e}")
+        show_error_dialog("Baza sxemasi xatosi",
+            f"{table}.{column} ustunini tekshirishda xatolik:\n{e}")
 
 
 def init_all_databases():
@@ -663,7 +692,8 @@ def init_all_databases():
         try:
             conn=sqlite3.connect(path); creator(conn)
         except Exception as e:
-            print(f"  [DIQQAT] {os.path.basename(path)} yaratishda xatolik: {e}")
+            show_error_dialog("Baza yaratish xatosi",
+                f"{os.path.basename(path)} yaratishda xatolik:\n{e}")
             conn=sqlite3.connect(path)
         # ── migratsiya: eski bazalarda yo'q bo'lishi mumkin bo'lgan ustunlar ──
         if path in (DB_UB_EN,DB_UB_UZ):
@@ -701,11 +731,13 @@ def setup_database(docx_path=None):
         inserted = _load_words_from_json(cur_en, cur_uz)
         if inserted: print(f"  JSON dan {inserted} ta so'z jufti topildi (data/1500_EN_UZ_6_POS_sorted.20.json).")
     except Exception as e:
-        print("  JSON so'z juftlari xatosi, DOCX zaxiraga o'tilmoqda: "+str(e))
+        show_error_dialog("So'z juftlarini yuklash xatosi",
+            f"JSON so'z juftlari xatosi, DOCX zaxiraga o'tilmoqda:\n{e}")
     if not inserted and docx_path and HAS_DOCX:
         try:
             inserted = _load_words_from_docx(docx_path, cur_en, cur_uz)
-        except Exception as e: print("  DOCX xatosi: "+str(e))
+        except Exception as e:
+            show_error_dialog("So'z juftlarini yuklash xatosi", f"DOCX xatosi:\n{e}")
     conn_en.commit(); conn_en.close(); conn_uz.commit(); conn_uz.close()
     return inserted
 
@@ -889,9 +921,11 @@ def load_xlsx_affixes():
         added += n
         if n: print(f"  JSON dan {n} ta ingliz affiksi topildi (data/Table_English 1-7 Vazn Type 2 14.02.2024.json).")
     except Exception as e:
-        print("  JSON (EN affikslar) xatosi, XLSX zaxiraga o'tilmoqda: "+str(e))
+        show_error_dialog("Affikslarni yuklash xatosi",
+            f"JSON (EN affikslar) xatosi, XLSX zaxiraga o'tilmoqda:\n{e}")
         try: added += _load_en_affixes_from_xlsx(cur_en)
-        except Exception as e2: print("  XLSX_EN: "+str(e2))
+        except Exception as e2:
+            show_error_dialog("Affikslarni yuklash xatosi", f"XLSX_EN:\n{e2}")
     conn_en.commit(); conn_en.close()
 
     try:
@@ -899,9 +933,11 @@ def load_xlsx_affixes():
         added += n
         if n: print(f"  JSON dan {n} ta o'zbek affiksi topildi (data/Lotinda Table_Uzbek 1-7 Vazn 11.02.2025.json).")
     except Exception as e:
-        print("  JSON (UZ affikslar) xatosi, XLSX zaxiraga o'tilmoqda: "+str(e))
+        show_error_dialog("Affikslarni yuklash xatosi",
+            f"JSON (UZ affikslar) xatosi, XLSX zaxiraga o'tilmoqda:\n{e}")
         try: added += _load_uz_affixes_from_xlsx(cur_uz)
-        except Exception as e2: print("  XLSX_UZ: "+str(e2))
+        except Exception as e2:
+            show_error_dialog("Affikslarni yuklash xatosi", f"XLSX_UZ:\n{e2}")
     conn_uz.commit(); conn_uz.close()
     return added
 
@@ -3090,6 +3126,16 @@ class MTSystem(tk.Tk):
         self.configure(bg=BG); self.resizable(True,True)
         self._last_analyses=[]; self._build_ui(); self._show_welcome()
 
+    def report_callback_exception(self, exc, val, tb):
+        """Tkinter'ning standart xatti-harakati — tugma bosish, matn
+        kiritish va boshqa har qanday GUI hodisasi (callback) ichida
+        yuzaga kelgan xatolikni faqat konsolga chop etadi. Bu yerda
+        UNI QAYTA ANIQLAB, har qanday shunday xatolik ENDI foydalanuvchiga
+        tushunarli xabar oynasi (dialog) sifatida ham ko'rsatiladi."""
+        import traceback
+        traceback.print_exception(exc, val, tb)
+        show_error_dialog("Kutilmagan xatolik", str(val) or exc.__name__)
+
     def _build_ui(self):
         self._build_header(); self._build_io_section()
         self._build_stats_cards(); self._build_phrase_model_bar()
@@ -3388,8 +3434,8 @@ def _safe_step(label, fn, *args, **kwargs):
     try:
         return fn(*args, **kwargs)
     except Exception as e:
-        print(f"  [OGOHLANTIRISH] {label}: {e}")
-        print(f"                  (bu bosqich o'tkazib yuborildi, dastur davom etadi)")
+        show_error_dialog("Yuklash bosqichi xatosi",
+            f"{label}:\n{e}\n\n(bu bosqich o'tkazib yuborildi, dastur davom etadi)")
         return None
 
 
@@ -3475,4 +3521,12 @@ def main():
     app.mainloop()
 
 if __name__=="__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        # Dasturni ishga tushirishda GUI ochilishidan OLDIN yuzaga kelgan
+        # (masalan _safe_step qamrab olmagan) har qanday kutilmagan
+        # xatolik ham jim konsolga tushib qolmasin — dialog ko'rsatiladi.
+        import traceback
+        traceback.print_exc()
+        show_error_dialog("Dasturni ishga tushirish xatosi", str(e))
