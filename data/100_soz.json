@@ -1,0 +1,602 @@
+[
+  {
+    "no": 1,
+    "uzbek": "kitoblarimizdan",
+    "morphemes": "kitob+lar+imiz+dan",
+    "english": "from our books"
+  },
+  {
+    "no": 2,
+    "uzbek": "kitoblaringizdan",
+    "morphemes": "kitob+lar+ingiz+dan",
+    "english": "from your books"
+  },
+  {
+    "no": 3,
+    "uzbek": "kitoblarimizga",
+    "morphemes": "kitob+lar+imiz+ga",
+    "english": "to our books"
+  },
+  {
+    "no": 4,
+    "uzbek": "kitoblaringizga",
+    "morphemes": "kitob+lar+ingiz+ga",
+    "english": "to your books"
+  },
+  {
+    "no": 5,
+    "uzbek": "kitoblarimizda",
+    "morphemes": "kitob+lar+imiz+da",
+    "english": "in our books"
+  },
+  {
+    "no": 6,
+    "uzbek": "kitoblaringizda",
+    "morphemes": "kitob+lar+ingiz+da",
+    "english": "in your books"
+  },
+  {
+    "no": 7,
+    "uzbek": "kitoblarimizni",
+    "morphemes": "kitob+lar+imiz+ni",
+    "english": "our books"
+  },
+  {
+    "no": 8,
+    "uzbek": "kitoblaringizni",
+    "morphemes": "kitob+lar+ingiz+ni",
+    "english": "your books"
+  },
+  {
+    "no": 9,
+    "uzbek": "kitoblarimizning",
+    "morphemes": "kitob+lar+imiz+ning",
+    "english": "of our books"
+  },
+  {
+    "no": 10,
+    "uzbek": "kitoblaringizning",
+    "morphemes": "kitob+lar+ingiz+ning",
+    "english": "of your books"
+  },
+  {
+    "no": 11,
+    "uzbek": "uylarimizdan",
+    "morphemes": "uy+lar+imiz+dan",
+    "english": "from our houses"
+  },
+  {
+    "no": 12,
+    "uzbek": "uylaringizdan",
+    "morphemes": "uy+lar+ingiz+dan",
+    "english": "from your houses"
+  },
+  {
+    "no": 13,
+    "uzbek": "uylarimizga",
+    "morphemes": "uy+lar+imiz+ga",
+    "english": "to our houses"
+  },
+  {
+    "no": 14,
+    "uzbek": "uylaringizga",
+    "morphemes": "uy+lar+ingiz+ga",
+    "english": "to your houses"
+  },
+  {
+    "no": 15,
+    "uzbek": "uylarimizda",
+    "morphemes": "uy+lar+imiz+da",
+    "english": "in our houses"
+  },
+  {
+    "no": 16,
+    "uzbek": "uylaringizda",
+    "morphemes": "uy+lar+ingiz+da",
+    "english": "in your houses"
+  },
+  {
+    "no": 17,
+    "uzbek": "uylarimizni",
+    "morphemes": "uy+lar+imiz+ni",
+    "english": "our houses"
+  },
+  {
+    "no": 18,
+    "uzbek": "uylaringizni",
+    "morphemes": "uy+lar+ingiz+ni",
+    "english": "your houses"
+  },
+  {
+    "no": 19,
+    "uzbek": "uylarimizning",
+    "morphemes": "uy+lar+imiz+ning",
+    "english": "of our houses"
+  },
+  {
+    "no": 20,
+    "uzbek": "uylaringizning",
+    "morphemes": "uy+lar+ingiz+ning",
+    "english": "of your houses"
+  },
+  {
+    "no": 21,
+    "uzbek": "maktablarimizdan",
+    "morphemes": "maktab+lar+imiz+dan",
+    "english": "from our schools"
+  },
+  {
+    "no": 22,
+    "uzbek": "maktablaringizdan",
+    "morphemes": "maktab+lar+ingiz+dan",
+    "english": "from your schools"
+  },
+  {
+    "no": 23,
+    "uzbek": "maktablarimizga",
+    "morphemes": "maktab+lar+imiz+ga",
+    "english": "to our schools"
+  },
+  {
+    "no": 24,
+    "uzbek": "maktablaringizga",
+    "morphemes": "maktab+lar+ingiz+ga",
+    "english": "to your schools"
+  },
+  {
+    "no": 25,
+    "uzbek": "maktablarimizda",
+    "morphemes": "maktab+lar+imiz+da",
+    "english": "in our schools"
+  },
+  {
+    "no": 26,
+    "uzbek": "maktablaringizda",
+    "morphemes": "maktab+lar+ingiz+da",
+    "english": "in your schools"
+  },
+  {
+    "no": 27,
+    "uzbek": "maktablarimizni",
+    "morphemes": "maktab+lar+imiz+ni",
+    "english": "our schools"
+  },
+  {
+    "no": 28,
+    "uzbek": "maktablaringizni",
+    "morphemes": "maktab+lar+ingiz+ni",
+    "english": "your schools"
+  },
+  {
+    "no": 29,
+    "uzbek": "maktablarimizning",
+    "morphemes": "maktab+lar+imiz+ning",
+    "english": "of our schools"
+  },
+  {
+    "no": 30,
+    "uzbek": "maktablaringizning",
+    "morphemes": "maktab+lar+ingiz+ning",
+    "english": "of your schools"
+  },
+  {
+    "no": 31,
+    "uzbek": "talabalarimizdan",
+    "morphemes": "talaba+lar+imiz+dan",
+    "english": "from our students"
+  },
+  {
+    "no": 32,
+    "uzbek": "talabalaringizdan",
+    "morphemes": "talaba+lar+ingiz+dan",
+    "english": "from your students"
+  },
+  {
+    "no": 33,
+    "uzbek": "talabalarimizga",
+    "morphemes": "talaba+lar+imiz+ga",
+    "english": "to our students"
+  },
+  {
+    "no": 34,
+    "uzbek": "talabalaringizga",
+    "morphemes": "talaba+lar+ingiz+ga",
+    "english": "to your students"
+  },
+  {
+    "no": 35,
+    "uzbek": "talabalarimizda",
+    "morphemes": "talaba+lar+imiz+da",
+    "english": "in our students"
+  },
+  {
+    "no": 36,
+    "uzbek": "talabalaringizda",
+    "morphemes": "talaba+lar+ingiz+da",
+    "english": "in your students"
+  },
+  {
+    "no": 37,
+    "uzbek": "talabalarimizni",
+    "morphemes": "talaba+lar+imiz+ni",
+    "english": "our students"
+  },
+  {
+    "no": 38,
+    "uzbek": "talabalaringizni",
+    "morphemes": "talaba+lar+ingiz+ni",
+    "english": "your students"
+  },
+  {
+    "no": 39,
+    "uzbek": "talabalarimizning",
+    "morphemes": "talaba+lar+imiz+ning",
+    "english": "of our students"
+  },
+  {
+    "no": 40,
+    "uzbek": "talabalaringizning",
+    "morphemes": "talaba+lar+ingiz+ning",
+    "english": "of your students"
+  },
+  {
+    "no": 41,
+    "uzbek": "o‘qituvchilarimizdan",
+    "morphemes": "o‘qituvchi+lar+imiz+dan",
+    "english": "from our teachers"
+  },
+  {
+    "no": 42,
+    "uzbek": "o‘qituvchilaringizdan",
+    "morphemes": "o‘qituvchi+lar+ingiz+dan",
+    "english": "from your teachers"
+  },
+  {
+    "no": 43,
+    "uzbek": "o‘qituvchilarimizga",
+    "morphemes": "o‘qituvchi+lar+imiz+ga",
+    "english": "to our teachers"
+  },
+  {
+    "no": 44,
+    "uzbek": "o‘qituvchilaringizga",
+    "morphemes": "o‘qituvchi+lar+ingiz+ga",
+    "english": "to your teachers"
+  },
+  {
+    "no": 45,
+    "uzbek": "o‘qituvchilarimizda",
+    "morphemes": "o‘qituvchi+lar+imiz+da",
+    "english": "in our teachers"
+  },
+  {
+    "no": 46,
+    "uzbek": "o‘qituvchilaringizda",
+    "morphemes": "o‘qituvchi+lar+ingiz+da",
+    "english": "in your teachers"
+  },
+  {
+    "no": 47,
+    "uzbek": "o‘qituvchilarimizni",
+    "morphemes": "o‘qituvchi+lar+imiz+ni",
+    "english": "our teachers"
+  },
+  {
+    "no": 48,
+    "uzbek": "o‘qituvchilaringizni",
+    "morphemes": "o‘qituvchi+lar+ingiz+ni",
+    "english": "your teachers"
+  },
+  {
+    "no": 49,
+    "uzbek": "o‘qituvchilarimizning",
+    "morphemes": "o‘qituvchi+lar+imiz+ning",
+    "english": "of our teachers"
+  },
+  {
+    "no": 50,
+    "uzbek": "o‘qituvchilaringizning",
+    "morphemes": "o‘qituvchi+lar+ingiz+ning",
+    "english": "of your teachers"
+  },
+  {
+    "no": 51,
+    "uzbek": "dasturlarimizdan",
+    "morphemes": "dastur+lar+imiz+dan",
+    "english": "from our programs"
+  },
+  {
+    "no": 52,
+    "uzbek": "dasturlaringizdan",
+    "morphemes": "dastur+lar+ingiz+dan",
+    "english": "from your programs"
+  },
+  {
+    "no": 53,
+    "uzbek": "dasturlarimizga",
+    "morphemes": "dastur+lar+imiz+ga",
+    "english": "to our programs"
+  },
+  {
+    "no": 54,
+    "uzbek": "dasturlaringizga",
+    "morphemes": "dastur+lar+ingiz+ga",
+    "english": "to your programs"
+  },
+  {
+    "no": 55,
+    "uzbek": "dasturlarimizda",
+    "morphemes": "dastur+lar+imiz+da",
+    "english": "in our programs"
+  },
+  {
+    "no": 56,
+    "uzbek": "dasturlaringizda",
+    "morphemes": "dastur+lar+ingiz+da",
+    "english": "in your programs"
+  },
+  {
+    "no": 57,
+    "uzbek": "dasturlarimizni",
+    "morphemes": "dastur+lar+imiz+ni",
+    "english": "our programs"
+  },
+  {
+    "no": 58,
+    "uzbek": "dasturlaringizni",
+    "morphemes": "dastur+lar+ingiz+ni",
+    "english": "your programs"
+  },
+  {
+    "no": 59,
+    "uzbek": "dasturlarimizning",
+    "morphemes": "dastur+lar+imiz+ning",
+    "english": "of our programs"
+  },
+  {
+    "no": 60,
+    "uzbek": "dasturlaringizning",
+    "morphemes": "dastur+lar+ingiz+ning",
+    "english": "of your programs"
+  },
+  {
+    "no": 61,
+    "uzbek": "ma’lumotlarimizdan",
+    "morphemes": "ma’lumot+lar+imiz+dan",
+    "english": "from our data"
+  },
+  {
+    "no": 62,
+    "uzbek": "ma’lumotlaringizdan",
+    "morphemes": "ma’lumot+lar+ingiz+dan",
+    "english": "from your data"
+  },
+  {
+    "no": 63,
+    "uzbek": "ma’lumotlarimizga",
+    "morphemes": "ma’lumot+lar+imiz+ga",
+    "english": "to our data"
+  },
+  {
+    "no": 64,
+    "uzbek": "ma’lumotlaringizga",
+    "morphemes": "ma’lumot+lar+ingiz+ga",
+    "english": "to your data"
+  },
+  {
+    "no": 65,
+    "uzbek": "ma’lumotlarimizda",
+    "morphemes": "ma’lumot+lar+imiz+da",
+    "english": "in our data"
+  },
+  {
+    "no": 66,
+    "uzbek": "ma’lumotlaringizda",
+    "morphemes": "ma’lumot+lar+ingiz+da",
+    "english": "in your data"
+  },
+  {
+    "no": 67,
+    "uzbek": "ma’lumotlarimizni",
+    "morphemes": "ma’lumot+lar+imiz+ni",
+    "english": "our data"
+  },
+  {
+    "no": 68,
+    "uzbek": "ma’lumotlaringizni",
+    "morphemes": "ma’lumot+lar+ingiz+ni",
+    "english": "your data"
+  },
+  {
+    "no": 69,
+    "uzbek": "ma’lumotlarimizning",
+    "morphemes": "ma’lumot+lar+imiz+ning",
+    "english": "of our data"
+  },
+  {
+    "no": 70,
+    "uzbek": "ma’lumotlaringizning",
+    "morphemes": "ma’lumot+lar+ingiz+ning",
+    "english": "of your data"
+  },
+  {
+    "no": 71,
+    "uzbek": "maqolalarimizdan",
+    "morphemes": "maqola+lar+imiz+dan",
+    "english": "from our articles"
+  },
+  {
+    "no": 72,
+    "uzbek": "maqolalaringizdan",
+    "morphemes": "maqola+lar+ingiz+dan",
+    "english": "from your articles"
+  },
+  {
+    "no": 73,
+    "uzbek": "maqolalarimizga",
+    "morphemes": "maqola+lar+imiz+ga",
+    "english": "to our articles"
+  },
+  {
+    "no": 74,
+    "uzbek": "maqolalaringizga",
+    "morphemes": "maqola+lar+ingiz+ga",
+    "english": "to your articles"
+  },
+  {
+    "no": 75,
+    "uzbek": "maqolalarimizda",
+    "morphemes": "maqola+lar+imiz+da",
+    "english": "in our articles"
+  },
+  {
+    "no": 76,
+    "uzbek": "maqolalaringizda",
+    "morphemes": "maqola+lar+ingiz+da",
+    "english": "in your articles"
+  },
+  {
+    "no": 77,
+    "uzbek": "maqolalarimizni",
+    "morphemes": "maqola+lar+imiz+ni",
+    "english": "our articles"
+  },
+  {
+    "no": 78,
+    "uzbek": "maqolalaringizni",
+    "morphemes": "maqola+lar+ingiz+ni",
+    "english": "your articles"
+  },
+  {
+    "no": 79,
+    "uzbek": "maqolalarimizning",
+    "morphemes": "maqola+lar+imiz+ning",
+    "english": "of our articles"
+  },
+  {
+    "no": 80,
+    "uzbek": "maqolalaringizning",
+    "morphemes": "maqola+lar+ingiz+ning",
+    "english": "of your articles"
+  },
+  {
+    "no": 81,
+    "uzbek": "tadqiqotlarimizdan",
+    "morphemes": "tadqiqot+lar+imiz+dan",
+    "english": "from our studies"
+  },
+  {
+    "no": 82,
+    "uzbek": "tadqiqotlaringizdan",
+    "morphemes": "tadqiqot+lar+ingiz+dan",
+    "english": "from your studies"
+  },
+  {
+    "no": 83,
+    "uzbek": "tadqiqotlarimizga",
+    "morphemes": "tadqiqot+lar+imiz+ga",
+    "english": "to our studies"
+  },
+  {
+    "no": 84,
+    "uzbek": "tadqiqotlaringizga",
+    "morphemes": "tadqiqot+lar+ingiz+ga",
+    "english": "to your studies"
+  },
+  {
+    "no": 85,
+    "uzbek": "tadqiqotlarimizda",
+    "morphemes": "tadqiqot+lar+imiz+da",
+    "english": "in our studies"
+  },
+  {
+    "no": 86,
+    "uzbek": "tadqiqotlaringizda",
+    "morphemes": "tadqiqot+lar+ingiz+da",
+    "english": "in your studies"
+  },
+  {
+    "no": 87,
+    "uzbek": "tadqiqotlarimizni",
+    "morphemes": "tadqiqot+lar+imiz+ni",
+    "english": "our studies"
+  },
+  {
+    "no": 88,
+    "uzbek": "tadqiqotlaringizni",
+    "morphemes": "tadqiqot+lar+ingiz+ni",
+    "english": "your studies"
+  },
+  {
+    "no": 89,
+    "uzbek": "tadqiqotlarimizning",
+    "morphemes": "tadqiqot+lar+imiz+ning",
+    "english": "of our studies"
+  },
+  {
+    "no": 90,
+    "uzbek": "tadqiqotlaringizning",
+    "morphemes": "tadqiqot+lar+ingiz+ning",
+    "english": "of your studies"
+  },
+  {
+    "no": 91,
+    "uzbek": "natijalarimizdan",
+    "morphemes": "natija+lar+imiz+dan",
+    "english": "from our results"
+  },
+  {
+    "no": 92,
+    "uzbek": "natijalaringizdan",
+    "morphemes": "natija+lar+ingiz+dan",
+    "english": "from your results"
+  },
+  {
+    "no": 93,
+    "uzbek": "natijalarimizga",
+    "morphemes": "natija+lar+imiz+ga",
+    "english": "to our results"
+  },
+  {
+    "no": 94,
+    "uzbek": "natijalaringizga",
+    "morphemes": "natija+lar+ingiz+ga",
+    "english": "to your results"
+  },
+  {
+    "no": 95,
+    "uzbek": "natijalarimizda",
+    "morphemes": "natija+lar+imiz+da",
+    "english": "in our results"
+  },
+  {
+    "no": 96,
+    "uzbek": "natijalaringizda",
+    "morphemes": "natija+lar+ingiz+da",
+    "english": "in your results"
+  },
+  {
+    "no": 97,
+    "uzbek": "natijalarimizni",
+    "morphemes": "natija+lar+imiz+ni",
+    "english": "our results"
+  },
+  {
+    "no": 98,
+    "uzbek": "natijalaringizni",
+    "morphemes": "natija+lar+ingiz+ni",
+    "english": "your results"
+  },
+  {
+    "no": 99,
+    "uzbek": "natijalarimizning",
+    "morphemes": "natija+lar+imiz+ning",
+    "english": "of our results"
+  },
+  {
+    "no": 100,
+    "uzbek": "natijalaringizning",
+    "morphemes": "natija+lar+ingiz+ning",
+    "english": "of your results"
+  }
+]
