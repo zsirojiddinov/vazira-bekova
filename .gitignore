@@ -3,3 +3,10 @@ __pycache__/
 *.pyc
 .idea/
 .DS_Store
+
+# Generatsiya qilinadigan bazalar — har doim `make db` bilan data/ dan
+# qayta quriladi, git'da saqlanmaydi (reports/db_reproducibility.md).
+*.db
+
+# Test/qurish artefaktlari
+.pytest_cache/
