@@ -10,3 +10,6 @@ __pycache__/
 
 # Test/qurish artefaktlari
 .pytest_cache/
+
+# Shaxsiy dissertatsiya fayli — repo'ga chiqmasligi kerak
+data/desertatsiya.docx
