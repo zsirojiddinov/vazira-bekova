@@ -1,6 +1,6 @@
 # CH2_EVX_EXAMPLES — dissertatsiya docx bilan solishtiruv va III/IV bob leakage tekshiruvi
 
-**Generatsiya vaqti:** 2026-09-09T05:41:16+00:00Z
+**Generatsiya vaqti:** 2026-09-09T05:56:57+00:00Z
 **Manba:** `data/desertatsiya.docx` (foydalanuvchi tomonidan 2026-09-08 da qo'shildi) va `kkt_v20_soz_tartibi.py:CH2_EVX_EXAMPLES` (52 ta yozuv)
 **Buyruq:** `python scripts/check_ch2_leakage.py`
 
@@ -33,34 +33,35 @@ Bu hisobot ikkita ALOHIDA topshiriqni bittada bajaradi (foydalanuvchi so'rovi, 2
 
 **"Docx en (jadval katakchasi)" ustuni haqida:** ba'zi yozuvlarda "Ingliz tilida EVX <so'z>" paragrafidan keyin kichik bir o'zak+affiks jadvali keladi (masalan `leaf | + es`). Bu katakchalarni to'g'ridan-to'g'ri qo'shib o'qish paragrafdagi TO'G'RI yozilgan shakldan farq qilishi mumkin (masalan jadval "leaf"+"es"="leafes" beradi, paragrafning o'zida esa to'g'ri "leaves" yozilgan). Bu ustun FAQAT qo'shimcha dalil — qaysi manba "to'g'ri" ekanini bu skript HAL QILMAYDI.
 
-## 2. II bobdagi, lekin CH2_EVX_EXAMPLES ga KIRITILMAGAN namunalar
+## 2. II bobdagi, lekin CH2_EVX_EXAMPLES ga KIRITILMAGAN namunalar — to'liq katalog
 
-Docx'dan avtomatik ajratib olingan 72 ta "Ingliz tilida EVX" belgisidan 20 tasi CH2_EVX_EXAMPLES dagi hech qaysi yozuv bilan bog'lanmadi — demak ular II bobda BOR, lekin dastur muallifi CH2_EVX_EXAMPLES ga KIRITMAGAN:
+Docx'dan avtomatik ajratib olingan 72 ta "Ingliz tilida EVX" belgisidan 20 tasi CH2_EVX_EXAMPLES dagi hech qaysi yozuv bilan bog'lanmadi — demak ular II bobda BOR, lekin dastur muallifi CH2_EVX_EXAMPLES ga KIRITMAGAN. Har biri uchun POS ham avtomatik chiqarilgan — CH2_EVX_EXAMPLES dagi kabi qo'lda BELGILANMAGAN, balki EN formal-model tenglamasining BIRINCHI harfidan (KKT belgisi, masalan "G(G4)=..." -> "G" -> "Fe'l") to'g'ridan-to'g'ri o'qilgan (`_infer_pos_from_model()`, hech qanday tilshunoslik hukmi yo'q, faqat belgi-xaritalash `kkt_v20_soz_tartibi.py:POS_KKT`ning teskarisi bilan):
 
-| # (docx paragraf idx) | Ingliz (paragraf) | O'zbek (paragraf) |
-|---|---|---|
-| 310 | variables | oʻzgaruvchilar |
-| 492 | to be | boʻlmoq |
-| 515 | to have | bor boʻlmoq |
-| 545 | become | boʻlmoq |
-| 559 | Could | qila  olardi |
-| 595 | need | kerak |
-| 621 | listen to me | meni tinglang |
-| 627 | understand | tushunmoq |
-| 632 | will return | qaytadi |
-| 637 | worked | ishladi |
-| 642 | simplified | soddalashtirildi |
-| 666 | variables | rasmiy |
-| 700 | larger | kattaroq |
-| 709 | bigger | kattaroq |
-| 716 | biggest | kattaroq |
-| 761 | most comfortable | eng qulay |
-| 770 | best | eng yaxshi |
-| 800 | easily | osonlik bilan |
-| 815 | more clearly | aniqroq |
-| 932 | I | men |
+| # (docx idx) | Ingliz | O'zbek | POS (avtomatik) | EN formal model | UZ formal model |
+|---|---|---|---|---|---|
+| 310 | variables | oʻzgaruvchilar | Ot | `C(C, X) = $[i,1-h1]Ci⊕ ↓$[j,1-2]Xj` | `C(C, X) = $[i,1-h5]M2i⊕ ↓$[j,1-h1]C_A1j⊕ ↓$[i1,1-h1] G(C_A1i1) ⊕ ↓$[j1,1-1]Xj1` |
+| 492 | to be | boʻlmoq | Fe'l | `G1(G1) = $[i,1-6]G1i` | `G(G, G_HA1) = $[i,1-h3]Gi⊕↓$[j,1-1] G_HA1j` |
+| 515 | to have | bor boʻlmoq | Fe'l | `G(G2) = $[i,1-1]G2i` | `G(G, G_HA1) = $[i,1-h3]Gi⊕↓$[j,1-1]G_HA1j` |
+| 545 | become | boʻlmoq | Fe'l | `G(G6) = $[i,1-9]G6i` | `(G, G_HA1)=$[i,1-h3]Gi⊕↓$[j,1-32]G_HA1j` |
+| 559 | Could | qila  olardi | Fe'l | `G(G7) = $[i,1-10]G7i` | `(G, G(A1), A2) = $[i,1-h3]Gi⊕↓$[j,1-h3]Aj ⊕↓$[i1,1-h3]GKi1` |
+| 595 | need | kerak | Fe'l | `G(G7) = $[i,1-10]G7i , $ - tanlab olinadi bunda [1-10] BBda berilgan modal fe’ldan  10 tadan 1 tasi tanlanadi.` | `P(P) = $[i,1-h2]Pi` |
+| 621 | listen to me | meni tinglang | Fe'l | `G(G11) = $[i,1-h3]G11i` | `G(M1, X2E, G) = $[i,1-h3]M1i ⊕↓$[j,1-h3] X2Ej ⊕↓$[i1,1-h3]Gi1⊕↓ $[i1,1-h3]X2Ei1.` |
+| 627 | understand | tushunmoq | Fe'l | `G(G12) = $[i,1-h3]G12i` | `G(G) = $[i,1-h3]Gi` |
+| 632 | will return | qaytadi | Fe'l | `G(G4, G) = $[i,1-h3]G4i⊕↓$[j,1-h3]Gj` | `G(G) = $[i,1-h3]Gi` |
+| 637 | worked | ishladi | Fe'l | `G(G_S) = $[i,1-h3]G_Si` | `G(C, G_A, G_Az3) = $[i,1-h1]Ci⊕↓$[j,1-h3]G_Aj⊕↓$[i1,1-h3]G_Az3i1` |
+| 642 | simplified | soddalashtirildi | Fe'l | `G(G13_S) = $[i,1-h3]G13_Si` | `G(P, G_A, G_Az3) = $[i,1-h1]Pi⊕↓$[j,1-h3]G_Aj⊕↓$[i1,1-h3]G_Ai1⊕↓ $[j1,1-h3]G_Az3j1` |
+| 666 | variables | rasmiy | Sifat | `P( C, P_A1) = $[i,1-h1]Ci ⊕↓$[j,1-h2]P_A1j` | `P( C, P_A1) = $[i,1-h1]Ci ⊕↓$[j,1-h2] P_A1j` |
+| 700 | larger | kattaroq | Sifat | `P5(P_S) = $[i,1-h2]P1_Si` | `P(P1_A1) = $[i,1-h2]P1_A1i` |
+| 709 | bigger | kattaroq | Sifat | `P6(P1_S) = $[i,1-h2]P1_Si` | `P(P1_A1) = $[i,1-h2]P1_A1i` |
+| 716 | biggest | kattaroq | Sifat | `P7(P2_S) = $[i,1-h2]P2_Si` | `P(T, P) = $[i,1-10]Ti ⊕↓ $[j,1-h2]Pj` |
+| 761 | most comfortable | eng qulay | Sifat | `P12(T, P) = $[i,1-53]Ti⊕↓$[j,1-h2]Pj` | `P(T, P) = $[i,1-3]Ti ⊕↓$[j,1-h2]Pj` |
+| 770 | best | eng yaxshi | Sifat | `P13(P,P1_SF, P2) = $[i,1-h2]Pi ⊕↓$[j,1-h2]P1_SFj⊕↓$[i1,1-h2]P2i1` | `P(P, P1_A1, P2_D, P,) = $[i,1-h2]Pi ⊕↓$[j,1-h2]P1_A1j⊕↓$[i1,1-53]Ti1 ⊕↓$[j1,1-h2]Pj2` |
+| 800 | easily | osonlik bilan | Ravish | `N(N_S) = $[i,1-h4]N_Si` | `N(P, C_A1, Y) = $[i,1-h2]Pi ⊕↓$[j,1-7] C_A1j ⊕↓$[i1,1-20]Yi1` |
+| 815 | more clearly | aniqroq | Ravish | `N(T, N_S) = $[i,1-53]Ti ⊕↓$[j,1-8]N_Sj` | `N(P, N1_A1) = $[i,1-h2]Pi⊕↓$[j,1-20]N1_A1j` |
+| 932 | I | men | Olmosh | `M(M1) =$[i,1-h5]M1i` | `M(M1) =$[i,1-h5]M1i` |
 
 Diqqat: bu jadvaldagi ba'zi qatorlar dissertatsiyaning O'ZIDAGI (Claude yoki avvalgi transkripsiya emas) ichki nomuvofiqlikni aks ettirishi mumkin — masalan #666 qatorida "Ingliz tilida EVX so'z: **variables**" deb yozilgan, lekin undan keyingi o'zak+affiks jadvali `form|+al` va o'zbekcha tarjimasi "rasmiy" (=formal) — ya'ni bu qatordagi haqiqiy misol "formal" bo'lishi kerak edi, "variables" so'zi avvalgi bo'limdan (#310) qolib ketgan nusxa xatosi ko'rinadi (docx #664-673 qarang). Bu skript bunday holatlarni ANIQLAMAYDI/TUZATMAYDI — faqat xom matnni ko'rsatadi.
+**POS ustuni haqida ehtiyot chorasi:** "model topilmadi" ustunlarida `_find_model_equation()` belgilangan qidiruv oralig'ida "rasmiy model" so'z birikmasini topa olmagan (masalan ba'zi qisqa fe'l misollarida formal model alohida paragrafda emas, boshqa joyda bo'lishi mumkin) — bu "POS yo'q" degani emas, faqat AVTOMATIK ajratilmaganini bildiradi.
 
 ## 3. Headword darajasidagi "aylanma"/leakage tekshiruvi — III va IV bob
 
@@ -81,56 +82,56 @@ Diqqat: bu jadvaldagi ba'zi qatorlar dissertatsiyaning O'ZIDAGI (Claude yoki avv
 | Headword | Qidiruv naqshi | III bobda | IV bobda | Jami | Birinchi moslik (idx, bob) |
 |---|---|---|---|---|---|
 | hundred and twenty first | `(?<![A-Za-z'’])hundred\ and\ twenty\ first(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| less interesting | `(?<![A-Za-z'’])less\ interesting(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | more comfortable | `(?<![A-Za-z'’])more\ comfortable(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| less interesting | `(?<![A-Za-z'’])less\ interesting(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | high dimensional | `(?<![A-Za-z'’])high\ dimensional(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | capabilityies | `(?<![A-Za-z'’])capabilityies(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| chapter five | `(?<![A-Za-z'’])chapter\ five(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| four million | `(?<![A-Za-z'’])four\ million(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| customhouses | `(?<![A-Za-z'’])customhouses(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | the progress | `(?<![A-Za-z'’])the\ progress(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | the germanys | `(?<![A-Za-z'’])the\ germanys(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| customhouses | `(?<![A-Za-z'’])customhouses(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| four million | `(?<![A-Za-z'’])four\ million(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| chapter five | `(?<![A-Za-z'’])chapter\ five(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | information | `(?<![A-Za-z'’])information(?![A-Za-z'’])` | 0 | 5 | 5 | #1337 (IV) |
-| one hundred | `(?<![A-Za-z'’])one\ hundred(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | eighty five | `(?<![A-Za-z'’])eighty\ five(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| one hundred | `(?<![A-Za-z'’])one\ hundred(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | an example | `(?<![A-Za-z'’])an\ example(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | schoolboys | `(?<![A-Za-z'’])schoolboys(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| cleverest | `(?<![A-Za-z'’])cleverest(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| processes | `(?<![A-Za-z'’])processes(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | student's | `(?<![A-Za-z'’])student's(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| hundredth | `(?<![A-Za-z'’])hundredth(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| to follow | `(?<![A-Za-z'’])to\ follow(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | a network | `(?<![A-Za-z'’])a\ network(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| hundredth | `(?<![A-Za-z'’])hundredth(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| processes | `(?<![A-Za-z'’])processes(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| cleverest | `(?<![A-Za-z'’])cleverest(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| to follow | `(?<![A-Za-z'’])to\ follow(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| cleverer | `(?<![A-Za-z'’])cleverer(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | contents | `(?<![A-Za-z'’])contents(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | ought to | `(?<![A-Za-z'’])ought\ to(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| cleverer | `(?<![A-Za-z'’])cleverer(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| reading | `(?<![A-Za-z'’])reading(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| fastest | `(?<![A-Za-z'’])fastest(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | fifteen | `(?<![A-Za-z'’])fifteen(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | busiest | `(?<![A-Za-z'’])busiest(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| fastest | `(?<![A-Za-z'’])fastest(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | quietly | `(?<![A-Za-z'’])quietly(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| reading | `(?<![A-Za-z'’])reading(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| eighty | `(?<![A-Za-z'’])eighty(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | faster | `(?<![A-Za-z'’])faster(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| delays | `(?<![A-Za-z'’])delays(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | busier | `(?<![A-Za-z'’])busier(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | leafes | `(?<![A-Za-z'’])leafes(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| delays | `(?<![A-Za-z'’])delays(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| eighty | `(?<![A-Za-z'’])eighty(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| to ask | `(?<![A-Za-z'’])to\ ask(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | inside | `(?<![A-Za-z'’])inside(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| ought | `(?<![A-Za-z'’])ought(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| to ask | `(?<![A-Za-z'’])to\ ask(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | might | `(?<![A-Za-z'’])might(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| would | `(?<![A-Za-z'’])would(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | to do | `(?<![A-Za-z'’])to\ do(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| ought | `(?<![A-Za-z'’])ought(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | gayer | `(?<![A-Za-z'’])gayer(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| would | `(?<![A-Za-z'’])would(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | today | `(?<![A-Za-z'’])today(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| sent | `(?<![A-Za-z'’])sent(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| much | `(?<![A-Za-z'’])much(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| will | `(?<![A-Za-z'’])will(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | must | `(?<![A-Za-z'’])must(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| sent | `(?<![A-Za-z'’])sent(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | here | `(?<![A-Za-z'’])here(?![A-Za-z'’])` | 0 | 1 | 1 | #1364 (IV) |
+| will | `(?<![A-Za-z'’])will(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| much | `(?<![A-Za-z'’])much(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | men | `(?<![A-Za-z'’])men(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| one | `(?<![A-Za-z'’])one(?![A-Za-z'’])` | 0 | 0 | 0 | — |
-| can | `(?<![A-Za-z'’])can(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 | may | `(?<![A-Za-z'’])may(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| can | `(?<![A-Za-z'’])can(?![A-Za-z'’])` | 0 | 0 | 0 | — |
+| one | `(?<![A-Za-z'’])one(?![A-Za-z'’])` | 0 | 0 | 0 | — |
 
 **49/51** headword uchun jami = 0, ya'ni yuqoridagi regex III/IV bobning hech bir paragraf/jadval-katagida bu so'zni topmadi (5-band metodikaga qarang).
 

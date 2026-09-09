@@ -16,6 +16,7 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO_ROOT, "scripts"))
 
 import audit_er_gap as script  # noqa: E402
+from _common import normalize  # noqa: E402
 
 
 def test_get_er_rules_finds_exactly_two_pos_guarded_variants():
@@ -71,3 +72,29 @@ def test_check_dissertation_theory_returns_none_or_consistent_dict():
     else:
         assert "agentive_mentions" in result
         assert isinstance(result["agentive_mentions"], list)
+
+
+def test_classify_full_chapter2_examples_returns_none_or_superset_of_ch2():
+    """`classify_full_chapter2_examples()` (2026-09-09, `check_ch2_leakage.py`
+    orqali II bobning TO'LIQ namunalarini ishlatadi) — docx yo'q bo'lsa None,
+    bo'lsa CH2_EVX_EXAMPLES dagi 5 ta "-er" so'zning HAMMASINI o'z ichiga
+    olishi va ularning barchasi hali ham SIFAT+ER (hech qanday agentiv)
+    bo'lishi kerak."""
+    full_rows = script.classify_full_chapter2_examples(script.DOCX_PATH)
+    if full_rows is None:
+        assert not os.path.exists(script.DOCX_PATH)
+        return
+    ch2_rows = script.classify_ch2_examples()
+    # apostrof shakllari (ASCII ' vs modifier-harf ʻ) farqli bo'lishi mumkin
+    # (CH2_EVX_EXAMPLES qo'lda yozilgan, docx'dan ekstraktsiya esa xom
+    # Unicode belgini saqlaydi) — shu sabab normalize() bilan solishtiramiz.
+    full_words = {(normalize(r["word"]), normalize(r["uzbek"])) for r in full_rows}
+    for r in ch2_rows:
+        key = (normalize(r["word"]), normalize(r["uzbek"]))
+        assert key in full_words, f"{r['word']}/{r['uzbek']} to'liq ro'yxatda yo'q"
+    assert all(r["group"] == "SIFAT+ER (qiyosiy)" for r in full_rows), (
+        "II bobning to'liq (CH2 + qo'shimcha) namunalarida ham agentiv fe'l+er topilmasligi kerak edi"
+    )
+    # "larger"/"bigger" — CH2_EVX_EXAMPLES'da YO'Q, lekin II bobning o'zida bor.
+    extra_words = {r["word"] for r in full_rows if not r["in_ch2_evx_examples"]}
+    assert {"larger", "bigger"} <= extra_words

@@ -135,3 +135,44 @@ def test_leakage_search_finds_only_bibliography_hits(docx_items, chapter_bounds)
     unique_en = sorted({ex["en"].strip().lower() for ex in m.CH2_EVX_EXAMPLES}, key=len, reverse=True)
     hits = script.search_leakage(docx_items, chapter_bounds, ["III", "IV"], unique_en)
     assert all(not h["in_table"] for h in hits), "Jadval ichida topilgan hit bor — qo'lda tekshirilishi kerak"
+
+
+@requires_docx
+def test_summarize_leakage_by_headword_includes_zero_hit_words(docx_items, chapter_bounds):
+    """Har bir headword — hatto hech qanday moslik topilmagan bo'lsa ham —
+    natija ro'yxatida ALOHIDA qator sifatida ko'rinishi kerak (foydalanuvchi
+    so'rovi, 2026-09-09: "topilmadi" xulosasi reproduksiya qilinishi kerak)."""
+    import kkt_v20_soz_tartibi as m
+
+    unique_en = sorted({ex["en"].strip().lower() for ex in m.CH2_EVX_EXAMPLES}, key=len, reverse=True)
+    hits = script.search_leakage(docx_items, chapter_bounds, ["III", "IV"], unique_en)
+    summary = script.summarize_leakage_by_headword(unique_en, hits, ["III", "IV"])
+    assert len(summary) == len(unique_en)
+    by_word = {r["headword"]: r for r in summary}
+    assert by_word["will"]["total"] == 0  # umumiy so'z, III/IV da topilmasligi kutiladi
+    assert by_word["information"]["total"] > 0  # bibliografiyada bir necha marta uchraydi
+    for r in summary:
+        assert r["total"] == r["per_chapter"].get("III", 0) + r["per_chapter"].get("IV", 0)
+
+
+@requires_docx
+def test_list_evaluation_context_blocks_includes_the_headline_accuracy_table(docx_items, chapter_bounds):
+    """Dissertatsiyaning yagona raqamli aniqlik jadvali (4.3-jadval, "Tarjima
+    foizi", 97,7%) mustaqil "aniqlik/foiz" inventarizatsiyasida ko'rinishi
+    kerak — bu jadval "280 ta so'z" ustida hisoblanganini, lekin o'sha 280
+    so'zning matni yo'qligini reports/ch2_leakage_check.md aniq qayd etadi."""
+    blocks = script.list_evaluation_context_blocks(docx_items, chapter_bounds, ["III", "IV"])
+    assert any("97,7%" in b["snippet"] or "Tarjima foizi" in b["snippet"] for b in blocks)
+
+
+@requires_docx
+def test_extract_ch2_records_infers_pos_from_formal_model(docx_items, chapter_bounds):
+    """POS avtomatik ravishda formal model tenglamasining BIRINCHI harfidan
+    (KKT belgisi) chiqarilishi kerak — Claude tomonidan qo'lda emas."""
+    records = script.extract_ch2_records(docx_items, chapter_bounds["II"])
+    by_word = {r["en_marker_word"]: r for r in records if r["en_marker_word"]}
+    assert by_word["will"]["inferred_pos"] == "Fe'l"  # G(G4) = ...
+    assert by_word["here"]["inferred_pos"] == "Ravish"  # N(N) = ...
+    assert by_word["one"]["inferred_pos"] == "Son"  # F(F) = ...
+    assert by_word["I"]["inferred_pos"] == "Olmosh"  # M(M1) = ...
+    assert by_word["larger"]["inferred_pos"] == "Sifat"  # P5(P_S) = ...

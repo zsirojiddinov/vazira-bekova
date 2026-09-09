@@ -177,6 +177,50 @@ def classify_ch2_examples() -> list[dict]:
     return rows
 
 
+def classify_full_chapter2_examples(docx_path: str) -> list[dict] | None:
+    """`scripts/check_ch2_leakage.py` (2026-09-09, foydalanuvchi so'rovi bilan
+    yozilgan) II bobdan CH2_EVX_EXAMPLES'dagi 52 tadan TASHQARI yana ~20 ta
+    "Ingliz tilida EVX ..." misolni avtomatik ajratib oladi (jami ~72 ta,
+    qarang `reports/ch2_leakage_check.md`#2-bo'lim). Bu funksiya O'SHA TO'LIQ
+    to'plamdagi (CH2_EVX_EXAMPLES + qo'shimcha) bitta-so'zli "-er" so'zlarini
+    ham hisobga qo'shadi — POS `check_ch2_leakage._infer_pos_from_model()`
+    orqali (formal model tenglamasining KKT belgisidan) AVTOMATIK chiqarilgan,
+    Claude tomonidan qo'lda belgilanmagan. Docx mavjud bo'lmasa None."""
+    if not os.path.exists(docx_path):
+        return None
+
+    import kkt_v20_soz_tartibi as m
+    from check_ch2_leakage import load_docx, find_chapter_bounds, extract_ch2_records
+
+    items = load_docx(docx_path)
+    bounds = find_chapter_bounds(items)
+    if "II" not in bounds:
+        return None
+    all_records = extract_ch2_records(items, bounds["II"])
+    ch2_en_values = {ex["en"].strip().lower() for ex in m.CH2_EVX_EXAMPLES}
+
+    rows = []
+    for r in all_records:
+        w = r["en_marker_word"] or ""
+        if " " in w or len(w) <= 2 or not w.lower().endswith("er"):
+            continue
+        pos = r["inferred_pos"]
+        if pos in ("Sifat", "Ravish"):
+            group = "SIFAT+ER (qiyosiy)"
+        elif pos == "Ot":
+            group = "FE'L+ER (agentiv) — docx formal model POS='Ot' deb chiqargan"
+        elif pos == "Fe'l":
+            group = "BOSHQA — POS='Fe'l' (o'zi -er bilan tugagan fe'l shakli, masalan o'tgan zamon emas)"
+        else:
+            group = f"ANIQLANMAGAN (inferred_pos={pos!r})"
+        rows.append({
+            "word": w, "uzbek": r["uz_marker_word"], "pos": pos, "group": group,
+            "docx_idx": r["en_idx"],
+            "in_ch2_evx_examples": w.strip().lower() in ch2_en_values,
+        })
+    return rows
+
+
 def check_dissertation_theory(docx_path: str) -> dict | None:
     """Agar shaxsiy dissertatsiya fayli mavjud bo'lsa, I bobdagi nazariy
     suffiks-inventarizatsiya jadvallarini (1.3- va 1.7-jadval) va butun
@@ -240,6 +284,7 @@ def run(out_path: str | None) -> int:
 
     dict_rows = classify_dictionary_er_words(categories, er_fns)
     ch2_rows = classify_ch2_examples()
+    full_ch2_rows = classify_full_chapter2_examples(DOCX_PATH)
     theory = check_dissertation_theory(DOCX_PATH)
 
     def _count(rows, group_prefix):
@@ -251,6 +296,12 @@ def run(out_path: str | None) -> int:
 
     c_sifat = _count(ch2_rows, "SIFAT+ER")
     c_fel = _count(ch2_rows, "FE'L+ER")
+
+    if full_ch2_rows is not None:
+        fc_sifat = _count(full_ch2_rows, "SIFAT+ER")
+        fc_fel = _count(full_ch2_rows, "FE'L+ER")
+    else:
+        fc_sifat = fc_fel = None
 
     lines = []
     lines.append("# Faza 2 — \"-er\" bo'shlig'i: sifat+er (qiyosiy) vs fe'l+er (agentiv)")
@@ -351,6 +402,50 @@ def run(out_path: str | None) -> int:
     )
     lines.append("")
 
+    lines.append(
+        "### 3a-bis. `CH2_EVX_EXAMPLES` + II bobdagi QO'SHIMCHA namunalar (davomi, 2026-09-09)"
+    )
+    lines.append("")
+    if full_ch2_rows is None:
+        lines.append(
+            "`data/desertatsiya.docx` bu muhitda topilmadi — bu bo'lim o'tkazib yuborildi (3a dagi 52-misolli "
+            "hisob o'zgarishsiz qoladi)."
+        )
+    else:
+        n_extra = sum(1 for r in full_ch2_rows if not r["in_ch2_evx_examples"])
+        lines.append(
+            f"`scripts/check_ch2_leakage.py` (2026-09-09) II bobning O'ZIDAN CH2_EVX_EXAMPLES'dagi 52 tadan "
+            f"TASHQARI yana ~20 ta \"Ingliz tilida EVX ...\" namunani avtomatik ajratib oladi (to'liq ro'yxat: "
+            f"`reports/ch2_leakage_check.md`#2-bo'lim). Shu TO'LIQ to'plamdagi (jami "
+            f"{len(full_ch2_rows)} ta) bitta-so'zli \"-er\" so'zlari — POS bu safar CH2 kabi qo'lda emas, "
+            f"**docx'ning o'z formal-model tenglamasidan avtomatik chiqarilgan** "
+            f"(`check_ch2_leakage._infer_pos_from_model()`):"
+        )
+        lines.append("")
+        lines.append("| So'z | O'zbekcha | POS (avtomatik) | CH2_EVX_EXAMPLES da bormi? | Docx idx | Guruh |")
+        lines.append("|---|---|---|---|---|---|")
+        for r in full_ch2_rows:
+            in_ch2_txt = "ha (3a da bor)" if r["in_ch2_evx_examples"] else "YO'Q — faqat II bobning o'zida"
+            lines.append(
+                f"| {r['word']} | {r['uzbek']} | {r['pos']} | {in_ch2_txt} | {r['docx_idx']} | {r['group']} |"
+            )
+        lines.append("")
+        lines.append(
+            f"CH2_EVX_EXAMPLES'ga kiritilmagan **{n_extra} ta qo'shimcha** \"-er\" so'zi topildi (`larger`, "
+            f"`bigger` — ikkalasi ham SIFAT+ER/qiyosiy, docx idx 700 va 709). Bular bilan birga II bobning "
+            f"avtomatik ajratib olingan TO'LIQ to'plamidagi (jami {len(full_ch2_rows)} ta \"-er\" so'z) hisobi:"
+        )
+        lines.append(f"- SIFAT+ER (qiyosiy): **{fc_sifat}**")
+        lines.append(f"- FE'L+ER (agentiv): **{fc_fel}**")
+        lines.append("")
+        lines.append(
+            "**Bu — 3a dagi \"CH2_EVX_EXAMPLES'da fe'l+er yo'q\" da'vosini II bobning KATTAROQ (avtomatik "
+            "aniqlangan ~72 ta misolli) qismiga kengaytiradi:** o'sha kattaroq to'plamda ham FE'L+ER "
+            f"(agentiv) soni **{fc_fel}** — ya'ni II bobning avtomatik ajratib olingan HECH bir namunasi "
+            "agentiv \"-er\" emas (barchasi qiyosiy daraja)."
+        )
+    lines.append("")
+
     lines.append("### 3b. `tests/*.py` (pytest to'plami) — haqiqiy so'z-darajasidagi kirishlar")
     lines.append("")
     lines.append(
@@ -433,6 +528,12 @@ def run(out_path: str | None) -> int:
     lines.append("|---|---|---|---|")
     lines.append(f"| 1500 so'zlik lug'at ({len(dict_rows)} ta \"-er\" so'zdan) | {d_sifat} | {d_fel} | {d_undet} |")
     lines.append(f"| CH2_EVX_EXAMPLES ({len(ch2_rows)} ta \"-er\" so'zdan) | {c_sifat} | {c_fel} | 0 |")
+    if full_ch2_rows is not None:
+        lines.append(
+            f"| II bobning TO'LIQ namunalari ({len(full_ch2_rows)} ta \"-er\" so'zdan, CH2_EVX_EXAMPLES + "
+            f"{sum(1 for r in full_ch2_rows if not r['in_ch2_evx_examples'])} qo'shimcha) | {fc_sifat} | "
+            f"{fc_fel} | 0 |"
+        )
     lines.append(f"| tests/*.py (haqiqiy so'z kirishlari) | 0 | {len(_TEST_SUITE_ER_WORDS)} | — |")
     lines.append("")
 

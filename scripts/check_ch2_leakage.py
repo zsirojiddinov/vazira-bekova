@@ -143,6 +143,43 @@ def find_chapter_bounds(items) -> dict[str, tuple[int, int]]:
     return bounds
 
 
+# KKT formal-model belgisi -> POS nomi (kkt_v20_soz_tartibi.py:POS_KKT ning
+# TESKARISI: "Ot":"C","Fe'l":"G","Sifat":"P","Ravish":"N","Olmosh":"M","Son":"F").
+# Bu — CH2_EVX_EXAMPLES ga QO'LDA yozilmagan (Claude tomonidan) yozuvlar uchun
+# POS'ni docx'ning O'Z formal-model tenglamasidan (masalan "G(G4) = ...")
+# AVTOMATIK aniqlash imkonini beradi — hech qanday taxmin/tilshunoslik hukmi
+# YO'Q, faqat belgi-xaritalash.
+_MODEL_SYMBOL_TO_POS = {"C": "Ot", "G": "Fe'l", "P": "Sifat", "N": "Ravish", "M": "Olmosh", "F": "Son"}
+_MODEL_EXTRACT_RE = re.compile(r"rasmiy model\w*\s*[:\-]?\s*(.+)$", re.IGNORECASE)
+
+
+def _find_model_equation(items, start: int, end_exclusive: int) -> str | None:
+    """[start, end_exclusive) oralig'ida "rasmiy model" so'z birikmasi bor
+    BIRINCHI paragrafni topib, undagi tenglama qismini qaytaradi (masalan
+    "G(G4) = $[i,1-1]G4i"). Topilmasa None."""
+    for k in range(start, min(end_exclusive, len(items))):
+        it = items[k]
+        if it.__class__.__name__ != "Paragraph":
+            continue
+        tk = it.text.strip()
+        if "rasmiy model" in tk.lower():
+            m = _MODEL_EXTRACT_RE.search(tk)
+            return m.group(1).strip() if m else tk
+    return None
+
+
+def _infer_pos_from_model(model_str: str | None) -> str | None:
+    """Formal model tenglamasining BIRINCHI harfidan (masalan "G(G4)..." ->
+    "G" -> "Fe'l") POS'ni aniqlaydi. Raqamli indeks (P5, N2, G13_S va h.k.)
+    hisobga olinmaydi — faqat birinchi harf."""
+    if not model_str:
+        return None
+    m = re.match(r"\s*([A-Za-z])", model_str)
+    if not m:
+        return None
+    return _MODEL_SYMBOL_TO_POS.get(m.group(1).upper())
+
+
 def extract_ch2_records(items, ch2_bounds: tuple[int, int]) -> list[dict]:
     """II bob ichidagi har bir "Ingliz tilida EVX <so'z> ... Oʻzbek tilida
     EVIX <tarjima>" juftligini xom docx dan ajratib oladi. Har bir yozuv —
@@ -199,15 +236,31 @@ def extract_ch2_records(items, ch2_bounds: tuple[int, int]) -> list[dict]:
                             if isinstance(items[k], Paragraph) and items[k].text.strip():
                                 break
 
+                    # Formal-model tenglamalari — "kataloglashtirish" uchun
+                    # (foydalanuvchi so'rovi, 2026-09-09): EN modeli EN
+                    # markeridan UZ markerigacha (yoki UZ topilmasa, +10
+                    # blokgacha) qidiriladi; UZ modeli UZ markeridan keyin
+                    # +6 blokgacha. POS shu EN model tenglamasining BIRINCHI
+                    # harfidan (KKT belgisi) avtomatik chiqariladi.
+                    en_model_end = uz_idx if uz_idx is not None else min(i + 10, e)
+                    en_model = _find_model_equation(items, i + 1, en_model_end)
+                    uz_model = None
+                    if uz_idx is not None:
+                        uz_model = _find_model_equation(items, uz_idx + 1, min(uz_idx + 6, e))
+                    inferred_pos = _infer_pos_from_model(en_model)
+
                     records.append({
                         "en_idx": i,
                         "en_marker_raw": t,
                         "en_marker_word": en_marker_word,
                         "en_table_word": en_table_word,
+                        "en_model": en_model,
                         "uz_idx": uz_idx,
                         "uz_marker_raw": uz_raw,
                         "uz_marker_word": uz_marker_word,
                         "uz_table_word": uz_table_word,
+                        "uz_model": uz_model,
+                        "inferred_pos": inferred_pos,
                     })
         i += 1
     return records
@@ -508,18 +561,28 @@ def run(docx_path: str, out_path: str | None) -> int:
                 lines.append(f"| {p['ch2']['en']} | {p['ch2']['uz']} | Avtomatik qidiruv \"Ingliz tilida EVX\" naqshini bu yozuv uchun topa olmadi — bu skript metodikasining cheklovi, dissertatsiyada yo'qligini ANGLATMAYDI. |")
         lines.append("")
 
-    lines.append("## 2. II bobdagi, lekin CH2_EVX_EXAMPLES ga KIRITILMAGAN namunalar")
+    lines.append("## 2. II bobdagi, lekin CH2_EVX_EXAMPLES ga KIRITILMAGAN namunalar — to'liq katalog")
     lines.append("")
     lines.append(
         f"Docx'dan avtomatik ajratib olingan {len(docx_records)} ta \"Ingliz tilida EVX\" belgisidan "
         f"{len(unused_docx)} tasi CH2_EVX_EXAMPLES dagi hech qaysi yozuv bilan bog'lanmadi — demak ular II "
-        f"bobda BOR, lekin dastur muallifi CH2_EVX_EXAMPLES ga KIRITMAGAN:"
+        f"bobda BOR, lekin dastur muallifi CH2_EVX_EXAMPLES ga KIRITMAGAN. Har biri uchun POS ham "
+        f"avtomatik chiqarilgan — CH2_EVX_EXAMPLES dagi kabi qo'lda BELGILANMAGAN, balki EN formal-model "
+        f"tenglamasining BIRINCHI harfidan (KKT belgisi, masalan \"G(G4)=...\" -> \"G\" -> \"Fe'l\") "
+        f"to'g'ridan-to'g'ri o'qilgan (`_infer_pos_from_model()`, hech qanday tilshunoslik hukmi yo'q, "
+        f"faqat belgi-xaritalash `kkt_v20_soz_tartibi.py:POS_KKT`ning teskarisi bilan):"
     )
     lines.append("")
-    lines.append("| # (docx paragraf idx) | Ingliz (paragraf) | O'zbek (paragraf) |")
-    lines.append("|---|---|---|")
+    lines.append("| # (docx idx) | Ingliz | O'zbek | POS (avtomatik) | EN formal model | UZ formal model |")
+    lines.append("|---|---|---|---|---|---|")
     for r in unused_docx:
-        lines.append(f"| {r['en_idx']} | {r['en_marker_word']} | {r['uz_marker_word'] or '(topilmadi)'} |")
+        pos_txt = r["inferred_pos"] or "(model topilmadi)"
+        en_model_txt = f"`{r['en_model']}`" if r["en_model"] else "—"
+        uz_model_txt = f"`{r['uz_model']}`" if r["uz_model"] else "—"
+        lines.append(
+            f"| {r['en_idx']} | {r['en_marker_word']} | {r['uz_marker_word'] or '(topilmadi)'} | "
+            f"{pos_txt} | {en_model_txt} | {uz_model_txt} |"
+        )
     lines.append("")
     lines.append(
         "Diqqat: bu jadvaldagi ba'zi qatorlar dissertatsiyaning O'ZIDAGI (Claude yoki avvalgi transkripsiya "
@@ -528,6 +591,12 @@ def run(docx_path: str, out_path: str | None) -> int:
         "tarjimasi \"rasmiy\" (=formal) — ya'ni bu qatordagi haqiqiy misol \"formal\" bo'lishi kerak edi, "
         "\"variables\" so'zi avvalgi bo'limdan (#310) qolib ketgan nusxa xatosi ko'rinadi (docx #664-673 "
         "qarang). Bu skript bunday holatlarni ANIQLAMAYDI/TUZATMAYDI — faqat xom matnni ko'rsatadi."
+    )
+    lines.append(
+        "**POS ustuni haqida ehtiyot chorasi:** \"model topilmadi\" ustunlarida `_find_model_equation()` "
+        "belgilangan qidiruv oralig'ida \"rasmiy model\" so'z birikmasini topa olmagan (masalan ba'zi qisqa "
+        "fe'l misollarida formal model alohida paragrafda emas, boshqa joyda bo'lishi mumkin) — bu \"POS "
+        "yo'q\" degani emas, faqat AVTOMATIK ajratilmaganini bildiradi."
     )
     lines.append("")
 

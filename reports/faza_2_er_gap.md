@@ -1,6 +1,6 @@
 # Faza 2 — "-er" bo'shlig'i: sifat+er (qiyosiy) vs fe'l+er (agentiv)
 
-**Generatsiya vaqti:** 2026-09-08T15:39:55+00:00Z
+**Generatsiya vaqti:** 2026-09-09T05:56:53+00:00Z
 **Buyruq:** `python scripts/audit_er_gap.py`
 
 **Kontekst:** `"worker"->"Ishlaroq"` ma'lum xatosi (`make_uzbek()` "-er"ni HAR DOIM qiyosiy daraja deb hisoblaydi, agentiv ma'noni ajratmaydi — qarang `reports/faza_1.md`#2-band, `tests/test_smart_parse.py::test_smart_parse_agentive_er_uses_wrong_fallback_suffix_data_bug`). **Bu hisobot xatoni TUZATMAYDI** — foydalanuvchi so'rovi bo'yicha faqat ikkita guruhning hajmini hisoblab, professor bilan muhokama uchun xom dalil taqdim etadi. Qaysi guruh "dissertatsiyada bor/yo'q" degan yakuniy xulosani Claude CHIQARMAYDI.
@@ -94,6 +94,26 @@ Bitta-so'zli "-er" bilan tugaydigan yozuvlar: **5**
 
 **Diqqat:** `CH2_EVX_EXAMPLES`da FE'L+ER (agentiv) misoli **YO'Q** — barcha bitta-so'zli "-er" yozuvlari qiyosiy daraja. (`reports/ch2_leakage_check.md` — endi asl dissertatsiya fayli bilan tasdiqlangan — bu ro'yxat II bobning HAMMASI emasligini ko'rsatadi, lekin II bobning O'ZIDA ham hech qanday fe'l+er/agentiv EVX misoli TOPILMADI, qarang 4-bo'lim.)
 
+### 3a-bis. `CH2_EVX_EXAMPLES` + II bobdagi QO'SHIMCHA namunalar (davomi, 2026-09-09)
+
+`scripts/check_ch2_leakage.py` (2026-09-09) II bobning O'ZIDAN CH2_EVX_EXAMPLES'dagi 52 tadan TASHQARI yana ~20 ta "Ingliz tilida EVX ..." namunani avtomatik ajratib oladi (to'liq ro'yxat: `reports/ch2_leakage_check.md`#2-bo'lim). Shu TO'LIQ to'plamdagi (jami 7 ta) bitta-so'zli "-er" so'zlari — POS bu safar CH2 kabi qo'lda emas, **docx'ning o'z formal-model tenglamasidan avtomatik chiqarilgan** (`check_ch2_leakage._infer_pos_from_model()`):
+
+| So'z | O'zbekcha | POS (avtomatik) | CH2_EVX_EXAMPLES da bormi? | Docx idx | Guruh |
+|---|---|---|---|---|---|
+| cleverer | aqilliroq | Sifat | ha (3a da bor) | 684 | SIFAT+ER (qiyosiy) |
+| larger | kattaroq | Sifat | YO'Q — faqat II bobning o'zida | 700 | SIFAT+ER (qiyosiy) |
+| bigger | kattaroq | Sifat | YO'Q — faqat II bobning o'zida | 709 | SIFAT+ER (qiyosiy) |
+| busier | kattaroq | Sifat | ha (3a da bor) | 724 | SIFAT+ER (qiyosiy) |
+| gayer | shoʻxroq | Sifat | ha (3a da bor) | 738 | SIFAT+ER (qiyosiy) |
+| gayer | eng shoʻx | Sifat | ha (3a da bor) | 746 | SIFAT+ER (qiyosiy) |
+| faster | tezroq | Ravish | ha (3a da bor) | 805 | SIFAT+ER (qiyosiy) |
+
+CH2_EVX_EXAMPLES'ga kiritilmagan **2 ta qo'shimcha** "-er" so'zi topildi (`larger`, `bigger` — ikkalasi ham SIFAT+ER/qiyosiy, docx idx 700 va 709). Bular bilan birga II bobning avtomatik ajratib olingan TO'LIQ to'plamidagi (jami 7 ta "-er" so'z) hisobi:
+- SIFAT+ER (qiyosiy): **7**
+- FE'L+ER (agentiv): **0**
+
+**Bu — 3a dagi "CH2_EVX_EXAMPLES'da fe'l+er yo'q" da'vosini II bobning KATTAROQ (avtomatik aniqlangan ~72 ta misolli) qismiga kengaytiradi:** o'sha kattaroq to'plamda ham FE'L+ER (agentiv) soni **0** — ya'ni II bobning avtomatik ajratib olingan HECH bir namunasi agentiv "-er" emas (barchasi qiyosiy daraja).
+
 ### 3b. `tests/*.py` (pytest to'plami) — haqiqiy so'z-darajasidagi kirishlar
 
 Metodika bo'limida tavsiflangan qo'lda tekshiruv natijasi (barcha `tests/*.py` fayllaridagi "-er"ga o'xshash tokenlar ko'rib chiqildi, faqat HAQIQIY funksiya-chaqiruv argumentlari qoldirildi):
@@ -123,5 +143,6 @@ Manba: `data/desertatsiya.docx`, I bob ("HISOBLASH MASHINALARIDA TARJIMA MUAMMOL
 |---|---|---|---|
 | 1500 so'zlik lug'at (48 ta "-er" so'zdan) | 0 | 3 | 45 |
 | CH2_EVX_EXAMPLES (5 ta "-er" so'zdan) | 5 | 0 | 0 |
+| II bobning TO'LIQ namunalari (7 ta "-er" so'zdan, CH2_EVX_EXAMPLES + 2 qo'shimcha) | 7 | 0 | 0 |
 | tests/*.py (haqiqiy so'z kirishlari) | 0 | 2 | — |
 
