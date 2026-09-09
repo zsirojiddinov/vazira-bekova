@@ -3195,7 +3195,28 @@ F_INPUT=("Segoe UI",18);        F_RESULT=("Segoe UI",18,"bold")
 F_MONO =("Consolas",12);        F_MONO_B=("Consolas",12,"bold")
 F_SMALL=("Segoe UI",18);        F_CARD_N=("Segoe UI",16,"bold")
 F_CARD_L=("Segoe UI",11);       F_BTN  =("Segoe UI",18,"bold")
-F_HDR  =("Segoe UI",18,"bold")
+F_HDR  =("Segoe UI",18,"bold");  F_CARD_NOTE=("Segoe UI",8)
+
+# ═══════════════════════════════════════════════════════════════════
+#  GUI YORLIG'I — "aniqlik" chalkashuvi (Faza 2, Ustuvorlik 0.2)
+#  Batafsil dalil/audit: reports/faza_2_confidence_audit.md
+# ═══════════════════════════════════════════════════════════════════
+# DIQQAT: bu ikki matn ilgari "O'rtacha aniqlik"/"Aniqlik" deb nomlangan
+# edi va shu nom bilan (hatto dissertatsiya skrinshotlarida ham) TARJIMA
+# TO'G'RILIGI sifatida o'qilgan. Aslida bu — `conf` maydonining (qattiq
+# kodlangan konstanta: 0.999/0.970/0.93/0.895/0.0, qarang
+# `_smart_parse_core`) o'rtachasi/o'zi — so'z qaysi morfologik kod
+# yo'lidan o'tganini bildiradi, TARJIMA MAZMUNAN TO'G'RILIGINI EMAS.
+# Bu yerda FAQAT NOM/IZOH o'zgartirildi — `avg_c`/`conf` HISOBLASH
+# MANTIG'IGA HECH NARSA TEGMAGAN (Qoida: natijaga qarab kod tuzatilmaydi,
+# vazn/konstantalar o'zgartirilmaydi). Modul darajasida konstanta
+# sifatida chiqarilgan, chunki CI'da (Ubuntu, displeysiz) haqiqiy Tk
+# oynasi ochib bo'lmaydi — test shu matnni Tk'siz tekshiradi
+# (tests/test_gui_labels.py).
+ACC_CARD_LABEL = "Parse ishonchi (morfologik)"
+ACC_CARD_NOTE = ("Tarjima to'g'riligini EMAS — so'z lug'at/affiks "
+                  "bazasida qanday topilganini bildiradi.")
+ACC_INLINE_LABEL = "Parse ishonchi"
 
 if HAS_TK:
 
@@ -3291,7 +3312,7 @@ if HAS_TK:
             row=tk.Frame(self,bg=BG,padx=14,pady=1); row.pack(fill="x")
             self._sc_words =self._stat_card(row,"-","So'zlar soni",CARD1)
             self._sc_affiks=self._stat_card(row,"-","Affiks/Prefiks",CARD2)
-            self._sc_acc   =self._stat_card(row,"-","O'rtacha aniqlik",CARD3)
+            self._sc_acc   =self._stat_card(row,"-",ACC_CARD_LABEL,CARD3,note=ACC_CARD_NOTE)
             self._sc_auto  =self._stat_card(row,"-","Jami(V2+V3)",CARD4)
             for sc in (self._sc_words,self._sc_affiks,self._sc_acc,self._sc_auto):
                 sc["frame"].pack(side="left",expand=True,fill="x",padx=2)
@@ -3379,7 +3400,7 @@ if HAS_TK:
                     if len(meanings)>1:
                         alts=", ".join(m["uz"] for m in meanings)
                         t.insert("end","  ├─ Ma'nolar:","dim"); t.insert("end",f" {alts}  ({len(meanings)} ta)\n","orange")
-                    t.insert("end","  ├─ Aniqlik: ","dim")
+                    t.insert("end",f"  ├─ {ACC_INLINE_LABEL}: ","dim")
                     t.insert("end",f"{round(a['conf']*100,1)}%\n","orange" if (sfx or pfx) else "green")
                     t.insert("end","  │\n","dim")
                     t.insert("end","  ╔══ KKT MM (INGLIZ) ═══════════════╗\n","gold")
@@ -3513,10 +3534,15 @@ if HAS_TK:
             return tk.Button(p,text=text,command=cmd,font=F_BTN,bg=color,fg=WHITE,
                              relief="flat",padx=12,pady=6,cursor="hand2",
                              activebackground=color,activeforeground=WHITE)
-        def _stat_card(self,p,value,label,color):
+        def _stat_card(self,p,value,label,color,note=None):
             frame=tk.Frame(p,bg=color,pady=3,padx=5)
             lbl=tk.Label(frame,text=value,font=F_CARD_N,bg=color,fg=WHITE); lbl.pack()
             tk.Label(frame,text=label,font=F_CARD_L,bg=color,fg=WHITE).pack()
+            if note:
+                # Faza 2 / Ustuvorlik 0.2 — ko'rsatkich nimani o'lchamasligini
+                # doim ko'rinadigan izoh sifatida bildiradi (qarang ACC_CARD_NOTE).
+                tk.Label(frame,text=note,font=F_CARD_NOTE,bg=color,fg=WHITE,
+                         wraplength=150,justify="center").pack()
             return {"frame":frame,"lbl":lbl}
         @staticmethod
         def _set_text(widget,text):
