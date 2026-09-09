@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: install db test check100 audit clean
+.PHONY: install db test check100 audit ergap ch2leakage clean
 
 install:
 	$(PYTHON) -m pip install -r requirements.txt
@@ -20,6 +20,18 @@ check100:
 ## II bob (CH2_EVX_EXAMPLES) auditini qayta hisoblaydi (reports/faza_1_audit_examples.md).
 audit:
 	$(PYTHON) scripts/audit_examples.py
+
+## "-er" so'zlarini sifat+er (qiyosiy) / fe'l+er (agentiv) ga ajratib,
+## sonlarini hisoblaydi (reports/faza_2_er_gap.md) — hech narsani hal
+## qilmaydi, faqat professor muhokamasi uchun dalil tayyorlaydi.
+ergap:
+	$(PYTHON) scripts/audit_er_gap.py
+
+## CH2_EVX_EXAMPLES ni asl dissertatsiya (data/desertatsiya.docx, shaxsiy
+## fayl — .gitignore'da) bilan solishtiradi (reports/ch2_leakage_check.md).
+## Fayl mavjud bo'lmasa xato bilan to'xtaydi.
+ch2leakage:
+	$(PYTHON) scripts/check_ch2_leakage.py
 
 ## Generatsiya qilingan bazalarni tozalaydi (data/ dagi manba fayllarga
 ## tegmaydi — qayta `make db` bilan tiklanadi).
