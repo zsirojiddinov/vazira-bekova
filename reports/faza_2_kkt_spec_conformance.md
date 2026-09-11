@@ -1,23 +1,23 @@
 # Faza 2 — KKT rasmiy spesifikatsiyasiga moslik auditi (conformance matrix)
 
-**Generatsiya vaqti:** 2026-09-11T12:47:38+00:00
+**Generatsiya vaqti:** 2026-09-11T12:49:52+00:00
 **Buyruq:** `python scripts/audit_kkt_spec_conformance.py`
 **Spesifikatsiya:** `data/kkt_spec.json` ← `data/kkt_qoidalari.docx` (sha256 `4954c528bc7eec3d…`)
 **Kod:** `kkt_v20_soz_tartibi.py` (bazalar data/ dan izolyatsiyalangan papkada noldan qurilgan, `readonly_mode`; NLTK lemmatizer: `USE_LEMMA=True`)
 
 ## 0. Asosiy natija
 
-Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **41 ta to'liq mos (34 tasi mustaqil hisoblangan, 7 tasi aylanma — hammasi CH2_EVX_EXAMPLES orqali)**, 30 ta qisman mos, 16 ta yo'q, 0 ta zid.
+Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **44 ta to'liq mos (37 tasi mustaqil hisoblangan, 7 tasi aylanma — hammasi CH2_EVX_EXAMPLES orqali)**, 30 ta qisman mos, 13 ta yo'q, 0 ta zid.
 
 | Holat | Soni | Ulushi |
 |---|---|---|
-| **TO'LIQ MOS** | **41** (34 mustaqil / 7 aylanma) | 47.1% |
+| **TO'LIQ MOS** | **44** (37 mustaqil / 7 aylanma) | 50.6% |
 | **QISMAN MOS** | **30** | 34.5% |
-| **YO'Q** | **16** | 18.4% |
+| **YO'Q** | **13** | 14.9% |
 | **ZID** | **0** | 0.0% |
 | Jami | 87 | 100% |
 
-### 0.1 41 ta TO'LIQ MOS — haqiqiy tarkibi
+### 0.1 44 ta TO'LIQ MOS — haqiqiy tarkibi
 
 - **mustaqil hisoblangan** — natijani kod o'zi hisobladi: M/N/S turida kodga FAQAT docx'dagi o'zak berildi (stub, real lug'at yashirilgan), L turida natija CH2_EVX_EXAMPLES'dan mustaqil lug'at yozuvidan (1500-lug'at yoki kod ichidagi SEED_WORDS) keldi.
 - **CH2_EVX_EXAMPLES orqali aylanma** — natija dissertatsiya II bob misollarining lug'atga yozilgan nusxasidan (`source='chapter2_evx'`) o'qib qaytarildi; docx misoli ham shu manbadan — mustaqil dalil emas.
@@ -65,7 +65,10 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **41 ta to'liq mos (
 | 3.14 | Son | S | **mustaqil hisoblangan** | stub; maxsus qoida yo'q — so'zma-so'z birikma | eighty: lug'at[chapter2_evx]; five: topilmadi |
 | 3.15 | Son | S | **mustaqil hisoblangan** | stub; maxsus qoida yo'q — so'zma-so'z birikma | one: lug'at[json]; hundred: topilmadi |
 | 3.16 | Son | S | **mustaqil hisoblangan** | stub; maxsus qoida yo'q — so'zma-so'z birikma | four: topilmadi; million: topilmadi |
+| 3.17 | Son | S | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | three: topilmadi; hundred: topilmadi; and: lug'at[docx,json]; five: topilmadi |
 | 3.18 | Son | M | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | hundredth: lug'at[chapter2_evx] |
+| 3.19 | Son | S | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | hundred: topilmadi; and: lug'at[docx,json]; twenty: topilmadi; first: topilmadi |
+| 3.20 | Son | S | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | chapter: lug'at[json]; five: topilmadi |
 
 **"93 ta qoida" haqida — tuzatish:** docx jadvallarida **87 ta** qoida bor. "93" soni (Ot 16, Sifat 18, Fe'l 29, Ravish 11, Son 11, Olmosh 8) har bir jadvalning SARLAVHA qatorini ham qo'shib sanalgan (16−1 + 18−1 + 29−1 + 11−1 + 11−1 + 8−1 = 87). Tekshiruv: `data/kkt_spec.json` → `sonlar`.
 
@@ -77,7 +80,7 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **41 ta to'liq mos (
 | Sifat | 12 | 4 | 1 | 0 | 17 |
 | Fe'l | 9 | 9 | 10 | 0 | 28 |
 | Ravish | 5 | 4 | 1 | 0 | 10 |
-| Son | 5 | 2 | 3 | 0 | 10 |
+| Son | 8 | 2 | 0 | 0 | 10 |
 | Olmosh | 0 | 7 | 0 | 0 | 7 |
 
 ### Qoida turi bo'yicha
@@ -86,12 +89,12 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **41 ta to'liq mos (
 |---|---|---|---|---|---|
 | M — morfologik (affiks) | 19 | 16 | 0 | 0 | 35 |
 | N — noqoida (o'zak o'zgarishi) | 0 | 3 | 1 | 0 | 4 |
-| S — ibora (so'z tartibi / funksional so'z) | 13 | 0 | 3 | 0 | 16 |
+| S — ibora (so'z tartibi / funksional so'z) | 16 | 0 | 0 | 0 | 16 |
 | L — leksik moslik | 9 | 11 | 12 | 0 | 32 |
 
 ### TO'LIQ MOS natijalarini qanday o'qish kerak (halol baho)
 
-- M/N/S turidagi TO'LIQ MOS (32 ta) — **lug'atdan mustaqil** tekshirilgan: kodga faqat docx'dagi o'zak berilgan (stub), qolgani haqiqiy qoida zanjiri. Bu — formal qoidaning o'zi ishlashining dalili. Lekin real lug'atda o'sha o'zak bo'lmasa, amaliy tarjima baribir chiqmaydi (quyidagi batafsil jadvaldagi "real lug'at" qatori).
+- M/N/S turidagi TO'LIQ MOS (35 ta) — **lug'atdan mustaqil** tekshirilgan: kodga faqat docx'dagi o'zak berilgan (stub), qolgani haqiqiy qoida zanjiri. Bu — formal qoidaning o'zi ishlashining dalili. Lekin real lug'atda o'sha o'zak bo'lmasa, amaliy tarjima baribir chiqmaydi (quyidagi batafsil jadvaldagi "real lug'at" qatori).
 - L turidagi TO'LIQ MOS (9 ta) — HAQIQIY lug'at bilan. Shundan **7 tasi natijani FAQAT `CH2_EVX_EXAMPLES` (dissertatsiya II bob misollari, `source='chapter2_evx'`) yozuvidan oladi** — ya'ni docx misoli bilan bir xil manbadan ko'chirilgan so'z qaytyapti (aylanma; mustaqil dalil emas): 2.46, 2.49, 2.51, 2.52, 3.1, 3.6, 3.7.
 - S turidagi TO'LIQ MOS ichida **3 tasi** uchun kodda maxsus qoida YO'Q — natija oddiy so'zma-so'z birikmadan to'g'ri chiqib qolgan (masalan son birikmalari): 3.14, 3.15, 3.16.
 - **Muhitga bog'liq holatlar** (NLTK wordnet lemmatizer bor/yo'qligiga qarab o'zgaradi — hisobot `USE_LEMMA=True` bilan): 2.33: QISMAN MOS → wordnet'siz YO'Q; 2.65: QISMAN MOS → wordnet'siz YO'Q.
@@ -129,7 +132,7 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **41 ta to'liq mos (
 | 2.12 | Ot | **QISMAN MOS** | [M] MORPH_RULES:517,520, make_uzbek:558; stub: tahlil: -s + schoolboy → Ot — stub: `schoolboys` → «Maktab bolalar» (kutilgan «maktab bolalari») ✗ |
 | 2.13 | Ot | **QISMAN MOS** | [M] MORPH_RULES:445, make_uzbek:588; stub: tahlil: -ation + inform → Ot — stub: `information` → «⟨inform⟩ish» (kutilgan «axborot») ✗ |
 | 2.15 | Ot | **QISMAN MOS** | [M] MORPH_RULES:517,520, make_uzbek:558; stub: tahlil: -s + content → Ot — stub: `contents` → «Mundarijalar» (kutilgan «mundarija») ✗ |
-| 2.16 | Ot | **TO'LIQ MOS** | [M] _smart_parse_core:3093 (alohida tarmoq); stub: tahlil: -'s + student → Ot — stub: `student's` → «Studentning» (kutilgan «studentning») ✓ |
+| 2.16 | Ot | **TO'LIQ MOS** | [M] _smart_parse_core:3120 (alohida tarmoq); stub: tahlil: -'s + student → Ot — stub: `student's` → «Studentning» (kutilgan «studentning») ✓ |
 | –(Sifat) | Sifat | **YO'Q** | [L] real lug'at: `big` → «[big?]» (kutilgan «katta») ✗ — yo'l: big: topilmadi |
 | 2.19 | Sifat | **QISMAN MOS** | [M] MORPH_RULES:434, make_uzbek:584; stub: tahlil: -al + form → Sifat — stub: `formal` → «Rasmga oid» (kutilgan «rasmiy») ✗ |
 | 2.20 | Sifat | **QISMAN MOS** | [M] MORPH_RULES:434, make_uzbek:584; stub: tahlil: -al + dimension → Sifat — stub: `high-dimensional` → «Ko‘p o‘lchovga oid» (kutilgan «ko‘p o‘lchovli») ✗ |
@@ -191,10 +194,10 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **41 ta to'liq mos (
 | 3.14 | Son | **TO'LIQ MOS** | [S] kodda bu hodisa uchun maxsus qoida yo'q — natija so'zma-so'z birikmadan kelib chiqdi — stub: `eighty-five` → «Sakson besh» (kutilgan «sakson besh») ✓ |
 | 3.15 | Son | **TO'LIQ MOS** | [S] kodda bu hodisa uchun maxsus qoida yo'q — natija so'zma-so'z birikmadan kelib chiqdi — stub: `one hundred` → «Bir yuz» (kutilgan «bir yuz») ✓ |
 | 3.16 | Son | **TO'LIQ MOS** | [S] kodda bu hodisa uchun maxsus qoida yo'q — natija so'zma-so'z birikmadan kelib chiqdi — stub: `four million` → «To‘rt million» (kutilgan «to‘rt million») ✓ |
-| 3.17 | Son | **YO'Q** | [S] stub: `three hundred and five` → «Uch yuz va besh» (kutilgan «uch yuz besh») ✗ |
+| 3.17 | Son | **TO'LIQ MOS** | [S] NUMERAL_CONJ_EN:2254 — son iboralari: "and" tushadi, yakka hundred → "bir yuz", first/second/third → sanoq son + "-inchi", chapter/part + son → tartib son + ot (spec 3.15/3.17/3.19/3.20) — stub: `three hundred and five` → «Uch yuz besh» (kutilgan «uch yuz besh») ✓ |
 | 3.18 | Son | **TO'LIQ MOS** | [M] MORPH_RULES:372, make_uzbek:608; stub: tahlil: -th + hundred → Son — stub: `hundredth` → «Yuzinchi» (kutilgan «yuzinchi») ✓ |
-| 3.19 | Son | **YO'Q** | [S] stub: `hundred and twenty-first` → «Yuz va yigirma» (kutilgan «bir yuz yigirma birinchi») ✗ |
-| 3.20 | Son | **YO'Q** | [S] stub: `chapter five` → «Bob besh» (kutilgan «beshinchi bob») ✗ |
+| 3.19 | Son | **TO'LIQ MOS** | [S] NUMERAL_CONJ_EN:2254 — son iboralari: "and" tushadi, yakka hundred → "bir yuz", first/second/third → sanoq son + "-inchi", chapter/part + son → tartib son + ot (spec 3.15/3.17/3.19/3.20) — stub: `hundred and twenty-first` → «Bir yuz yigirma birinchi» (kutilgan «bir yuz yigirma birinchi») ✓ |
+| 3.20 | Son | **TO'LIQ MOS** | [S] NUMERAL_CONJ_EN:2254 — son iboralari: "and" tushadi, yakka hundred → "bir yuz", first/second/third → sanoq son + "-inchi", chapter/part + son → tartib son + ot (spec 3.15/3.17/3.19/3.20) — stub: `chapter five` → «Beshinchi bob» (kutilgan «beshinchi bob») ✓ |
 | 3.22 | Olmosh | **QISMAN MOS** | [L] real lug'at: `I` → «[i?]» (kutilgan «men») ✗ … (5/6 mos) — yo'l: i: topilmadi; he: lug'at[json]; we: lug'at[json]; me: lug'at[json]; him: lug'at[json]; us: lug'at[json] |
 | 3.23 | Olmosh | **QISMAN MOS** | [L] real lug'at: `I` → «[i?]» (kutilgan «men») ✗ … (6/7 mos) — yo'l: i: topilmadi; he: lug'at[json]; she: lug'at[json]; it: lug'at[json]; we: lug'at[json]; you: lug'at[json]; they: lug'at[json] |
 | 3.24 | Olmosh | **QISMAN MOS** | [L] real lug'at: `my` → «Mening» (kutilgan «menning») ✗ … (4/5 mos) — yo'l: my: lug'at[docx]; his: lug'at[docx]; our: lug'at[docx]; your: lug'at[docx]; their: lug'at[docx] |
@@ -264,10 +267,10 @@ Stub tekshiruvi formal qoidani ajratib oladi; bu jadval o'sha misollar HAQIQIY l
 | 3.14 | TO'LIQ MOS | `eighty-five` → «Sakson» ✗ | eighty: lug'at[chapter2_evx]; five: topilmadi |
 | 3.15 | TO'LIQ MOS | `one hundred` → «Biri / Bitta» ✗ | one: lug'at[json]; hundred: topilmadi |
 | 3.16 | TO'LIQ MOS | `four million` → «[four?] [million?]» ✗ | four: topilmadi; million: topilmadi |
-| 3.17 | YO'Q | `three hundred and five` → «Va» ✗ | three: topilmadi; hundred: topilmadi; and: lug'at[docx,json]; five: topilmadi |
+| 3.17 | TO'LIQ MOS | `three hundred and five` → «Va» ✗ | three: topilmadi; hundred: topilmadi; and: lug'at[docx,json]; five: topilmadi |
 | 3.18 | TO'LIQ MOS | `hundredth` → «Yuzinchi» ✓ | hundredth: lug'at[chapter2_evx] |
-| 3.19 | YO'Q | `hundred and twenty-first` → «Va» ✗ | hundred: topilmadi; and: lug'at[docx,json]; twenty: topilmadi; first: topilmadi |
-| 3.20 | YO'Q | `chapter five` → «Bob» ✗ | chapter: lug'at[json]; five: topilmadi |
+| 3.19 | TO'LIQ MOS | `hundred and twenty-first` → «Va biriinchi» ✗ | hundred: topilmadi; and: lug'at[docx,json]; twenty: topilmadi; first: topilmadi |
+| 3.20 | TO'LIQ MOS | `chapter five` → «Bob» ✗ | chapter: lug'at[json]; five: topilmadi |
 
 ## 3. 87 qoidadan tashqari: vaznlar, turkum belgilari, operatorlar
 
@@ -292,7 +295,7 @@ Stub tekshiruvi formal qoidani ajratib oladi; bu jadval o'sha misollar HAQIQIY l
 
 | Belgi | Spec ma'nosi | Kodda |
 |---|---|---|
-| ⊕ | Biriktirish (konkatenatsiya) amali | Formal model satrlarida biriktirish sifatida (`kkt_en()` — `'⊕↓'.join(segs)`, `:643`); SSM segment ajratgichi (`_ssm_split_segments`, `:2769`). |
+| ⊕ | Biriktirish (konkatenatsiya) amali | Formal model satrlarida biriktirish sifatida (`kkt_en()` — `'⊕↓'.join(segs)`, `:643`); SSM segment ajratgichi (`_ssm_split_segments`, `:2796`). |
 | V | “Yoki” amali | "Yoki" amali sifatida ISHLATILMAYDI. `KKT_SYMBOLS` da `("V","umumiy BB")` — boshqa ma'noda (umumiy baza) belgilangan. |
 | ↓ (⇓) | “Ulanish” (qo‘shilish) yoki “ulanmaslik” (qo‘shilmaslik) amali | Faqat `⊕↓` juftligi ichida va SSM'da "ixtiyoriy segment" belgisi sifatida (`_ssm_split_segments`: `p.startswith("↓")`). `⇓` kodda yo'q. |
 | $ | Tanlash amali: $[i, l-m] Pi ko‘rinishida yoziladi | Formal model satrlarida `$[i,1-h]Ci` ko'rinishida (matn sifatida) hosil qilinadi; tanlash amali sifatida hisoblanmaydi. |
@@ -320,13 +323,10 @@ Ustuvorlik o'lchovlari (ikkalasi ham `data/1500_EN_UZ_6_POS_sorted.20.json` 6 as
 | 9 | 2.50 | Fe'l | YO'Q | L | — | 0 | `could` ⟹ `ol + ar + di = olardi` |
 | 10 | 2.55a | Fe'l | YO'Q | L | — | 0 | `need` ⟹ `kerak` |
 | 11 | 2.58 | Fe'l | YO'Q | L | — | 0 | `to follow` ⟹ `kuzatmoq` |
-| 12 | 3.17 | Son | YO'Q | S | — | 0 | `three hundred and five` ⟹ `uch yuz besh (bog‘lovchisiz)` |
-| 13 | 3.19 | Son | YO'Q | S | — | 0 | `hundred and twenty-first` ⟹ `bir yuz yigirma bir + inchi` |
-| 14 | 3.20 | Son | YO'Q | S | — | 0 | `chapter five` ⟹ `besh + inchi bob = beshinchi bob` |
-| 15 | –(Ravish) | Ravish | YO'Q | L | — | 0 | `very` ⟹ `juda` |
-| 16 | –(Sifat) | Sifat | YO'Q | L | — | 0 | `big` ⟹ `katta` |
+| 12 | –(Ravish) | Ravish | YO'Q | L | — | 0 | `very` ⟹ `juda` |
+| 13 | –(Sifat) | Sifat | YO'Q | L | — | 0 | `big` ⟹ `katta` |
 
-Jami YO'Q: **16**, ZID: **0**.
+Jami YO'Q: **13**, ZID: **0**.
 
 ## 5. `CH2_EVX_EXAMPLES` ↔ spesifikatsiya (lug'atdagi dissertatsiya nusxalari rasmiy qoidaga mosmi)
 
@@ -930,9 +930,9 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 ### 3.17 — Ko‘p xonali sonlarda “and” bog‘lovchisi ishlatiladi
 
 - Spec: `three hundred and five` → `uch yuz besh (bog‘lovchisiz)`
-- Tur: **S**, holat: **YO'Q**
+- Tur: **S**, holat: **TO'LIQ MOS**
 - Stub: three→uch (Son), hundred→yuz (Son), five→besh (Son)
-- stub: `three hundred and five` → «Uch yuz va besh» (kutilgan «uch yuz besh») ✗ — yo'l: translate_phrase; three: lug'at[stub]; hundred: lug'at[stub]; and: lug'at[seed(kod)]; five: lug'at[stub]
+- stub: `three hundred and five` → «Uch yuz besh» (kutilgan «uch yuz besh») ✓ — yo'l: translate_phrase; three: lug'at[stub]; hundred: lug'at[stub]; and: lug'at[seed(kod)]; five: lug'at[stub]
 - real lug'at: `three hundred and five` → «Va» (kutilgan «uch yuz besh») ✗ — yo'l: translate_phrase; three: topilmadi; hundred: topilmadi; and: lug'at[docx,json]; five: topilmadi
 
 ### 3.18 — Tartib son – sanoq songa “-th” affiksi qo‘shiladi
@@ -946,18 +946,18 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 ### 3.19 — Qo‘shma tartib son – faqat oxirgi son tartib son shaklida bo‘ladi
 
 - Spec: `hundred and twenty-first` → `bir yuz yigirma bir + inchi` — *docx izohi:* O'zbek misolida natija shakli berilmagan ("bir yuz yigirma bir + inchi" — "=" yo'q).
-- Tur: **S**, holat: **YO'Q**
-- Stub: hundred→yuz (Son), twenty→yigirma (Son)
-- Izoh: Docx natija shaklini bermagan ("bir yuz yigirma bir + inchi") — qismlar qo'shildi. "first" uchun stub berilmadi: docx uni "bir + inchi" deb yozadi, ya'ni tartib son qoidasining o'zi tekshiriladi.
-- stub: `hundred and twenty-first` → «Yuz va yigirma» (kutilgan «bir yuz yigirma birinchi») ✗ — yo'l: translate_phrase; hundred: lug'at[stub]; and: lug'at[seed(kod)]; twenty: lug'at[stub]; first: topilmadi
-- real lug'at: `hundred and twenty-first` → «Va» (kutilgan «bir yuz yigirma birinchi») ✗ — yo'l: translate_phrase; hundred: topilmadi; and: lug'at[docx,json]; twenty: topilmadi; first: topilmadi
+- Tur: **S**, holat: **TO'LIQ MOS**
+- Stub: hundred→yuz (Son), twenty→yigirma (Son), one→bir (Son, manba 3.11)
+- Izoh: Docx natija shaklini bermagan ("bir yuz yigirma bir + inchi") — qismlar qo'shildi. "first" uchun stub berilmadi: docx uni "bir + inchi" deb yozadi, ya'ni noqoida tartib son qoidasining o'zi tekshiriladi; buning uchun sanoq son asosi "one"→"bir" (spec 3.11) stub'da bor (2026-09-11, 3.19 tuzatishi bilan qo'shildi).
+- stub: `hundred and twenty-first` → «Bir yuz yigirma birinchi» (kutilgan «bir yuz yigirma birinchi») ✓ — yo'l: translate_phrase; hundred: lug'at[stub]; and: lug'at[seed(kod)]; twenty: lug'at[stub]; first: topilmadi
+- real lug'at: `hundred and twenty-first` → «Va biriinchi» (kutilgan «bir yuz yigirma birinchi») ✗ — yo'l: translate_phrase; hundred: topilmadi; and: lug'at[docx,json]; twenty: topilmadi; first: topilmadi
 
 ### 3.20 — Bob/qism raqami – ingliz tilida son otdan keyin, o‘zbek tilida otdan oldin (“-inchi” bilan) keladi
 
 - Spec: `chapter five` → `besh + inchi bob = beshinchi bob`
-- Tur: **S**, holat: **YO'Q**
+- Tur: **S**, holat: **TO'LIQ MOS**
 - Stub: chapter→bob (Ot), five→besh (Son)
-- stub: `chapter five` → «Bob besh» (kutilgan «beshinchi bob») ✗ — yo'l: translate_phrase; chapter: lug'at[stub]; five: lug'at[stub]
+- stub: `chapter five` → «Beshinchi bob» (kutilgan «beshinchi bob») ✓ — yo'l: translate_phrase; chapter: lug'at[stub]; five: lug'at[stub]
 - real lug'at: `chapter five` → «Bob» (kutilgan «beshinchi bob») ✗ — yo'l: translate_phrase; chapter: lug'at[json]; five: topilmadi
 
 ### 3.22 — Kishilik olmoshi – bosh kelishik va obyekt kelishigiga bo‘linadi

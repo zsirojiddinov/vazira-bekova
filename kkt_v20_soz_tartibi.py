@@ -2241,6 +2241,20 @@ ANALYTIC_DEGREE_EN = {"more", "most", "less"}
 # fe'lning o'zi ("will return" → "qaytmoq"), shu sabab "will" fe'ldan oldin
 # tushadi. Yakka "will" (spec 2.46: "keladi") bunga tegishli emas.
 FUTURE_AUX_EN = "will"
+# KKT spec — son iboralari:
+#  3.17: ko'p xonali sonlardagi "and" o'zbekchada tushadi ("three hundred and
+#        five" → "uch yuz besh").
+#  3.15/3.19: yuz/ming/million o'zbekchada "bir" bilan ("one hundred" → "bir
+#        yuz"); oldidan son kelmagan yakka "hundred" ham "bir yuz" (3.19 misoli).
+#  3.19: first/second/third — noqoida tartib son: sanoq son (lug'atdan) + "-inchi"
+#        ("twenty-first" → "yigirma birinchi"). Faqat so'zning o'zi lug'atda
+#        bo'lmasa.
+#  3.20: bob/qism raqami — o'zbekchada tartib son otdan OLDIN ("chapter five"
+#        → "beshinchi bob").
+NUMERAL_CONJ_EN = "and"
+NUMERAL_SCALE_EN = {"hundred", "thousand", "million"}
+IRREGULAR_ORDINALS_EN = {"first":"one", "second":"two", "third":"three"}
+NUMBERED_PART_NOUNS_EN = {"chapter", "part"}
 
 def _analytic_degree_uz(marker, uz):
     base = uz_stem(uz)
@@ -2286,6 +2300,19 @@ def _chunk_phrase(text):
             items.append({**nxt, "uz": _analytic_degree_uz(w, nxt["uz"])}); k += 2; continue
         if w == FUTURE_AUX_EN and nxt and nxt["found"] and nxt["pos"] == "Fe'l":
             k += 1; continue    # spec 2.62: "will" + fe'l → fe'lning o'zi
+        prev_is_num = bool(items) and items[-1]["pos"] == "Son"
+        if w == NUMERAL_CONJ_EN and prev_is_num and nxt and nxt["found"] and nxt["pos"] == "Son":
+            k += 1; continue    # spec 3.17: son ichidagi "and" tushadi
+        if w in NUMERAL_SCALE_EN and a["found"] and a["pos"] == "Son" and not prev_is_num:
+            items.append({**a, "uz": "bir " + uz_stem(a["uz"])}); k += 1; continue   # spec 3.15/3.19
+        if w in IRREGULAR_ORDINALS_EN and not a["found"]:
+            card = db_lookup(IRREGULAR_ORDINALS_EN[w])
+            if card:            # spec 3.19: noqoida tartib son = sanoq son + "-inchi"
+                items.append({**a, "found": True, "pos": "Son", "uz": make_uzbek(card[1], "th")}); k += 1; continue
+        if w in NUMBERED_PART_NOUNS_EN and a["found"] and nxt and nxt["found"] and nxt["pos"] == "Son":
+            noun = uz_stem(a["uz"]); noun = noun[:1].lower() + noun[1:]
+            items.append({**a, "pos": "Ot", "uz": make_uzbek(nxt["uz"], "th") + " " + noun})
+            k += 2; continue    # spec 3.20: tartib son otdan oldin
         if w in _DETERMINERS: k += 1; continue
         items.append(a); k += 1
     if not any(a["found"] for a in items): return None

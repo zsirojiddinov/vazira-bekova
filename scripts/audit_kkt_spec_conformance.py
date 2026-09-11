@@ -111,6 +111,8 @@ _TO_OBJ = ("PREP_OBJECT_VERBS", "(listen, to): predlog tushadi, to'ldiruvchi vos
            "(OBJECT_CASE_PRONOUNS) qayta \"-ni\" olmaydi")
 _DEGREE = ("ANALYTIC_DEGREE_EN", "more/most/less + sifat/ravish → X+roq / eng X / kamroq X")
 _FUTURE = ("FUTURE_AUX_EN", "\"will\" + fe'l → fe'lning o'zi (spec 2.62 misoli)")
+_NUMERAL = ("NUMERAL_CONJ_EN", "son iboralari: \"and\" tushadi, yakka hundred → \"bir yuz\", first/second/third → "
+            "sanoq son + \"-inchi\", chapter/part + son → tartib son + ot (spec 3.15/3.17/3.19/3.20)")
 _INF_IZOH = ("`INFINITIVE_MARKERS` (to/will/can/...) kodda bor, lekin faqat `select_meaning_contextual()` da "
              "ko'p ma'noli so'zning Fe'l ma'nosini TANLASH uchun ishlatiladi — \"will + fe'l\" uchun tarjima "
              "qoidasi emas.")
@@ -243,14 +245,16 @@ PROBES = {
     "3.15": _p("S", [("one hundred", "bir yuz")], [("one", "bir", "Son"), ("hundred", "yuz", "Son", "3.18")]),
     "3.16": _p("S", [("four million", "to‘rt million")], [("four", "to‘rt", "Son"), ("million", "million", "Son")]),
     "3.17": _p("S", [("three hundred and five", "uch yuz besh")],
-               [("three", "uch", "Son"), ("hundred", "yuz", "Son"), ("five", "besh", "Son")]),
+               [("three", "uch", "Son"), ("hundred", "yuz", "Son"), ("five", "besh", "Son")], mex=_NUMERAL),
     "3.18": _p("M", [("hundredth", "yuzinchi")], [("hundred", "yuz", "Son")], aff="th", sirt=r"th$"),
     "3.19": _p("S", [("hundred and twenty-first", "bir yuz yigirma birinchi")],
-               [("hundred", "yuz", "Son"), ("twenty", "yigirma", "Son")],
+               [("hundred", "yuz", "Son"), ("twenty", "yigirma", "Son"), ("one", "bir", "Son", "3.11")],
+               mex=_NUMERAL,
                izoh="Docx natija shaklini bermagan (\"bir yuz yigirma bir + inchi\") — qismlar qo'shildi. "
-                    "\"first\" uchun stub berilmadi: docx uni \"bir + inchi\" deb yozadi, ya'ni tartib son "
-                    "qoidasining o'zi tekshiriladi."),
-    "3.20": _p("S", [("chapter five", "beshinchi bob")], [("chapter", "bob", "Ot"), ("five", "besh", "Son")]),
+                    "\"first\" uchun stub berilmadi: docx uni \"bir + inchi\" deb yozadi, ya'ni noqoida tartib "
+                    "son qoidasining o'zi tekshiriladi; buning uchun sanoq son asosi \"one\"→\"bir\" (spec 3.11) "
+                    "stub'da bor (2026-09-11, 3.19 tuzatishi bilan qo'shildi)."),
+    "3.20": _p("S", [("chapter five", "beshinchi bob")], [("chapter", "bob", "Ot"), ("five", "besh", "Son")], mex=_NUMERAL),
     # ── OLMOSH ──────────────────────────────────────────────────────────
     "3.22": _p("L", [("I", "men"), ("he", "u"), ("we", "biz"), ("me", "meni"), ("him", "uni"), ("us", "bizni")],
                bosh=["i", "he", "we", "me", "him", "us"]),

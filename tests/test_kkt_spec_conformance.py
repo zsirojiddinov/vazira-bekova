@@ -58,8 +58,8 @@ EXPECTED_STATUS = {
     "2.64": Q, "2.65": Q,
     "–(Ravish)": Y, "3.1": T, "3.2": Q, "3.3": Q, "3.4": Q, "3.5": T, "3.6": T, "3.7": T, "3.8": T,
     "3.9": Q,
-    "3.11": Q, "3.12": T, "3.13": Q, "3.14": T, "3.15": T, "3.16": T, "3.17": Y, "3.18": T, "3.19": Y,
-    "3.20": Y,
+    "3.11": Q, "3.12": T, "3.13": Q, "3.14": T, "3.15": T, "3.16": T, "3.17": T, "3.18": T, "3.19": T,
+    "3.20": T,
     "3.22": Q, "3.23": Q, "3.24": Q, "3.25": Q, "3.26": Q, "3.27": Q, "3.28": Q,
 }
 # NLTK wordnet bo'lmagan muhitda (USE_LEMMA=False) boshqacha chiqadigan holatlar.
@@ -363,3 +363,26 @@ def test_future_will_plus_verb_spec_2_62(isolated_kkt_module):
     assert got == "qaytmoq"
     assert single is None
     assert ("VP", "keladi") in chunks
+
+
+def test_numeral_phrases_spec_3_17_3_19_3_20(isolated_kkt_module):
+    """KKT spec: 3.17 "three hundred and five" → "uch yuz besh" (son ichidagi
+    "and" tushadi); 3.19 "hundred and twenty-first" → "bir yuz yigirma
+    birinchi" (yakka hundred → "bir yuz", first = one + "-inchi"); 3.20
+    "chapter five" → "beshinchi bob". Qo'riqlar: sonlar orasida bo'lmagan
+    "and" bog'lovchi bo'lib qoladi; oldidan son kelgan hundred ga "bir"
+    qo'shilmaydi (3.15/3.16)."""
+    m = isolated_kkt_module
+    stub = [("three", "uch", "Son"), ("hundred", "yuz", "Son"), ("five", "besh", "Son"),
+            ("twenty", "yigirma", "Son"), ("one", "bir", "Son"), ("four", "to‘rt", "Son"),
+            ("million", "million", "Son"), ("chapter", "bob", "Ot"), ("example", "misol", "Ot")]
+    with audit.stub_lexicon(m, stub):
+        got = {t: normalize(audit.system_output(m, t)["natija"])
+               for t in ("three hundred and five", "hundred and twenty-first", "chapter five",
+                         "one hundred", "four million", "five and example")}
+    assert got["three hundred and five"] == "uch yuz besh"
+    assert got["hundred and twenty-first"] == "bir yuz yigirma birinchi"
+    assert got["chapter five"] == "beshinchi bob"
+    assert got["one hundred"] == "bir yuz"
+    assert got["four million"] == normalize("to‘rt million")
+    assert "va" in got["five and example"].split()
