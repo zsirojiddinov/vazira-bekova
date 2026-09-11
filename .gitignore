@@ -13,3 +13,8 @@ __pycache__/
 
 # Shaxsiy dissertatsiya fayli — repo'ga chiqmasligi kerak
 data/desertatsiya.docx
+
+# Rasmiy KKT qoidalari manba hujjati (dissertatsiyadan tayyorlangan) — repo'ga
+# chiqmasligi kerak. Undan ajratilgan data/kkt_spec.json repoda qoladi va manba
+# faylning sha256 xeshini saqlaydi (provenance).
+data/kkt_qoidalari.docx
