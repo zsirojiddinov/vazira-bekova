@@ -1,6 +1,7 @@
 # Faza 2 — yakuniy hisobot: rasmiy KKT spesifikatsiyasiga moslik
 
-**Sana:** 2026-09-11. **Branch:** `feat/faza2-kkt-spec-conformance` (main'ga hali birlashtirilmagan).
+**Sana:** 2026-09-11. PR #1 (`feat/faza2-kkt-spec-conformance`) main'ga birlashtirildi (`9d80e40`);
+keyingi spec tuzatishlari va Faza 3 qo'riqchilari — `feat/faza3-gold-separation-guards`.
 
 Batafsil, qayta ishlab chiqariladigan hisobotlar:
 
@@ -10,16 +11,17 @@ Batafsil, qayta ishlab chiqariladigan hisobotlar:
 | `reports/faza_2_kkt_spec_leakage.md` — spec misollari va boshqa to'plamlar kesishmasi | `make leakage` |
 | `reports/faza_2_lexicon_sources.md` — KKT_Terminologik, 100_soz qatorlari, ablatsiya | `make lexsources` |
 | `reports/faza_2_er_gap.md` (6-bo'lim) — agentiv "-er" spec'da yo'q | `make ergap` |
+| `reports/faza_7_backlog.md` — 12 ta lug'at-ma'lumot yetishmovchiligi (Faza 7 ga qoldirildi) | — |
 | `reports/faza_2_confidence_audit.md` — "aniqlik" ko'rsatkichlari (avvalgi ish) | — |
 
 ## 1. Yakuniy holat — 87 qoida
 
-| Holat | Faza 2 boshida | Yakunida |
-|---|---|---|
-| TO'LIQ MOS | 28 (23 mustaqil / 5 aylanma) | **36 (29 mustaqil / 7 aylanma)** |
-| QISMAN MOS | 33 | **30** |
-| YO'Q | 21 | **21** |
-| ZID | 5 | **0** |
+| Holat | Faza 2 boshida | PR #1 (main) | Hozir |
+|---|---|---|---|
+| TO'LIQ MOS | 28 (23 mustaqil / 5 aylanma) | 36 (29 / 7) | **44 (37 mustaqil / 7 aylanma)** |
+| QISMAN MOS | 33 | 30 | **30** |
+| YO'Q | 21 | 21 | **13** |
+| ZID | 5 | 0 | **0** |
 
 "Aylanma" — natija `CH2_EVX_EXAMPLES` (dissertatsiya II bob misollarining lug'atga
 yozilgan nusxasi) dan o'qib qaytarilgan, mustaqil dalil emas (conformance hisoboti
@@ -27,7 +29,8 @@ yozilgan nusxasi) dan o'qib qaytarilgan, mustaqil dalil emas (conformance hisobo
 tuzatishning o'z dalili lug'atdan mustaqil mexanizm testi.
 
 34 → 36: oldingi xabarda aytilgan "34 mos" to+fe'l tuzatishidan (2.56, 2.59) OLDINGI
-holat edi.
+holat edi. 36 → 44: analitik daraja, "will" va son iboralari tuzatishlari (2-bo'lim).
+Yangi 8 ta TO'LIQ MOS'ning hammasi stub bilan — mustaqil hisoblangan.
 
 ## 2. Tuzatishlar (har biri alohida commit, spec testi bilan)
 
@@ -38,8 +41,11 @@ holat edi.
 | `18c53d9` | 2.2, 2.3 | `a`/`an` → "bitta" (ortidan ot kelsa) | ZID → TO'LIQ | o'zgarmadi | "an example": "Misol" → "Bitta Misol" (CH2 "misol" bilan moslik −1, spec'ga mos) |
 | `bd79825` | 2.51, 2.52 | SSM ildiz belgilariga U/L (spec: so'z turkumi) | QISMAN → TO'LIQ | o'zgarmadi | may, might → "mumkin", ought → "zarur" |
 | `dbd2a46` | 2.56, 2.59 | `to` + fe'l infinitiv; (listen, to) → vositasiz to'ldiruvchi | ZID → TO'LIQ | o'zgarmadi | "a network" → "Tarmoq", "to ask" → "Ajratib ko'rsatmoq" (3-bo'lim, B) |
+| `7bec54f` | 2.31, 2.32, 2.34, 3.5 | analitik daraja more/most/less + sifat/ravish | YO'Q → TO'LIQ | o'zgarmadi | o'zgarmadi |
+| `8a8f1ed` | 2.62 | "will" + fe'l → fe'lning o'zi (spec misoli "qaytmoq"; II bobda "qaytadi" — manbalar farqi) | YO'Q → TO'LIQ | o'zgarmadi | o'zgarmadi |
+| `37b90ec` | 3.17, 3.19, 3.20 | son ichidagi "and", yakka hundred → "bir yuz", first → bir+inchi, chapter + son → tartib son + ot | YO'Q → TO'LIQ | o'zgarmadi | "hundred and twenty first": "Va" → "Va biriinchi" (ikkalasi noto'g'ri — lug'atda hundred/twenty yo'q, one → "Biri / Bitta") |
 
-100_soz ning barcha 5 tuzatishdan keyingi bahosi: **56/100** (o'zgarmagan). O'lchov:
+100_soz ning barcha 8 tuzatishdan keyingi bahosi: **56/100** (o'zgarmagan). O'lchov:
 izolyatsiyalangan bazada har bir tuzatishdan oldin va keyin 100 ta gold + 52 ta CH2
 chiqishi qator-ma-qator solishtirildi. Tuzatishlar gold natijani yaxshilash uchun
 EMAS, spec'ga moslash uchun qilingan.
@@ -48,15 +54,12 @@ EMAS, spec'ga moslash uchun qilingan.
 
 **ZID: 0.**
 
-**YO'Q: 21** (ustuvorlik bo'yicha tartiblangan to'liq jadval — conformance hisoboti 4-bo'lim):
+**YO'Q: 13** (conformance hisoboti 4-bo'lim):
 
-| Guruh | Qoidalar | Izoh |
+| Guruh | Qoidalar | Holat |
 |---|---|---|
-| Ibora qoidasi yo'q (S) | 2.31 more, 2.32 most, 2.34 less, 3.5 more+ravish | Analitik daraja uchun qoida yo'q — asos 262 sifat / 168 ravish |
-| | 2.62 will + fe'l | `INFINITIVE_MARKERS` faqat ma'no tanlashda ishlatiladi |
-| | 3.17, 3.19, 3.20 | Son birikmalari: "and" tushishi, qo'shma tartib son, "chapter five" tartibi |
-| Noqoida (N) | 2.10 man→men | NLTK lemmatizer "men" ni tanimaydi |
-| Lug'atda so'z yo'q (L) | 2.36 read, 2.38 be, 2.39 am, 2.41 was/were, 2.44 have, 2.45 do, 2.48 become, 2.50 could, 2.55a need, 2.58 follow, –(Sifat) big, –(Ravish) very | Bosh so'z UB_en_w da umuman yo'q (1500-lug'at bo'shlig'i) |
+| Lug'atda so'z yo'q (L) — 12 ta | 2.36 read, 2.38 be, 2.39 am, 2.41 was/were, 2.44 have, 2.45 do, 2.48 become, 2.50 could, 2.55a need, 2.58 follow, –(Sifat) big, –(Ravish) very | **Faza 7 ga qoldirildi, tegilmagan** — bosh so'z na UB_en_w da, na 1500-JSON da yo'q; ro'yxat va izohlar: `reports/faza_7_backlog.md` |
+| Noqoida (N) — 1 ta | 2.10 man→men | Kod qoidasi kerak (NLTK "men" ni tanimaydi); dissertatsiya II bobi 7 ta so'zni sanaydi — `faza_7_backlog.md` 3-bo'lim |
 
 **QISMAN: 30** — qoida kodda bor, natija farq qiladi (masalan `-ed` → "-gan", spec "-di";
 `-ly` → "tarzda", spec "-lik bilan"/"-gina"; olmosh ro'yxatlari qisman mos). To'liq
@@ -104,10 +107,14 @@ Docx'ning o'zidagi nomuvofiqliklar (masalan 2.21 "aqillroq", 3.25 "-niki/-ning")
 Mavjud 100_soz gold to'plami baza manbasi ichida turibdi (1500-JSON "100 SOZ"
 kategoriyasi) — ta'siri hozircha 0 ekani o'lchangan. Kelajakdagi har qanday gold
 to'plam baza manbalaridan FIZIK ajratilgan bo'lishi SHART: `CLAUDE.md`,
-`reports/faza_3_plan.md`.
+`reports/faza_3_plan.md`. CI qo'riqchilari (`60f3c34`): `tests/test_gold_separation.py` —
+baza qurilishi `gold/` ni ochmaydi va `data/` dan faqat ruxsat etilgan 3 ta JSON ni
+o'qiydi; `gold/*.json` test-case'lari qurilgan lug'atda yo'q (gold/ paydo bo'lganda
+faollashadi); `scripts/` dagi `translate_phrase(...)` faqat `allow_write=False` bilan.
 
 ## 7. Testlar
 
-`pytest tests/` — **325 passed, 57 xfailed** (57 = 51 ta mos kelmaydigan spec qoidasi
-`xfail(strict=True)` + 6 ta Faza 1 dan qolgan). `data/kkt_qoidalari.docx` (.gitignore)
+`pytest tests/` — **340 passed, 1 skipped, 49 xfailed** (49 = 43 ta mos kelmaydigan spec
+qoidasi `xfail(strict=True)` + 6 ta Faza 1 dan qolgan; skip — `gold/` hali yo'q, qarang
+6-bo'lim). `data/kkt_qoidalari.docx` (.gitignore)
 bo'lmagan muhitda faqat docx sinxronlik testi o'tkazib yuboriladi.
