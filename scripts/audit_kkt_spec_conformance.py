@@ -104,7 +104,8 @@ def _p(tur, juftlar, stub=(), aff=None, soz=None, mex=None, bosh=None,
             "soz": soz, "mex": mex, "bosh": bosh, "izoh": izoh, "asos": asos, "sirt": sirt}
 
 
-_DET = ("_DETERMINERS", "artikllarni (the/a/an ...) iboradan butunlay olib tashlaydi")
+_DET = ("_DETERMINERS", "aniq artikl \"the\" va ko'rsatish so'zlarini (this/that ...) iboradan olib tashlaydi")
+_INDEF = ("_INDEFINITE_ARTICLE_UZ", "noaniq artikl a/an — keyin ot kelsa, ot iborasiga \"bitta\" bo'lib kiradi")
 _TO_PREP = ("PREP_UZ_X3", "\"to\" -> \"ga\" (kelishik qo'shimchasi) sifatida ishlaydi")
 _INF_IZOH = ("`INFINITIVE_MARKERS` (to/will/can/...) kodda bor, lekin faqat `select_meaning_contextual()` da "
              "ko'p ma'noli so'zning Fe'l ma'nosini TANLASH uchun ishlatiladi — tarjima qoidasi emas.")
@@ -119,8 +120,8 @@ PROBES = {
     # ── OT ──────────────────────────────────────────────────────────────
     "2.1": _p("M", [("variables", "o‘zgaruvchilar")], [("variable", "o‘zgaruvchi", "Ot")], aff="s",
               asos=NOUNS, sirt=r"[^s]s$"),
-    "2.2": _p("S", [("a network", "bitta tarmoq")], [("network", "tarmoq", "Ot")], mex=_DET, asos=NOUNS),
-    "2.3": _p("S", [("an example", "bitta misol")], [("example", "misol", "Ot")], mex=_DET, asos=NOUNS),
+    "2.2": _p("S", [("a network", "bitta tarmoq")], [("network", "tarmoq", "Ot")], mex=_INDEF, asos=NOUNS),
+    "2.3": _p("S", [("an example", "bitta misol")], [("example", "misol", "Ot")], mex=_INDEF, asos=NOUNS),
     "2.4": _p("S", [("the progress", "taraqqiyot")], [("progress", "taraqqiyot", "Ot")], mex=_DET, asos=NOUNS),
     "2.5": _p("M", [("The Germanys", "Germaniyaliklar")], [("germany", "Germaniya", "Ot")], aff="s",
               asos=NOUNS),

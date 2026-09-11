@@ -48,7 +48,7 @@ T, Q, Y, Z = audit.TOLIQ, audit.QISMAN, audit.YOQ, audit.ZID
 
 # reports/faza_2_kkt_spec_conformance.md bilan bir xil (USE_LEMMA=True muhitida).
 EXPECTED_STATUS = {
-    "2.1": T, "2.2": Z, "2.3": Z, "2.4": T, "2.5": Q, "2.6": T, "2.7": T, "2.8": T, "2.9": T,
+    "2.1": T, "2.2": T, "2.3": T, "2.4": T, "2.5": Q, "2.6": T, "2.7": T, "2.8": T, "2.9": T,
     "2.10": Y, "2.11": T, "2.12": Q, "2.13": Q, "2.15": Q, "2.16": T,
     "–(Sifat)": Y, "2.19": Q, "2.20": Q, "2.21": Q, "2.22": T, "2.23": T, "2.24": T, "2.25": T,
     "2.26": T, "2.27": T, "2.28": T, "2.29": T, "2.30": T, "2.31": Y, "2.32": Y, "2.33": Q, "2.34": Y,
@@ -275,3 +275,21 @@ def test_stub_lexicon_hides_real_dictionary(isolated_kkt_module):
     with audit.stub_lexicon(m, []):
         assert m.db_lookup("processes") is None
         assert m.db_lookup("from") is not None  # SEED_WORDS (kod) ko'rinadi
+
+
+def test_indefinite_article_becomes_bitta_spec_2_2_2_3(isolated_kkt_module):
+    """KKT spec 2.2/2.3: "a network" → "bitta tarmoq", "an example" → "bitta
+    misol"; 2.4: "the progress" → "taraqqiyot" (aniq artikl tarjima qilinmaydi).
+    Sifat oraliqda bo'lsa ham artikl ot iborasiga kiradi (big→katta: spec
+    "–(Sifat)"); ortidan ot kelmasa — avvalgidek tashlanadi."""
+    m = isolated_kkt_module
+    stub = [("network", "tarmoq", "Ot"), ("example", "misol", "Ot"), ("progress", "taraqqiyot", "Ot"),
+            ("big", "katta", "Sifat")]
+    with audit.stub_lexicon(m, stub):
+        got = {t: normalize(audit.system_output(m, t)["natija"])
+               for t in ("a network", "an example", "the progress", "a big network", "big a")}
+    assert got["a network"] == "bitta tarmoq"
+    assert got["an example"] == "bitta misol"
+    assert got["the progress"] == "taraqqiyot"
+    assert got["a big network"] == "bitta katta tarmoq"
+    assert "bitta" not in got["big a"]

@@ -2211,6 +2211,10 @@ def translate_phrase_kkt(text):
 #  kiritilgan, oldindan ko'rilmagan iboralar uchun ham ishlaydi.
 # ═══════════════════════════════════════════════════════════════════
 _DETERMINERS = {"the","a","an","this","that","these","those"}
+# KKT spec 2.2/2.3: noaniq artikl "a"/"an" o'zbekchada "bitta" bilan beriladi
+# ("a network" → "bitta tarmoq"); 2.4: aniq artikl "the" tarjima qilinmaydi
+# (qolgan _DETERMINERS kabi tashlab yuboriladi).
+_INDEFINITE_ARTICLE_UZ = {"a":"bitta", "an":"bitta"}
 
 def _chunk_phrase(text):
     """
@@ -2231,7 +2235,20 @@ def _chunk_phrase(text):
     tartibiga solib chiqadi.
     """
     aa = parse_sentence(text)
-    items = [a for a in aa if a["word"].lower() not in _DETERMINERS]
+    items = []
+    for k, a in enumerate(aa):
+        w = a["word"].lower()
+        if w in _INDEFINITE_ARTICLE_UZ:
+            # Noaniq artikl — faqat undan keyin (sifat(lar)dan so'ng) OT kelsa,
+            # ot iborasiga "bitta" aniqlovchisi sifatida kiradi (spec 2.2/2.3);
+            # aks holda avvalgidek tashlab yuboriladi.
+            j = k + 1
+            while j < len(aa) and aa[j]["found"] and aa[j]["pos"] == "Sifat": j += 1
+            if j < len(aa) and aa[j]["found"] and aa[j]["pos"] == "Ot":
+                items.append({**a, "found": True, "pos": "Sifat", "uz": _INDEFINITE_ARTICLE_UZ[w]})
+            continue
+        if w in _DETERMINERS: continue
+        items.append(a)
     if not any(a["found"] for a in items): return None
 
     chunks=[]; i=0; n=len(items)
