@@ -72,3 +72,15 @@ def test_make_uzbek_all_cases_covered_by_en_aff_v3_and_morph_rules():
     tested = {sfx for sfx, _ in CASES}
     assert "s" in tested and "ing" in tested and "tion" in tested
     assert len(tested) >= 50, "kutilganidan kamroq affiks qamrab olindi"
+
+
+def test_make_uzbek_verb_third_person_s_spec_2_37(isolated_kkt_module):
+    """KKT spec 2.37: gapir + a + di = gapiradi (undoshdan keyin "-adi").
+    Unlidan keyingi "-ydi" (ishla → ishlaydi) — spec misolida YO'Q, o'zbek
+    imlosining umumiy qoidasi sifatida qo'shilgan (professor tekshirsin)."""
+    m = isolated_kkt_module
+    assert m.make_uzbek("gapirmoq", "s", "Fe'l") == "gapiradi"
+    assert m.make_uzbek("ishlamoq", "s", "Fe'l") == "ishlaydi"
+    # pos berilmasa yoki Ot bo'lsa — avvalgidek ko'plik
+    assert m.make_uzbek("kitob", "s") == "kitoblar"
+    assert m.make_uzbek("kitob", "s", "Ot") == "kitoblar"

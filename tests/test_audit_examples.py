@@ -9,7 +9,10 @@ qayta generatsiya qilinadigan hisobotda) qayd etiladi — bu yerda emas.
 from __future__ import annotations
 
 import os
+import sqlite3
 import sys
+
+import pytest
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO_ROOT, "scripts"))
@@ -56,35 +59,45 @@ def test_normalize_available_from_common_module():
 # ─────────────────────────────────────────────────────────────────────────
 # Aylanma (circular) tekshiruv — provenance funksiyalari.
 #
-# DIQQAT: `_provenance_for()` ataylab REPO ILDIZIDAGI HAQIQIY UB_en_w.db
-# ni o'qiydi (faqat SELECT — repo bazasi buzilmasin degan Faza 0 qoidasi
-# shu sabab BUZILMAYDI: bu funksiya hech qachon yozmaydi, faqat o'qiydi).
-# Bu testlar ham shu sababli `isolated_kkt_module` FIXTURE'siz — haqiqiy
-# repo bazasi ustida — ishlaydi.
+# `_provenance_for()` bazani ARGUMENT orqali oladi: skript `m.DB_UB_EN` ni
+# (make db bilan qurilgan repo bazasi), testlar esa `isolated_kkt_module`
+# ning izolyatsiyalangan nusxasini beradi. Ilgari bu testlar repo
+# ildizidagi UB_en_w.db ni to'g'ridan-to'g'ri o'qirdi — CI'ning pytest
+# job'ida (make db ishga tushmaydi) u yo'q edi, sqlite bo'sh fayl yaratib
+# "no such table: words" bilan yiqilardi.
 # ─────────────────────────────────────────────────────────────────────────
 
-def test_provenance_for_schoolboys_is_fully_circular():
+def test_provenance_for_schoolboys_is_fully_circular(isolated_kkt_module):
     """"schoolboys" UB_en_w'da FAQAT bitta qatorga ega va u source='chapter2_evx'
     — ya'ni bu so'z faqat load_ch2_evx_examples() orqali kirgan, boshqa
     hech qanday mustaqil manbada yo'q (reports/faza_1.md dagi batafsil
     jadvalning asosi)."""
-    rows = script._provenance_for("schoolboys")
+    rows = script._provenance_for("schoolboys", isolated_kkt_module.DB_UB_EN)
     assert len(rows) == 1
     _id, translation, pos, source = rows[0]
     assert source == "chapter2_evx"
 
 
-def test_provenance_for_much_has_independent_json_source():
+def test_provenance_for_much_has_independent_json_source(isolated_kkt_module):
     """"much" — 26 ta aylanma-nomzoddan YAGONA istisno: UB_en_w'da IKKITA
     qatorga ega, biri source='json' (1500-so'zlik lug'atdan, CH2_EVX_EXAMPLES'ga
     aloqasi yo'q) — va aynan SHU qator translate_phrase() tomonidan
     tanlanadi (birinchi qator, id bo'yicha eng kichik)."""
-    rows = script._provenance_for("much")
+    rows = script._provenance_for("much", isolated_kkt_module.DB_UB_EN)
     sources = {r[3] for r in rows}
     assert "json" in sources
     assert "chapter2_evx" in sources
     # birinchi (eng kichik id) qator tanlanadi (psb_select_meaning: rows[0])
     assert rows[0][3] == "json"
+
+
+def test_provenance_for_missing_db_raises_and_creates_no_file(tmp_path):
+    """Baza fayli yo'q bo'lsa — aniq xato; sqlite jimgina bo'sh baza
+    YARATMAYDI (mode=ro)."""
+    missing = tmp_path / "UB_en_w.db"
+    with pytest.raises(sqlite3.OperationalError):
+        script._provenance_for("much", str(missing))
+    assert not missing.exists()
 
 
 def test_load_independent_source_headwords_includes_common_words():

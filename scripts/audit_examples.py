@@ -32,6 +32,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import pathlib
 import sqlite3
 import sys
 from datetime import datetime, timezone
@@ -73,10 +74,15 @@ def _load_independent_source_headwords() -> dict[str, set[str]]:
     return sources
 
 
-def _provenance_for(headword: str) -> dict:
-    """UB_en_w.db dan (haqiqiy, repo ildizidagi baza — faqat SELECT,
-    yozilmaydi) berilgan headword bo'yicha BARCHA qatorlarni o'qiydi."""
-    con = sqlite3.connect(os.path.join(REPO_ROOT, "UB_en_w.db"))
+def _provenance_for(headword: str, db_path: str) -> list[tuple]:
+    """Berilgan UB_en_w bazasidan (`db_path` — skriptda `m.DB_UB_EN`, ya'ni
+    `make db` bilan qurilgan repo bazasi; testlarda izolyatsiyalangan nusxa)
+    headword bo'yicha BARCHA qatorlarni o'qiydi. Baza FAQAT O'QISH rejimida
+    (`mode=ro`) ochiladi: fayl yo'q bo'lsa sqlite jimgina bo'sh baza
+    YARATMAYDI (ilgari CI'da aynan shunday bo'lib, "no such table" xatosi
+    chiqardi) — aniq xato beriladi."""
+    uri = pathlib.Path(db_path).resolve().as_uri() + "?mode=ro"
+    con = sqlite3.connect(uri, uri=True)
     rows = con.execute(
         "SELECT id, translation, pos, source FROM words WHERE headword=? ORDER BY id",
         (headword.lower(),),
@@ -133,7 +139,7 @@ def run(out_path: str | None) -> int:
             # Faqat AYLANMA nomzod bo'lgan (to'g'ridan topilgan VA mos
             # kelgan) holatlar uchun to'liq provenance tahlili — kerak
             # bo'lmagan holatlarda UB_en_w.db ni qayta-qayta o'qimaymiz.
-            prov_rows = _provenance_for(en)
+            prov_rows = _provenance_for(en, m.DB_UB_EN)
             selected = next((row for row in prov_rows if row[1] == sp.get("uz")), None)
             independent_hits = sorted(
                 src for src, words in independent_sources.items() if en.lower() in words

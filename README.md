@@ -50,7 +50,7 @@ Bazani qurish uchun quyidagi fayllar `data/` papkasida bo'lishi kerak
 | `1500_EN_UZ_6_POS_sorted.20.docx` (+ mos `.json`) | Asosiy EN-UZ so'z jufti lug'ati (1417+ juft, 6 POS) |
 | `Table_English 1-7 Vazn Type 2 14.02.2024.xlsx` (+ `.json`) | Ingliz affikslari va vaznlari |
 | `Lotinda Table_Uzbek 1-7 Vazn 11.02.2025.xlsx` (+ `.json`) | O'zbek affikslari |
-| `100_soz.docx` (+ `.json`) | 100 ta etalon juftlik — **kod tomonidan hozircha ishlatilmaydi**, faqat qo'lda/gold-test tekshiruvi uchun (Faza 3) |
+| `100_soz.docx` (+ `.json`) | 100 ta etalon juftlik (gold-test, `scripts/check_100_soz.py`). Faylning o'zini kod o'qimaydi, **LEKIN xuddi shu 100 juft 1500-JSON ichidagi "100 SOZ" kategoriyasi orqali lug'atga yuklanadi** — natijaga ta'siri 0 ekani o'lchangan (`reports/faza_2_lexicon_sources.md`). Yangi gold to'plamlar uchun qoida: `CLAUDE.md` |
 | `KKT_Terminologik_Lugat.docx` (+ `.json`) | KKT terminologik lug'at — **kod tomonidan hozircha ishlatilmaydi** |
 
 `.json` fayllar tegishli `.docx`/`.xlsx` fayllardan oldindan konvertatsiya

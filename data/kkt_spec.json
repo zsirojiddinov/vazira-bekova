@@ -1,0 +1,1106 @@
+{
+  "manba": {
+    "fayl": "data/kkt_qoidalari.docx",
+    "sha256": "4954c528bc7eec3d185d3e104b9c23d3dd05e61a40f072f979f597faf9503861",
+    "hajm_bayt": 16577,
+    "repoda": false,
+    "provenance": "Manba docx foydalanuvchi tomonidan 2026-09-11 da taqdim etilgan (asl nomi KKT_qoidalari.docx). U dissertatsiya fayli kabi .gitignore'da — repoga JOYLASHTIRILMAYDI; bu JSON undan ajratilgan nusxa. Mahalliy docx aynan shu manba ekanini tekshirish: `shasum -a 256 data/kkt_qoidalari.docx` natijasi yuqoridagi sha256 ga teng bo'lishi va `python scripts/extract_kkt_spec.py --check` \"SINXRON\" berishi kerak.",
+    "sarlavha": [
+      "KENGAYUVCHI KIRISH TILI (KKT) ASOSIDA",
+      "INGLIZ VA O‘ZBEK TILLARI SO‘Z TURKUMLARINING MORFOLOGIK QOIDALARI"
+    ],
+    "izoh": "Docx'dan scripts/extract_kkt_spec.py bilan avtomatik ajratilgan. Matn maydonlari aynan ko'chirilgan; `pos`, `uid` va `pos_weights` kalitlari — kod bilan solishtirish uchun qo'shilgan kalitlar."
+  },
+  "alifbo_tavsifi": "KKT (Korpus-Kontekst-Tarjima) maxsus belgilar va harflardan tashkil topgan bo‘lib, so‘z turkumlari modellarini kompyuter tushunadigan tilga o‘tkazish uchun vositadir. KKT alifbosi lotin alifbosidagi barcha katta-kichik harflar, 0–9 arab raqamlari va maxsus belgilardan (⊕, V, ↓, $, ], [, ), (, -, =, vergul) iborat.",
+  "operators": [
+    {
+      "belgi": "⊕",
+      "mano": "Biriktirish (konkatenatsiya) amali"
+    },
+    {
+      "belgi": "V",
+      "mano": "“Yoki” amali"
+    },
+    {
+      "belgi": "↓ (⇓)",
+      "mano": "“Ulanish” (qo‘shilish) yoki “ulanmaslik” (qo‘shilmaslik) amali"
+    },
+    {
+      "belgi": "$",
+      "mano": "Tanlash amali: $[i, l-m] Pi ko‘rinishida yoziladi"
+    }
+  ],
+  "pos_weights": {
+    "Ot": 0.85,
+    "Sifat": 0.6,
+    "Fe'l": 0.9,
+    "Ravish": 0.4,
+    "Olmosh": 0.5,
+    "Son": 0.5,
+    "Bog'lovchi": 0.2,
+    "Predlog": 0.4,
+    "Yordamchi": 0.07
+  },
+  "pos_weights_manba": [
+    {
+      "kalit": "Ot",
+      "docx_matn": "Ot (C) – 0.85",
+      "nomi": "Ot",
+      "belgi": "C",
+      "vazn": 0.85
+    },
+    {
+      "kalit": "Sifat",
+      "docx_matn": "Sifat (P) – 0.6",
+      "nomi": "Sifat",
+      "belgi": "P",
+      "vazn": 0.6
+    },
+    {
+      "kalit": "Fe'l",
+      "docx_matn": "Fe’l (G) – 0.9",
+      "nomi": "Fe’l",
+      "belgi": "G",
+      "vazn": 0.9
+    },
+    {
+      "kalit": "Ravish",
+      "docx_matn": "Ravish (N) – 0.4",
+      "nomi": "Ravish",
+      "belgi": "N",
+      "vazn": 0.4
+    },
+    {
+      "kalit": "Olmosh",
+      "docx_matn": "Olmosh (M) – 0.5",
+      "nomi": "Olmosh",
+      "belgi": "M",
+      "vazn": 0.5
+    },
+    {
+      "kalit": "Son",
+      "docx_matn": "Son (F) – 0.5",
+      "nomi": "Son",
+      "belgi": "F",
+      "vazn": 0.5
+    },
+    {
+      "kalit": "Bog'lovchi",
+      "docx_matn": "Bog‘lovchi (Y) – 0.2",
+      "nomi": "Bog‘lovchi",
+      "belgi": "Y",
+      "vazn": 0.2
+    },
+    {
+      "kalit": "Predlog",
+      "docx_matn": "Predlog (D) – 0.4",
+      "nomi": "Predlog",
+      "belgi": "D",
+      "vazn": 0.4
+    },
+    {
+      "kalit": "Yordamchi",
+      "docx_matn": "Yordamchi so‘z turkumlari (U, L) – 0.07",
+      "nomi": "Yordamchi so‘z turkumlari",
+      "belgi": "U, L",
+      "vazn": 0.07
+    }
+  ],
+  "rules": [
+    {
+      "id": "2.1",
+      "uid": "2.1",
+      "pos": "Ot",
+      "tavsif": "Ko‘plik oti – “-s” affiksi bilan yasaladi",
+      "en_misol": "variable + s = variables",
+      "uz_misol": "o‘zgar + uv + chi + lar = o‘zgaruvchilar",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 1
+    },
+    {
+      "id": "2.2",
+      "uid": "2.2",
+      "pos": "Ot",
+      "tavsif": "Noaniq artikl “a” undosh tovush bilan boshlanuvchi otdan oldin qo‘llaniladi",
+      "en_misol": "a network",
+      "uz_misol": "bitta tarmoq",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 2
+    },
+    {
+      "id": "2.3",
+      "uid": "2.3",
+      "pos": "Ot",
+      "tavsif": "Noaniq artikl “an” unli tovush bilan boshlanuvchi otdan oldin qo‘llaniladi",
+      "en_misol": "an example",
+      "uz_misol": "bitta misol",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 3
+    },
+    {
+      "id": "2.4",
+      "uid": "2.4",
+      "pos": "Ot",
+      "tavsif": "Aniq artikl “the” so‘zlovchi va tinglovchiga aniq bo‘lgan otdan oldin qo‘llaniladi",
+      "en_misol": "the progress",
+      "uz_misol": "taraqqiyot",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 4
+    },
+    {
+      "id": "2.5",
+      "uid": "2.5",
+      "pos": "Ot",
+      "tavsif": "Atoqli otlarga “-s” ko‘plik affiksi qo‘shilishi (o‘zbekchada so‘z yasovchi “-lik” + ko‘plik “-lar” bilan beriladi)",
+      "en_misol": "The Germanys",
+      "uz_misol": "Germaniya + lik + lar = Germaniyaliklar",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 5
+    },
+    {
+      "id": "2.6",
+      "uid": "2.6",
+      "pos": "Ot",
+      "tavsif": "Oxiri “-s, -ss, -x, -ch, -sh” bilan tugagan otlarga ko‘plik “-es” affiksi qo‘shiladi",
+      "en_misol": "process + es = processes",
+      "uz_misol": "jarayon + lar = jarayonlar",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 6
+    },
+    {
+      "id": "2.7",
+      "uid": "2.7",
+      "pos": "Ot",
+      "tavsif": "Undoshdan keyin “-y” bilan tugagan otlarda “-y” “-i” ga aylanib “-es” qo‘shiladi",
+      "en_misol": "capability + ies = capabilities",
+      "uz_misol": "imkoniyat + lar = imkoniyatlar",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 7,
+      "izoh": "\"capability + ies = capabilities\": \"+\" bilan ajratilgan komponentlar qo'shilganda \"capabilityies\" hosil bo'ladi, natija sifatida esa \"capabilities\" yozilgan."
+    },
+    {
+      "id": "2.8",
+      "uid": "2.8",
+      "pos": "Ot",
+      "tavsif": "Unlidan keyin “-y” bilan tugagan otlarda “-y” o‘zgarmasdan “-s” qo‘shiladi",
+      "en_misol": "delay + s = delays",
+      "uz_misol": "kechikish + lar = kechikishlar",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 8
+    },
+    {
+      "id": "2.9",
+      "uid": "2.9",
+      "pos": "Ot",
+      "tavsif": "“-f, -fe” bilan tugagan otlarda “-f” “-v” ga aylanib “-s/-es” qo‘shiladi",
+      "en_misol": "leaf = lea + v + es = leaves",
+      "uz_misol": "barg + lar = barglar",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 9
+    },
+    {
+      "id": "2.10",
+      "uid": "2.10",
+      "pos": "Ot",
+      "tavsif": "Ko‘plik affiksi qo‘shilmasdan o‘zakdan o‘zgaradigan otlar (noqoida ko‘plik)",
+      "en_misol": "man → men",
+      "uz_misol": "erkak → erkak + lar = erkaklar",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 10
+    },
+    {
+      "id": "2.11",
+      "uid": "2.11",
+      "pos": "Ot",
+      "tavsif": "Chiziqcha (defis) bilan ajratib yoziladigan qo‘shma otlarning ko‘pligi",
+      "en_misol": "custom + houses = customhouses",
+      "uz_misol": "bojxona + lar = bojxonalar",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 11,
+      "izoh": "Tavsifda \"chiziqcha (defis) bilan ajratib yoziladigan\" deyilgan, lekin ingliz misolida (\"custom + houses = customhouses\") defis yo'q — natija qo'shib yozilgan."
+    },
+    {
+      "id": "2.12",
+      "uid": "2.12",
+      "pos": "Ot",
+      "tavsif": "Qo‘shib yoziladigan qo‘shma otlarning ko‘pligi (ikki asosdan iborat)",
+      "en_misol": "schoolboy + s = schoolboys",
+      "uz_misol": "maktab bola + lari = maktab bolalari",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 12
+    },
+    {
+      "id": "2.13",
+      "uid": "2.13",
+      "pos": "Ot",
+      "tavsif": "Fe’l asosiga “-ation” affiksi qo‘shilib ot yasalishi",
+      "en_misol": "inform + ation = information",
+      "uz_misol": "axborot (affikssiz)",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 13,
+      "izoh": "O'zbek misoli katagida izoh qavs ichida berilgan: \"axborot (affikssiz)\" — natija so'zi \"axborot\", \"(affikssiz)\" misolning bir qismi emas."
+    },
+    {
+      "id": "2.15",
+      "uid": "2.15",
+      "pos": "Ot",
+      "tavsif": "Jamlama otlar – doim ko‘plik shaklida ishlatiladi, lekin o‘zbekchaga birlik bilan tarjima qilinadi",
+      "en_misol": "content + s = contents",
+      "uz_misol": "mundarija",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 14
+    },
+    {
+      "id": "2.16",
+      "uid": "2.16",
+      "pos": "Ot",
+      "tavsif": "Qaratqich kelishigi – apostrof “’s” bilan yoziladi",
+      "en_misol": "student’s",
+      "uz_misol": "student + ning",
+      "bolim": "1. OT (Noun) so‘z turkumi qoidalari",
+      "jadval": 2,
+      "qator": 15
+    },
+    {
+      "id": "–",
+      "uid": "–(Sifat)",
+      "pos": "Sifat",
+      "tavsif": "Oddiy sifat – qo‘shimchasiz, o‘zgarmas shaklda",
+      "en_misol": "big",
+      "uz_misol": "katta",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 1
+    },
+    {
+      "id": "2.19",
+      "uid": "2.19",
+      "pos": "Sifat",
+      "tavsif": "Yasama sifat – affiks qo‘shish orqali hosil qilinadi",
+      "en_misol": "form + al = formal",
+      "uz_misol": "rasm + iy = rasmiy",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 2
+    },
+    {
+      "id": "2.20",
+      "uid": "2.20",
+      "pos": "Sifat",
+      "tavsif": "Qo‘shma sifat – ikki asosdan tashkil topadi",
+      "en_misol": "high-dimension + al",
+      "uz_misol": "ko‘p o‘lchov + li",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 3,
+      "izoh": "Ingliz misolida natija shakli berilmagan (\"high-dimension + al\" — \"=\" yo'q); o'zbek misolida ham (\"ko‘p o‘lchov + li\")."
+    },
+    {
+      "id": "2.21",
+      "uid": "2.21",
+      "pos": "Sifat",
+      "tavsif": "Qiyosiy daraja – bir-ikki bo‘g‘inli sifatlarga “-er” qo‘shiladi",
+      "en_misol": "clever + er = cleverer",
+      "uz_misol": "aqil + li + roq = aqillroq",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 4,
+      "izoh": "\"aqil + li + roq = aqillroq\": \"+\" bilan ajratilgan komponentlar qo'shilganda \"aqilliroq\" hosil bo'ladi, natija sifatida esa \"aqillroq\" yozilgan."
+    },
+    {
+      "id": "2.22",
+      "uid": "2.22",
+      "pos": "Sifat",
+      "tavsif": "Orttirma daraja – bir-ikki bo‘g‘inli sifatlarga “-est” qo‘shiladi",
+      "en_misol": "clever + est = cleverest",
+      "uz_misol": "eng aqil + li = eng aqilli",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 5
+    },
+    {
+      "id": "2.23",
+      "uid": "2.23",
+      "pos": "Sifat",
+      "tavsif": "O‘qilmaydigan “e” bilan tugagan sifatlarda “e” tushib, “-er” qo‘shiladi",
+      "en_misol": "large → larg + er = larger",
+      "uz_misol": "katta → katta + roq = kattaroq",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 6
+    },
+    {
+      "id": "2.24",
+      "uid": "2.24",
+      "pos": "Sifat",
+      "tavsif": "O‘qilmaydigan “e” bilan tugagan sifatlarda “e” tushib, “-est” qo‘shiladi",
+      "en_misol": "large → larg + est = largest",
+      "uz_misol": "katta → eng katta",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 7
+    },
+    {
+      "id": "2.25",
+      "uid": "2.25",
+      "pos": "Sifat",
+      "tavsif": "Qisqa unlidan keyin bitta undosh bilan tugagan sifatda undosh ikkilanib “-er” qo‘shiladi",
+      "en_misol": "big → bigg + er = bigger",
+      "uz_misol": "katta → katta + roq = kattaroq",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 8
+    },
+    {
+      "id": "2.26",
+      "uid": "2.26",
+      "pos": "Sifat",
+      "tavsif": "Qisqa unlidan keyin bitta undosh bilan tugagan sifatda undosh ikkilanib “-est” qo‘shiladi",
+      "en_misol": "big → bigg + est = biggest",
+      "uz_misol": "katta → eng katta",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 9
+    },
+    {
+      "id": "2.27",
+      "uid": "2.27",
+      "pos": "Sifat",
+      "tavsif": "Undoshdan keyin “-y” bilan tugagan sifatda “-y” “-i” ga aylanib “-er” qo‘shiladi",
+      "en_misol": "busy → busi + er = busier",
+      "uz_misol": "band → bandroq",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 10
+    },
+    {
+      "id": "2.28",
+      "uid": "2.28",
+      "pos": "Sifat",
+      "tavsif": "Undoshdan keyin “-y” bilan tugagan sifatda “-y” “-i” ga aylanib “-est” qo‘shiladi",
+      "en_misol": "busy → busi + est = busiest",
+      "uz_misol": "band → eng band",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 11
+    },
+    {
+      "id": "2.29",
+      "uid": "2.29",
+      "pos": "Sifat",
+      "tavsif": "Unlidan keyin “-y” bilan tugagan sifatda “-y” o‘zgarmasdan “-er” qo‘shiladi",
+      "en_misol": "gay → gay + er = gayer",
+      "uz_misol": "sho‘x → sho‘x + roq = sho‘xroq",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 12
+    },
+    {
+      "id": "2.30",
+      "uid": "2.30",
+      "pos": "Sifat",
+      "tavsif": "Unlidan keyin “-y” bilan tugagan sifatda “-y” o‘zgarmasdan “-est” qo‘shiladi",
+      "en_misol": "gay → gay + est = gayest",
+      "uz_misol": "sho‘x → eng sho‘x",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 13
+    },
+    {
+      "id": "2.31",
+      "uid": "2.31",
+      "pos": "Sifat",
+      "tavsif": "Ko‘p bo‘g‘inli sifatlarning qiyosiy darajasi “more” so‘zi bilan yasaladi",
+      "en_misol": "more comfortable",
+      "uz_misol": "qulay + roq = qulayroq",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 14
+    },
+    {
+      "id": "2.32",
+      "uid": "2.32",
+      "pos": "Sifat",
+      "tavsif": "Ko‘p bo‘g‘inli sifatlarning orttirma darajasi “most” so‘zi bilan yasaladi",
+      "en_misol": "most comfortable",
+      "uz_misol": "eng qulay",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 15
+    },
+    {
+      "id": "2.33",
+      "uid": "2.33",
+      "pos": "Sifat",
+      "tavsif": "Qoidaga bo‘ysinmaydigan (noqoida) daraja o‘zgarishi",
+      "en_misol": "good → better → best",
+      "uz_misol": "yaxshi → yaxshiroq → eng yaxshi",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 16
+    },
+    {
+      "id": "2.34",
+      "uid": "2.34",
+      "pos": "Sifat",
+      "tavsif": "Kamlik darajasi “less” (qiyosiy) / “least” (orttirma) so‘zlari bilan yasaladi",
+      "en_misol": "less interesting",
+      "uz_misol": "kamroq qiziqarli",
+      "bolim": "2. SIFAT (Adjective) so‘z turkumi qoidalari",
+      "jadval": 3,
+      "qator": 17
+    },
+    {
+      "id": "2.36",
+      "uid": "2.36",
+      "pos": "Fe'l",
+      "tavsif": "Sodda fe’l – affikssiz, o‘zgarmas shaklda",
+      "en_misol": "read",
+      "uz_misol": "o‘qimoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 1
+    },
+    {
+      "id": "2.37",
+      "uid": "2.37",
+      "pos": "Fe'l",
+      "tavsif": "Asosiy fe’l – 3-shaxs birlikda hozirgi zamonda “-s” qo‘shiladi",
+      "en_misol": "speak + s = speaks",
+      "uz_misol": "gapir + a + di = gapiradi",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 2
+    },
+    {
+      "id": "2.38",
+      "uid": "2.38",
+      "pos": "Fe'l",
+      "tavsif": "Yordamchi fe’l “to be” – ko‘plab grammatik vazifalarni bajaradi",
+      "en_misol": "to be",
+      "uz_misol": "bo‘lmoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 3
+    },
+    {
+      "id": "2.39",
+      "uid": "2.39",
+      "pos": "Fe'l",
+      "tavsif": "“to be” fe’lining hozirgi zamon “am” shakli (1-shaxs birlik)",
+      "en_misol": "am",
+      "uz_misol": "man (1-shaxs birlik affiksi)",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 4
+    },
+    {
+      "id": "2.41",
+      "uid": "2.41",
+      "pos": "Fe'l",
+      "tavsif": "“to be” fe’lining o‘tgan zamon “was / were” shakli",
+      "en_misol": "was, were",
+      "uz_misol": "edi",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 5
+    },
+    {
+      "id": "2.42",
+      "uid": "2.42",
+      "pos": "Fe'l",
+      "tavsif": "“to be” fe’lining o‘tgan zamon sifatdoshi “been” (Past Participle)",
+      "en_misol": "been",
+      "uz_misol": "bo‘l + gan = bo‘lgan",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 6
+    },
+    {
+      "id": "2.43",
+      "uid": "2.43",
+      "pos": "Fe'l",
+      "tavsif": "“to be” fe’lining “being” (gerund / hozirgi zamon sifatdoshi) shakli",
+      "en_misol": "be + ing = being",
+      "uz_misol": "bo‘layot + gan = bo‘layotgan",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 7
+    },
+    {
+      "id": "2.44",
+      "uid": "2.44",
+      "pos": "Fe'l",
+      "tavsif": "Yordamchi fe’l “to have” – egalik/zaruratni ifodalaydi",
+      "en_misol": "to have",
+      "uz_misol": "bor bo‘lmoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 8
+    },
+    {
+      "id": "2.45",
+      "uid": "2.45",
+      "pos": "Fe'l",
+      "tavsif": "Yordamchi/leksik fe’l “to do” – inkor, so‘roq, ta’kid vazifasini bajaradi",
+      "en_misol": "to do",
+      "uz_misol": "qilmoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 9
+    },
+    {
+      "id": "2.46",
+      "uid": "2.46",
+      "pos": "Fe'l",
+      "tavsif": "Yordamchi fe’l “will” – kelasi zamonni ifodalaydi",
+      "en_misol": "will",
+      "uz_misol": "kel + a + di = keladi",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 10
+    },
+    {
+      "id": "2.47",
+      "uid": "2.47",
+      "pos": "Fe'l",
+      "tavsif": "Yordamchi fe’l “would” – o‘tgan zamonni ifodalaydi",
+      "en_misol": "would",
+      "uz_misol": "edi",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 11
+    },
+    {
+      "id": "2.48",
+      "uid": "2.48",
+      "pos": "Fe'l",
+      "tavsif": "Bog‘lovchi fe’l (linking verb) – o‘zbek tilida mos turi yo‘q",
+      "en_misol": "become",
+      "uz_misol": "bo‘lmoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 12
+    },
+    {
+      "id": "2.49",
+      "uid": "2.49",
+      "pos": "Fe'l",
+      "tavsif": "Modal fe’l “can” – imkoniyatni bildiradi",
+      "en_misol": "can",
+      "uz_misol": "qila olmoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 13
+    },
+    {
+      "id": "2.50",
+      "uid": "2.50",
+      "pos": "Fe'l",
+      "tavsif": "Modal fe’l “could” – “can”ning o‘tgan zamon shakli",
+      "en_misol": "could",
+      "uz_misol": "ol + ar + di = olardi",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 14
+    },
+    {
+      "id": "2.51",
+      "uid": "2.51",
+      "pos": "Fe'l",
+      "tavsif": "Modal fe’l “may” – ruxsat/ehtimolni bildiradi",
+      "en_misol": "may",
+      "uz_misol": "mumkin",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 15
+    },
+    {
+      "id": "2.52",
+      "uid": "2.52",
+      "pos": "Fe'l",
+      "tavsif": "Modal fe’l “might” – “may”dan kamroq ehtimolni bildiradi",
+      "en_misol": "might",
+      "uz_misol": "mumkin",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 16
+    },
+    {
+      "id": "2.53",
+      "uid": "2.53",
+      "pos": "Fe'l",
+      "tavsif": "Modal fe’l “must” – majburiyatni bildiradi",
+      "en_misol": "must",
+      "uz_misol": "kerak",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 17
+    },
+    {
+      "id": "2.54",
+      "uid": "2.54",
+      "pos": "Fe'l",
+      "tavsif": "Modal fe’l “ought to” – tavsiya/majburiyatni bildiradi",
+      "en_misol": "ought to",
+      "uz_misol": "zarur",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 18
+    },
+    {
+      "id": "2.55a",
+      "uid": "2.55a",
+      "pos": "Fe'l",
+      "tavsif": "Modal fe’l “need” – zaruratni bildiradi",
+      "en_misol": "need",
+      "uz_misol": "kerak",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 19
+    },
+    {
+      "id": "2.56",
+      "uid": "2.56",
+      "pos": "Fe'l",
+      "tavsif": "Infinitive fe’l – “to” yuklamasi bilan yoziladi, shaxs-sonni ko‘rsatmaydi",
+      "en_misol": "to ask",
+      "uz_misol": "so‘ramoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 20
+    },
+    {
+      "id": "2.55b",
+      "uid": "2.55b",
+      "pos": "Fe'l",
+      "tavsif": "Gerund – fe’lga “-ing” qo‘shilib yasaladi, otlashadi",
+      "en_misol": "read + ing = reading",
+      "uz_misol": "o‘qish + ni = o‘qishni",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 21
+    },
+    {
+      "id": "2.58",
+      "uid": "2.58",
+      "pos": "Fe'l",
+      "tavsif": "O‘timli fe’l (transitive) – o‘zidan keyin vositasiz to‘ldiruvchi talab qiladi",
+      "en_misol": "to follow",
+      "uz_misol": "kuzatmoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 22
+    },
+    {
+      "id": "2.59",
+      "uid": "2.59",
+      "pos": "Fe'l",
+      "tavsif": "O‘timsiz fe’l (intransitive) – o‘zidan keyin vositasiz to‘ldiruvchi talab qilmaydi",
+      "en_misol": "listen to me",
+      "uz_misol": "meni tinglamoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 23
+    },
+    {
+      "id": "2.61",
+      "uid": "2.61",
+      "pos": "Fe'l",
+      "tavsif": "Hozirgi oddiy zamon (Simple Present)",
+      "en_misol": "understand",
+      "uz_misol": "tushunmoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 24
+    },
+    {
+      "id": "2.62",
+      "uid": "2.62",
+      "pos": "Fe'l",
+      "tavsif": "Kelasi oddiy zamon (Simple Future) – “will + fe’l”",
+      "en_misol": "will return",
+      "uz_misol": "qaytmoq",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 25
+    },
+    {
+      "id": "2.63",
+      "uid": "2.63",
+      "pos": "Fe'l",
+      "tavsif": "O‘tgan zamon (Simple Past), to‘g‘ri fe’lga “-ed” qo‘shiladi",
+      "en_misol": "work + ed = worked",
+      "uz_misol": "ishla + di = ishladi",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 26
+    },
+    {
+      "id": "2.64",
+      "uid": "2.64",
+      "pos": "Fe'l",
+      "tavsif": "To‘g‘ri fe’l – “-y” harfi “i”ga aylanib “-ed” qo‘shiladi (imlo o‘zgarishi)",
+      "en_misol": "simplif(y) + ied = simplified",
+      "uz_misol": "soddalashtiril + di = soddalashtirildi",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 27,
+      "izoh": "\"simplif(y) + ied = simplified\": \"+\" bilan ajratilgan komponentlar qo'shilganda \"simplif(y)ied\" hosil bo'ladi, natija sifatida esa \"simplified\" yozilgan."
+    },
+    {
+      "id": "2.65",
+      "uid": "2.65",
+      "pos": "Fe'l",
+      "tavsif": "Noto‘g‘ri fe’l (irregular verb) – o‘zak tovush o‘zgarishi yoki o‘zgarmaslik orqali yasaladi",
+      "en_misol": "send → sent → sent",
+      "uz_misol": "yubormoq → yubordi → yuborgan",
+      "bolim": "3. FE’L (Verb) so‘z turkumi qoidalari",
+      "jadval": 4,
+      "qator": 28
+    },
+    {
+      "id": "–",
+      "uid": "–(Ravish)",
+      "pos": "Ravish",
+      "tavsif": "Sodda ravish – qo‘shimchasiz, o‘zgarmas shaklda",
+      "en_misol": "very",
+      "uz_misol": "juda",
+      "bolim": "4. RAVISH (Adverb) so‘z turkumi qoidalari",
+      "jadval": 5,
+      "qator": 1
+    },
+    {
+      "id": "3.1",
+      "uid": "3.1",
+      "pos": "Ravish",
+      "tavsif": "Sodda ravish (o‘zbekchada asos+affikslar birikmasi bilan beriladi)",
+      "en_misol": "here",
+      "uz_misol": "shu yer + da = shu yerda",
+      "bolim": "4. RAVISH (Adverb) so‘z turkumi qoidalari",
+      "jadval": 5,
+      "qator": 2
+    },
+    {
+      "id": "3.2",
+      "uid": "3.2",
+      "pos": "Ravish",
+      "tavsif": "Yasama ravish – sifatga “-ly” affiksi qo‘shilib yasaladi",
+      "en_misol": "easi(ly) = easy + ly",
+      "uz_misol": "oson + lik bilan = osonlik bilan",
+      "bolim": "4. RAVISH (Adverb) so‘z turkumi qoidalari",
+      "jadval": 5,
+      "qator": 3,
+      "izoh": "Ingliz misoli boshqa qatorlardan teskari tartibda yozilgan: natija chapda (\"easi(ly) = easy + ly\"), boshqa qatorlarda \"asos + affiks = natija\"."
+    },
+    {
+      "id": "3.3",
+      "uid": "3.3",
+      "pos": "Ravish",
+      "tavsif": "Ravishning qiyosiy darajasi – bir-ikki bo‘g‘inli ravishga “-er” qo‘shiladi",
+      "en_misol": "fast + er = faster",
+      "uz_misol": "tez + roq = tezroq",
+      "bolim": "4. RAVISH (Adverb) so‘z turkumi qoidalari",
+      "jadval": 5,
+      "qator": 4
+    },
+    {
+      "id": "3.4",
+      "uid": "3.4",
+      "pos": "Ravish",
+      "tavsif": "Ravishning orttirma darajasi – bir-ikki bo‘g‘inli ravishga “-est” qo‘shiladi",
+      "en_misol": "fast + est = fastest",
+      "uz_misol": "eng tez",
+      "bolim": "4. RAVISH (Adverb) so‘z turkumi qoidalari",
+      "jadval": 5,
+      "qator": 5
+    },
+    {
+      "id": "3.5",
+      "uid": "3.5",
+      "pos": "Ravish",
+      "tavsif": "“-ly” bilan yasalgan ravishlarning darajasi “more”/“most” bilan yasaladi",
+      "en_misol": "more clearly",
+      "uz_misol": "aniq + roq = aniqroq",
+      "bolim": "4. RAVISH (Adverb) so‘z turkumi qoidalari",
+      "jadval": 5,
+      "qator": 6
+    },
+    {
+      "id": "3.6",
+      "uid": "3.6",
+      "pos": "Ravish",
+      "tavsif": "O‘rin-joy ravishi",
+      "en_misol": "inside",
+      "uz_misol": "ichkari + da = ichkarida",
+      "bolim": "4. RAVISH (Adverb) so‘z turkumi qoidalari",
+      "jadval": 5,
+      "qator": 7
+    },
+    {
+      "id": "3.7",
+      "uid": "3.7",
+      "pos": "Ravish",
+      "tavsif": "Vaqt (payt) ravishi",
+      "en_misol": "today",
+      "uz_misol": "bugun",
+      "bolim": "4. RAVISH (Adverb) so‘z turkumi qoidalari",
+      "jadval": 5,
+      "qator": 8
+    },
+    {
+      "id": "3.8",
+      "uid": "3.8",
+      "pos": "Ravish",
+      "tavsif": "O‘lchov va daraja ravishi",
+      "en_misol": "much",
+      "uz_misol": "ko‘p",
+      "bolim": "4. RAVISH (Adverb) so‘z turkumi qoidalari",
+      "jadval": 5,
+      "qator": 9
+    },
+    {
+      "id": "3.9",
+      "uid": "3.9",
+      "pos": "Ravish",
+      "tavsif": "Holat ravishi – sifatga “-ly” (ingl.) / “-gina” (o‘zb.) qo‘shilib yasaladi",
+      "en_misol": "quiet + ly = quietly",
+      "uz_misol": "tinch + gina = tinchgina",
+      "bolim": "4. RAVISH (Adverb) so‘z turkumi qoidalari",
+      "jadval": 5,
+      "qator": 10
+    },
+    {
+      "id": "3.11",
+      "uid": "3.11",
+      "pos": "Son",
+      "tavsif": "Sanoq son – asosiy (1–12) shakl, ikki tilda mos keladi",
+      "en_misol": "one",
+      "uz_misol": "bir",
+      "bolim": "5. SON (Numeral) so‘z turkumi qoidalari",
+      "jadval": 6,
+      "qator": 1
+    },
+    {
+      "id": "3.12",
+      "uid": "3.12",
+      "pos": "Son",
+      "tavsif": "13–19 oralig‘idagi sonlar “-teen” affiksi bilan yasaladi",
+      "en_misol": "fif + teen = fifteen",
+      "uz_misol": "o‘n besh (affikssiz, qo‘shib yoziladi)",
+      "bolim": "5. SON (Numeral) so‘z turkumi qoidalari",
+      "jadval": 6,
+      "qator": 2,
+      "izoh": "O'zbek katagida \"(affikssiz, qo‘shib yoziladi)\" deyilgan, lekin misolning o'zi bo'shliq bilan yozilgan: \"o‘n besh\"."
+    },
+    {
+      "id": "3.13",
+      "uid": "3.13",
+      "pos": "Son",
+      "tavsif": "O‘nliklar (20–90) “-ty” affiksi bilan yasaladi",
+      "en_misol": "eigh + ty = eighty",
+      "uz_misol": "sakson (affikssiz)",
+      "bolim": "5. SON (Numeral) so‘z turkumi qoidalari",
+      "jadval": 6,
+      "qator": 3
+    },
+    {
+      "id": "3.14",
+      "uid": "3.14",
+      "pos": "Son",
+      "tavsif": "O‘nlikdan keyingi birlik sonlar ingliz tilida defis bilan yoziladi",
+      "en_misol": "eighty-five",
+      "uz_misol": "sakson besh (defissiz)",
+      "bolim": "5. SON (Numeral) so‘z turkumi qoidalari",
+      "jadval": 6,
+      "qator": 4
+    },
+    {
+      "id": "3.15",
+      "uid": "3.15",
+      "pos": "Son",
+      "tavsif": "Yuz, ming, million oldida “one” yoziladi",
+      "en_misol": "one hundred",
+      "uz_misol": "bir yuz",
+      "bolim": "5. SON (Numeral) so‘z turkumi qoidalari",
+      "jadval": 6,
+      "qator": 5
+    },
+    {
+      "id": "3.16",
+      "uid": "3.16",
+      "pos": "Son",
+      "tavsif": "Yuz/ming/million sonlariga sanoq son kelganda “-s” ko‘plik affiksi qo‘shilmaydi",
+      "en_misol": "four million",
+      "uz_misol": "to‘rt million",
+      "bolim": "5. SON (Numeral) so‘z turkumi qoidalari",
+      "jadval": 6,
+      "qator": 6
+    },
+    {
+      "id": "3.17",
+      "uid": "3.17",
+      "pos": "Son",
+      "tavsif": "Ko‘p xonali sonlarda “and” bog‘lovchisi ishlatiladi",
+      "en_misol": "three hundred and five",
+      "uz_misol": "uch yuz besh (bog‘lovchisiz)",
+      "bolim": "5. SON (Numeral) so‘z turkumi qoidalari",
+      "jadval": 6,
+      "qator": 7
+    },
+    {
+      "id": "3.18",
+      "uid": "3.18",
+      "pos": "Son",
+      "tavsif": "Tartib son – sanoq songa “-th” affiksi qo‘shiladi",
+      "en_misol": "hundred + th = hundredth",
+      "uz_misol": "yuz + inchi = yuzinchi",
+      "bolim": "5. SON (Numeral) so‘z turkumi qoidalari",
+      "jadval": 6,
+      "qator": 8
+    },
+    {
+      "id": "3.19",
+      "uid": "3.19",
+      "pos": "Son",
+      "tavsif": "Qo‘shma tartib son – faqat oxirgi son tartib son shaklida bo‘ladi",
+      "en_misol": "hundred and twenty-first",
+      "uz_misol": "bir yuz yigirma bir + inchi",
+      "bolim": "5. SON (Numeral) so‘z turkumi qoidalari",
+      "jadval": 6,
+      "qator": 9,
+      "izoh": "O'zbek misolida natija shakli berilmagan (\"bir yuz yigirma bir + inchi\" — \"=\" yo'q)."
+    },
+    {
+      "id": "3.20",
+      "uid": "3.20",
+      "pos": "Son",
+      "tavsif": "Bob/qism raqami – ingliz tilida son otdan keyin, o‘zbek tilida otdan oldin (“-inchi” bilan) keladi",
+      "en_misol": "chapter five",
+      "uz_misol": "besh + inchi bob = beshinchi bob",
+      "bolim": "5. SON (Numeral) so‘z turkumi qoidalari",
+      "jadval": 6,
+      "qator": 10
+    },
+    {
+      "id": "3.22",
+      "uid": "3.22",
+      "pos": "Olmosh",
+      "tavsif": "Kishilik olmoshi – bosh kelishik va obyekt kelishigiga bo‘linadi",
+      "en_misol": "I / he / we – me / him / us",
+      "uz_misol": "men / u / biz – meni / uni / bizni",
+      "bolim": "6. OLMOSH (Pronoun) so‘z turkumi qoidalari",
+      "jadval": 7,
+      "qator": 1
+    },
+    {
+      "id": "3.23",
+      "uid": "3.23",
+      "pos": "Olmosh",
+      "tavsif": "Kishilik olmoshi – ikki tilda deyarli bir xil matematik model",
+      "en_misol": "I, he, she, it, we, you, they",
+      "uz_misol": "men, u, u, u, biz, siz, ular",
+      "bolim": "6. OLMOSH (Pronoun) so‘z turkumi qoidalari",
+      "jadval": 7,
+      "qator": 2
+    },
+    {
+      "id": "3.24",
+      "uid": "3.24",
+      "pos": "Olmosh",
+      "tavsif": "Egalik olmosh-sifat – o‘zbek tilida “-ning” qaratqich affiksi bilan beriladi",
+      "en_misol": "my, his, our, your, their",
+      "uz_misol": "men + ning, u + ning, biz + ning, siz + ning, ular + ning",
+      "bolim": "6. OLMOSH (Pronoun) so‘z turkumi qoidalari",
+      "jadval": 7,
+      "qator": 3
+    },
+    {
+      "id": "3.25",
+      "uid": "3.25",
+      "pos": "Olmosh",
+      "tavsif": "Egalik olmosh-ot – o‘zbek tilida mos turi yo‘q, affikslar bilan ifodalanadi",
+      "en_misol": "mine, ours, yours, theirs",
+      "uz_misol": "men + niki, biz + ning, siz + ning, ular + ning",
+      "bolim": "6. OLMOSH (Pronoun) so‘z turkumi qoidalari",
+      "jadval": 7,
+      "qator": 4,
+      "izoh": "4 ta inglizcha shaklga 4 ta o'zbekcha mos keladi, lekin faqat birinchisi \"+ niki\" (\"men + niki\"), qolgan uchtasi \"+ ning\" bilan berilgan — 3.24-qoidadagi (egalik olmosh-sifat) bilan bir xil. Nomuvofiqlik bo'lishi mumkin — Claude hal qilmaydi."
+    },
+    {
+      "id": "3.26",
+      "uid": "3.26",
+      "pos": "Olmosh",
+      "tavsif": "So‘roq olmoshlari",
+      "en_misol": "who, whom, whose, what, which",
+      "uz_misol": "kim, kim + ni, kim + ning, nima, qaysi",
+      "bolim": "6. OLMOSH (Pronoun) so‘z turkumi qoidalari",
+      "jadval": 7,
+      "qator": 5
+    },
+    {
+      "id": "3.27",
+      "uid": "3.27",
+      "pos": "Olmosh",
+      "tavsif": "Gumon/noaniq olmoshlar",
+      "en_misol": "some, someone, any, no, much, many, all, each…",
+      "uz_misol": "ba’zi, kimdir, har qanday, yo‘q, ko‘p, ko‘pchilik, hamma, har bir…",
+      "bolim": "6. OLMOSH (Pronoun) so‘z turkumi qoidalari",
+      "jadval": 7,
+      "qator": 6,
+      "izoh": "Ikkala misol ro'yxati \"…\" bilan tugaydi — to'liq ro'yxat emas."
+    },
+    {
+      "id": "3.28",
+      "uid": "3.28",
+      "pos": "Olmosh",
+      "tavsif": "O‘zlik olmoshlari – o‘zbek tilida egalik affiksi + “o‘z” so‘zi bilan beriladi",
+      "en_misol": "myself, yourself, himself, ourselves…",
+      "uz_misol": "o‘zim, o‘zing, o‘zi, o‘zimiz…",
+      "bolim": "6. OLMOSH (Pronoun) so‘z turkumi qoidalari",
+      "jadval": 7,
+      "qator": 7,
+      "izoh": "Ikkala misol ro'yxati \"…\" bilan tugaydi — to'liq ro'yxat emas."
+    }
+  ],
+  "sonlar": {
+    "jami_qoida": 87,
+    "pos_boyicha": {
+      "Ot": 15,
+      "Sifat": 17,
+      "Fe'l": 28,
+      "Ravish": 10,
+      "Son": 10,
+      "Olmosh": 7
+    },
+    "jadval_qatorlari_sarlavha_bilan": {
+      "Ot": 16,
+      "Sifat": 18,
+      "Fe'l": 29,
+      "Ravish": 11,
+      "Son": 11,
+      "Olmosh": 8
+    }
+  },
+  "hujjat_izohlari": [
+    "Qoidalar soni: jami 87 ta (Ot 15, Sifat 17, Fe'l 28, Ravish 10, Son 10, Olmosh 7). Jadvallarning SARLAVHA qatori bilan birga olingan qator soni esa Ot 16, Sifat 18, Fe'l 29, Ravish 11, Son 11, Olmosh 8 = 93 — ya'ni \"93 ta qoida\" soni sarlavha qatorlarini ham qo'shib sanalgan ko'rinadi.",
+    "2 ta qatorda raqam o'rniga \"–\" turadi (Sifat va Ravish bo'limlarining birinchi qatori: \"Oddiy sifat\", \"Sodda ravish\"). Ular uchun `uid` = \"–(Sifat)\" / \"–(Ravish)\".",
+    "Raqamlash uzluksiz emas: 2.14, 2.17, 2.18, 2.35, 2.40, 2.57, 2.60, 3.10, 3.21 raqamlari hujjatda yo'q.",
+    "Fe'l bo'limida \"2.55a\" (need) va \"2.55b\" (gerund) — ikkita alohida qoida, \"2.55b\" jadvalda \"2.56\" dan KEYIN turadi.",
+    "Vazn paragrafida Yordamchi so'z turkumlari uchun belgi \"U, L\" (ikkita) — bitta vazn (0.07)."
+  ]
+}

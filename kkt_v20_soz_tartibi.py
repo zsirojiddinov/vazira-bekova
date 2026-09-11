@@ -406,7 +406,9 @@ MORPH_RULES = [
     # Imlo: big+er→bigger(ikkilanish→w[:-3]), large+er→larger(silent-e→w[:-2]+"e")
     #       happy+er→happier(y→i→w[:-3]+"y")
     # TARTIB: -iest,-ier OLDIN (uzunroq), -est,-er KEYIN
-    ("iest",   [lambda w:w[:-3]+"y", lambda w:w[:-3]],               "Sifat","P2←P(-iest: y→i orttirma)"),
+    # -iest 4 harfli: y-tiklash w[:-4]+"y" (busiest→busy, KKT spec 2.28). Ilgari
+    # w[:-3]+"y" edi — "busiy" berardi, qoida hech qachon ishlamasdi.
+    ("iest",   [lambda w:w[:-4]+"y", lambda w:w[:-3]],               "Sifat","P2←P(-iest: y→i orttirma)"),
     ("ier",    [lambda w:w[:-3]+"y"],                                 "Sifat","P1←P(-ier: y→i qiyosiy)"),
     ("est",    [lambda w:w[:-3], lambda w:w[:-3]+"e",
                 lambda w:w[:-4], lambda w:w[:-4]+"e"],                "Sifat","P2←P(-est: orttirma)"),
@@ -507,6 +509,13 @@ MORPH_RULES = [
     ("ves",    [lambda w:w[:-3]+"f", lambda w:w[:-3]+"fe"],          "Ot","C7←C(-ves: f→v ko'plik)"),
     # MUHIM: -es uchun FAQAT fn1=w[:-2] — w[:-1] YO'Q!
     ("es",     [lambda w:w[:-2]],                                     "Ot","C3←C(-es ko'plik)"),
+    # ── FE'L (G) 3-SHAXS BIRLIK HOZIRGI ZAMON "-s" (KKT spec 2.37: speak+s =
+    #    speaks → gapir+a+di = gapiradi). Ot ko'plik "-s" dan OLDIN turishi
+    #    shart, lekin FAQAT ildiz lug'atda FE'L bo'lsa ishlaydi (5-element —
+    #    agentiv "-er" bilan bir xil mexanizm); qolgan barcha "-s" so'zlar
+    #    avvalgidek ot ko'pligiga tushadi.
+    ("s",      [lambda w:w[:-1]],
+                "Fe'l","G←G(-s: 3-shaxs birlik hozirgi zamon)","Fe'l"),
     # -s oxirida — barcha qolganlarni tutib oladi
     ("s",      [lambda w:w[:-1]],                                     "Ot","C1←C(-s ko'plik)"),
 ]
@@ -522,11 +531,18 @@ def uz_stem(uz_text):
     return t.strip()
 
 
-def make_uzbek(root_uz, sfx):
+def make_uzbek(root_uz, sfx, pos=None):
     """
     KKT MM asosida ingliz affiksiga mos o'zbek morfologik shakli.
 
+    `pos` — ingliz so'zining ANIQLANGAN turkumi (ixtiyoriy). Hozircha faqat
+    bitta affiks turkumga qarab ikki xil ma'noga ega: "-s" (Ot ko'plik yoki
+    Fe'l 3-shaxs birlik hozirgi zamon, KKT spec 2.37).
+
     Har bir ingliz affiks → o'zbek ekvivalenti:
+      Fe'l 3-sh. birlik: -s (pos=Fe'l)  → +adi (undoshdan keyin, spec 2.37:
+                                          gapir+a+di) / +ydi (unlidan keyin —
+                                          o'zbek imlosi, spec misolida yo'q)
       Ot ko'plik:      -s/-es/-ies/-ves → +lar    [X: 0.00101]
       Fe'l sifatdosh:  -ing             → +ayotgan [G_A1: 0.00303]
       Fe'l o'tgan:     -ed/-ied         → +gan     [G_A1: 0.00301]
@@ -539,6 +555,9 @@ def make_uzbek(root_uz, sfx):
     """
     stem = uz_stem(root_uz)
     if sfx in ("est","iest"): return "eng " + stem
+    if sfx == "s" and pos == "Fe'l":
+        ends_vowel = stem.rstrip("'‘’ʻʼ")[-1:].lower() in "aeiou"
+        return stem + ("ydi" if ends_vowel else "adi")
     rules = {
         # OT ko'plik
         "s":    stem+"lar", "es":  stem+"lar",
@@ -2192,6 +2211,24 @@ def translate_phrase_kkt(text):
 #  kiritilgan, oldindan ko'rilmagan iboralar uchun ham ishlaydi.
 # ═══════════════════════════════════════════════════════════════════
 _DETERMINERS = {"the","a","an","this","that","these","those"}
+# KKT spec 2.2/2.3: noaniq artikl "a"/"an" o'zbekchada "bitta" bilan beriladi
+# ("a network" → "bitta tarmoq"); 2.4: aniq artikl "the" tarjima qilinmaydi
+# (qolgan _DETERMINERS kabi tashlab yuboriladi).
+_INDEFINITE_ARTICLE_UZ = {"a":"bitta", "an":"bitta"}
+# KKT spec 2.56: "to" + FE'L — infinitiv yuklamasi, o'zbekchada alohida so'z
+# bilan berilmaydi (fe'lning lug'atdagi "-moq" shakli yetarli): "to ask" →
+# "so'ramoq". Faqat "to" dan KEYIN fe'l kelganda — "to the system" kabi
+# predlogli iboralar (PREP_UZ_X3: to→ga) o'zgarmaydi.
+INFINITIVE_PARTICLE_EN = "to"
+# KKT spec 2.59: inglizchada predlog orqali to'ldiruvchi oluvchi fe'l —
+# o'zbekchada vositasiz to'ldiruvchi: "listen to me" → "meni tinglamoq"
+# (predlog tushadi, to'ldiruvchi fe'ldan oldin, tushum kelishigida). Qaysi
+# fe'l shunday ekani LEKSIK ma'lumot: spec faqat (listen, to) juftini beradi,
+# ro'yxat shu bilan cheklangan — kengaytirish faqat manbali ma'lumot bilan.
+PREP_OBJECT_VERBS = {("listen","to")}
+# KKT spec 3.22: kishilik olmoshining obyekt shakli (me/him/us) o'zbekchada
+# allaqachon tushum kelishigida (meni/uni/bizni) — ustiga yana "-ni" qo'shilmaydi.
+OBJECT_CASE_PRONOUNS = {"me","him","us"}
 
 def _chunk_phrase(text):
     """
@@ -2212,7 +2249,20 @@ def _chunk_phrase(text):
     tartibiga solib chiqadi.
     """
     aa = parse_sentence(text)
-    items = [a for a in aa if a["word"].lower() not in _DETERMINERS]
+    items = []
+    for k, a in enumerate(aa):
+        w = a["word"].lower()
+        if w in _INDEFINITE_ARTICLE_UZ:
+            # Noaniq artikl — faqat undan keyin (sifat(lar)dan so'ng) OT kelsa,
+            # ot iborasiga "bitta" aniqlovchisi sifatida kiradi (spec 2.2/2.3);
+            # aks holda avvalgidek tashlab yuboriladi.
+            j = k + 1
+            while j < len(aa) and aa[j]["found"] and aa[j]["pos"] == "Sifat": j += 1
+            if j < len(aa) and aa[j]["found"] and aa[j]["pos"] == "Ot":
+                items.append({**a, "found": True, "pos": "Sifat", "uz": _INDEFINITE_ARTICLE_UZ[w]})
+            continue
+        if w in _DETERMINERS: continue
+        items.append(a)
     if not any(a["found"] for a in items): return None
 
     chunks=[]; i=0; n=len(items)
@@ -2222,7 +2272,14 @@ def _chunk_phrase(text):
             chunks.append(("?", "["+a["word"]+"?]")); i+=1; continue
 
         if a["pos"] == "Predlog":
-            prep=a["word"].lower(); j=i+1; poss=None
+            prep=a["word"].lower()
+            nxt = items[i+1] if i+1<n else None
+            if prep == INFINITIVE_PARTICLE_EN and nxt and nxt["found"] and nxt["pos"] == "Fe'l":
+                i+=1; continue          # spec 2.56: infinitiv "to" tarjima qilinmaydi
+            if i>0 and items[i-1]["found"] and items[i-1]["pos"] == "Fe'l" \
+               and ((items[i-1]["root"] or "").lower(), prep) in PREP_OBJECT_VERBS:
+                i+=1; continue          # spec 2.59: predlog tushadi, keyingi so'z — vositasiz to'ldiruvchi
+            j=i+1; poss=None
             if j<n and items[j]["found"] and items[j]["pos"]=="Olmosh" and items[j]["word"].lower() in POSS_PRONOUN_UZ_X2:
                 poss=items[j]["word"].lower(); j+=1
             mods=[]
@@ -2265,6 +2322,11 @@ def _chunk_phrase(text):
                 head_uz=uz_stem(items[j]["uz"])+POSS_PRONOUN_UZ_X2[a["word"].lower()]
                 chunks.append(("NP"," ".join(mods+[head_uz]))); i=j+1; continue
 
+        if a["word"].lower() in OBJECT_CASE_PRONOUNS:
+            # spec 3.22: obyekt shakli (meni/uni/bizni) — "M1" bo'lagi,
+            # translate_phrase_general() unga qayta "-ni" qo'shmaydi.
+            chunks.append(("M1", uz_stem(a["uz"]))); i+=1; continue
+
         chunks.append((a["pos"] or "X", a["uz"])); i+=1
     return chunks
 
@@ -2305,9 +2367,16 @@ def translate_phrase_general(text):
             if t in ("Ot","Olmosh","NP"):
                 after[k] = (t, uz_stem(val)+"ni")
         rest = [c for c in (before+after) if c[0] != "?"]
-        if not rest: return None
+        if not rest:
+            # Faqat fe'l qoldi. Bitta so'zli kirish (yoki noma'lum so'z bor) —
+            # avvalgidek None (GUI so'zma-so'z natijani ko'rsatadi). Bir necha
+            # so'zdan faqat fe'l qolgan bo'lsa (spec 2.56 "to ask" — infinitiv
+            # "to" ataylab tashlangan), natija — fe'lning o'zi; aks holda
+            # so'zma-so'z zaxira tashlangan "to" ni "ga" qilib qaytarardi.
+            if len(re.findall(r"[A-Za-z']+", text)) < 2 or any(c[0] == "?" for c in chunks):
+                return None
         seq = [c[1] for c in rest] + [verb[1]]
-        model_syms = "+".join((POS_KKT.get(t,t) if t not in ("PP","NP","VP") else t) for t,_ in rest) + "+G"
+        model_syms = "+".join((POS_KKT.get(t,t) if t not in ("PP","NP","VP") else t) for t,_ in rest + [("G","")])
     elif len(vp_idx) == 0:
         rest = [c for c in chunks if c[0] != "?"]
         # Ilgari faqat PP/NP boʻlsa oʻtardi — feʼlsiz, lekin sof Ot/Olmosh
@@ -2473,6 +2542,7 @@ def _try_suffix_chain(w):
         return row,cand,sfx,derived_pos,label,None,None
     for rule in MORPH_RULES:
         sfx, fns, derived_pos, label = rule[0], rule[1], rule[2], rule[3]
+        req_root_pos = rule[4] if len(rule) > 4 else None
         if not w.endswith(sfx) or len(w) <= len(sfx)+2: continue
         for fn in fns:
             try: mid = fn(w)
@@ -2481,6 +2551,10 @@ def _try_suffix_chain(w):
             inner = _try_suffix(mid)
             if inner:
                 irow,icand,isfx,ipos,ilabel = inner
+                # Tashqi qoida ildiz turkumini talab qilsa (masalan Fe'l "-s"),
+                # u oraliq so'zning ANIQLANGAN turkumiga (ipos) qo'llanadi —
+                # aks holda "work+er+s" (Ot) fe'l 3-shaxs deb olinib qolardi.
+                if req_root_pos and ipos != req_root_pos: continue
                 return irow,icand,sfx,derived_pos,label,isfx,ilabel
     return None
 
@@ -2640,7 +2714,14 @@ def select_meaning_contextual(rows, word, prev_pos=None, prev_raw=None):
 DB_MDB_UZ = os.path.join(SCRIPT_DIR, "MDB_uz_w.db")
 ALL_DBS.append(DB_MDB_UZ)
 
-_SSM_ROOT_SYMBOLS = {"C", "P", "G", "M", "N", "F", "K", "D", "Y"}
+_SSM_ROOT_SYMBOLS = {"C", "P", "G", "M", "N", "F", "K", "D", "Y", "U", "L"}
+# MUHIM TUZATISH (KKT spec, vazn jadvali: "Yordamchi so'z turkumlari (U, L) –
+# 0.07"): U (yuklama) va L (modal so'zlar) — spec bo'yicha alohida SO'Z
+# TURKUMI belgilari, ya'ni ildiz. Ilgari ro'yxatda yo'q edi — "may"/"might"
+# (CH2 modeli "L(L) = $[i,1-h2]Li", SSM=0.989) "root topilmadi" deb
+# hisoblanib, lug'atdagi to'g'ri "mumkin" MDB_uz_w'dagi tasodifiy
+# "Ajratib ko'rsatmoq" bilan almashtirilardi (spec 2.51/2.52). Quyidagi
+# D/Y tuzatishi bilan bir xil turdagi xato.
 # MUHIM TUZATISH: "D" (Predlog) va "Y" (Bog'lovchi) ilgari bu ro'yxatda
 # yo'q edi. Natijada _ssm_is_root() predlog/bog'lovchi so'zlar uchun
 # doim False qaytarardi -> evaluate_and_refine_ssm() ularni HAR DOIM
@@ -3063,8 +3144,14 @@ def _smart_parse_core(word, prev_pos=None, prev_raw=None):
     # Matn bir xil bo'lgani uchun BM_en_w'da chalkashmasligi uchun turkum
     # bilan birga noyob kalit sifatida saqlaymiz.
     AGENTIVE_ER_SYM = {"er":"C_A1","or":"C_A1"}
+    # Xuddi shunday "-s": Ot ko'plik (X) yoki Fe'l 3-shaxs birlik (spec 2.37).
+    # Fe'l ma'nosi alohida kalit bilan, kodning fe'l zamon affikslari uchun
+    # ishlatadigan belgisi (EN_AFF_V3: ing/ed/ied → G_A1) bilan saqlanadi.
+    verb_3sg = (sfx == "s" and pos == "Fe'l")
     if sfx in AGENTIVE_ER_SYM and pos=="Ot":
         sfx_bm_key = sfx+"#Ot"; default_sym = AGENTIVE_ER_SYM[sfx]
+    elif verb_3sg:
+        sfx_bm_key = "s#Fe'l"; default_sym = "G_A1"
     else:
         sfx_bm_key = sfx; default_sym = EN_AFF_V3.get(sfx,("A1",0))[0]
     sfx_m_en = bm_get_or_create_affix_model(DB_BM_EN, sfx_bm_key, default_sym) if sfx else None
@@ -3099,7 +3186,9 @@ def _smart_parse_core(word, prev_pos=None, prev_raw=None):
 
     uz_suffix_text = ""
     _DEGREE_SFX = {"er","est","ier","iest"}  # qiyosiy/orttirma daraja — ID moslash ishonchsiz, doim zaxira jadval ishlatiladi
-    if sfx and sfx_m_en and sfx not in _DEGREE_SFX:
+    # Fe'l "-s" uchun ham ID moslash ishlatilmaydi: QM_en_w'dagi "-s" yozuvi
+    # ko'plik affiksi, uning ID-jufti fe'l shaklini bermaydi.
+    if sfx and sfx_m_en and sfx not in _DEGREE_SFX and not verb_3sg:
         qm_en_row = qm_confirm_or_add(DB_QM_EN, sfx, pos, is_prefix=False,
                                        kkt_symbol_hint=EN_AFF_V3.get(sfx,("A1",0))[0])
         uz_aff = qm_uz_equivalent(qm_en_row[0], pos) if qm_en_row else None
@@ -3110,7 +3199,7 @@ def _smart_parse_core(word, prev_pos=None, prev_raw=None):
         uz = uz_stem(uz_root_raw) + uz_suffix_text          # bazadan (QM_uz_w)
         method_tag = "QM_en_w→QM_uz_w[ID]"
     elif sfx:
-        uz = make_uzbek(uz_root_raw, sfx)                    # zaxira: statik KKT jadval
+        uz = make_uzbek(uz_root_raw, sfx, pos)               # zaxira: statik KKT jadval
         method_tag = "QM_en_w + zaxira-jadval"
     else:
         uz = uz_root_raw
