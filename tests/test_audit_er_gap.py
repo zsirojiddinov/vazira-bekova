@@ -98,3 +98,17 @@ def test_classify_full_chapter2_examples_returns_none_or_superset_of_ch2():
     # "larger"/"bigger" — CH2_EVX_EXAMPLES'da YO'Q, lekin II bobning o'zida bor.
     extra_words = {r["word"] for r in full_rows if not r["in_ch2_evx_examples"]}
     assert {"larger", "bigger"} <= extra_words
+
+
+def test_kkt_spec_has_er_only_as_comparative_and_no_agentive_category():
+    """Rasmiy spesifikatsiya (data/kkt_spec.json): "-er" faqat qiyosiy
+    daraja qoidalarida (Sifat 2.21/2.23/2.25/2.27/2.29, Ravish 3.3);
+    agentiv (fe'l+er -> shaxs oti) kategoriyasi YO'Q — faza_2_er_gap.md 6-bo'lim."""
+    spec = script.check_kkt_spec()
+    assert spec is not None
+    assert [r["uid"] for r in spec["er_rules"]] == ["2.21", "2.23", "2.25", "2.27", "2.29", "3.3"]
+    assert {r["pos"] for r in spec["er_rules"]} == {"Sifat", "Ravish"}
+    assert [f for _, _, f in spec["er_forms"]] == ["cleverer", "larger", "bigger", "busier", "gayer", "faster"]
+    assert spec["agentive_hits"] == []
+    assert spec["ot_er_or_words"] == []
+    assert [r["uid"] for r in spec["verb_to_noun"]] == ["2.13"]  # yagona fe'l->ot qoidasi: -ation

@@ -68,6 +68,15 @@ sys.path.insert(0, SCRIPT_DIR)
 
 DICT_PATH = os.path.join(REPO_ROOT, "data", "1500_EN_UZ_6_POS_sorted.20.json")
 DOCX_PATH = os.path.join(REPO_ROOT, "data", "desertatsiya.docx")
+SPEC_PATH = os.path.join(REPO_ROOT, "data", "kkt_spec.json")
+
+# Rasmiy spesifikatsiya (kkt_spec.json) ichida "-er" affiksini tilga olish:
+# tavsifdagi “-er” yoki misoldagi "+ er".
+_SPEC_ER_RE = re.compile(r"(?<![A-Za-z])-er\b|\+\s*er\b")
+_SPEC_EST_RE = re.compile(r"(?<![A-Za-z])-est\b|\+\s*est\b")
+# Agentiv (ish bajaruvchi shaxs oti) ma'nosini bildiruvchi kalit so'zlar —
+# 4-bo'limdagi dissertatsiya qidiruvi bilan bir xil, "kasb"/"shaxs oti" qo'shilgan.
+_SPEC_AGENTIVE_KEYWORDS = ("bajaruvchi", "agentiv", "shaxs oti", "kasb", "harakat egasi")
 
 MAIN_CATEGORIES = [
     "NOUNS (OTLAR)",
@@ -114,6 +123,50 @@ def load_dictionary_categories() -> dict[str, list[dict]]:
     with open(DICT_PATH, encoding="utf-8") as f:
         raw = json.load(f)
     return raw["categories"]
+
+
+def check_kkt_spec() -> dict | None:
+    """Rasmiy KKT spesifikatsiyasida (`data/kkt_spec.json` ←
+    `data/kkt_qoidalari.docx`, 2026-09-11) "-er" qaysi qoidalarda uchraydi va
+    agentiv (fe'l+er -> shaxs oti) kategoriyasi bormi. Faqat JSON maydonlarini
+    o'qiydi; fayl yo'q bo'lsa None."""
+    if not os.path.exists(SPEC_PATH):
+        return None
+    with open(SPEC_PATH, encoding="utf-8") as f:
+        spec = json.load(f)
+    rules = spec["rules"]
+
+    def _mentions(rx, r):
+        return bool(rx.search(r["tavsif"]) or rx.search(r["en_misol"]))
+
+    er_rules = [r for r in rules if _mentions(_SPEC_ER_RE, r)]
+    est_rules = [r for r in rules if _mentions(_SPEC_EST_RE, r)]
+    er_forms = [(r["uid"], r["pos"], r["en_misol"].split("=")[-1].strip()) for r in er_rules]
+    agentive_hits = []
+    for r in rules:
+        for field in ("tavsif", "en_misol", "uz_misol"):
+            low = r[field].lower()
+            hit = [k for k in _SPEC_AGENTIVE_KEYWORDS if k in low]
+            if hit:
+                agentive_hits.append((r["uid"], field, hit, r[field]))
+    ot_words = [(r["uid"], w) for r in rules if r["pos"] == "Ot"
+                for w in re.findall(r"[A-Za-z]+", r["en_misol"]) if w.lower().endswith(("er", "or"))]
+    verb_to_noun = [r for r in rules if r["pos"] == "Ot" and "fe" in r["tavsif"].lower()
+                    and "ot yasal" in r["tavsif"].lower()]
+    return {"n_rules": len(rules), "n_ot": sum(1 for r in rules if r["pos"] == "Ot"),
+            "er_rules": er_rules, "est_rules": est_rules, "er_forms": er_forms,
+            "agentive_hits": agentive_hits, "ot_er_or_words": ot_words, "verb_to_noun": verb_to_noun}
+
+
+def _agentive_rule_line() -> int | None:
+    """kkt_v20_soz_tartibi.py dagi agentiv "-er" (C←G) qoidasi boshlanadigan
+    qator — MORPH_RULES dagi BIRINCHI `("er",` yozuvi (izohga ko'ra agentiv
+    qoida qiyosiydan OLDIN turadi; test_affix_tables.py buni tekshiradi)."""
+    with open(os.path.join(REPO_ROOT, "kkt_v20_soz_tartibi.py"), encoding="utf-8") as f:
+        for i, ln in enumerate(f, 1):
+            if re.match(r'^\s*\("er",', ln):
+                return i
+    return None
 
 
 def get_er_rules():
@@ -286,6 +339,7 @@ def run(out_path: str | None) -> int:
     ch2_rows = classify_ch2_examples()
     full_ch2_rows = classify_full_chapter2_examples(DOCX_PATH)
     theory = check_dissertation_theory(DOCX_PATH)
+    spec = check_kkt_spec()
 
     def _count(rows, group_prefix):
         return sum(1 for r in rows if r["group"].startswith(group_prefix))
@@ -535,6 +589,72 @@ def run(out_path: str | None) -> int:
             f"{fc_fel} | 0 |"
         )
     lines.append(f"| tests/*.py (haqiqiy so'z kirishlari) | 0 | {len(_TEST_SUITE_ER_WORDS)} | — |")
+    if spec is not None:
+        lines.append(f"| Rasmiy spesifikatsiya `kkt_spec.json` ({len(spec['er_forms'])} ta \"-er\" misol so'zi, "
+                     f"6-bo'lim) | {len(spec['er_forms'])} | 0 | 0 |")
+    lines.append("")
+
+    lines.append("## 6. Rasmiy KKT spesifikatsiyasi bo'yicha (qo'shimcha, 2026-09-11)")
+    lines.append("")
+    if spec is None:
+        lines.append("`data/kkt_spec.json` topilmadi — `python scripts/extract_kkt_spec.py` ni ishga tushiring.")
+    else:
+        lines.append(
+            "Manba: `data/kkt_spec.json` (`data/kkt_qoidalari.docx` dan `scripts/extract_kkt_spec.py` bilan "
+            f"ajratilgan, {spec['n_rules']} ta qoida) — loyihaning kanonik spesifikatsiyasi. Quyidagilar JSON "
+            "maydonlarini o'qish orqali AVTOMATIK hisoblangan:"
+        )
+        lines.append("")
+        lines.append(
+            f"- **\"-er\" ni tilga oluvchi qoidalar ({len(spec['er_rules'])} ta)** — tavsifida “-er” yoki "
+            "misolida \"+ er\" bor: "
+            + "; ".join(f"{r['uid']} ({r['pos']})" for r in spec["er_rules"])
+            + ". Hammasining tavsifi — **qiyosiy daraja**."
+        )
+        lines.append(
+            f"- \"-est\" (orttirma daraja) qoidalari ({len(spec['est_rules'])} ta): "
+            + "; ".join(f"{r['uid']} ({r['pos']})" for r in spec["est_rules"]) + "."
+        )
+        lines.append("")
+        lines.append("| Spec qoidasi | POS | \"-er\" misol so'zi | Tavsif |")
+        lines.append("|---|---|---|---|")
+        tav = {r["uid"]: r["tavsif"] for r in spec["er_rules"]}
+        for uid, pos, form in spec["er_forms"]:
+            lines.append(f"| {uid} | {pos} | {form} | {tav[uid]} |")
+        lines.append("")
+        lines.append(
+            f"- Ot bo'limidagi {spec['n_ot']} ta qoidaning inglizcha misollarida \"-er\"/\"-or\" bilan tugaydigan "
+            f"so'z: **{len(spec['ot_er_or_words'])}** ta."
+            + (" (" + ", ".join(f"{u}: {w}" for u, w in spec["ot_er_or_words"]) + ")" if spec["ot_er_or_words"] else "")
+        )
+        lines.append(
+            "- Ot bo'limida fe'ldan ot yasashni tavsiflovchi qoida(lar): "
+            + (", ".join(f"{r['uid']} (\"{r['tavsif']}\", misol `{r['en_misol']}`)" for r in spec["verb_to_noun"])
+               or "yo'q")
+            + " — boshqa fe'ldan ot yasovchi qoida yo'q."
+        )
+        lines.append(
+            f"- Agentiv ma'noni bildiruvchi kalit so'zlar ({', '.join(_SPEC_AGENTIVE_KEYWORDS)}) "
+            f"{spec['n_rules']} ta qoidaning tavsif/misol maydonlarida: **{len(spec['agentive_hits'])}** ta joyda."
+        )
+        lines.append("")
+        agentive_line = _agentive_rule_line()
+        lines.append(
+            "**Xulosa (fakt, talqin emas):** fe'ldan ish bajaruvchi shaxs oti yasovchi \"-er\" (teacher, worker) "
+            "rasmiy KKT spesifikatsiyasining **o'zida yo'q kategoriya** — spec'da \"-er\" faqat qiyosiy daraja "
+            "affiksi. Demak bu \"spec'da bor-u, kodda implement qilinmagan qoida\" (kod bo'shlig'i) EMAS. "
+            "Aksincha, yo'nalish teskari: kodda agentiv qoida BOR (`kkt_v20_soz_tartibi.py:"
+            f"{agentive_line}`, `MORPH_RULES` — \"C←G(-er: ish bajaruvchi)\"), lekin uning spesifikatsiyada asosi "
+            "yo'q (`reports/faza_2_kkt_spec_conformance.md` 3-bo'lim, \"teskari yo'nalish\")."
+        )
+        lines.append("")
+        lines.append(
+            "**Ehtiyot:** bu xulosa `kkt_qoidalari.docx` ga tegishli. Dissertatsiyaning I bob nazariy "
+            "inventarida (4-bo'lim, 1.3-jadval) \"-er\" ot yasovchi suffikslar ro'yxatida BOR (izohsiz, misolsiz). "
+            "Ya'ni rasmiy qoidalar to'plami va dissertatsiyaning nazariy suffiks ro'yxati bu masalada bir xil "
+            "emas — qaysi biri ustun ekani (agentiv \"-er\" spec'ga qo'shiladimi yoki koddan olib tashlanadimi) "
+            "professor qarori."
+        )
     lines.append("")
 
     report = "\n".join(lines)

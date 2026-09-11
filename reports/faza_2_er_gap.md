@@ -1,6 +1,6 @@
 # Faza 2 — "-er" bo'shlig'i: sifat+er (qiyosiy) vs fe'l+er (agentiv)
 
-**Generatsiya vaqti:** 2026-09-09T05:56:53+00:00Z
+**Generatsiya vaqti:** 2026-09-11T11:17:11+00:00Z
 **Buyruq:** `python scripts/audit_er_gap.py`
 
 **Kontekst:** `"worker"->"Ishlaroq"` ma'lum xatosi (`make_uzbek()` "-er"ni HAR DOIM qiyosiy daraja deb hisoblaydi, agentiv ma'noni ajratmaydi — qarang `reports/faza_1.md`#2-band, `tests/test_smart_parse.py::test_smart_parse_agentive_er_uses_wrong_fallback_suffix_data_bug`). **Bu hisobot xatoni TUZATMAYDI** — foydalanuvchi so'rovi bo'yicha faqat ikkita guruhning hajmini hisoblab, professor bilan muhokama uchun xom dalil taqdim etadi. Qaysi guruh "dissertatsiyada bor/yo'q" degan yakuniy xulosani Claude CHIQARMAYDI.
@@ -145,4 +145,29 @@ Manba: `data/desertatsiya.docx`, I bob ("HISOBLASH MASHINALARIDA TARJIMA MUAMMOL
 | CH2_EVX_EXAMPLES (5 ta "-er" so'zdan) | 5 | 0 | 0 |
 | II bobning TO'LIQ namunalari (7 ta "-er" so'zdan, CH2_EVX_EXAMPLES + 2 qo'shimcha) | 7 | 0 | 0 |
 | tests/*.py (haqiqiy so'z kirishlari) | 0 | 2 | — |
+| Rasmiy spesifikatsiya `kkt_spec.json` (6 ta "-er" misol so'zi, 6-bo'lim) | 6 | 0 | 0 |
+
+## 6. Rasmiy KKT spesifikatsiyasi bo'yicha (qo'shimcha, 2026-09-11)
+
+Manba: `data/kkt_spec.json` (`data/kkt_qoidalari.docx` dan `scripts/extract_kkt_spec.py` bilan ajratilgan, 87 ta qoida) — loyihaning kanonik spesifikatsiyasi. Quyidagilar JSON maydonlarini o'qish orqali AVTOMATIK hisoblangan:
+
+- **"-er" ni tilga oluvchi qoidalar (6 ta)** — tavsifida “-er” yoki misolida "+ er" bor: 2.21 (Sifat); 2.23 (Sifat); 2.25 (Sifat); 2.27 (Sifat); 2.29 (Sifat); 3.3 (Ravish). Hammasining tavsifi — **qiyosiy daraja**.
+- "-est" (orttirma daraja) qoidalari (6 ta): 2.22 (Sifat); 2.24 (Sifat); 2.26 (Sifat); 2.28 (Sifat); 2.30 (Sifat); 3.4 (Ravish).
+
+| Spec qoidasi | POS | "-er" misol so'zi | Tavsif |
+|---|---|---|---|
+| 2.21 | Sifat | cleverer | Qiyosiy daraja – bir-ikki bo‘g‘inli sifatlarga “-er” qo‘shiladi |
+| 2.23 | Sifat | larger | O‘qilmaydigan “e” bilan tugagan sifatlarda “e” tushib, “-er” qo‘shiladi |
+| 2.25 | Sifat | bigger | Qisqa unlidan keyin bitta undosh bilan tugagan sifatda undosh ikkilanib “-er” qo‘shiladi |
+| 2.27 | Sifat | busier | Undoshdan keyin “-y” bilan tugagan sifatda “-y” “-i” ga aylanib “-er” qo‘shiladi |
+| 2.29 | Sifat | gayer | Unlidan keyin “-y” bilan tugagan sifatda “-y” o‘zgarmasdan “-er” qo‘shiladi |
+| 3.3 | Ravish | faster | Ravishning qiyosiy darajasi – bir-ikki bo‘g‘inli ravishga “-er” qo‘shiladi |
+
+- Ot bo'limidagi 15 ta qoidaning inglizcha misollarida "-er"/"-or" bilan tugaydigan so'z: **0** ta.
+- Ot bo'limida fe'ldan ot yasashni tavsiflovchi qoida(lar): 2.13 ("Fe’l asosiga “-ation” affiksi qo‘shilib ot yasalishi", misol `inform + ation = information`) — boshqa fe'ldan ot yasovchi qoida yo'q.
+- Agentiv ma'noni bildiruvchi kalit so'zlar (bajaruvchi, agentiv, shaxs oti, kasb, harakat egasi) 87 ta qoidaning tavsif/misol maydonlarida: **0** ta joyda.
+
+**Xulosa (fakt, talqin emas):** fe'ldan ish bajaruvchi shaxs oti yasovchi "-er" (teacher, worker) rasmiy KKT spesifikatsiyasining **o'zida yo'q kategoriya** — spec'da "-er" faqat qiyosiy daraja affiksi. Demak bu "spec'da bor-u, kodda implement qilinmagan qoida" (kod bo'shlig'i) EMAS. Aksincha, yo'nalish teskari: kodda agentiv qoida BOR (`kkt_v20_soz_tartibi.py:396`, `MORPH_RULES` — "C←G(-er: ish bajaruvchi)"), lekin uning spesifikatsiyada asosi yo'q (`reports/faza_2_kkt_spec_conformance.md` 3-bo'lim, "teskari yo'nalish").
+
+**Ehtiyot:** bu xulosa `kkt_qoidalari.docx` ga tegishli. Dissertatsiyaning I bob nazariy inventarida (4-bo'lim, 1.3-jadval) "-er" ot yasovchi suffikslar ro'yxatida BOR (izohsiz, misolsiz). Ya'ni rasmiy qoidalar to'plami va dissertatsiyaning nazariy suffiks ro'yxati bu masalada bir xil emas — qaysi biri ustun ekani (agentiv "-er" spec'ga qo'shiladimi yoki koddan olib tashlanadimi) professor qarori.
 
