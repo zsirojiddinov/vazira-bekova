@@ -64,15 +64,24 @@ ishga tushirmang (`os.getcwd()` qidiruv papkasiga aylanadi).
 
 ### Faza 3 qabul mezonlari (gold to'plam qo'shilishidan OLDIN bajarilsin)
 
-- [ ] **Qo'riqlovchi test (manba darajasida):** baza qurilishi paytida ochilgan
-      barcha fayllar yozib olinadi (masalan `sys.addaudithook` "open" hodisasi) va
-      `gold/` ostidagi birorta fayl ochilmagani tasdiqlanadi.
-- [ ] **Qo'riqlovchi test (natija darajasida):** qurilgan bazada gold test-case'larning
-      inglizcha iboralari UB_en_w headword sifatida, o'zbekcha javoblari UB_uz_w /
-      MDB_uz_w da yo'q (1500-lug'atning 6 asosiy kategoriyasida mustaqil bor bo'lgan
-      bitta so'zlar alohida ro'yxatlanib, izohlanadi).
-- [ ] Gold baholash skripti faqat `allow_write=False` bilan ishlaydi; skript
-      ishlagandan keyin baza o'zgarmagani (qator soni/xesh) tekshiriladi.
+- [x] **Qo'riqlovchi test (manba darajasida)** — `tests/test_gold_separation.py::
+      test_db_build_never_opens_gold_dir_and_reads_only_known_sources` (2026-09-11):
+      izolyatsiyalangan nusxada `gold/canary.json` yaratiladi, baza `sys.addaudithook`
+      ("open") ostida quriladi; `gold/` dan birorta fayl ochilmagani, `data/` dan faqat
+      `ALLOWED_DATA_SOURCES` (3 ta JSON) o'qilgani va kanareyka ibora UB_en_w/UB_uz_w/
+      MDB_uz_w da yo'qligi tasdiqlanadi. Salbiy nazorat: ma'lum manbalar hook'da ko'rinishi
+      shart; mutatsiya bilan tekshirildi (gold/ yoki yangi data/ faylini o'qish — yiqiladi).
+- [x] **Qo'riqlovchi test (natija darajasida)** — `test_gold_dir_cases_absent_from_built_lexicon`:
+      `gold/*.json` dagi har bir test-case inglizchasi UB_en_w headword sifatida,
+      o'zbekchasi UB_uz_w / MDB_uz_w da bo'lmasligi shart. `gold/` hali yo'q — test
+      SKIP (sababi ko'rsatilgan), birinchi gold fayl qo'shilganda avtomatik faollashadi.
+      Fayl formati: JSON ro'yxat, har bir element `{"english": str, "uzbek": str, ...}`
+      (format buzilsa test yiqiladi, jimgina o'tkazib yubormaydi).
+- [~] Gold baholash faqat `allow_write=False` bilan: statik qism bajarildi —
+      `test_scripts_call_translate_phrase_only_with_allow_write_false` (ast orqali
+      `scripts/` dagi har bir `translate_phrase(...)` chaqiruvi; salbiy nazorat testi bor).
+      Qolgan qism — yangi gold runner yozilganda baza o'zgarmaganini (qator soni/xesh)
+      tekshirish.
 - [ ] Mavjud `100 SOZ` kategoriyasini 1500-JSON dan ajratish masalasi alohida hal
       qilinsin (hozir ablatsiya ta'siri 0, lekin qoida bo'yicha bu ham buzilish);
       ajratilsa — `reports/db_reproducibility.md` qayta tekshiriladi.

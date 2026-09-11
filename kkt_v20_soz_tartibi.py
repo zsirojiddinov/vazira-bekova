@@ -2229,6 +2229,39 @@ PREP_OBJECT_VERBS = {("listen","to")}
 # KKT spec 3.22: kishilik olmoshining obyekt shakli (me/him/us) o'zbekchada
 # allaqachon tushum kelishigida (meni/uni/bizni) — ustiga yana "-ni" qo'shilmaydi.
 OBJECT_CASE_PRONOUNS = {"me","him","us"}
+# KKT spec 2.31/2.32/2.34/3.5: ko'p bo'g'inli sifat va "-ly" ravishning
+# ANALITIK darajasi — daraja so'zi + sifat/ravish bitta shaklga aylanadi:
+#   more + X → X+roq  ("more comfortable" → "qulayroq", "more clearly" → "aniqroq")
+#   most + X → eng X  ("most comfortable" → "eng qulay")
+#   less + X → kamroq X ("less interesting" → "kamroq qiziqarli")
+# "least" — spec tavsifida tilga olingan, lekin o'zbekcha misoli berilmagan →
+# qo'shilmadi. Faqat keyingi so'z Sifat/Ravish bo'lsa ("more books" o'zgarmaydi).
+ANALYTIC_DEGREE_EN = {"more", "most", "less"}
+# KKT spec 2.62: kelasi oddiy zamon "will + fe'l" — spec misolida o'zbekchasi
+# fe'lning o'zi ("will return" → "qaytmoq"), shu sabab "will" fe'ldan oldin
+# tushadi. Yakka "will" (spec 2.46: "keladi") bunga tegishli emas.
+FUTURE_AUX_EN = "will"
+# KKT spec — son iboralari:
+#  3.17: ko'p xonali sonlardagi "and" o'zbekchada tushadi ("three hundred and
+#        five" → "uch yuz besh").
+#  3.15/3.19: yuz/ming/million o'zbekchada "bir" bilan ("one hundred" → "bir
+#        yuz"); oldidan son kelmagan yakka "hundred" ham "bir yuz" (3.19 misoli).
+#  3.19: first/second/third — noqoida tartib son: sanoq son (lug'atdan) + "-inchi"
+#        ("twenty-first" → "yigirma birinchi"). Faqat so'zning o'zi lug'atda
+#        bo'lmasa.
+#  3.20: bob/qism raqami — o'zbekchada tartib son otdan OLDIN ("chapter five"
+#        → "beshinchi bob").
+NUMERAL_CONJ_EN = "and"
+NUMERAL_SCALE_EN = {"hundred", "thousand", "million"}
+IRREGULAR_ORDINALS_EN = {"first":"one", "second":"two", "third":"three"}
+NUMBERED_PART_NOUNS_EN = {"chapter", "part"}
+
+def _analytic_degree_uz(marker, uz):
+    base = uz_stem(uz)
+    base = base[:1].lower() + base[1:]
+    if marker == "more": return make_uzbek(base, "er")     # stem+"roq" (qiyosiy jadval bilan bir xil)
+    if marker == "most": return make_uzbek(base, "est")    # "eng "+stem
+    return "kamroq " + base                                 # less (spec 2.34)
 
 def _chunk_phrase(text):
     """
@@ -2249,9 +2282,10 @@ def _chunk_phrase(text):
     tartibiga solib chiqadi.
     """
     aa = parse_sentence(text)
-    items = []
-    for k, a in enumerate(aa):
-        w = a["word"].lower()
+    items = []; k = 0
+    while k < len(aa):
+        a = aa[k]; w = a["word"].lower()
+        nxt = aa[k+1] if k+1 < len(aa) else None
         if w in _INDEFINITE_ARTICLE_UZ:
             # Noaniq artikl — faqat undan keyin (sifat(lar)dan so'ng) OT kelsa,
             # ot iborasiga "bitta" aniqlovchisi sifatida kiradi (spec 2.2/2.3);
@@ -2260,9 +2294,27 @@ def _chunk_phrase(text):
             while j < len(aa) and aa[j]["found"] and aa[j]["pos"] == "Sifat": j += 1
             if j < len(aa) and aa[j]["found"] and aa[j]["pos"] == "Ot":
                 items.append({**a, "found": True, "pos": "Sifat", "uz": _INDEFINITE_ARTICLE_UZ[w]})
-            continue
-        if w in _DETERMINERS: continue
-        items.append(a)
+            k += 1; continue
+        if w in ANALYTIC_DEGREE_EN and nxt and nxt["found"] and nxt["pos"] in ("Sifat", "Ravish"):
+            # spec 2.31/2.32/2.34/3.5: daraja so'zi + sifat/ravish → bitta shakl
+            items.append({**nxt, "uz": _analytic_degree_uz(w, nxt["uz"])}); k += 2; continue
+        if w == FUTURE_AUX_EN and nxt and nxt["found"] and nxt["pos"] == "Fe'l":
+            k += 1; continue    # spec 2.62: "will" + fe'l → fe'lning o'zi
+        prev_is_num = bool(items) and items[-1]["pos"] == "Son"
+        if w == NUMERAL_CONJ_EN and prev_is_num and nxt and nxt["found"] and nxt["pos"] == "Son":
+            k += 1; continue    # spec 3.17: son ichidagi "and" tushadi
+        if w in NUMERAL_SCALE_EN and a["found"] and a["pos"] == "Son" and not prev_is_num:
+            items.append({**a, "uz": "bir " + uz_stem(a["uz"])}); k += 1; continue   # spec 3.15/3.19
+        if w in IRREGULAR_ORDINALS_EN and not a["found"]:
+            card = db_lookup(IRREGULAR_ORDINALS_EN[w])
+            if card:            # spec 3.19: noqoida tartib son = sanoq son + "-inchi"
+                items.append({**a, "found": True, "pos": "Son", "uz": make_uzbek(card[1], "th")}); k += 1; continue
+        if w in NUMBERED_PART_NOUNS_EN and a["found"] and nxt and nxt["found"] and nxt["pos"] == "Son":
+            noun = uz_stem(a["uz"]); noun = noun[:1].lower() + noun[1:]
+            items.append({**a, "pos": "Ot", "uz": make_uzbek(nxt["uz"], "th") + " " + noun})
+            k += 2; continue    # spec 3.20: tartib son otdan oldin
+        if w in _DETERMINERS: k += 1; continue
+        items.append(a); k += 1
     if not any(a["found"] for a in items): return None
 
     chunks=[]; i=0; n=len(items)

@@ -51,15 +51,15 @@ EXPECTED_STATUS = {
     "2.1": T, "2.2": T, "2.3": T, "2.4": T, "2.5": Q, "2.6": T, "2.7": T, "2.8": T, "2.9": T,
     "2.10": Y, "2.11": T, "2.12": Q, "2.13": Q, "2.15": Q, "2.16": T,
     "–(Sifat)": Y, "2.19": Q, "2.20": Q, "2.21": Q, "2.22": T, "2.23": T, "2.24": T, "2.25": T,
-    "2.26": T, "2.27": T, "2.28": T, "2.29": T, "2.30": T, "2.31": Y, "2.32": Y, "2.33": Q, "2.34": Y,
+    "2.26": T, "2.27": T, "2.28": T, "2.29": T, "2.30": T, "2.31": T, "2.32": T, "2.33": Q, "2.34": T,
     "2.36": Y, "2.37": T, "2.38": Y, "2.39": Y, "2.41": Y, "2.42": Q, "2.43": Q, "2.44": Y, "2.45": Y,
     "2.46": T, "2.47": Q, "2.48": Y, "2.49": T, "2.50": Y, "2.51": T, "2.52": T, "2.53": Q, "2.54": Q,
-    "2.55a": Y, "2.56": T, "2.55b": Q, "2.58": Y, "2.59": T, "2.61": T, "2.62": Y, "2.63": Q,
+    "2.55a": Y, "2.56": T, "2.55b": Q, "2.58": Y, "2.59": T, "2.61": T, "2.62": T, "2.63": Q,
     "2.64": Q, "2.65": Q,
-    "–(Ravish)": Y, "3.1": T, "3.2": Q, "3.3": Q, "3.4": Q, "3.5": Y, "3.6": T, "3.7": T, "3.8": T,
+    "–(Ravish)": Y, "3.1": T, "3.2": Q, "3.3": Q, "3.4": Q, "3.5": T, "3.6": T, "3.7": T, "3.8": T,
     "3.9": Q,
-    "3.11": Q, "3.12": T, "3.13": Q, "3.14": T, "3.15": T, "3.16": T, "3.17": Y, "3.18": T, "3.19": Y,
-    "3.20": Y,
+    "3.11": Q, "3.12": T, "3.13": Q, "3.14": T, "3.15": T, "3.16": T, "3.17": T, "3.18": T, "3.19": T,
+    "3.20": T,
     "3.22": Q, "3.23": Q, "3.24": Q, "3.25": Q, "3.26": Q, "3.27": Q, "3.28": Q,
 }
 # NLTK wordnet bo'lmagan muhitda (USE_LEMMA=False) boshqacha chiqadigan holatlar.
@@ -329,3 +329,60 @@ def test_to_infinitive_and_prepositional_object_spec_2_56_2_59(isolated_kkt_modu
     assert got["listen to me"] == normalize("meni tinglamoq")
     assert got["to the example"] == "misolga"
     assert single is None
+
+
+def test_analytic_degree_more_most_less_spec_2_31_2_32_2_34_3_5(isolated_kkt_module):
+    """KKT spec: "more comfortable" → "qulayroq" (2.31), "most comfortable" →
+    "eng qulay" (2.32), "less interesting" → "kamroq qiziqarli" (2.34),
+    "more clearly" → "aniqroq" (3.5). Qo'riq: keyingi so'z ot bo'lsa ("more
+    network") daraja qoidasi qo'llanmaydi."""
+    m = isolated_kkt_module
+    stub = [("comfortable", "qulay", "Sifat"), ("interesting", "qiziqarli", "Sifat"),
+            ("clearly", "aniq", "Ravish"), ("network", "tarmoq", "Ot")]
+    with audit.stub_lexicon(m, stub):
+        got = {t: normalize(audit.system_output(m, t)["natija"])
+               for t in ("more comfortable", "most comfortable", "less interesting", "more clearly", "more network")}
+    assert got["more comfortable"] == "qulayroq"
+    assert got["most comfortable"] == "eng qulay"
+    assert got["less interesting"] == "kamroq qiziqarli"
+    assert got["more clearly"] == "aniqroq"
+    assert "roq" not in got["more network"]
+
+
+def test_future_will_plus_verb_spec_2_62(isolated_kkt_module):
+    """KKT spec 2.62: "will return" → "qaytmoq" ("will" fe'ldan oldin tushadi).
+    Qo'riqlar: yakka "will" (spec 2.46) tegilmaydi — bitta so'zli kirish
+    avvalgidek None; "will" dan keyin fe'l bo'lmasa u tashlanmaydi."""
+    m = isolated_kkt_module
+    stub = [("return", "qaytmoq", "Fe'l"), ("will", "keladi", "Fe'l"), ("example", "misol", "Ot")]
+    with audit.stub_lexicon(m, stub):
+        got = normalize(audit.system_output(m, "will return")["natija"])
+        with m.readonly_mode():
+            single = m.translate_phrase("will", allow_write=False)
+            chunks = m._chunk_phrase("will example")
+    assert got == "qaytmoq"
+    assert single is None
+    assert ("VP", "keladi") in chunks
+
+
+def test_numeral_phrases_spec_3_17_3_19_3_20(isolated_kkt_module):
+    """KKT spec: 3.17 "three hundred and five" → "uch yuz besh" (son ichidagi
+    "and" tushadi); 3.19 "hundred and twenty-first" → "bir yuz yigirma
+    birinchi" (yakka hundred → "bir yuz", first = one + "-inchi"); 3.20
+    "chapter five" → "beshinchi bob". Qo'riqlar: sonlar orasida bo'lmagan
+    "and" bog'lovchi bo'lib qoladi; oldidan son kelgan hundred ga "bir"
+    qo'shilmaydi (3.15/3.16)."""
+    m = isolated_kkt_module
+    stub = [("three", "uch", "Son"), ("hundred", "yuz", "Son"), ("five", "besh", "Son"),
+            ("twenty", "yigirma", "Son"), ("one", "bir", "Son"), ("four", "to‘rt", "Son"),
+            ("million", "million", "Son"), ("chapter", "bob", "Ot"), ("example", "misol", "Ot")]
+    with audit.stub_lexicon(m, stub):
+        got = {t: normalize(audit.system_output(m, t)["natija"])
+               for t in ("three hundred and five", "hundred and twenty-first", "chapter five",
+                         "one hundred", "four million", "five and example")}
+    assert got["three hundred and five"] == "uch yuz besh"
+    assert got["hundred and twenty-first"] == "bir yuz yigirma birinchi"
+    assert got["chapter five"] == "beshinchi bob"
+    assert got["one hundred"] == "bir yuz"
+    assert got["four million"] == normalize("to‘rt million")
+    assert "va" in got["five and example"].split()

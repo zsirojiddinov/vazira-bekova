@@ -109,6 +109,10 @@ _INDEF = ("_INDEFINITE_ARTICLE_UZ", "noaniq artikl a/an — keyin ot kelsa, ot i
 _TO_INF = ("INFINITIVE_PARTICLE_EN", "\"to\" + fe'l — infinitiv yuklamasi, tarjima qilinmaydi (spec 2.56)")
 _TO_OBJ = ("PREP_OBJECT_VERBS", "(listen, to): predlog tushadi, to'ldiruvchi vositasiz; me/him/us obyekt shakli "
            "(OBJECT_CASE_PRONOUNS) qayta \"-ni\" olmaydi")
+_DEGREE = ("ANALYTIC_DEGREE_EN", "more/most/less + sifat/ravish → X+roq / eng X / kamroq X")
+_FUTURE = ("FUTURE_AUX_EN", "\"will\" + fe'l → fe'lning o'zi (spec 2.62 misoli)")
+_NUMERAL = ("NUMERAL_CONJ_EN", "son iboralari: \"and\" tushadi, yakka hundred → \"bir yuz\", first/second/third → "
+            "sanoq son + \"-inchi\", chapter/part + son → tartib son + ot (spec 3.15/3.17/3.19/3.20)")
 _INF_IZOH = ("`INFINITIVE_MARKERS` (to/will/can/...) kodda bor, lekin faqat `select_meaning_contextual()` da "
              "ko'p ma'noli so'zning Fe'l ma'nosini TANLASH uchun ishlatiladi — \"will + fe'l\" uchun tarjima "
              "qoidasi emas.")
@@ -171,12 +175,12 @@ PROBES = {
     "2.28": _p("M", [("busiest", "eng band")], [("busy", "band", "Sifat")], aff="iest", asos=ADJS, sirt=r"iest$"),
     "2.29": _p("M", [("gayer", "sho‘xroq")], [("gay", "sho‘x", "Sifat")], aff="er", asos=ADJS, sirt=r"yer$"),
     "2.30": _p("M", [("gayest", "eng sho‘x")], [("gay", "sho‘x", "Sifat")], aff="est", asos=ADJS, sirt=r"yest$"),
-    "2.31": _p("S", [("more comfortable", "qulayroq")], [("comfortable", "qulay", "Sifat")], asos=ADJS),
-    "2.32": _p("S", [("most comfortable", "eng qulay")], [("comfortable", "qulay", "Sifat", "2.31")], asos=ADJS),
+    "2.31": _p("S", [("more comfortable", "qulayroq")], [("comfortable", "qulay", "Sifat")], asos=ADJS, mex=_DEGREE),
+    "2.32": _p("S", [("most comfortable", "eng qulay")], [("comfortable", "qulay", "Sifat", "2.31")], asos=ADJS, mex=_DEGREE),
     "2.33": _p("N", [("good", "yaxshi"), ("better", "yaxshiroq"), ("best", "eng yaxshi")],
                [("good", "yaxshi", "Sifat")]),
     "2.34": _p("S", [("less interesting", "kamroq qiziqarli")], [("interesting", "qiziqarli", "Sifat")],
-               asos=ADJS),
+               asos=ADJS, mex=_DEGREE),
     # ── FE'L ────────────────────────────────────────────────────────────
     "2.36": _p("L", [("read", "o‘qimoq")], bosh=["read"]),
     "2.37": _p("M", [("speaks", "gapiradi")], [("speak", "gapir", "Fe'l")], aff="s", asos=VERBS),
@@ -205,7 +209,9 @@ PROBES = {
     "2.59": _p("S", [("listen to me", "meni tinglamoq")],
                [("listen", "tinglamoq", "Fe'l"), ("me", "meni", "Olmosh", "3.22")], mex=_TO_OBJ, asos=VERBS),
     "2.61": _p("L", [("understand", "tushunmoq")], bosh=["understand"]),
-    "2.62": _p("S", [("will return", "qaytmoq")], [("return", "qaytmoq", "Fe'l")], asos=VERBS, izoh=_INF_IZOH),
+    "2.62": _p("S", [("will return", "qaytmoq")], [("return", "qaytmoq", "Fe'l")], asos=VERBS, mex=_FUTURE,
+               izoh="Spec (kanonik) o'zbekchasi \"qaytmoq\"; dissertatsiya II bobida xuddi shu misol "
+                    "\"qaytadi\" (reports/ch2_leakage_check.md) — ikki manba farq qiladi, spec'ga amal qilindi."),
     "2.63": _p("M", [("worked", "ishladi")], [("work", "ishla", "Fe'l")], aff="ed", asos=VERBS, sirt=r"ed$"),
     "2.64": _p("M", [("simplified", "soddalashtirildi")], [("simplify", "soddalashtiril", "Fe'l")], aff="ied",
                asos=VERBS, sirt=r"[^aeiou]ied$"),
@@ -220,7 +226,7 @@ PROBES = {
               asos=ADJS, sirt=r"ily$"),
     "3.3": _p("M", [("faster", "tezroq")], [("fast", "tez", "Ravish")], aff="er", asos=ADVS, sirt=r"er$"),
     "3.4": _p("M", [("fastest", "eng tez")], [("fast", "tez", "Ravish")], aff="est", asos=ADVS, sirt=r"est$"),
-    "3.5": _p("S", [("more clearly", "aniqroq")], [("clearly", "aniq", "Ravish")], asos=ADVS, sirt=r"ly$"),
+    "3.5": _p("S", [("more clearly", "aniqroq")], [("clearly", "aniq", "Ravish")], asos=ADVS, sirt=r"ly$", mex=_DEGREE),
     "3.6": _p("L", [("inside", "ichkarida")], bosh=["inside"]),
     "3.7": _p("L", [("today", "bugun")], bosh=["today"]),
     "3.8": _p("L", [("much", "ko‘p")], bosh=["much"]),
@@ -239,14 +245,16 @@ PROBES = {
     "3.15": _p("S", [("one hundred", "bir yuz")], [("one", "bir", "Son"), ("hundred", "yuz", "Son", "3.18")]),
     "3.16": _p("S", [("four million", "to‘rt million")], [("four", "to‘rt", "Son"), ("million", "million", "Son")]),
     "3.17": _p("S", [("three hundred and five", "uch yuz besh")],
-               [("three", "uch", "Son"), ("hundred", "yuz", "Son"), ("five", "besh", "Son")]),
+               [("three", "uch", "Son"), ("hundred", "yuz", "Son"), ("five", "besh", "Son")], mex=_NUMERAL),
     "3.18": _p("M", [("hundredth", "yuzinchi")], [("hundred", "yuz", "Son")], aff="th", sirt=r"th$"),
     "3.19": _p("S", [("hundred and twenty-first", "bir yuz yigirma birinchi")],
-               [("hundred", "yuz", "Son"), ("twenty", "yigirma", "Son")],
+               [("hundred", "yuz", "Son"), ("twenty", "yigirma", "Son"), ("one", "bir", "Son", "3.11")],
+               mex=_NUMERAL,
                izoh="Docx natija shaklini bermagan (\"bir yuz yigirma bir + inchi\") — qismlar qo'shildi. "
-                    "\"first\" uchun stub berilmadi: docx uni \"bir + inchi\" deb yozadi, ya'ni tartib son "
-                    "qoidasining o'zi tekshiriladi."),
-    "3.20": _p("S", [("chapter five", "beshinchi bob")], [("chapter", "bob", "Ot"), ("five", "besh", "Son")]),
+                    "\"first\" uchun stub berilmadi: docx uni \"bir + inchi\" deb yozadi, ya'ni noqoida tartib "
+                    "son qoidasining o'zi tekshiriladi; buning uchun sanoq son asosi \"one\"→\"bir\" (spec 3.11) "
+                    "stub'da bor (2026-09-11, 3.19 tuzatishi bilan qo'shildi)."),
+    "3.20": _p("S", [("chapter five", "beshinchi bob")], [("chapter", "bob", "Ot"), ("five", "besh", "Son")], mex=_NUMERAL),
     # ── OLMOSH ──────────────────────────────────────────────────────────
     "3.22": _p("L", [("I", "men"), ("he", "u"), ("we", "biz"), ("me", "meni"), ("him", "uni"), ("us", "bizni")],
                bosh=["i", "he", "we", "me", "him", "us"]),

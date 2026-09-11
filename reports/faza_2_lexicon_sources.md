@@ -1,6 +1,6 @@
 # Faza 2 — Lug'at manbalari: KKT_Terminologik va 100_soz qatorlari qayerda ishlatiladi
 
-**Generatsiya vaqti:** 2026-09-11T11:50:03+00:00
+**Generatsiya vaqti:** 2026-09-11T12:52:36+00:00
 **Buyruq:** `python scripts/audit_lexicon_sources.py` (bazalar izolyatsiyalangan papkada noldan quriladi)
 
 ## 0. Qisqa javob
@@ -29,7 +29,7 @@
 - Tuzilishi: 20 ta so'z × soha bo'yicha ma'nolar = 75 ta yozuv; sohalar: AI, Aloqa, Biologiya, Biznes, Botanika, Buxgalteriya, Dasturlash, Database, Dengiz, Elektronika, Falsafa, Fizika, Grammatika, Harbiy, Huquq, Ijtimoiy, Informatika, Kimyo, Kriptografiya, Lingvistika, Marketing, Matematika, Mebel, Mehmonxona, Moda, Muhandislik, Musiqa, Psixologiya, Qamoqxona, Qishloq xo‘jaligi, Savdo, Siyosat, Sport, Suv fizikasi, TV, Tarmoq, Ta’lim, Telekom, Tibbiyot, Transport, Vaqt, Zoologiya.
 - Kodda fayl nomiga havola: **yo'q**.
 - PSB `terms` jadvaliga yozuvchi kod (`INSERT ... INTO terms`): **yo'q** — jadval hech qachon to'ldirilmaydi. Qurilgan bazada qatorlar: {'PSB_en_w.db': 0, 'PSB_uz_w.db': 0}.
-- `psb_select_meaning()` chaqiruvlari (3 ta: kkt_v20_soz_tartibi.py:3019; kkt_v20_soz_tartibi.py:3038; kkt_v20_soz_tartibi.py:3103). `domain` argumenti uzatilgan chaqiruv: 0 ta — ya'ni funksiya har doim birinchi ma'noni qaytaradi.
+- `psb_select_meaning()` chaqiruvlari (3 ta: kkt_v20_soz_tartibi.py:3104; kkt_v20_soz_tartibi.py:3123; kkt_v20_soz_tartibi.py:3188). `domain` argumenti uzatilgan chaqiruv: 0 ta — ya'ni funksiya har doim birinchi ma'noni qaytaradi.
 - Terminologik juftlarning (75) AYNAN o'zi (inglizcha + o'zbekcha) UB_en_w da boshqa manbadan tasodifan bor: 3 ta — book→kitob [docx], model→model [docx], table→stol [docx]. Bu terminologik fayl orqali emas (u yuklanmaydi), 1500-lug'at/SEED/CH2 orqali kelgan.
 - Hisobotlarda: README.md "kod tomonidan hozircha ishlatilmaydi" deb qayd etgan — shu skript bu da'voni tasdiqlaydi. Dissertatsiya IV bobida PSB "semantik noaniqlikni bartaraf etishning asosiy mexanizmi" deb tasvirlanadi (`reports/ch2_leakage_check.md` 3.3) — kodda esa bu mexanizm bo'sh jadval bilan ishlaydi.
 
