@@ -2237,6 +2237,10 @@ OBJECT_CASE_PRONOUNS = {"me","him","us"}
 # "least" — spec tavsifida tilga olingan, lekin o'zbekcha misoli berilmagan →
 # qo'shilmadi. Faqat keyingi so'z Sifat/Ravish bo'lsa ("more books" o'zgarmaydi).
 ANALYTIC_DEGREE_EN = {"more", "most", "less"}
+# KKT spec 2.62: kelasi oddiy zamon "will + fe'l" — spec misolida o'zbekchasi
+# fe'lning o'zi ("will return" → "qaytmoq"), shu sabab "will" fe'ldan oldin
+# tushadi. Yakka "will" (spec 2.46: "keladi") bunga tegishli emas.
+FUTURE_AUX_EN = "will"
 
 def _analytic_degree_uz(marker, uz):
     base = uz_stem(uz)
@@ -2280,6 +2284,8 @@ def _chunk_phrase(text):
         if w in ANALYTIC_DEGREE_EN and nxt and nxt["found"] and nxt["pos"] in ("Sifat", "Ravish"):
             # spec 2.31/2.32/2.34/3.5: daraja so'zi + sifat/ravish → bitta shakl
             items.append({**nxt, "uz": _analytic_degree_uz(w, nxt["uz"])}); k += 2; continue
+        if w == FUTURE_AUX_EN and nxt and nxt["found"] and nxt["pos"] == "Fe'l":
+            k += 1; continue    # spec 2.62: "will" + fe'l → fe'lning o'zi
         if w in _DETERMINERS: k += 1; continue
         items.append(a); k += 1
     if not any(a["found"] for a in items): return None

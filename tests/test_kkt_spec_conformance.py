@@ -54,7 +54,7 @@ EXPECTED_STATUS = {
     "2.26": T, "2.27": T, "2.28": T, "2.29": T, "2.30": T, "2.31": T, "2.32": T, "2.33": Q, "2.34": T,
     "2.36": Y, "2.37": T, "2.38": Y, "2.39": Y, "2.41": Y, "2.42": Q, "2.43": Q, "2.44": Y, "2.45": Y,
     "2.46": T, "2.47": Q, "2.48": Y, "2.49": T, "2.50": Y, "2.51": T, "2.52": T, "2.53": Q, "2.54": Q,
-    "2.55a": Y, "2.56": T, "2.55b": Q, "2.58": Y, "2.59": T, "2.61": T, "2.62": Y, "2.63": Q,
+    "2.55a": Y, "2.56": T, "2.55b": Q, "2.58": Y, "2.59": T, "2.61": T, "2.62": T, "2.63": Q,
     "2.64": Q, "2.65": Q,
     "–(Ravish)": Y, "3.1": T, "3.2": Q, "3.3": Q, "3.4": Q, "3.5": T, "3.6": T, "3.7": T, "3.8": T,
     "3.9": Q,
@@ -347,3 +347,19 @@ def test_analytic_degree_more_most_less_spec_2_31_2_32_2_34_3_5(isolated_kkt_mod
     assert got["less interesting"] == "kamroq qiziqarli"
     assert got["more clearly"] == "aniqroq"
     assert "roq" not in got["more network"]
+
+
+def test_future_will_plus_verb_spec_2_62(isolated_kkt_module):
+    """KKT spec 2.62: "will return" → "qaytmoq" ("will" fe'ldan oldin tushadi).
+    Qo'riqlar: yakka "will" (spec 2.46) tegilmaydi — bitta so'zli kirish
+    avvalgidek None; "will" dan keyin fe'l bo'lmasa u tashlanmaydi."""
+    m = isolated_kkt_module
+    stub = [("return", "qaytmoq", "Fe'l"), ("will", "keladi", "Fe'l"), ("example", "misol", "Ot")]
+    with audit.stub_lexicon(m, stub):
+        got = normalize(audit.system_output(m, "will return")["natija"])
+        with m.readonly_mode():
+            single = m.translate_phrase("will", allow_write=False)
+            chunks = m._chunk_phrase("will example")
+    assert got == "qaytmoq"
+    assert single is None
+    assert ("VP", "keladi") in chunks

@@ -110,6 +110,7 @@ _TO_INF = ("INFINITIVE_PARTICLE_EN", "\"to\" + fe'l — infinitiv yuklamasi, tar
 _TO_OBJ = ("PREP_OBJECT_VERBS", "(listen, to): predlog tushadi, to'ldiruvchi vositasiz; me/him/us obyekt shakli "
            "(OBJECT_CASE_PRONOUNS) qayta \"-ni\" olmaydi")
 _DEGREE = ("ANALYTIC_DEGREE_EN", "more/most/less + sifat/ravish → X+roq / eng X / kamroq X")
+_FUTURE = ("FUTURE_AUX_EN", "\"will\" + fe'l → fe'lning o'zi (spec 2.62 misoli)")
 _INF_IZOH = ("`INFINITIVE_MARKERS` (to/will/can/...) kodda bor, lekin faqat `select_meaning_contextual()` da "
              "ko'p ma'noli so'zning Fe'l ma'nosini TANLASH uchun ishlatiladi — \"will + fe'l\" uchun tarjima "
              "qoidasi emas.")
@@ -206,7 +207,9 @@ PROBES = {
     "2.59": _p("S", [("listen to me", "meni tinglamoq")],
                [("listen", "tinglamoq", "Fe'l"), ("me", "meni", "Olmosh", "3.22")], mex=_TO_OBJ, asos=VERBS),
     "2.61": _p("L", [("understand", "tushunmoq")], bosh=["understand"]),
-    "2.62": _p("S", [("will return", "qaytmoq")], [("return", "qaytmoq", "Fe'l")], asos=VERBS, izoh=_INF_IZOH),
+    "2.62": _p("S", [("will return", "qaytmoq")], [("return", "qaytmoq", "Fe'l")], asos=VERBS, mex=_FUTURE,
+               izoh="Spec (kanonik) o'zbekchasi \"qaytmoq\"; dissertatsiya II bobida xuddi shu misol "
+                    "\"qaytadi\" (reports/ch2_leakage_check.md) — ikki manba farq qiladi, spec'ga amal qilindi."),
     "2.63": _p("M", [("worked", "ishladi")], [("work", "ishla", "Fe'l")], aff="ed", asos=VERBS, sirt=r"ed$"),
     "2.64": _p("M", [("simplified", "soddalashtirildi")], [("simplify", "soddalashtiril", "Fe'l")], aff="ied",
                asos=VERBS, sirt=r"[^aeiou]ied$"),
