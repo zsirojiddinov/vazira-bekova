@@ -2229,6 +2229,21 @@ PREP_OBJECT_VERBS = {("listen","to")}
 # KKT spec 3.22: kishilik olmoshining obyekt shakli (me/him/us) o'zbekchada
 # allaqachon tushum kelishigida (meni/uni/bizni) — ustiga yana "-ni" qo'shilmaydi.
 OBJECT_CASE_PRONOUNS = {"me","him","us"}
+# KKT spec 2.31/2.32/2.34/3.5: ko'p bo'g'inli sifat va "-ly" ravishning
+# ANALITIK darajasi — daraja so'zi + sifat/ravish bitta shaklga aylanadi:
+#   more + X → X+roq  ("more comfortable" → "qulayroq", "more clearly" → "aniqroq")
+#   most + X → eng X  ("most comfortable" → "eng qulay")
+#   less + X → kamroq X ("less interesting" → "kamroq qiziqarli")
+# "least" — spec tavsifida tilga olingan, lekin o'zbekcha misoli berilmagan →
+# qo'shilmadi. Faqat keyingi so'z Sifat/Ravish bo'lsa ("more books" o'zgarmaydi).
+ANALYTIC_DEGREE_EN = {"more", "most", "less"}
+
+def _analytic_degree_uz(marker, uz):
+    base = uz_stem(uz)
+    base = base[:1].lower() + base[1:]
+    if marker == "more": return make_uzbek(base, "er")     # stem+"roq" (qiyosiy jadval bilan bir xil)
+    if marker == "most": return make_uzbek(base, "est")    # "eng "+stem
+    return "kamroq " + base                                 # less (spec 2.34)
 
 def _chunk_phrase(text):
     """
@@ -2249,9 +2264,10 @@ def _chunk_phrase(text):
     tartibiga solib chiqadi.
     """
     aa = parse_sentence(text)
-    items = []
-    for k, a in enumerate(aa):
-        w = a["word"].lower()
+    items = []; k = 0
+    while k < len(aa):
+        a = aa[k]; w = a["word"].lower()
+        nxt = aa[k+1] if k+1 < len(aa) else None
         if w in _INDEFINITE_ARTICLE_UZ:
             # Noaniq artikl — faqat undan keyin (sifat(lar)dan so'ng) OT kelsa,
             # ot iborasiga "bitta" aniqlovchisi sifatida kiradi (spec 2.2/2.3);
@@ -2260,9 +2276,12 @@ def _chunk_phrase(text):
             while j < len(aa) and aa[j]["found"] and aa[j]["pos"] == "Sifat": j += 1
             if j < len(aa) and aa[j]["found"] and aa[j]["pos"] == "Ot":
                 items.append({**a, "found": True, "pos": "Sifat", "uz": _INDEFINITE_ARTICLE_UZ[w]})
-            continue
-        if w in _DETERMINERS: continue
-        items.append(a)
+            k += 1; continue
+        if w in ANALYTIC_DEGREE_EN and nxt and nxt["found"] and nxt["pos"] in ("Sifat", "Ravish"):
+            # spec 2.31/2.32/2.34/3.5: daraja so'zi + sifat/ravish → bitta shakl
+            items.append({**nxt, "uz": _analytic_degree_uz(w, nxt["uz"])}); k += 2; continue
+        if w in _DETERMINERS: k += 1; continue
+        items.append(a); k += 1
     if not any(a["found"] for a in items): return None
 
     chunks=[]; i=0; n=len(items)

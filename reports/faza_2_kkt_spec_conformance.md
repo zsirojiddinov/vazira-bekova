@@ -1,23 +1,23 @@
 # Faza 2 — KKT rasmiy spesifikatsiyasiga moslik auditi (conformance matrix)
 
-**Generatsiya vaqti:** 2026-09-11T12:04:51+00:00
+**Generatsiya vaqti:** 2026-09-11T12:46:05+00:00
 **Buyruq:** `python scripts/audit_kkt_spec_conformance.py`
 **Spesifikatsiya:** `data/kkt_spec.json` ← `data/kkt_qoidalari.docx` (sha256 `4954c528bc7eec3d…`)
 **Kod:** `kkt_v20_soz_tartibi.py` (bazalar data/ dan izolyatsiyalangan papkada noldan qurilgan, `readonly_mode`; NLTK lemmatizer: `USE_LEMMA=True`)
 
 ## 0. Asosiy natija
 
-Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **36 ta to'liq mos (29 tasi mustaqil hisoblangan, 7 tasi aylanma — hammasi CH2_EVX_EXAMPLES orqali)**, 30 ta qisman mos, 21 ta yo'q, 0 ta zid.
+Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **40 ta to'liq mos (33 tasi mustaqil hisoblangan, 7 tasi aylanma — hammasi CH2_EVX_EXAMPLES orqali)**, 30 ta qisman mos, 17 ta yo'q, 0 ta zid.
 
 | Holat | Soni | Ulushi |
 |---|---|---|
-| **TO'LIQ MOS** | **36** (29 mustaqil / 7 aylanma) | 41.4% |
+| **TO'LIQ MOS** | **40** (33 mustaqil / 7 aylanma) | 46.0% |
 | **QISMAN MOS** | **30** | 34.5% |
-| **YO'Q** | **21** | 24.1% |
+| **YO'Q** | **17** | 19.5% |
 | **ZID** | **0** | 0.0% |
 | Jami | 87 | 100% |
 
-### 0.1 36 ta TO'LIQ MOS — haqiqiy tarkibi
+### 0.1 40 ta TO'LIQ MOS — haqiqiy tarkibi
 
 - **mustaqil hisoblangan** — natijani kod o'zi hisobladi: M/N/S turida kodga FAQAT docx'dagi o'zak berildi (stub, real lug'at yashirilgan), L turida natija CH2_EVX_EXAMPLES'dan mustaqil lug'at yozuvidan (1500-lug'at yoki kod ichidagi SEED_WORDS) keldi.
 - **CH2_EVX_EXAMPLES orqali aylanma** — natija dissertatsiya II bob misollarining lug'atga yozilgan nusxasidan (`source='chapter2_evx'`) o'qib qaytarildi; docx misoli ham shu manbadan — mustaqil dalil emas.
@@ -44,6 +44,9 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **36 ta to'liq mos (
 | 2.28 | Sifat | M | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | busiest: lug'at[chapter2_evx] |
 | 2.29 | Sifat | M | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | gayer: lug'at[chapter2_evx] |
 | 2.30 | Sifat | M | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | gayest: topilmadi |
+| 2.31 | Sifat | S | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | more: topilmadi; comfortable: topilmadi |
+| 2.32 | Sifat | S | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | most: lug'at[json]; comfortable: topilmadi |
+| 2.34 | Sifat | S | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | less: topilmadi; interesting: qoida -ing (o'zak interest, Fe'l) |
 | 2.37 | Fe'l | M | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | speaks: topilmadi |
 | 2.46 | Fe'l | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | will: lug'at[chapter2_evx] |
 | 2.49 | Fe'l | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | can: lug'at[chapter2_evx] |
@@ -53,6 +56,7 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **36 ta to'liq mos (
 | 2.59 | Fe'l | S | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | listen: topilmadi; to: lug'at[docx]; me: lug'at[json] |
 | 2.61 | Fe'l | L | **mustaqil hisoblangan** | haqiqiy lug'at: 1500-lug'at yozuvi | understand: lug'at[json] |
 | 3.1 | Ravish | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | here: lug'at[chapter2_evx] |
+| 3.5 | Ravish | S | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | more: topilmadi; clearly: lug'at[json] |
 | 3.6 | Ravish | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | inside: lug'at[chapter2_evx] |
 | 3.7 | Ravish | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | today: lug'at[chapter2_evx] |
 | 3.8 | Ravish | L | **mustaqil hisoblangan** | haqiqiy lug'at: 1500-lug'at yozuvi | much: lug'at[json] |
@@ -69,9 +73,9 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **36 ta to'liq mos (
 | POS | TO'LIQ MOS | QISMAN MOS | YO'Q | ZID | Jami |
 |---|---|---|---|---|---|
 | Ot | 10 | 4 | 1 | 0 | 15 |
-| Sifat | 9 | 4 | 4 | 0 | 17 |
+| Sifat | 12 | 4 | 1 | 0 | 17 |
 | Fe'l | 8 | 9 | 11 | 0 | 28 |
-| Ravish | 4 | 4 | 2 | 0 | 10 |
+| Ravish | 5 | 4 | 1 | 0 | 10 |
 | Son | 5 | 2 | 3 | 0 | 10 |
 | Olmosh | 0 | 7 | 0 | 0 | 7 |
 
@@ -81,12 +85,12 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **36 ta to'liq mos (
 |---|---|---|---|---|---|
 | M — morfologik (affiks) | 19 | 16 | 0 | 0 | 35 |
 | N — noqoida (o'zak o'zgarishi) | 0 | 3 | 1 | 0 | 4 |
-| S — ibora (so'z tartibi / funksional so'z) | 8 | 0 | 8 | 0 | 16 |
+| S — ibora (so'z tartibi / funksional so'z) | 12 | 0 | 4 | 0 | 16 |
 | L — leksik moslik | 9 | 11 | 12 | 0 | 32 |
 
 ### TO'LIQ MOS natijalarini qanday o'qish kerak (halol baho)
 
-- M/N/S turidagi TO'LIQ MOS (27 ta) — **lug'atdan mustaqil** tekshirilgan: kodga faqat docx'dagi o'zak berilgan (stub), qolgani haqiqiy qoida zanjiri. Bu — formal qoidaning o'zi ishlashining dalili. Lekin real lug'atda o'sha o'zak bo'lmasa, amaliy tarjima baribir chiqmaydi (quyidagi batafsil jadvaldagi "real lug'at" qatori).
+- M/N/S turidagi TO'LIQ MOS (31 ta) — **lug'atdan mustaqil** tekshirilgan: kodga faqat docx'dagi o'zak berilgan (stub), qolgani haqiqiy qoida zanjiri. Bu — formal qoidaning o'zi ishlashining dalili. Lekin real lug'atda o'sha o'zak bo'lmasa, amaliy tarjima baribir chiqmaydi (quyidagi batafsil jadvaldagi "real lug'at" qatori).
 - L turidagi TO'LIQ MOS (9 ta) — HAQIQIY lug'at bilan. Shundan **7 tasi natijani FAQAT `CH2_EVX_EXAMPLES` (dissertatsiya II bob misollari, `source='chapter2_evx'`) yozuvidan oladi** — ya'ni docx misoli bilan bir xil manbadan ko'chirilgan so'z qaytyapti (aylanma; mustaqil dalil emas): 2.46, 2.49, 2.51, 2.52, 3.1, 3.6, 3.7.
 - S turidagi TO'LIQ MOS ichida **3 tasi** uchun kodda maxsus qoida YO'Q — natija oddiy so'zma-so'z birikmadan to'g'ri chiqib qolgan (masalan son birikmalari): 3.14, 3.15, 3.16.
 - **Muhitga bog'liq holatlar** (NLTK wordnet lemmatizer bor/yo'qligiga qarab o'zgaradi — hisobot `USE_LEMMA=True` bilan): 2.33: QISMAN MOS → wordnet'siz YO'Q; 2.65: QISMAN MOS → wordnet'siz YO'Q.
@@ -124,7 +128,7 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **36 ta to'liq mos (
 | 2.12 | Ot | **QISMAN MOS** | [M] MORPH_RULES:517,520, make_uzbek:558; stub: tahlil: -s + schoolboy → Ot — stub: `schoolboys` → «Maktab bolalar» (kutilgan «maktab bolalari») ✗ |
 | 2.13 | Ot | **QISMAN MOS** | [M] MORPH_RULES:445, make_uzbek:588; stub: tahlil: -ation + inform → Ot — stub: `information` → «⟨inform⟩ish» (kutilgan «axborot») ✗ |
 | 2.15 | Ot | **QISMAN MOS** | [M] MORPH_RULES:517,520, make_uzbek:558; stub: tahlil: -s + content → Ot — stub: `contents` → «Mundarijalar» (kutilgan «mundarija») ✗ |
-| 2.16 | Ot | **TO'LIQ MOS** | [M] _smart_parse_core:3068 (alohida tarmoq); stub: tahlil: -'s + student → Ot — stub: `student's` → «Studentning» (kutilgan «studentning») ✓ |
+| 2.16 | Ot | **TO'LIQ MOS** | [M] _smart_parse_core:3087 (alohida tarmoq); stub: tahlil: -'s + student → Ot — stub: `student's` → «Studentning» (kutilgan «studentning») ✓ |
 | –(Sifat) | Sifat | **YO'Q** | [L] real lug'at: `big` → «[big?]» (kutilgan «katta») ✗ — yo'l: big: topilmadi |
 | 2.19 | Sifat | **QISMAN MOS** | [M] MORPH_RULES:434, make_uzbek:584; stub: tahlil: -al + form → Sifat — stub: `formal` → «Rasmga oid» (kutilgan «rasmiy») ✗ |
 | 2.20 | Sifat | **QISMAN MOS** | [M] MORPH_RULES:434, make_uzbek:584; stub: tahlil: -al + dimension → Sifat — stub: `high-dimensional` → «Ko‘p o‘lchovga oid» (kutilgan «ko‘p o‘lchovli») ✗ |
@@ -138,10 +142,10 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **36 ta to'liq mos (
 | 2.28 | Sifat | **TO'LIQ MOS** | [M] MORPH_RULES:411, make_uzbek:557; stub: tahlil: -iest + busy → Sifat — stub: `busiest` → «Eng band» (kutilgan «eng band») ✓ |
 | 2.29 | Sifat | **TO'LIQ MOS** | [M] MORPH_RULES:396,415, make_uzbek:571; stub: tahlil: -er + gay → Sifat — stub: `gayer` → «Sho‘xroq» (kutilgan «sho‘xroq») ✓ |
 | 2.30 | Sifat | **TO'LIQ MOS** | [M] MORPH_RULES:413, make_uzbek:557; stub: tahlil: -est + gay → Sifat — stub: `gayest` → «Eng sho‘x» (kutilgan «eng sho‘x») ✓ |
-| 2.31 | Sifat | **YO'Q** | [S] stub: `more comfortable` → «Qulay» (kutilgan «qulayroq») ✗ |
-| 2.32 | Sifat | **YO'Q** | [S] stub: `most comfortable` → «Qulay» (kutilgan «eng qulay») ✗ |
+| 2.31 | Sifat | **TO'LIQ MOS** | [S] ANALYTIC_DEGREE_EN:2239 — more/most/less + sifat/ravish → X+roq / eng X / kamroq X — stub: `more comfortable` → «Qulayroq» (kutilgan «qulayroq») ✓ |
+| 2.32 | Sifat | **TO'LIQ MOS** | [S] ANALYTIC_DEGREE_EN:2239 — more/most/less + sifat/ravish → X+roq / eng X / kamroq X — stub: `most comfortable` → «Eng qulay» (kutilgan «eng qulay») ✓ |
 | 2.33 | Sifat | **QISMAN MOS** | [N] o'zak tanildi: ha (USE_LEMMA=True) — stub: `good` → «Yaxshi» (kutilgan «yaxshi») ✓; `better` → «Yaxshi» (kutilgan «yaxshiroq») ✗; `best` → «[best?]» (kutilgan «eng yaxshi») ✗ |
-| 2.34 | Sifat | **YO'Q** | [S] stub: `less interesting` → «Qiziqarli» (kutilgan «kamroq qiziqarli») ✗ |
+| 2.34 | Sifat | **TO'LIQ MOS** | [S] ANALYTIC_DEGREE_EN:2239 — more/most/less + sifat/ravish → X+roq / eng X / kamroq X — stub: `less interesting` → «Kamroq qiziqarli» (kutilgan «kamroq qiziqarli») ✓ |
 | 2.36 | Fe'l | **YO'Q** | [L] real lug'at: `read` → «[read?]» (kutilgan «o‘qimoq») ✗ — yo'l: read: topilmadi |
 | 2.37 | Fe'l | **TO'LIQ MOS** | [M] MORPH_RULES:517,520, make_uzbek:558; stub: tahlil: -s + speak → Fe'l — stub: `speaks` → «gapiradi» (kutilgan «gapiradi») ✓ |
 | 2.38 | Fe'l | **YO'Q** | [L] real lug'at: `to be` → «Ga» (kutilgan «bo‘lmoq») ✗ — yo'l: be: topilmadi |
@@ -175,7 +179,7 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **36 ta to'liq mos (
 | 3.2 | Ravish | **QISMAN MOS** | [M] MORPH_RULES:381, make_uzbek:574; stub: tahlil: -ily + easy → Ravish — stub: `easily` → «Oson tarzda» (kutilgan «osonlik bilan») ✗ |
 | 3.3 | Ravish | **QISMAN MOS** | [M] MORPH_RULES:396,415, make_uzbek:571; stub: tahlil: -er + fast → Sifat — stub: `faster` → «Tezroq» (kutilgan «tezroq») ✓ |
 | 3.4 | Ravish | **QISMAN MOS** | [M] MORPH_RULES:413, make_uzbek:557; stub: tahlil: -est + fast → Sifat — stub: `fastest` → «Eng tez» (kutilgan «eng tez») ✓ |
-| 3.5 | Ravish | **YO'Q** | [S] stub: `more clearly` → «Aniq» (kutilgan «aniqroq») ✗ |
+| 3.5 | Ravish | **TO'LIQ MOS** | [S] ANALYTIC_DEGREE_EN:2239 — more/most/less + sifat/ravish → X+roq / eng X / kamroq X — stub: `more clearly` → «Aniqroq» (kutilgan «aniqroq») ✓ |
 | 3.6 | Ravish | **TO'LIQ MOS** | [L] real lug'at: `inside` → «Ichkarida» (kutilgan «ichkarida») ✓ — yo'l: inside: lug'at[chapter2_evx] |
 | 3.7 | Ravish | **TO'LIQ MOS** | [L] real lug'at: `today` → «Bugun» (kutilgan «bugun») ✓ — yo'l: today: lug'at[chapter2_evx] |
 | 3.8 | Ravish | **TO'LIQ MOS** | [L] real lug'at: `much` → «Ko'p» (kutilgan «ko‘p») ✓ — yo'l: much: lug'at[json] |
@@ -231,12 +235,12 @@ Stub tekshiruvi formal qoidani ajratib oladi; bu jadval o'sha misollar HAQIQIY l
 | 2.28 | TO'LIQ MOS | `busiest` → «Eng katta» ✗ | busiest: lug'at[chapter2_evx] |
 | 2.29 | TO'LIQ MOS | `gayer` → «Sho'xroq» ✓ | gayer: lug'at[chapter2_evx] |
 | 2.30 | TO'LIQ MOS | `gayest` → «[gayest?]» ✗ | gayest: topilmadi |
-| 2.31 | YO'Q | `more comfortable` → «[more?] [comfortable?]» ✗ | more: topilmadi; comfortable: topilmadi |
-| 2.32 | YO'Q | `most comfortable` → «Eng ko'p / Aksariyat» ✗ | most: lug'at[json]; comfortable: topilmadi |
+| 2.31 | TO'LIQ MOS | `more comfortable` → «[more?] [comfortable?]» ✗ | more: topilmadi; comfortable: topilmadi |
+| 2.32 | TO'LIQ MOS | `most comfortable` → «Eng ko'p / Aksariyat» ✗ | most: lug'at[json]; comfortable: topilmadi |
 | 2.33 | QISMAN MOS | `good` → «[good?]» ✗ | good: topilmadi |
 | 2.33 | QISMAN MOS | `better` → «[better?]» ✗ | better: topilmadi |
 | 2.33 | QISMAN MOS | `best` → «Eng yaxshi» ✓ | best: lug'at[json] |
-| 2.34 | YO'Q | `less interesting` → «[less?] Qiziqishing» ✗ | less: topilmadi; interesting: qoida -ing (o'zak interest, Fe'l) |
+| 2.34 | TO'LIQ MOS | `less interesting` → «[less?] Qiziqishing» ✗ | less: topilmadi; interesting: qoida -ing (o'zak interest, Fe'l) |
 | 2.37 | TO'LIQ MOS | `speaks` → «[speaks?]» ✗ | speaks: topilmadi |
 | 2.42 | QISMAN MOS | `been` → «[been?]» ✗ | been: topilmadi |
 | 2.43 | QISMAN MOS | `being` → «[being?]» ✗ | being: topilmadi |
@@ -252,7 +256,7 @@ Stub tekshiruvi formal qoidani ajratib oladi; bu jadval o'sha misollar HAQIQIY l
 | 3.2 | QISMAN MOS | `easily` → «Osonlikcha» ✗ | easily: lug'at[json] |
 | 3.3 | QISMAN MOS | `faster` → «Tezroq» ✓ | faster: lug'at[chapter2_evx] |
 | 3.4 | QISMAN MOS | `fastest` → «Eng tez» ✓ | fastest: lug'at[chapter2_evx] |
-| 3.5 | YO'Q | `more clearly` → «Aniq / Ravshan» ✗ | more: topilmadi; clearly: lug'at[json] |
+| 3.5 | TO'LIQ MOS | `more clearly` → «Aniqroq» ✓ | more: topilmadi; clearly: lug'at[json] |
 | 3.9 | QISMAN MOS | `quietly` → «Tinchgina» ✓ | quietly: lug'at[chapter2_evx] |
 | 3.12 | TO'LIQ MOS | `fifteen` → «O'n besh» ✓ | fifteen: lug'at[chapter2_evx] |
 | 3.13 | QISMAN MOS | `eighty` → «Sakson» ✓ | eighty: lug'at[chapter2_evx] |
@@ -287,7 +291,7 @@ Stub tekshiruvi formal qoidani ajratib oladi; bu jadval o'sha misollar HAQIQIY l
 
 | Belgi | Spec ma'nosi | Kodda |
 |---|---|---|
-| ⊕ | Biriktirish (konkatenatsiya) amali | Formal model satrlarida biriktirish sifatida (`kkt_en()` — `'⊕↓'.join(segs)`, `:643`); SSM segment ajratgichi (`_ssm_split_segments`, `:2744`). |
+| ⊕ | Biriktirish (konkatenatsiya) amali | Formal model satrlarida biriktirish sifatida (`kkt_en()` — `'⊕↓'.join(segs)`, `:643`); SSM segment ajratgichi (`_ssm_split_segments`, `:2763`). |
 | V | “Yoki” amali | "Yoki" amali sifatida ISHLATILMAYDI. `KKT_SYMBOLS` da `("V","umumiy BB")` — boshqa ma'noda (umumiy baza) belgilangan. |
 | ↓ (⇓) | “Ulanish” (qo‘shilish) yoki “ulanmaslik” (qo‘shilmaslik) amali | Faqat `⊕↓` juftligi ichida va SSM'da "ixtiyoriy segment" belgisi sifatida (`_ssm_split_segments`: `p.startswith("↓")`). `⇓` kodda yo'q. |
 | $ | Tanlash amali: $[i, l-m] Pi ko‘rinishida yoziladi | Formal model satrlarida `$[i,1-h]Ci` ko'rinishida (matn sifatida) hosil qilinadi; tanlash amali sifatida hisoblanmaydi. |
@@ -305,28 +309,24 @@ Ustuvorlik o'lchovlari (ikkalasi ham `data/1500_EN_UZ_6_POS_sorted.20.json` 6 as
 | # | qoida_id | POS | holat | tur | asos soni (kategoriya) | sirt soni (misollar) | spec misoli |
 |---|---|---|---|---|---|---|---|
 | 1 | 2.62 | Fe'l | YO'Q | S | 317 (VERBS (FE'LLAR)) | 0 | `will return` ⟹ `qaytmoq` |
-| 2 | 2.31 | Sifat | YO'Q | S | 262 (ADJECTIVES (SIFATLAR)) | 0 | `more comfortable` ⟹ `qulay + roq = qulayroq` |
-| 3 | 2.32 | Sifat | YO'Q | S | 262 (ADJECTIVES (SIFATLAR)) | 0 | `most comfortable` ⟹ `eng qulay` |
-| 4 | 2.34 | Sifat | YO'Q | S | 262 (ADJECTIVES (SIFATLAR)) | 0 | `less interesting` ⟹ `kamroq qiziqarli` |
-| 5 | 3.5 | Ravish | YO'Q | S | 168 (ADVERBS (RAVISHLAR)) | 156 (abruptly, absolutely, abstractly, accordingly, accurately) | `more clearly` ⟹ `aniq + roq = aniqroq` |
-| 6 | 2.10 | Ot | YO'Q | N | — | 0 | `man → men` ⟹ `erkak → erkak + lar = erkaklar` |
-| 7 | 2.36 | Fe'l | YO'Q | L | — | 0 | `read` ⟹ `o‘qimoq` |
-| 8 | 2.38 | Fe'l | YO'Q | L | — | 0 | `to be` ⟹ `bo‘lmoq` |
-| 9 | 2.39 | Fe'l | YO'Q | L | — | 0 | `am` ⟹ `man (1-shaxs birlik affiksi)` |
-| 10 | 2.41 | Fe'l | YO'Q | L | — | 0 | `was, were` ⟹ `edi` |
-| 11 | 2.44 | Fe'l | YO'Q | L | — | 0 | `to have` ⟹ `bor bo‘lmoq` |
-| 12 | 2.45 | Fe'l | YO'Q | L | — | 0 | `to do` ⟹ `qilmoq` |
-| 13 | 2.48 | Fe'l | YO'Q | L | — | 0 | `become` ⟹ `bo‘lmoq` |
-| 14 | 2.50 | Fe'l | YO'Q | L | — | 0 | `could` ⟹ `ol + ar + di = olardi` |
-| 15 | 2.55a | Fe'l | YO'Q | L | — | 0 | `need` ⟹ `kerak` |
-| 16 | 2.58 | Fe'l | YO'Q | L | — | 0 | `to follow` ⟹ `kuzatmoq` |
-| 17 | 3.17 | Son | YO'Q | S | — | 0 | `three hundred and five` ⟹ `uch yuz besh (bog‘lovchisiz)` |
-| 18 | 3.19 | Son | YO'Q | S | — | 0 | `hundred and twenty-first` ⟹ `bir yuz yigirma bir + inchi` |
-| 19 | 3.20 | Son | YO'Q | S | — | 0 | `chapter five` ⟹ `besh + inchi bob = beshinchi bob` |
-| 20 | –(Ravish) | Ravish | YO'Q | L | — | 0 | `very` ⟹ `juda` |
-| 21 | –(Sifat) | Sifat | YO'Q | L | — | 0 | `big` ⟹ `katta` |
+| 2 | 2.10 | Ot | YO'Q | N | — | 0 | `man → men` ⟹ `erkak → erkak + lar = erkaklar` |
+| 3 | 2.36 | Fe'l | YO'Q | L | — | 0 | `read` ⟹ `o‘qimoq` |
+| 4 | 2.38 | Fe'l | YO'Q | L | — | 0 | `to be` ⟹ `bo‘lmoq` |
+| 5 | 2.39 | Fe'l | YO'Q | L | — | 0 | `am` ⟹ `man (1-shaxs birlik affiksi)` |
+| 6 | 2.41 | Fe'l | YO'Q | L | — | 0 | `was, were` ⟹ `edi` |
+| 7 | 2.44 | Fe'l | YO'Q | L | — | 0 | `to have` ⟹ `bor bo‘lmoq` |
+| 8 | 2.45 | Fe'l | YO'Q | L | — | 0 | `to do` ⟹ `qilmoq` |
+| 9 | 2.48 | Fe'l | YO'Q | L | — | 0 | `become` ⟹ `bo‘lmoq` |
+| 10 | 2.50 | Fe'l | YO'Q | L | — | 0 | `could` ⟹ `ol + ar + di = olardi` |
+| 11 | 2.55a | Fe'l | YO'Q | L | — | 0 | `need` ⟹ `kerak` |
+| 12 | 2.58 | Fe'l | YO'Q | L | — | 0 | `to follow` ⟹ `kuzatmoq` |
+| 13 | 3.17 | Son | YO'Q | S | — | 0 | `three hundred and five` ⟹ `uch yuz besh (bog‘lovchisiz)` |
+| 14 | 3.19 | Son | YO'Q | S | — | 0 | `hundred and twenty-first` ⟹ `bir yuz yigirma bir + inchi` |
+| 15 | 3.20 | Son | YO'Q | S | — | 0 | `chapter five` ⟹ `besh + inchi bob = beshinchi bob` |
+| 16 | –(Ravish) | Ravish | YO'Q | L | — | 0 | `very` ⟹ `juda` |
+| 17 | –(Sifat) | Sifat | YO'Q | L | — | 0 | `big` ⟹ `katta` |
 
-Jami YO'Q: **21**, ZID: **0**.
+Jami YO'Q: **17**, ZID: **0**.
 
 ## 5. `CH2_EVX_EXAMPLES` ↔ spesifikatsiya (lug'atdagi dissertatsiya nusxalari rasmiy qoidaga mosmi)
 
@@ -581,17 +581,17 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 ### 2.31 — Ko‘p bo‘g‘inli sifatlarning qiyosiy darajasi “more” so‘zi bilan yasaladi
 
 - Spec: `more comfortable` → `qulay + roq = qulayroq`
-- Tur: **S**, holat: **YO'Q**
+- Tur: **S**, holat: **TO'LIQ MOS**
 - Stub: comfortable→qulay (Sifat)
-- stub: `more comfortable` → «Qulay» (kutilgan «qulayroq») ✗ — yo'l: translate_phrase; more: topilmadi; comfortable: lug'at[stub]
+- stub: `more comfortable` → «Qulayroq» (kutilgan «qulayroq») ✓ — yo'l: translate_phrase; more: topilmadi; comfortable: lug'at[stub]
 - real lug'at: `more comfortable` → «[more?] [comfortable?]» (kutilgan «qulayroq») ✗ — yo'l: so'zma-so'z; more: topilmadi; comfortable: topilmadi
 
 ### 2.32 — Ko‘p bo‘g‘inli sifatlarning orttirma darajasi “most” so‘zi bilan yasaladi
 
 - Spec: `most comfortable` → `eng qulay`
-- Tur: **S**, holat: **YO'Q**
+- Tur: **S**, holat: **TO'LIQ MOS**
 - Stub: comfortable→qulay (Sifat, manba 2.31)
-- stub: `most comfortable` → «Qulay» (kutilgan «eng qulay») ✗ — yo'l: translate_phrase; most: topilmadi; comfortable: lug'at[stub]
+- stub: `most comfortable` → «Eng qulay» (kutilgan «eng qulay») ✓ — yo'l: translate_phrase; most: topilmadi; comfortable: lug'at[stub]
 - real lug'at: `most comfortable` → «Eng ko'p / Aksariyat» (kutilgan «eng qulay») ✗ — yo'l: translate_phrase; most: lug'at[json]; comfortable: topilmadi
 
 ### 2.33 — Qoidaga bo‘ysinmaydigan (noqoida) daraja o‘zgarishi
@@ -609,9 +609,9 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 ### 2.34 — Kamlik darajasi “less” (qiyosiy) / “least” (orttirma) so‘zlari bilan yasaladi
 
 - Spec: `less interesting` → `kamroq qiziqarli`
-- Tur: **S**, holat: **YO'Q**
+- Tur: **S**, holat: **TO'LIQ MOS**
 - Stub: interesting→qiziqarli (Sifat)
-- stub: `less interesting` → «Qiziqarli» (kutilgan «kamroq qiziqarli») ✗ — yo'l: translate_phrase; less: topilmadi; interesting: lug'at[stub]
+- stub: `less interesting` → «Kamroq qiziqarli» (kutilgan «kamroq qiziqarli») ✓ — yo'l: translate_phrase; less: topilmadi; interesting: lug'at[stub]
 - real lug'at: `less interesting` → «[less?] Qiziqishing» (kutilgan «kamroq qiziqarli») ✗ — yo'l: so'zma-so'z; less: topilmadi; interesting: qoida -ing (o'zak interest, Fe'l)
 
 ### 2.36 — Sodda fe’l – affikssiz, o‘zgarmas shaklda
@@ -848,10 +848,10 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 ### 3.5 — “-ly” bilan yasalgan ravishlarning darajasi “more”/“most” bilan yasaladi
 
 - Spec: `more clearly` → `aniq + roq = aniqroq`
-- Tur: **S**, holat: **YO'Q**
+- Tur: **S**, holat: **TO'LIQ MOS**
 - Stub: clearly→aniq (Ravish)
-- stub: `more clearly` → «Aniq» (kutilgan «aniqroq») ✗ — yo'l: translate_phrase; more: topilmadi; clearly: lug'at[stub]
-- real lug'at: `more clearly` → «Aniq / Ravshan» (kutilgan «aniqroq») ✗ — yo'l: translate_phrase; more: topilmadi; clearly: lug'at[json]
+- stub: `more clearly` → «Aniqroq» (kutilgan «aniqroq») ✓ — yo'l: translate_phrase; more: topilmadi; clearly: lug'at[stub]
+- real lug'at: `more clearly` → «Aniqroq» (kutilgan «aniqroq») ✓ — yo'l: translate_phrase; more: topilmadi; clearly: lug'at[json]
 
 ### 3.6 — O‘rin-joy ravishi
 

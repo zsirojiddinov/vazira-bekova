@@ -109,6 +109,7 @@ _INDEF = ("_INDEFINITE_ARTICLE_UZ", "noaniq artikl a/an — keyin ot kelsa, ot i
 _TO_INF = ("INFINITIVE_PARTICLE_EN", "\"to\" + fe'l — infinitiv yuklamasi, tarjima qilinmaydi (spec 2.56)")
 _TO_OBJ = ("PREP_OBJECT_VERBS", "(listen, to): predlog tushadi, to'ldiruvchi vositasiz; me/him/us obyekt shakli "
            "(OBJECT_CASE_PRONOUNS) qayta \"-ni\" olmaydi")
+_DEGREE = ("ANALYTIC_DEGREE_EN", "more/most/less + sifat/ravish → X+roq / eng X / kamroq X")
 _INF_IZOH = ("`INFINITIVE_MARKERS` (to/will/can/...) kodda bor, lekin faqat `select_meaning_contextual()` da "
              "ko'p ma'noli so'zning Fe'l ma'nosini TANLASH uchun ishlatiladi — \"will + fe'l\" uchun tarjima "
              "qoidasi emas.")
@@ -171,12 +172,12 @@ PROBES = {
     "2.28": _p("M", [("busiest", "eng band")], [("busy", "band", "Sifat")], aff="iest", asos=ADJS, sirt=r"iest$"),
     "2.29": _p("M", [("gayer", "sho‘xroq")], [("gay", "sho‘x", "Sifat")], aff="er", asos=ADJS, sirt=r"yer$"),
     "2.30": _p("M", [("gayest", "eng sho‘x")], [("gay", "sho‘x", "Sifat")], aff="est", asos=ADJS, sirt=r"yest$"),
-    "2.31": _p("S", [("more comfortable", "qulayroq")], [("comfortable", "qulay", "Sifat")], asos=ADJS),
-    "2.32": _p("S", [("most comfortable", "eng qulay")], [("comfortable", "qulay", "Sifat", "2.31")], asos=ADJS),
+    "2.31": _p("S", [("more comfortable", "qulayroq")], [("comfortable", "qulay", "Sifat")], asos=ADJS, mex=_DEGREE),
+    "2.32": _p("S", [("most comfortable", "eng qulay")], [("comfortable", "qulay", "Sifat", "2.31")], asos=ADJS, mex=_DEGREE),
     "2.33": _p("N", [("good", "yaxshi"), ("better", "yaxshiroq"), ("best", "eng yaxshi")],
                [("good", "yaxshi", "Sifat")]),
     "2.34": _p("S", [("less interesting", "kamroq qiziqarli")], [("interesting", "qiziqarli", "Sifat")],
-               asos=ADJS),
+               asos=ADJS, mex=_DEGREE),
     # ── FE'L ────────────────────────────────────────────────────────────
     "2.36": _p("L", [("read", "o‘qimoq")], bosh=["read"]),
     "2.37": _p("M", [("speaks", "gapiradi")], [("speak", "gapir", "Fe'l")], aff="s", asos=VERBS),
@@ -220,7 +221,7 @@ PROBES = {
               asos=ADJS, sirt=r"ily$"),
     "3.3": _p("M", [("faster", "tezroq")], [("fast", "tez", "Ravish")], aff="er", asos=ADVS, sirt=r"er$"),
     "3.4": _p("M", [("fastest", "eng tez")], [("fast", "tez", "Ravish")], aff="est", asos=ADVS, sirt=r"est$"),
-    "3.5": _p("S", [("more clearly", "aniqroq")], [("clearly", "aniq", "Ravish")], asos=ADVS, sirt=r"ly$"),
+    "3.5": _p("S", [("more clearly", "aniqroq")], [("clearly", "aniq", "Ravish")], asos=ADVS, sirt=r"ly$", mex=_DEGREE),
     "3.6": _p("L", [("inside", "ichkarida")], bosh=["inside"]),
     "3.7": _p("L", [("today", "bugun")], bosh=["today"]),
     "3.8": _p("L", [("much", "ko‘p")], bosh=["much"]),
