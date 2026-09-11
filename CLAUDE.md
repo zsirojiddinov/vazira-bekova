@@ -33,5 +33,13 @@ qo'yilmaydi:
 
 Gold fayllar DB yuklovchi kod ko'rmaydigan alohida papkada saqlanadi (tavsiya:
 repo ildizidagi `gold/`, `data/` emas); fayl nomlari yuklovchi naqshlariga mos
-kelmasin. Yuklovchi yo'llar ro'yxati va gold to'plam qo'shilishidan oldingi qabul
-mezonlari (qo'riqlovchi testlar): `reports/faza_3_plan.md`.
+kelmasin. Format: `gold/*.json` — JSON ro'yxat, har bir element
+`{"english": str, "uzbek": str, ...}`.
+
+Bu qoidani CI qo'riqlaydi — `tests/test_gold_separation.py`: baza qurilishi `gold/`
+ni ochmasligi va `data/` dan faqat ruxsat etilgan 3 ta JSON ni o'qishi (yangi manba
+qo'shilsa test yiqiladi — gold emasligini tasdiqlab `ALLOWED_DATA_SOURCES` ga ongli
+qo'shing), `gold/*.json` dagi test-case'lar qurilgan lug'atda yo'qligi,
+`scripts/` dagi `translate_phrase(...)` faqat `allow_write=False` bilan. Bu testlarni
+"yashil qilish" uchun o'chirmang yoki cheklamang. Yuklovchi yo'llar ro'yxati va qolgan
+qabul mezonlari: `reports/faza_3_plan.md`.
