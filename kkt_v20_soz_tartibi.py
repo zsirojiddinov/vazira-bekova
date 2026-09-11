@@ -509,6 +509,13 @@ MORPH_RULES = [
     ("ves",    [lambda w:w[:-3]+"f", lambda w:w[:-3]+"fe"],          "Ot","C7←C(-ves: f→v ko'plik)"),
     # MUHIM: -es uchun FAQAT fn1=w[:-2] — w[:-1] YO'Q!
     ("es",     [lambda w:w[:-2]],                                     "Ot","C3←C(-es ko'plik)"),
+    # ── FE'L (G) 3-SHAXS BIRLIK HOZIRGI ZAMON "-s" (KKT spec 2.37: speak+s =
+    #    speaks → gapir+a+di = gapiradi). Ot ko'plik "-s" dan OLDIN turishi
+    #    shart, lekin FAQAT ildiz lug'atda FE'L bo'lsa ishlaydi (5-element —
+    #    agentiv "-er" bilan bir xil mexanizm); qolgan barcha "-s" so'zlar
+    #    avvalgidek ot ko'pligiga tushadi.
+    ("s",      [lambda w:w[:-1]],
+                "Fe'l","G←G(-s: 3-shaxs birlik hozirgi zamon)","Fe'l"),
     # -s oxirida — barcha qolganlarni tutib oladi
     ("s",      [lambda w:w[:-1]],                                     "Ot","C1←C(-s ko'plik)"),
 ]
@@ -524,11 +531,18 @@ def uz_stem(uz_text):
     return t.strip()
 
 
-def make_uzbek(root_uz, sfx):
+def make_uzbek(root_uz, sfx, pos=None):
     """
     KKT MM asosida ingliz affiksiga mos o'zbek morfologik shakli.
 
+    `pos` — ingliz so'zining ANIQLANGAN turkumi (ixtiyoriy). Hozircha faqat
+    bitta affiks turkumga qarab ikki xil ma'noga ega: "-s" (Ot ko'plik yoki
+    Fe'l 3-shaxs birlik hozirgi zamon, KKT spec 2.37).
+
     Har bir ingliz affiks → o'zbek ekvivalenti:
+      Fe'l 3-sh. birlik: -s (pos=Fe'l)  → +adi (undoshdan keyin, spec 2.37:
+                                          gapir+a+di) / +ydi (unlidan keyin —
+                                          o'zbek imlosi, spec misolida yo'q)
       Ot ko'plik:      -s/-es/-ies/-ves → +lar    [X: 0.00101]
       Fe'l sifatdosh:  -ing             → +ayotgan [G_A1: 0.00303]
       Fe'l o'tgan:     -ed/-ied         → +gan     [G_A1: 0.00301]
@@ -541,6 +555,9 @@ def make_uzbek(root_uz, sfx):
     """
     stem = uz_stem(root_uz)
     if sfx in ("est","iest"): return "eng " + stem
+    if sfx == "s" and pos == "Fe'l":
+        ends_vowel = stem.rstrip("'‘’ʻʼ")[-1:].lower() in "aeiou"
+        return stem + ("ydi" if ends_vowel else "adi")
     rules = {
         # OT ko'plik
         "s":    stem+"lar", "es":  stem+"lar",
@@ -2475,6 +2492,7 @@ def _try_suffix_chain(w):
         return row,cand,sfx,derived_pos,label,None,None
     for rule in MORPH_RULES:
         sfx, fns, derived_pos, label = rule[0], rule[1], rule[2], rule[3]
+        req_root_pos = rule[4] if len(rule) > 4 else None
         if not w.endswith(sfx) or len(w) <= len(sfx)+2: continue
         for fn in fns:
             try: mid = fn(w)
@@ -2483,6 +2501,10 @@ def _try_suffix_chain(w):
             inner = _try_suffix(mid)
             if inner:
                 irow,icand,isfx,ipos,ilabel = inner
+                # Tashqi qoida ildiz turkumini talab qilsa (masalan Fe'l "-s"),
+                # u oraliq so'zning ANIQLANGAN turkumiga (ipos) qo'llanadi —
+                # aks holda "work+er+s" (Ot) fe'l 3-shaxs deb olinib qolardi.
+                if req_root_pos and ipos != req_root_pos: continue
                 return irow,icand,sfx,derived_pos,label,isfx,ilabel
     return None
 
@@ -3065,8 +3087,14 @@ def _smart_parse_core(word, prev_pos=None, prev_raw=None):
     # Matn bir xil bo'lgani uchun BM_en_w'da chalkashmasligi uchun turkum
     # bilan birga noyob kalit sifatida saqlaymiz.
     AGENTIVE_ER_SYM = {"er":"C_A1","or":"C_A1"}
+    # Xuddi shunday "-s": Ot ko'plik (X) yoki Fe'l 3-shaxs birlik (spec 2.37).
+    # Fe'l ma'nosi alohida kalit bilan, kodning fe'l zamon affikslari uchun
+    # ishlatadigan belgisi (EN_AFF_V3: ing/ed/ied → G_A1) bilan saqlanadi.
+    verb_3sg = (sfx == "s" and pos == "Fe'l")
     if sfx in AGENTIVE_ER_SYM and pos=="Ot":
         sfx_bm_key = sfx+"#Ot"; default_sym = AGENTIVE_ER_SYM[sfx]
+    elif verb_3sg:
+        sfx_bm_key = "s#Fe'l"; default_sym = "G_A1"
     else:
         sfx_bm_key = sfx; default_sym = EN_AFF_V3.get(sfx,("A1",0))[0]
     sfx_m_en = bm_get_or_create_affix_model(DB_BM_EN, sfx_bm_key, default_sym) if sfx else None
@@ -3101,7 +3129,9 @@ def _smart_parse_core(word, prev_pos=None, prev_raw=None):
 
     uz_suffix_text = ""
     _DEGREE_SFX = {"er","est","ier","iest"}  # qiyosiy/orttirma daraja — ID moslash ishonchsiz, doim zaxira jadval ishlatiladi
-    if sfx and sfx_m_en and sfx not in _DEGREE_SFX:
+    # Fe'l "-s" uchun ham ID moslash ishlatilmaydi: QM_en_w'dagi "-s" yozuvi
+    # ko'plik affiksi, uning ID-jufti fe'l shaklini bermaydi.
+    if sfx and sfx_m_en and sfx not in _DEGREE_SFX and not verb_3sg:
         qm_en_row = qm_confirm_or_add(DB_QM_EN, sfx, pos, is_prefix=False,
                                        kkt_symbol_hint=EN_AFF_V3.get(sfx,("A1",0))[0])
         uz_aff = qm_uz_equivalent(qm_en_row[0], pos) if qm_en_row else None
@@ -3112,7 +3142,7 @@ def _smart_parse_core(word, prev_pos=None, prev_raw=None):
         uz = uz_stem(uz_root_raw) + uz_suffix_text          # bazadan (QM_uz_w)
         method_tag = "QM_en_w→QM_uz_w[ID]"
     elif sfx:
-        uz = make_uzbek(uz_root_raw, sfx)                    # zaxira: statik KKT jadval
+        uz = make_uzbek(uz_root_raw, sfx, pos)               # zaxira: statik KKT jadval
         method_tag = "QM_en_w + zaxira-jadval"
     else:
         uz = uz_root_raw

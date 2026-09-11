@@ -52,7 +52,7 @@ EXPECTED_STATUS = {
     "2.10": Y, "2.11": T, "2.12": Q, "2.13": Q, "2.15": Q, "2.16": T,
     "–(Sifat)": Y, "2.19": Q, "2.20": Q, "2.21": Q, "2.22": T, "2.23": T, "2.24": T, "2.25": T,
     "2.26": T, "2.27": T, "2.28": T, "2.29": T, "2.30": T, "2.31": Y, "2.32": Y, "2.33": Q, "2.34": Y,
-    "2.36": Y, "2.37": Z, "2.38": Y, "2.39": Y, "2.41": Y, "2.42": Q, "2.43": Q, "2.44": Y, "2.45": Y,
+    "2.36": Y, "2.37": T, "2.38": Y, "2.39": Y, "2.41": Y, "2.42": Q, "2.43": Q, "2.44": Y, "2.45": Y,
     "2.46": T, "2.47": Q, "2.48": Y, "2.49": T, "2.50": Y, "2.51": Q, "2.52": Q, "2.53": Q, "2.54": Q,
     "2.55a": Y, "2.56": Z, "2.55b": Q, "2.58": Y, "2.59": Z, "2.61": T, "2.62": Y, "2.63": Q,
     "2.64": Q, "2.65": Q,
@@ -231,16 +231,29 @@ def test_teen_rule_cannot_restore_five_from_fif(isolated_kkt_module):
     assert normalize(out["natija"]) == normalize("o‘n besh")
 
 
-def test_verb_third_person_s_is_parsed_as_noun_plural(isolated_kkt_module):
-    """2.37 (ZID) dalili: fe'lning 3-shaxs "-s" i uchun alohida qoida yo'q —
-    MORPH_RULES dagi yagona "-s" qoidasi (Ot ko'plik) "speaks" ni Ot deb
-    tahlil qiladi va "-lar" qo'shadi."""
+def test_verb_third_person_s_spec_2_37(isolated_kkt_module):
+    """KKT spec 2.37: "speak + s = speaks" → "gapir + a + di = gapiradi".
+    Ildiz lug'atda Fe'l bo'lsa "-s" fe'l 3-shaxs birlik (G←G) deb tahlil
+    qilinadi (tuzatishdan oldin Ot ko'plik: "gapirlar" edi)."""
     m = isolated_kkt_module
     with audit.stub_lexicon(m, [("speak", "gapir", "Fe'l")]):
         out = audit.system_output(m, "speaks")
     tok = out["tokens"][0]
-    assert (tok["suffix"], tok["root"], tok["pos"]) == ("s", "speak", "Ot")
-    assert normalize(out["natija"]) == "gapirlar"
+    assert (tok["suffix"], tok["root"], tok["pos"]) == ("s", "speak", "Fe'l")
+    assert normalize(out["natija"]) == "gapiradi"
+
+
+def test_noun_plural_s_unchanged_by_verb_s_rule(isolated_kkt_module):
+    """Fe'l "-s" qoidasi FAQAT ildiz Fe'l bo'lganda ishlaydi: ot ildizlar
+    (spec 2.1 variable) va ikki qatlamli ot ("work+er+s" — oraliq "worker"
+    Ot) avvalgidek ot ko'pligi bo'lib qoladi."""
+    m = isolated_kkt_module
+    with audit.stub_lexicon(m, [("variable", "o‘zgaruvchi", "Ot")]):
+        tok = audit.system_output(m, "variables")["tokens"][0]
+    assert (tok["suffix"], tok["pos"]) == ("s", "Ot")
+    with audit.stub_lexicon(m, [("work", "ishlamoq", "Fe'l")]):
+        tok = audit.system_output(m, "workers")["tokens"][0]
+    assert (tok["suffix"], tok["root"], tok["pos"]) == ("er+s", "work", "Ot")
 
 
 def test_stub_lexicon_restores_original_lookup_functions(isolated_kkt_module):
