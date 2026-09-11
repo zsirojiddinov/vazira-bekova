@@ -106,9 +106,12 @@ def _p(tur, juftlar, stub=(), aff=None, soz=None, mex=None, bosh=None,
 
 _DET = ("_DETERMINERS", "aniq artikl \"the\" va ko'rsatish so'zlarini (this/that ...) iboradan olib tashlaydi")
 _INDEF = ("_INDEFINITE_ARTICLE_UZ", "noaniq artikl a/an — keyin ot kelsa, ot iborasiga \"bitta\" bo'lib kiradi")
-_TO_PREP = ("PREP_UZ_X3", "\"to\" -> \"ga\" (kelishik qo'shimchasi) sifatida ishlaydi")
+_TO_INF = ("INFINITIVE_PARTICLE_EN", "\"to\" + fe'l — infinitiv yuklamasi, tarjima qilinmaydi (spec 2.56)")
+_TO_OBJ = ("PREP_OBJECT_VERBS", "(listen, to): predlog tushadi, to'ldiruvchi vositasiz; me/him/us obyekt shakli "
+           "(OBJECT_CASE_PRONOUNS) qayta \"-ni\" olmaydi")
 _INF_IZOH = ("`INFINITIVE_MARKERS` (to/will/can/...) kodda bor, lekin faqat `select_meaning_contextual()` da "
-             "ko'p ma'noli so'zning Fe'l ma'nosini TANLASH uchun ishlatiladi — tarjima qoidasi emas.")
+             "ko'p ma'noli so'zning Fe'l ma'nosini TANLASH uchun ishlatiladi — \"will + fe'l\" uchun tarjima "
+             "qoidasi emas.")
 # Stub'dagi "⟨...⟩" qiymat — ma'lumot emas, BELGI: docx o'zakning o'zbekchasini
 # bermagan joyda kod o'zbek tomonini qanday qurishini ko'rsatish uchun.
 _PLACEHOLDER_RE = re.compile(r"^⟨.*⟩$")
@@ -195,13 +198,12 @@ PROBES = {
     "2.53": _p("L", [("must", "kerak")], bosh=["must"]),
     "2.54": _p("L", [("ought to", "zarur")], bosh=["ought"]),
     "2.55a": _p("L", [("need", "kerak")], bosh=["need"]),
-    "2.56": _p("S", [("to ask", "so‘ramoq")], [("ask", "so‘ramoq", "Fe'l")], mex=_TO_PREP, asos=VERBS,
-               izoh=_INF_IZOH),
+    "2.56": _p("S", [("to ask", "so‘ramoq")], [("ask", "so‘ramoq", "Fe'l")], mex=_TO_INF, asos=VERBS),
     "2.55b": _p("M", [("reading", "o‘qishni")], [("read", "o‘qimoq", "Fe'l", "2.36")], aff="ing",
                 asos=VERBS, sirt=r"ing$"),
     "2.58": _p("L", [("to follow", "kuzatmoq")], bosh=["follow"]),
     "2.59": _p("S", [("listen to me", "meni tinglamoq")],
-               [("listen", "tinglamoq", "Fe'l"), ("me", "meni", "Olmosh", "3.22")], mex=_TO_PREP, asos=VERBS),
+               [("listen", "tinglamoq", "Fe'l"), ("me", "meni", "Olmosh", "3.22")], mex=_TO_OBJ, asos=VERBS),
     "2.61": _p("L", [("understand", "tushunmoq")], bosh=["understand"]),
     "2.62": _p("S", [("will return", "qaytmoq")], [("return", "qaytmoq", "Fe'l")], asos=VERBS, izoh=_INF_IZOH),
     "2.63": _p("M", [("worked", "ishladi")], [("work", "ishla", "Fe'l")], aff="ed", asos=VERBS, sirt=r"ed$"),

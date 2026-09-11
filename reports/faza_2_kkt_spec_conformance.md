@@ -1,23 +1,23 @@
 # Faza 2 — KKT rasmiy spesifikatsiyasiga moslik auditi (conformance matrix)
 
-**Generatsiya vaqti:** 2026-09-11T11:49:22+00:00
+**Generatsiya vaqti:** 2026-09-11T12:04:51+00:00
 **Buyruq:** `python scripts/audit_kkt_spec_conformance.py`
 **Spesifikatsiya:** `data/kkt_spec.json` ← `data/kkt_qoidalari.docx` (sha256 `4954c528bc7eec3d…`)
 **Kod:** `kkt_v20_soz_tartibi.py` (bazalar data/ dan izolyatsiyalangan papkada noldan qurilgan, `readonly_mode`; NLTK lemmatizer: `USE_LEMMA=True`)
 
 ## 0. Asosiy natija
 
-Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **34 ta to'liq mos (27 tasi mustaqil hisoblangan, 7 tasi aylanma — hammasi CH2_EVX_EXAMPLES orqali)**, 30 ta qisman mos, 21 ta yo'q, 2 ta zid.
+Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **36 ta to'liq mos (29 tasi mustaqil hisoblangan, 7 tasi aylanma — hammasi CH2_EVX_EXAMPLES orqali)**, 30 ta qisman mos, 21 ta yo'q, 0 ta zid.
 
 | Holat | Soni | Ulushi |
 |---|---|---|
-| **TO'LIQ MOS** | **34** (27 mustaqil / 7 aylanma) | 39.1% |
+| **TO'LIQ MOS** | **36** (29 mustaqil / 7 aylanma) | 41.4% |
 | **QISMAN MOS** | **30** | 34.5% |
 | **YO'Q** | **21** | 24.1% |
-| **ZID** | **2** | 2.3% |
+| **ZID** | **0** | 0.0% |
 | Jami | 87 | 100% |
 
-### 0.1 34 ta TO'LIQ MOS — haqiqiy tarkibi
+### 0.1 36 ta TO'LIQ MOS — haqiqiy tarkibi
 
 - **mustaqil hisoblangan** — natijani kod o'zi hisobladi: M/N/S turida kodga FAQAT docx'dagi o'zak berildi (stub, real lug'at yashirilgan), L turida natija CH2_EVX_EXAMPLES'dan mustaqil lug'at yozuvidan (1500-lug'at yoki kod ichidagi SEED_WORDS) keldi.
 - **CH2_EVX_EXAMPLES orqali aylanma** — natija dissertatsiya II bob misollarining lug'atga yozilgan nusxasidan (`source='chapter2_evx'`) o'qib qaytarildi; docx misoli ham shu manbadan — mustaqil dalil emas.
@@ -49,6 +49,8 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **34 ta to'liq mos (
 | 2.49 | Fe'l | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | can: lug'at[chapter2_evx] |
 | 2.51 | Fe'l | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | may: lug'at[chapter2_evx] |
 | 2.52 | Fe'l | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | might: lug'at[chapter2_evx] |
+| 2.56 | Fe'l | S | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | to: lug'at[docx]; ask: lug'at[json] +MDB almashtirdi |
+| 2.59 | Fe'l | S | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | listen: topilmadi; to: lug'at[docx]; me: lug'at[json] |
 | 2.61 | Fe'l | L | **mustaqil hisoblangan** | haqiqiy lug'at: 1500-lug'at yozuvi | understand: lug'at[json] |
 | 3.1 | Ravish | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | here: lug'at[chapter2_evx] |
 | 3.6 | Ravish | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | inside: lug'at[chapter2_evx] |
@@ -68,7 +70,7 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **34 ta to'liq mos (
 |---|---|---|---|---|---|
 | Ot | 10 | 4 | 1 | 0 | 15 |
 | Sifat | 9 | 4 | 4 | 0 | 17 |
-| Fe'l | 6 | 9 | 11 | 2 | 28 |
+| Fe'l | 8 | 9 | 11 | 0 | 28 |
 | Ravish | 4 | 4 | 2 | 0 | 10 |
 | Son | 5 | 2 | 3 | 0 | 10 |
 | Olmosh | 0 | 7 | 0 | 0 | 7 |
@@ -79,12 +81,12 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **34 ta to'liq mos (
 |---|---|---|---|---|---|
 | M — morfologik (affiks) | 19 | 16 | 0 | 0 | 35 |
 | N — noqoida (o'zak o'zgarishi) | 0 | 3 | 1 | 0 | 4 |
-| S — ibora (so'z tartibi / funksional so'z) | 6 | 0 | 8 | 2 | 16 |
+| S — ibora (so'z tartibi / funksional so'z) | 8 | 0 | 8 | 0 | 16 |
 | L — leksik moslik | 9 | 11 | 12 | 0 | 32 |
 
 ### TO'LIQ MOS natijalarini qanday o'qish kerak (halol baho)
 
-- M/N/S turidagi TO'LIQ MOS (25 ta) — **lug'atdan mustaqil** tekshirilgan: kodga faqat docx'dagi o'zak berilgan (stub), qolgani haqiqiy qoida zanjiri. Bu — formal qoidaning o'zi ishlashining dalili. Lekin real lug'atda o'sha o'zak bo'lmasa, amaliy tarjima baribir chiqmaydi (quyidagi batafsil jadvaldagi "real lug'at" qatori).
+- M/N/S turidagi TO'LIQ MOS (27 ta) — **lug'atdan mustaqil** tekshirilgan: kodga faqat docx'dagi o'zak berilgan (stub), qolgani haqiqiy qoida zanjiri. Bu — formal qoidaning o'zi ishlashining dalili. Lekin real lug'atda o'sha o'zak bo'lmasa, amaliy tarjima baribir chiqmaydi (quyidagi batafsil jadvaldagi "real lug'at" qatori).
 - L turidagi TO'LIQ MOS (9 ta) — HAQIQIY lug'at bilan. Shundan **7 tasi natijani FAQAT `CH2_EVX_EXAMPLES` (dissertatsiya II bob misollari, `source='chapter2_evx'`) yozuvidan oladi** — ya'ni docx misoli bilan bir xil manbadan ko'chirilgan so'z qaytyapti (aylanma; mustaqil dalil emas): 2.46, 2.49, 2.51, 2.52, 3.1, 3.6, 3.7.
 - S turidagi TO'LIQ MOS ichida **3 tasi** uchun kodda maxsus qoida YO'Q — natija oddiy so'zma-so'z birikmadan to'g'ri chiqib qolgan (masalan son birikmalari): 3.14, 3.15, 3.16.
 - **Muhitga bog'liq holatlar** (NLTK wordnet lemmatizer bor/yo'qligiga qarab o'zgaradi — hisobot `USE_LEMMA=True` bilan): 2.33: QISMAN MOS → wordnet'siz YO'Q; 2.65: QISMAN MOS → wordnet'siz YO'Q.
@@ -122,7 +124,7 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **34 ta to'liq mos (
 | 2.12 | Ot | **QISMAN MOS** | [M] MORPH_RULES:517,520, make_uzbek:558; stub: tahlil: -s + schoolboy → Ot — stub: `schoolboys` → «Maktab bolalar» (kutilgan «maktab bolalari») ✗ |
 | 2.13 | Ot | **QISMAN MOS** | [M] MORPH_RULES:445, make_uzbek:588; stub: tahlil: -ation + inform → Ot — stub: `information` → «⟨inform⟩ish» (kutilgan «axborot») ✗ |
 | 2.15 | Ot | **QISMAN MOS** | [M] MORPH_RULES:517,520, make_uzbek:558; stub: tahlil: -s + content → Ot — stub: `contents` → «Mundarijalar» (kutilgan «mundarija») ✗ |
-| 2.16 | Ot | **TO'LIQ MOS** | [M] _smart_parse_core:3035 (alohida tarmoq); stub: tahlil: -'s + student → Ot — stub: `student's` → «Studentning» (kutilgan «studentning») ✓ |
+| 2.16 | Ot | **TO'LIQ MOS** | [M] _smart_parse_core:3068 (alohida tarmoq); stub: tahlil: -'s + student → Ot — stub: `student's` → «Studentning» (kutilgan «studentning») ✓ |
 | –(Sifat) | Sifat | **YO'Q** | [L] real lug'at: `big` → «[big?]» (kutilgan «katta») ✗ — yo'l: big: topilmadi |
 | 2.19 | Sifat | **QISMAN MOS** | [M] MORPH_RULES:434, make_uzbek:584; stub: tahlil: -al + form → Sifat — stub: `formal` → «Rasmga oid» (kutilgan «rasmiy») ✗ |
 | 2.20 | Sifat | **QISMAN MOS** | [M] MORPH_RULES:434, make_uzbek:584; stub: tahlil: -al + dimension → Sifat — stub: `high-dimensional` → «Ko‘p o‘lchovga oid» (kutilgan «ko‘p o‘lchovli») ✗ |
@@ -159,10 +161,10 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **34 ta to'liq mos (
 | 2.53 | Fe'l | **QISMAN MOS** | [L] real lug'at: `must` → «shart» (kutilgan «kerak») ✗ — yo'l: must: lug'at[chapter2_evx] |
 | 2.54 | Fe'l | **QISMAN MOS** | [L] real lug'at: `ought to` → «Ga zarur» (kutilgan «zarur») ✗ — yo'l: ought: lug'at[chapter2_evx] |
 | 2.55a | Fe'l | **YO'Q** | [L] real lug'at: `need` → «[need?]» (kutilgan «kerak») ✗ — yo'l: need: topilmadi |
-| 2.56 | Fe'l | **ZID** | [S] PREP_UZ_X3:2096 — "to" -> "ga" (kelishik qo'shimchasi) sifatida ishlaydi — stub: `to ask` → «Ga so‘ramoq» (kutilgan «so‘ramoq») ✗ |
+| 2.56 | Fe'l | **TO'LIQ MOS** | [S] INFINITIVE_PARTICLE_EN:2222 — "to" + fe'l — infinitiv yuklamasi, tarjima qilinmaydi (spec 2.56) — stub: `to ask` → «So‘ramoq» (kutilgan «so‘ramoq») ✓ |
 | 2.55b | Fe'l | **QISMAN MOS** | [M] MORPH_RULES:490, make_uzbek:566; stub: tahlil: -ing + read → Fe'l — stub: `reading` → «o‘qiing» (kutilgan «o‘qishni») ✗ |
 | 2.58 | Fe'l | **YO'Q** | [L] real lug'at: `to follow` → «Ga» (kutilgan «kuzatmoq») ✗ — yo'l: follow: topilmadi |
-| 2.59 | Fe'l | **ZID** | [S] PREP_UZ_X3:2096 — "to" -> "ga" (kelishik qo'shimchasi) sifatida ishlaydi — stub: `listen to me` → «Meniga tinglamoq» (kutilgan «meni tinglamoq») ✗ |
+| 2.59 | Fe'l | **TO'LIQ MOS** | [S] PREP_OBJECT_VERBS:2228 — (listen, to): predlog tushadi, to'ldiruvchi vositasiz; me/him/us obyekt shakli (OBJECT_CASE_PRONOUNS) qayta "-ni" olmaydi — stub: `listen to me` → «Meni tinglamoq» (kutilgan «meni tinglamoq») ✓ |
 | 2.61 | Fe'l | **TO'LIQ MOS** | [L] real lug'at: `understand` → «Tushunmoq» (kutilgan «tushunmoq») ✓ — yo'l: understand: lug'at[json] |
 | 2.62 | Fe'l | **YO'Q** | [S] stub: `will return` → «[will?] qaytmoq» (kutilgan «qaytmoq») ✗ |
 | 2.63 | Fe'l | **QISMAN MOS** | [M] MORPH_RULES:492, make_uzbek:569; stub: tahlil: -ed + work → Fe'l — stub: `worked` → «ishlaaylik» (kutilgan «ishladi») ✗ |
@@ -203,7 +205,7 @@ Stub tekshiruvi formal qoidani ajratib oladi; bu jadval o'sha misollar HAQIQIY l
 | qoida_id | holat (stub) | real lug'at natijasi | yo'l |
 |---|---|---|---|
 | 2.1 | TO'LIQ MOS | `variables` → «O'zgaruvchilar» ✓ | variables: qoida -s (o'zak variable, Ot) |
-| 2.2 | TO'LIQ MOS | `a network` → «[a?] Tarmoq» ✗ | a: topilmadi; network: lug'at[json] |
+| 2.2 | TO'LIQ MOS | `a network` → «Tarmoq» ✗ | a: topilmadi; network: lug'at[json] |
 | 2.3 | TO'LIQ MOS | `an example` → «Bitta Misol» ✓ | an: topilmadi; example: lug'at[json] |
 | 2.4 | TO'LIQ MOS | `the progress` → «[the?] [progress?]» ✗ | the: topilmadi; progress: topilmadi |
 | 2.5 | QISMAN MOS | `The Germanys` → «[the?] [germanys?]» ✗ | the: topilmadi; germanys: topilmadi |
@@ -238,9 +240,9 @@ Stub tekshiruvi formal qoidani ajratib oladi; bu jadval o'sha misollar HAQIQIY l
 | 2.37 | TO'LIQ MOS | `speaks` → «[speaks?]» ✗ | speaks: topilmadi |
 | 2.42 | QISMAN MOS | `been` → «[been?]» ✗ | been: topilmadi |
 | 2.43 | QISMAN MOS | `being` → «[being?]» ✗ | being: topilmadi |
-| 2.56 | ZID | `to ask` → «Ga ajratib ko'rsatmoq» ✗ | to: lug'at[docx]; ask: lug'at[json] +MDB almashtirdi |
+| 2.56 | TO'LIQ MOS | `to ask` → «Ajratib ko'rsatmoq» ✗ | to: lug'at[docx]; ask: lug'at[json] +MDB almashtirdi |
 | 2.55b | QISMAN MOS | `reading` → «o'qishni» ✓ | reading: lug'at[chapter2_evx] |
-| 2.59 | ZID | `listen to me` → «Meniga» ✗ | listen: topilmadi; to: lug'at[docx]; me: lug'at[json] |
+| 2.59 | TO'LIQ MOS | `listen to me` → «Meniga» ✗ | listen: topilmadi; to: lug'at[docx]; me: lug'at[json] |
 | 2.62 | YO'Q | `will return` → «keladi [return?]» ✗ | will: lug'at[chapter2_evx]; return: topilmadi |
 | 2.63 | QISMAN MOS | `worked` → «Ishlaaylik» ✗ | worked: qoida -ed (o'zak work, Fe'l) |
 | 2.64 | QISMAN MOS | `simplified` → «Oddiylashtirgan» ✗ | simplified: qoida -ify+ied (o'zak simple, Fe'l) |
@@ -285,7 +287,7 @@ Stub tekshiruvi formal qoidani ajratib oladi; bu jadval o'sha misollar HAQIQIY l
 
 | Belgi | Spec ma'nosi | Kodda |
 |---|---|---|
-| ⊕ | Biriktirish (konkatenatsiya) amali | Formal model satrlarida biriktirish sifatida (`kkt_en()` — `'⊕↓'.join(segs)`, `:643`); SSM segment ajratgichi (`_ssm_split_segments`, `:2711`). |
+| ⊕ | Biriktirish (konkatenatsiya) amali | Formal model satrlarida biriktirish sifatida (`kkt_en()` — `'⊕↓'.join(segs)`, `:643`); SSM segment ajratgichi (`_ssm_split_segments`, `:2744`). |
 | V | “Yoki” amali | "Yoki" amali sifatida ISHLATILMAYDI. `KKT_SYMBOLS` da `("V","umumiy BB")` — boshqa ma'noda (umumiy baza) belgilangan. |
 | ↓ (⇓) | “Ulanish” (qo‘shilish) yoki “ulanmaslik” (qo‘shilmaslik) amali | Faqat `⊕↓` juftligi ichida va SSM'da "ixtiyoriy segment" belgisi sifatida (`_ssm_split_segments`: `p.startswith("↓")`). `⇓` kodda yo'q. |
 | $ | Tanlash amali: $[i, l-m] Pi ko‘rinishida yoziladi | Formal model satrlarida `$[i,1-h]Ci` ko'rinishida (matn sifatida) hosil qilinadi; tanlash amali sifatida hisoblanmaydi. |
@@ -302,31 +304,29 @@ Ustuvorlik o'lchovlari (ikkalasi ham `data/1500_EN_UZ_6_POS_sorted.20.json` 6 as
 
 | # | qoida_id | POS | holat | tur | asos soni (kategoriya) | sirt soni (misollar) | spec misoli |
 |---|---|---|---|---|---|---|---|
-| 1 | 2.56 | Fe'l | ZID | S | 317 (VERBS (FE'LLAR)) | 0 | `to ask` ⟹ `so‘ramoq` |
-| 2 | 2.59 | Fe'l | ZID | S | 317 (VERBS (FE'LLAR)) | 0 | `listen to me` ⟹ `meni tinglamoq` |
-| 3 | 2.62 | Fe'l | YO'Q | S | 317 (VERBS (FE'LLAR)) | 0 | `will return` ⟹ `qaytmoq` |
-| 4 | 2.31 | Sifat | YO'Q | S | 262 (ADJECTIVES (SIFATLAR)) | 0 | `more comfortable` ⟹ `qulay + roq = qulayroq` |
-| 5 | 2.32 | Sifat | YO'Q | S | 262 (ADJECTIVES (SIFATLAR)) | 0 | `most comfortable` ⟹ `eng qulay` |
-| 6 | 2.34 | Sifat | YO'Q | S | 262 (ADJECTIVES (SIFATLAR)) | 0 | `less interesting` ⟹ `kamroq qiziqarli` |
-| 7 | 3.5 | Ravish | YO'Q | S | 168 (ADVERBS (RAVISHLAR)) | 156 (abruptly, absolutely, abstractly, accordingly, accurately) | `more clearly` ⟹ `aniq + roq = aniqroq` |
-| 8 | 2.10 | Ot | YO'Q | N | — | 0 | `man → men` ⟹ `erkak → erkak + lar = erkaklar` |
-| 9 | 2.36 | Fe'l | YO'Q | L | — | 0 | `read` ⟹ `o‘qimoq` |
-| 10 | 2.38 | Fe'l | YO'Q | L | — | 0 | `to be` ⟹ `bo‘lmoq` |
-| 11 | 2.39 | Fe'l | YO'Q | L | — | 0 | `am` ⟹ `man (1-shaxs birlik affiksi)` |
-| 12 | 2.41 | Fe'l | YO'Q | L | — | 0 | `was, were` ⟹ `edi` |
-| 13 | 2.44 | Fe'l | YO'Q | L | — | 0 | `to have` ⟹ `bor bo‘lmoq` |
-| 14 | 2.45 | Fe'l | YO'Q | L | — | 0 | `to do` ⟹ `qilmoq` |
-| 15 | 2.48 | Fe'l | YO'Q | L | — | 0 | `become` ⟹ `bo‘lmoq` |
-| 16 | 2.50 | Fe'l | YO'Q | L | — | 0 | `could` ⟹ `ol + ar + di = olardi` |
-| 17 | 2.55a | Fe'l | YO'Q | L | — | 0 | `need` ⟹ `kerak` |
-| 18 | 2.58 | Fe'l | YO'Q | L | — | 0 | `to follow` ⟹ `kuzatmoq` |
-| 19 | 3.17 | Son | YO'Q | S | — | 0 | `three hundred and five` ⟹ `uch yuz besh (bog‘lovchisiz)` |
-| 20 | 3.19 | Son | YO'Q | S | — | 0 | `hundred and twenty-first` ⟹ `bir yuz yigirma bir + inchi` |
-| 21 | 3.20 | Son | YO'Q | S | — | 0 | `chapter five` ⟹ `besh + inchi bob = beshinchi bob` |
-| 22 | –(Ravish) | Ravish | YO'Q | L | — | 0 | `very` ⟹ `juda` |
-| 23 | –(Sifat) | Sifat | YO'Q | L | — | 0 | `big` ⟹ `katta` |
+| 1 | 2.62 | Fe'l | YO'Q | S | 317 (VERBS (FE'LLAR)) | 0 | `will return` ⟹ `qaytmoq` |
+| 2 | 2.31 | Sifat | YO'Q | S | 262 (ADJECTIVES (SIFATLAR)) | 0 | `more comfortable` ⟹ `qulay + roq = qulayroq` |
+| 3 | 2.32 | Sifat | YO'Q | S | 262 (ADJECTIVES (SIFATLAR)) | 0 | `most comfortable` ⟹ `eng qulay` |
+| 4 | 2.34 | Sifat | YO'Q | S | 262 (ADJECTIVES (SIFATLAR)) | 0 | `less interesting` ⟹ `kamroq qiziqarli` |
+| 5 | 3.5 | Ravish | YO'Q | S | 168 (ADVERBS (RAVISHLAR)) | 156 (abruptly, absolutely, abstractly, accordingly, accurately) | `more clearly` ⟹ `aniq + roq = aniqroq` |
+| 6 | 2.10 | Ot | YO'Q | N | — | 0 | `man → men` ⟹ `erkak → erkak + lar = erkaklar` |
+| 7 | 2.36 | Fe'l | YO'Q | L | — | 0 | `read` ⟹ `o‘qimoq` |
+| 8 | 2.38 | Fe'l | YO'Q | L | — | 0 | `to be` ⟹ `bo‘lmoq` |
+| 9 | 2.39 | Fe'l | YO'Q | L | — | 0 | `am` ⟹ `man (1-shaxs birlik affiksi)` |
+| 10 | 2.41 | Fe'l | YO'Q | L | — | 0 | `was, were` ⟹ `edi` |
+| 11 | 2.44 | Fe'l | YO'Q | L | — | 0 | `to have` ⟹ `bor bo‘lmoq` |
+| 12 | 2.45 | Fe'l | YO'Q | L | — | 0 | `to do` ⟹ `qilmoq` |
+| 13 | 2.48 | Fe'l | YO'Q | L | — | 0 | `become` ⟹ `bo‘lmoq` |
+| 14 | 2.50 | Fe'l | YO'Q | L | — | 0 | `could` ⟹ `ol + ar + di = olardi` |
+| 15 | 2.55a | Fe'l | YO'Q | L | — | 0 | `need` ⟹ `kerak` |
+| 16 | 2.58 | Fe'l | YO'Q | L | — | 0 | `to follow` ⟹ `kuzatmoq` |
+| 17 | 3.17 | Son | YO'Q | S | — | 0 | `three hundred and five` ⟹ `uch yuz besh (bog‘lovchisiz)` |
+| 18 | 3.19 | Son | YO'Q | S | — | 0 | `hundred and twenty-first` ⟹ `bir yuz yigirma bir + inchi` |
+| 19 | 3.20 | Son | YO'Q | S | — | 0 | `chapter five` ⟹ `besh + inchi bob = beshinchi bob` |
+| 20 | –(Ravish) | Ravish | YO'Q | L | — | 0 | `very` ⟹ `juda` |
+| 21 | –(Sifat) | Sifat | YO'Q | L | — | 0 | `big` ⟹ `katta` |
 
-Jami YO'Q: **21**, ZID: **2**.
+Jami YO'Q: **21**, ZID: **0**.
 
 ## 5. `CH2_EVX_EXAMPLES` ↔ spesifikatsiya (lug'atdagi dissertatsiya nusxalari rasmiy qoidaga mosmi)
 
@@ -366,7 +366,7 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 - Tur: **S**, holat: **TO'LIQ MOS**
 - Stub: network→tarmoq (Ot)
 - stub: `a network` → «Bitta tarmoq» (kutilgan «bitta tarmoq») ✓ — yo'l: translate_phrase; a: topilmadi; network: lug'at[stub]
-- real lug'at: `a network` → «[a?] Tarmoq» (kutilgan «bitta tarmoq») ✗ — yo'l: so'zma-so'z; a: topilmadi; network: lug'at[json]
+- real lug'at: `a network` → «Tarmoq» (kutilgan «bitta tarmoq») ✗ — yo'l: translate_phrase; a: topilmadi; network: lug'at[json]
 
 ### 2.3 — Noaniq artikl “an” unli tovush bilan boshlanuvchi otdan oldin qo‘llaniladi
 
@@ -738,11 +738,10 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 ### 2.56 — Infinitive fe’l – “to” yuklamasi bilan yoziladi, shaxs-sonni ko‘rsatmaydi
 
 - Spec: `to ask` → `so‘ramoq`
-- Tur: **S**, holat: **ZID**
+- Tur: **S**, holat: **TO'LIQ MOS**
 - Stub: ask→so‘ramoq (Fe'l)
-- Izoh: `INFINITIVE_MARKERS` (to/will/can/...) kodda bor, lekin faqat `select_meaning_contextual()` da ko'p ma'noli so'zning Fe'l ma'nosini TANLASH uchun ishlatiladi — tarjima qoidasi emas.
-- stub: `to ask` → «Ga so‘ramoq» (kutilgan «so‘ramoq») ✗ — yo'l: translate_phrase; to: lug'at[seed(kod)]; ask: lug'at[stub]
-- real lug'at: `to ask` → «Ga ajratib ko'rsatmoq» (kutilgan «so‘ramoq») ✗ — yo'l: translate_phrase; to: lug'at[docx]; ask: lug'at[json] +MDB almashtirdi
+- stub: `to ask` → «So‘ramoq» (kutilgan «so‘ramoq») ✓ — yo'l: translate_phrase; to: lug'at[seed(kod)]; ask: lug'at[stub]
+- real lug'at: `to ask` → «Ajratib ko'rsatmoq» (kutilgan «so‘ramoq») ✗ — yo'l: translate_phrase; to: lug'at[docx]; ask: lug'at[json] +MDB almashtirdi
 
 ### 2.55b — Gerund – fe’lga “-ing” qo‘shilib yasaladi, otlashadi
 
@@ -761,9 +760,9 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 ### 2.59 — O‘timsiz fe’l (intransitive) – o‘zidan keyin vositasiz to‘ldiruvchi talab qilmaydi
 
 - Spec: `listen to me` → `meni tinglamoq`
-- Tur: **S**, holat: **ZID**
+- Tur: **S**, holat: **TO'LIQ MOS**
 - Stub: listen→tinglamoq (Fe'l), me→meni (Olmosh, manba 3.22)
-- stub: `listen to me` → «Meniga tinglamoq» (kutilgan «meni tinglamoq») ✗ — yo'l: translate_phrase; listen: lug'at[stub]; to: lug'at[seed(kod)]; me: lug'at[stub]
+- stub: `listen to me` → «Meni tinglamoq» (kutilgan «meni tinglamoq») ✓ — yo'l: translate_phrase; listen: lug'at[stub]; to: lug'at[seed(kod)]; me: lug'at[stub]
 - real lug'at: `listen to me` → «Meniga» (kutilgan «meni tinglamoq») ✗ — yo'l: translate_phrase; listen: topilmadi; to: lug'at[docx]; me: lug'at[json]
 
 ### 2.61 — Hozirgi oddiy zamon (Simple Present)
@@ -777,7 +776,7 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 - Spec: `will return` → `qaytmoq`
 - Tur: **S**, holat: **YO'Q**
 - Stub: return→qaytmoq (Fe'l)
-- Izoh: `INFINITIVE_MARKERS` (to/will/can/...) kodda bor, lekin faqat `select_meaning_contextual()` da ko'p ma'noli so'zning Fe'l ma'nosini TANLASH uchun ishlatiladi — tarjima qoidasi emas.
+- Izoh: `INFINITIVE_MARKERS` (to/will/can/...) kodda bor, lekin faqat `select_meaning_contextual()` da ko'p ma'noli so'zning Fe'l ma'nosini TANLASH uchun ishlatiladi — "will + fe'l" uchun tarjima qoidasi emas.
 - stub: `will return` → «[will?] qaytmoq» (kutilgan «qaytmoq») ✗ — yo'l: so'zma-so'z; will: topilmadi; return: lug'at[stub]
 - real lug'at: `will return` → «keladi [return?]» (kutilgan «qaytmoq») ✗ — yo'l: so'zma-so'z; will: lug'at[chapter2_evx]; return: topilmadi
 
@@ -968,9 +967,9 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 - real lug'at: `I` → «[i?]» (kutilgan «men») ✗ — yo'l: so'zma-so'z; i: topilmadi
 - real lug'at: `he` → «U (erkak)» (kutilgan «u») ✓(variant) — yo'l: translate_phrase; he: lug'at[json]
 - real lug'at: `we` → «Biz» (kutilgan «biz») ✓ — yo'l: translate_phrase; we: lug'at[json]
-- real lug'at: `me` → «Meni / Menga» (kutilgan «meni») ✓(variant) — yo'l: translate_phrase; me: lug'at[json]
-- real lug'at: `him` → «Uni (erkak)» (kutilgan «uni») ✓(variant) — yo'l: translate_phrase; him: lug'at[json]
-- real lug'at: `us` → «Bizni / Bizga» (kutilgan «bizni») ✓(variant) — yo'l: translate_phrase; us: lug'at[json]
+- real lug'at: `me` → «Meni» (kutilgan «meni») ✓ — yo'l: translate_phrase; me: lug'at[json]
+- real lug'at: `him` → «Uni» (kutilgan «uni») ✓ — yo'l: translate_phrase; him: lug'at[json]
+- real lug'at: `us` → «Bizni» (kutilgan «bizni») ✓ — yo'l: translate_phrase; us: lug'at[json]
 
 ### 3.23 — Kishilik olmoshi – ikki tilda deyarli bir xil matematik model
 

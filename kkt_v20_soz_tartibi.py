@@ -2215,6 +2215,20 @@ _DETERMINERS = {"the","a","an","this","that","these","those"}
 # ("a network" → "bitta tarmoq"); 2.4: aniq artikl "the" tarjima qilinmaydi
 # (qolgan _DETERMINERS kabi tashlab yuboriladi).
 _INDEFINITE_ARTICLE_UZ = {"a":"bitta", "an":"bitta"}
+# KKT spec 2.56: "to" + FE'L — infinitiv yuklamasi, o'zbekchada alohida so'z
+# bilan berilmaydi (fe'lning lug'atdagi "-moq" shakli yetarli): "to ask" →
+# "so'ramoq". Faqat "to" dan KEYIN fe'l kelganda — "to the system" kabi
+# predlogli iboralar (PREP_UZ_X3: to→ga) o'zgarmaydi.
+INFINITIVE_PARTICLE_EN = "to"
+# KKT spec 2.59: inglizchada predlog orqali to'ldiruvchi oluvchi fe'l —
+# o'zbekchada vositasiz to'ldiruvchi: "listen to me" → "meni tinglamoq"
+# (predlog tushadi, to'ldiruvchi fe'ldan oldin, tushum kelishigida). Qaysi
+# fe'l shunday ekani LEKSIK ma'lumot: spec faqat (listen, to) juftini beradi,
+# ro'yxat shu bilan cheklangan — kengaytirish faqat manbali ma'lumot bilan.
+PREP_OBJECT_VERBS = {("listen","to")}
+# KKT spec 3.22: kishilik olmoshining obyekt shakli (me/him/us) o'zbekchada
+# allaqachon tushum kelishigida (meni/uni/bizni) — ustiga yana "-ni" qo'shilmaydi.
+OBJECT_CASE_PRONOUNS = {"me","him","us"}
 
 def _chunk_phrase(text):
     """
@@ -2258,7 +2272,14 @@ def _chunk_phrase(text):
             chunks.append(("?", "["+a["word"]+"?]")); i+=1; continue
 
         if a["pos"] == "Predlog":
-            prep=a["word"].lower(); j=i+1; poss=None
+            prep=a["word"].lower()
+            nxt = items[i+1] if i+1<n else None
+            if prep == INFINITIVE_PARTICLE_EN and nxt and nxt["found"] and nxt["pos"] == "Fe'l":
+                i+=1; continue          # spec 2.56: infinitiv "to" tarjima qilinmaydi
+            if i>0 and items[i-1]["found"] and items[i-1]["pos"] == "Fe'l" \
+               and ((items[i-1]["root"] or "").lower(), prep) in PREP_OBJECT_VERBS:
+                i+=1; continue          # spec 2.59: predlog tushadi, keyingi so'z — vositasiz to'ldiruvchi
+            j=i+1; poss=None
             if j<n and items[j]["found"] and items[j]["pos"]=="Olmosh" and items[j]["word"].lower() in POSS_PRONOUN_UZ_X2:
                 poss=items[j]["word"].lower(); j+=1
             mods=[]
@@ -2301,6 +2322,11 @@ def _chunk_phrase(text):
                 head_uz=uz_stem(items[j]["uz"])+POSS_PRONOUN_UZ_X2[a["word"].lower()]
                 chunks.append(("NP"," ".join(mods+[head_uz]))); i=j+1; continue
 
+        if a["word"].lower() in OBJECT_CASE_PRONOUNS:
+            # spec 3.22: obyekt shakli (meni/uni/bizni) — "M1" bo'lagi,
+            # translate_phrase_general() unga qayta "-ni" qo'shmaydi.
+            chunks.append(("M1", uz_stem(a["uz"]))); i+=1; continue
+
         chunks.append((a["pos"] or "X", a["uz"])); i+=1
     return chunks
 
@@ -2341,9 +2367,16 @@ def translate_phrase_general(text):
             if t in ("Ot","Olmosh","NP"):
                 after[k] = (t, uz_stem(val)+"ni")
         rest = [c for c in (before+after) if c[0] != "?"]
-        if not rest: return None
+        if not rest:
+            # Faqat fe'l qoldi. Bitta so'zli kirish (yoki noma'lum so'z bor) —
+            # avvalgidek None (GUI so'zma-so'z natijani ko'rsatadi). Bir necha
+            # so'zdan faqat fe'l qolgan bo'lsa (spec 2.56 "to ask" — infinitiv
+            # "to" ataylab tashlangan), natija — fe'lning o'zi; aks holda
+            # so'zma-so'z zaxira tashlangan "to" ni "ga" qilib qaytarardi.
+            if len(re.findall(r"[A-Za-z']+", text)) < 2 or any(c[0] == "?" for c in chunks):
+                return None
         seq = [c[1] for c in rest] + [verb[1]]
-        model_syms = "+".join((POS_KKT.get(t,t) if t not in ("PP","NP","VP") else t) for t,_ in rest) + "+G"
+        model_syms = "+".join((POS_KKT.get(t,t) if t not in ("PP","NP","VP") else t) for t,_ in rest + [("G","")])
     elif len(vp_idx) == 0:
         rest = [c for c in chunks if c[0] != "?"]
         # Ilgari faqat PP/NP boʻlsa oʻtardi — feʼlsiz, lekin sof Ot/Olmosh

@@ -54,7 +54,7 @@ EXPECTED_STATUS = {
     "2.26": T, "2.27": T, "2.28": T, "2.29": T, "2.30": T, "2.31": Y, "2.32": Y, "2.33": Q, "2.34": Y,
     "2.36": Y, "2.37": T, "2.38": Y, "2.39": Y, "2.41": Y, "2.42": Q, "2.43": Q, "2.44": Y, "2.45": Y,
     "2.46": T, "2.47": Q, "2.48": Y, "2.49": T, "2.50": Y, "2.51": T, "2.52": T, "2.53": Q, "2.54": Q,
-    "2.55a": Y, "2.56": Z, "2.55b": Q, "2.58": Y, "2.59": Z, "2.61": T, "2.62": Y, "2.63": Q,
+    "2.55a": Y, "2.56": T, "2.55b": Q, "2.58": Y, "2.59": T, "2.61": T, "2.62": Y, "2.63": Q,
     "2.64": Q, "2.65": Q,
     "–(Ravish)": Y, "3.1": T, "3.2": Q, "3.3": Q, "3.4": Q, "3.5": Y, "3.6": T, "3.7": T, "3.8": T,
     "3.9": Q,
@@ -309,3 +309,23 @@ def test_ssm_treats_spec_word_class_symbols_u_l_as_root_spec_2_51_2_52(isolated_
             a = m.smart_parse(w)
             assert a["uz"] == "mumkin", (w, a["uz"], a["method"])
             assert "MDB_uz_w" not in a["method"]
+
+
+def test_to_infinitive_and_prepositional_object_spec_2_56_2_59(isolated_kkt_module):
+    """KKT spec 2.56: "to ask" → "so‘ramoq" (infinitiv "to" tarjima qilinmaydi).
+    KKT spec 2.59: "listen to me" → "meni tinglamoq" (predlog tushadi,
+    to'ldiruvchi vositasiz, fe'ldan oldin; "me" obyekt shakli — spec 3.22 —
+    ustiga "-ni" qo'shilmaydi). Regressiya qo'riqlari: "to" + OT avvalgidek
+    kelishik (to→ga), bitta so'zli fe'l kirishi avvalgidek None."""
+    m = isolated_kkt_module
+    stub = [("ask", "so‘ramoq", "Fe'l"), ("listen", "tinglamoq", "Fe'l"), ("me", "meni", "Olmosh"),
+            ("example", "misol", "Ot")]
+    with audit.stub_lexicon(m, stub):
+        got = {t: normalize(audit.system_output(m, t)["natija"])
+               for t in ("to ask", "listen to me", "to the example")}
+        with m.readonly_mode():
+            single = m.translate_phrase("ask", allow_write=False)
+    assert got["to ask"] == normalize("so‘ramoq")
+    assert got["listen to me"] == normalize("meni tinglamoq")
+    assert got["to the example"] == "misolga"
+    assert single is None
