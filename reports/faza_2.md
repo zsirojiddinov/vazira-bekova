@@ -12,6 +12,7 @@ Batafsil, qayta ishlab chiqariladigan hisobotlar:
 | `reports/faza_2_lexicon_sources.md` — KKT_Terminologik, 100_soz qatorlari, ablatsiya | `make lexsources` |
 | `reports/faza_2_er_gap.md` (6-bo'lim) — agentiv "-er" spec'da yo'q | `make ergap` |
 | `reports/faza_7_backlog.md` — 12 ta lug'at-ma'lumot yetishmovchiligi (Faza 7 ga qoldirildi) | — |
+| `reports/faza_2_spec_vs_dissertation.md` — spec ↔ dissertatsiya II bobi ↔ CH2 barcha nomuvofiqliklari | `make specdiss` |
 | `reports/faza_2_confidence_audit.md` — "aniqlik" ko'rsatkichlari (avvalgi ish) | — |
 
 ## 1. Yakuniy holat — 87 qoida
