@@ -51,7 +51,7 @@ EXPECTED_STATUS = {
     "2.1": T, "2.2": Z, "2.3": Z, "2.4": T, "2.5": Q, "2.6": T, "2.7": T, "2.8": T, "2.9": T,
     "2.10": Y, "2.11": T, "2.12": Q, "2.13": Q, "2.15": Q, "2.16": T,
     "–(Sifat)": Y, "2.19": Q, "2.20": Q, "2.21": Q, "2.22": T, "2.23": T, "2.24": T, "2.25": T,
-    "2.26": T, "2.27": T, "2.28": Q, "2.29": T, "2.30": T, "2.31": Y, "2.32": Y, "2.33": Q, "2.34": Y,
+    "2.26": T, "2.27": T, "2.28": T, "2.29": T, "2.30": T, "2.31": Y, "2.32": Y, "2.33": Q, "2.34": Y,
     "2.36": Y, "2.37": Z, "2.38": Y, "2.39": Y, "2.41": Y, "2.42": Q, "2.43": Q, "2.44": Y, "2.45": Y,
     "2.46": T, "2.47": Q, "2.48": Y, "2.49": T, "2.50": Y, "2.51": Q, "2.52": Q, "2.53": Q, "2.54": Q,
     "2.55a": Y, "2.56": Z, "2.55b": Q, "2.58": Y, "2.59": Z, "2.61": T, "2.62": Y, "2.63": Q,
@@ -203,13 +203,19 @@ def test_audit_status_snapshot(isolated_kkt_module):
 # ═══════════════════════════════════════════════════════════════════
 #  Hisobotdagi aniq da'volarni tasdiqlovchi testlar
 # ═══════════════════════════════════════════════════════════════════
-def test_iest_rule_root_restoration_cannot_yield_busy(isolated_kkt_module):
-    """2.28 dalili: MORPH_RULES "-iest" qoidasining o'zak-tiklash
-    funksiyalari "busiest" dan "busiy"/"busi" beradi — "busy" EMAS
-    (w[:-3]+"y"; "-iest" 4 harfli). Qoida bor, lekin y->i shaklni tiklamaydi."""
+def test_iest_rule_restores_y_final_root_spec_2_28(isolated_kkt_module):
+    """KKT spec 2.28: "busy → busi + est = busiest" → "eng band". "-iest"
+    qoidasining birinchi o'zak-tiklash funksiyasi "busy" ni qaytarishi va
+    stub lug'at (busy→band) bilan natija "eng band" bo'lishi shart.
+    (Tuzatishdan oldin w[:-3]+"y" = "busiy" edi — qoida hech ishlamasdi.)"""
     m = isolated_kkt_module
     fns = next(r[1] for r in m.MORPH_RULES if r[0] == "iest")
-    assert [fn("busiest") for fn in fns] == ["busiy", "busi"]
+    assert fns[0]("busiest") == "busy"
+    with audit.stub_lexicon(m, [("busy", "band", "Sifat")]):
+        out = audit.system_output(m, "busiest")
+    tok = out["tokens"][0]
+    assert (tok["suffix"], tok["root"], tok["pos"]) == ("iest", "busy", "Sifat")
+    assert normalize(out["natija"]) == "eng band"
 
 
 def test_teen_rule_cannot_restore_five_from_fif(isolated_kkt_module):

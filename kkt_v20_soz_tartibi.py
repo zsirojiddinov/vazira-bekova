@@ -406,7 +406,9 @@ MORPH_RULES = [
     # Imlo: big+er→bigger(ikkilanish→w[:-3]), large+er→larger(silent-e→w[:-2]+"e")
     #       happy+er→happier(y→i→w[:-3]+"y")
     # TARTIB: -iest,-ier OLDIN (uzunroq), -est,-er KEYIN
-    ("iest",   [lambda w:w[:-3]+"y", lambda w:w[:-3]],               "Sifat","P2←P(-iest: y→i orttirma)"),
+    # -iest 4 harfli: y-tiklash w[:-4]+"y" (busiest→busy, KKT spec 2.28). Ilgari
+    # w[:-3]+"y" edi — "busiy" berardi, qoida hech qachon ishlamasdi.
+    ("iest",   [lambda w:w[:-4]+"y", lambda w:w[:-3]],               "Sifat","P2←P(-iest: y→i orttirma)"),
     ("ier",    [lambda w:w[:-3]+"y"],                                 "Sifat","P1←P(-ier: y→i qiyosiy)"),
     ("est",    [lambda w:w[:-3], lambda w:w[:-3]+"e",
                 lambda w:w[:-4], lambda w:w[:-4]+"e"],                "Sifat","P2←P(-est: orttirma)"),
