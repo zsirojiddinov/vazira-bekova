@@ -53,7 +53,7 @@ EXPECTED_STATUS = {
     "–(Sifat)": Y, "2.19": Q, "2.20": Q, "2.21": Q, "2.22": T, "2.23": T, "2.24": T, "2.25": T,
     "2.26": T, "2.27": T, "2.28": T, "2.29": T, "2.30": T, "2.31": Y, "2.32": Y, "2.33": Q, "2.34": Y,
     "2.36": Y, "2.37": T, "2.38": Y, "2.39": Y, "2.41": Y, "2.42": Q, "2.43": Q, "2.44": Y, "2.45": Y,
-    "2.46": T, "2.47": Q, "2.48": Y, "2.49": T, "2.50": Y, "2.51": Q, "2.52": Q, "2.53": Q, "2.54": Q,
+    "2.46": T, "2.47": Q, "2.48": Y, "2.49": T, "2.50": Y, "2.51": T, "2.52": T, "2.53": Q, "2.54": Q,
     "2.55a": Y, "2.56": Z, "2.55b": Q, "2.58": Y, "2.59": Z, "2.61": T, "2.62": Y, "2.63": Q,
     "2.64": Q, "2.65": Q,
     "–(Ravish)": Y, "3.1": T, "3.2": Q, "3.3": Q, "3.4": Q, "3.5": Y, "3.6": T, "3.7": T, "3.8": T,
@@ -293,3 +293,19 @@ def test_indefinite_article_becomes_bitta_spec_2_2_2_3(isolated_kkt_module):
     assert got["the progress"] == "taraqqiyot"
     assert got["a big network"] == "bitta katta tarmoq"
     assert "bitta" not in got["big a"]
+
+
+def test_ssm_treats_spec_word_class_symbols_u_l_as_root_spec_2_51_2_52(isolated_kkt_module):
+    """KKT spec vazn jadvali: "Yordamchi so'z turkumlari (U, L)" — so'z turkumi,
+    ya'ni ildiz belgisi. SSM mexanizmi (lug'atdan mustaqil): "L(L)" va "U(U)"
+    modellarida ildiz topilishi shart. Ilgari "L" ildiz deb tanilmagani uchun
+    "may"/"might" ning lug'atdagi "mumkin" tarjimasi MDB_uz_w orqali tasodifiy
+    "Ajratib ko'rsatmoq" bilan almashtirilardi."""
+    m = isolated_kkt_module
+    assert m.ssm_score("L(L) = $[i,1-h2]Li", "uz")["root_found"] is True
+    assert m.ssm_score("U(U) = $[i,1-h2]Ui", "uz")["root_found"] is True
+    with m.readonly_mode():
+        for w in ("may", "might"):
+            a = m.smart_parse(w)
+            assert a["uz"] == "mumkin", (w, a["uz"], a["method"])
+            assert "MDB_uz_w" not in a["method"]

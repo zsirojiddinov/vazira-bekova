@@ -2681,7 +2681,14 @@ def select_meaning_contextual(rows, word, prev_pos=None, prev_raw=None):
 DB_MDB_UZ = os.path.join(SCRIPT_DIR, "MDB_uz_w.db")
 ALL_DBS.append(DB_MDB_UZ)
 
-_SSM_ROOT_SYMBOLS = {"C", "P", "G", "M", "N", "F", "K", "D", "Y"}
+_SSM_ROOT_SYMBOLS = {"C", "P", "G", "M", "N", "F", "K", "D", "Y", "U", "L"}
+# MUHIM TUZATISH (KKT spec, vazn jadvali: "Yordamchi so'z turkumlari (U, L) –
+# 0.07"): U (yuklama) va L (modal so'zlar) — spec bo'yicha alohida SO'Z
+# TURKUMI belgilari, ya'ni ildiz. Ilgari ro'yxatda yo'q edi — "may"/"might"
+# (CH2 modeli "L(L) = $[i,1-h2]Li", SSM=0.989) "root topilmadi" deb
+# hisoblanib, lug'atdagi to'g'ri "mumkin" MDB_uz_w'dagi tasodifiy
+# "Ajratib ko'rsatmoq" bilan almashtirilardi (spec 2.51/2.52). Quyidagi
+# D/Y tuzatishi bilan bir xil turdagi xato.
 # MUHIM TUZATISH: "D" (Predlog) va "Y" (Bog'lovchi) ilgari bu ro'yxatda
 # yo'q edi. Natijada _ssm_is_root() predlog/bog'lovchi so'zlar uchun
 # doim False qaytarardi -> evaluate_and_refine_ssm() ularni HAR DOIM

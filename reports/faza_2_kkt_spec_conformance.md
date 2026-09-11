@@ -1,23 +1,23 @@
 # Faza 2 — KKT rasmiy spesifikatsiyasiga moslik auditi (conformance matrix)
 
-**Generatsiya vaqti:** 2026-09-11T11:47:28+00:00
+**Generatsiya vaqti:** 2026-09-11T11:49:22+00:00
 **Buyruq:** `python scripts/audit_kkt_spec_conformance.py`
 **Spesifikatsiya:** `data/kkt_spec.json` ← `data/kkt_qoidalari.docx` (sha256 `4954c528bc7eec3d…`)
 **Kod:** `kkt_v20_soz_tartibi.py` (bazalar data/ dan izolyatsiyalangan papkada noldan qurilgan, `readonly_mode`; NLTK lemmatizer: `USE_LEMMA=True`)
 
 ## 0. Asosiy natija
 
-Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **32 ta to'liq mos (27 tasi mustaqil hisoblangan, 5 tasi aylanma — hammasi CH2_EVX_EXAMPLES orqali)**, 32 ta qisman mos, 21 ta yo'q, 2 ta zid.
+Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **34 ta to'liq mos (27 tasi mustaqil hisoblangan, 7 tasi aylanma — hammasi CH2_EVX_EXAMPLES orqali)**, 30 ta qisman mos, 21 ta yo'q, 2 ta zid.
 
 | Holat | Soni | Ulushi |
 |---|---|---|
-| **TO'LIQ MOS** | **32** (27 mustaqil / 5 aylanma) | 36.8% |
-| **QISMAN MOS** | **32** | 36.8% |
+| **TO'LIQ MOS** | **34** (27 mustaqil / 7 aylanma) | 39.1% |
+| **QISMAN MOS** | **30** | 34.5% |
 | **YO'Q** | **21** | 24.1% |
 | **ZID** | **2** | 2.3% |
 | Jami | 87 | 100% |
 
-### 0.1 32 ta TO'LIQ MOS — haqiqiy tarkibi
+### 0.1 34 ta TO'LIQ MOS — haqiqiy tarkibi
 
 - **mustaqil hisoblangan** — natijani kod o'zi hisobladi: M/N/S turida kodga FAQAT docx'dagi o'zak berildi (stub, real lug'at yashirilgan), L turida natija CH2_EVX_EXAMPLES'dan mustaqil lug'at yozuvidan (1500-lug'at yoki kod ichidagi SEED_WORDS) keldi.
 - **CH2_EVX_EXAMPLES orqali aylanma** — natija dissertatsiya II bob misollarining lug'atga yozilgan nusxasidan (`source='chapter2_evx'`) o'qib qaytarildi; docx misoli ham shu manbadan — mustaqil dalil emas.
@@ -47,6 +47,8 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **32 ta to'liq mos (
 | 2.37 | Fe'l | M | **mustaqil hisoblangan** | stub: kodga faqat docx o'zagi berildi, natijani qoida zanjiri hisobladi | speaks: topilmadi |
 | 2.46 | Fe'l | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | will: lug'at[chapter2_evx] |
 | 2.49 | Fe'l | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | can: lug'at[chapter2_evx] |
+| 2.51 | Fe'l | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | may: lug'at[chapter2_evx] |
+| 2.52 | Fe'l | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | might: lug'at[chapter2_evx] |
 | 2.61 | Fe'l | L | **mustaqil hisoblangan** | haqiqiy lug'at: 1500-lug'at yozuvi | understand: lug'at[json] |
 | 3.1 | Ravish | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | here: lug'at[chapter2_evx] |
 | 3.6 | Ravish | L | **CH2_EVX_EXAMPLES orqali aylanma** | haqiqiy lug'at: natija FAQAT CH2_EVX_EXAMPLES yozuvidan (docx misoli bilan bir manba) | inside: lug'at[chapter2_evx] |
@@ -66,7 +68,7 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **32 ta to'liq mos (
 |---|---|---|---|---|---|
 | Ot | 10 | 4 | 1 | 0 | 15 |
 | Sifat | 9 | 4 | 4 | 0 | 17 |
-| Fe'l | 4 | 11 | 11 | 2 | 28 |
+| Fe'l | 6 | 9 | 11 | 2 | 28 |
 | Ravish | 4 | 4 | 2 | 0 | 10 |
 | Son | 5 | 2 | 3 | 0 | 10 |
 | Olmosh | 0 | 7 | 0 | 0 | 7 |
@@ -78,12 +80,12 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **32 ta to'liq mos (
 | M — morfologik (affiks) | 19 | 16 | 0 | 0 | 35 |
 | N — noqoida (o'zak o'zgarishi) | 0 | 3 | 1 | 0 | 4 |
 | S — ibora (so'z tartibi / funksional so'z) | 6 | 0 | 8 | 2 | 16 |
-| L — leksik moslik | 7 | 13 | 12 | 0 | 32 |
+| L — leksik moslik | 9 | 11 | 12 | 0 | 32 |
 
 ### TO'LIQ MOS natijalarini qanday o'qish kerak (halol baho)
 
 - M/N/S turidagi TO'LIQ MOS (25 ta) — **lug'atdan mustaqil** tekshirilgan: kodga faqat docx'dagi o'zak berilgan (stub), qolgani haqiqiy qoida zanjiri. Bu — formal qoidaning o'zi ishlashining dalili. Lekin real lug'atda o'sha o'zak bo'lmasa, amaliy tarjima baribir chiqmaydi (quyidagi batafsil jadvaldagi "real lug'at" qatori).
-- L turidagi TO'LIQ MOS (7 ta) — HAQIQIY lug'at bilan. Shundan **5 tasi natijani FAQAT `CH2_EVX_EXAMPLES` (dissertatsiya II bob misollari, `source='chapter2_evx'`) yozuvidan oladi** — ya'ni docx misoli bilan bir xil manbadan ko'chirilgan so'z qaytyapti (aylanma; mustaqil dalil emas): 2.46, 2.49, 3.1, 3.6, 3.7.
+- L turidagi TO'LIQ MOS (9 ta) — HAQIQIY lug'at bilan. Shundan **7 tasi natijani FAQAT `CH2_EVX_EXAMPLES` (dissertatsiya II bob misollari, `source='chapter2_evx'`) yozuvidan oladi** — ya'ni docx misoli bilan bir xil manbadan ko'chirilgan so'z qaytyapti (aylanma; mustaqil dalil emas): 2.46, 2.49, 2.51, 2.52, 3.1, 3.6, 3.7.
 - S turidagi TO'LIQ MOS ichida **3 tasi** uchun kodda maxsus qoida YO'Q — natija oddiy so'zma-so'z birikmadan to'g'ri chiqib qolgan (masalan son birikmalari): 3.14, 3.15, 3.16.
 - **Muhitga bog'liq holatlar** (NLTK wordnet lemmatizer bor/yo'qligiga qarab o'zgaradi — hisobot `USE_LEMMA=True` bilan): 2.33: QISMAN MOS → wordnet'siz YO'Q; 2.65: QISMAN MOS → wordnet'siz YO'Q.
 - **Docx ichki nomuvofiqligi tufayli QISMAN** (1 ta): kod natijasi docx katagidagi "+" qismlarining yig'indisiga teng, lekin docx natija katagida boshqacha yozilgan (`data/kkt_spec.json` → `izoh`). Holat docx matni bo'yicha (tuzatilmagan) qoldirildi: 2.21.
@@ -120,7 +122,7 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **32 ta to'liq mos (
 | 2.12 | Ot | **QISMAN MOS** | [M] MORPH_RULES:517,520, make_uzbek:558; stub: tahlil: -s + schoolboy → Ot — stub: `schoolboys` → «Maktab bolalar» (kutilgan «maktab bolalari») ✗ |
 | 2.13 | Ot | **QISMAN MOS** | [M] MORPH_RULES:445, make_uzbek:588; stub: tahlil: -ation + inform → Ot — stub: `information` → «⟨inform⟩ish» (kutilgan «axborot») ✗ |
 | 2.15 | Ot | **QISMAN MOS** | [M] MORPH_RULES:517,520, make_uzbek:558; stub: tahlil: -s + content → Ot — stub: `contents` → «Mundarijalar» (kutilgan «mundarija») ✗ |
-| 2.16 | Ot | **TO'LIQ MOS** | [M] _smart_parse_core:3028 (alohida tarmoq); stub: tahlil: -'s + student → Ot — stub: `student's` → «Studentning» (kutilgan «studentning») ✓ |
+| 2.16 | Ot | **TO'LIQ MOS** | [M] _smart_parse_core:3035 (alohida tarmoq); stub: tahlil: -'s + student → Ot — stub: `student's` → «Studentning» (kutilgan «studentning») ✓ |
 | –(Sifat) | Sifat | **YO'Q** | [L] real lug'at: `big` → «[big?]» (kutilgan «katta») ✗ — yo'l: big: topilmadi |
 | 2.19 | Sifat | **QISMAN MOS** | [M] MORPH_RULES:434, make_uzbek:584; stub: tahlil: -al + form → Sifat — stub: `formal` → «Rasmga oid» (kutilgan «rasmiy») ✗ |
 | 2.20 | Sifat | **QISMAN MOS** | [M] MORPH_RULES:434, make_uzbek:584; stub: tahlil: -al + dimension → Sifat — stub: `high-dimensional` → «Ko‘p o‘lchovga oid» (kutilgan «ko‘p o‘lchovli») ✗ |
@@ -152,10 +154,10 @@ Spesifikatsiyadagi **87 ta qoida** kod bilan solishtirildi. **32 ta to'liq mos (
 | 2.48 | Fe'l | **YO'Q** | [L] real lug'at: `become` → «[become?]» (kutilgan «bo‘lmoq») ✗ — yo'l: become: topilmadi |
 | 2.49 | Fe'l | **TO'LIQ MOS** | [L] real lug'at: `can` → «qila  olmoq» (kutilgan «qila olmoq») ✓ — yo'l: can: lug'at[chapter2_evx] |
 | 2.50 | Fe'l | **YO'Q** | [L] real lug'at: `could` → «[could?]» (kutilgan «olardi») ✗ — yo'l: could: topilmadi |
-| 2.51 | Fe'l | **QISMAN MOS** | [L] real lug'at: `may` → «Ajratib ko'rsatmoq» (kutilgan «mumkin») ✗ — yo'l: may: lug'at[chapter2_evx] +MDB almashtirdi |
-| 2.52 | Fe'l | **QISMAN MOS** | [L] real lug'at: `might` → «Ajratib ko'rsatmoq» (kutilgan «mumkin») ✗ — yo'l: might: lug'at[chapter2_evx] +MDB almashtirdi |
+| 2.51 | Fe'l | **TO'LIQ MOS** | [L] real lug'at: `may` → «mumkin» (kutilgan «mumkin») ✓ — yo'l: may: lug'at[chapter2_evx] |
+| 2.52 | Fe'l | **TO'LIQ MOS** | [L] real lug'at: `might` → «mumkin» (kutilgan «mumkin») ✓ — yo'l: might: lug'at[chapter2_evx] |
 | 2.53 | Fe'l | **QISMAN MOS** | [L] real lug'at: `must` → «shart» (kutilgan «kerak») ✗ — yo'l: must: lug'at[chapter2_evx] |
-| 2.54 | Fe'l | **QISMAN MOS** | [L] real lug'at: `ought to` → «Ga ajratib ko'rsatmoq» (kutilgan «zarur») ✗ — yo'l: ought: lug'at[chapter2_evx] +MDB almashtirdi |
+| 2.54 | Fe'l | **QISMAN MOS** | [L] real lug'at: `ought to` → «Ga zarur» (kutilgan «zarur») ✗ — yo'l: ought: lug'at[chapter2_evx] |
 | 2.55a | Fe'l | **YO'Q** | [L] real lug'at: `need` → «[need?]» (kutilgan «kerak») ✗ — yo'l: need: topilmadi |
 | 2.56 | Fe'l | **ZID** | [S] PREP_UZ_X3:2096 — "to" -> "ga" (kelishik qo'shimchasi) sifatida ishlaydi — stub: `to ask` → «Ga so‘ramoq» (kutilgan «so‘ramoq») ✗ |
 | 2.55b | Fe'l | **QISMAN MOS** | [M] MORPH_RULES:490, make_uzbek:566; stub: tahlil: -ing + read → Fe'l — stub: `reading` → «o‘qiing» (kutilgan «o‘qishni») ✗ |
@@ -283,7 +285,7 @@ Stub tekshiruvi formal qoidani ajratib oladi; bu jadval o'sha misollar HAQIQIY l
 
 | Belgi | Spec ma'nosi | Kodda |
 |---|---|---|
-| ⊕ | Biriktirish (konkatenatsiya) amali | Formal model satrlarida biriktirish sifatida (`kkt_en()` — `'⊕↓'.join(segs)`, `:643`); SSM segment ajratgichi (`_ssm_split_segments`, `:2704`). |
+| ⊕ | Biriktirish (konkatenatsiya) amali | Formal model satrlarida biriktirish sifatida (`kkt_en()` — `'⊕↓'.join(segs)`, `:643`); SSM segment ajratgichi (`_ssm_split_segments`, `:2711`). |
 | V | “Yoki” amali | "Yoki" amali sifatida ISHLATILMAYDI. `KKT_SYMBOLS` da `("V","umumiy BB")` — boshqa ma'noda (umumiy baza) belgilangan. |
 | ↓ (⇓) | “Ulanish” (qo‘shilish) yoki “ulanmaslik” (qo‘shilmaslik) amali | Faqat `⊕↓` juftligi ichida va SSM'da "ixtiyoriy segment" belgisi sifatida (`_ssm_split_segments`: `p.startswith("↓")`). `⇓` kodda yo'q. |
 | $ | Tanlash amali: $[i, l-m] Pi ko‘rinishida yoziladi | Formal model satrlarida `$[i,1-h]Ci` ko'rinishida (matn sifatida) hosil qilinadi; tanlash amali sifatida hisoblanmaydi. |
@@ -706,14 +708,14 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 ### 2.51 — Modal fe’l “may” – ruxsat/ehtimolni bildiradi
 
 - Spec: `may` → `mumkin`
-- Tur: **L**, holat: **QISMAN MOS**
-- real lug'at: `may` → «Ajratib ko'rsatmoq» (kutilgan «mumkin») ✗ — yo'l: so'zma-so'z; may: lug'at[chapter2_evx] +MDB almashtirdi
+- Tur: **L**, holat: **TO'LIQ MOS**
+- real lug'at: `may` → «mumkin» (kutilgan «mumkin») ✓ — yo'l: so'zma-so'z; may: lug'at[chapter2_evx]
 
 ### 2.52 — Modal fe’l “might” – “may”dan kamroq ehtimolni bildiradi
 
 - Spec: `might` → `mumkin`
-- Tur: **L**, holat: **QISMAN MOS**
-- real lug'at: `might` → «Ajratib ko'rsatmoq» (kutilgan «mumkin») ✗ — yo'l: so'zma-so'z; might: lug'at[chapter2_evx] +MDB almashtirdi
+- Tur: **L**, holat: **TO'LIQ MOS**
+- real lug'at: `might` → «mumkin» (kutilgan «mumkin») ✓ — yo'l: so'zma-so'z; might: lug'at[chapter2_evx]
 
 ### 2.53 — Modal fe’l “must” – majburiyatni bildiradi
 
@@ -725,7 +727,7 @@ Inglizcha shakli hech bir spec misoliga to'g'ri kelmagan CH2 yozuvlari (3 ta): `
 
 - Spec: `ought to` → `zarur`
 - Tur: **L**, holat: **QISMAN MOS**
-- real lug'at: `ought to` → «Ga ajratib ko'rsatmoq» (kutilgan «zarur») ✗ — yo'l: translate_phrase; ought: lug'at[chapter2_evx] +MDB almashtirdi; to: lug'at[docx]
+- real lug'at: `ought to` → «Ga zarur» (kutilgan «zarur») ✗ — yo'l: translate_phrase; ought: lug'at[chapter2_evx]; to: lug'at[docx]
 
 ### 2.55a — Modal fe’l “need” – zaruratni bildiradi
 
