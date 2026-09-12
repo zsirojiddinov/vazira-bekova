@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: install db test check100 audit ergap ch2leakage spec conformance leakage lexsources specdiss clean
+.PHONY: install db test check100 audit ergap ch2leakage spec conformance leakage lexsources specdiss master clean
 
 install:
 	$(PYTHON) -m pip install -r requirements.txt
@@ -58,6 +58,11 @@ lexsources:
 ## (shaxsiy fayl) talab qilinadi.
 specdiss:
 	$(PYTHON) scripts/compare_spec_dissertation.py
+
+## Himoyaga tayyorgarlik: barcha ochiq qarorlar bitta ro'yxatda
+## (reports/master_qarorlar_royxati.md). data/desertatsiya.docx talab qilinadi.
+master:
+	$(PYTHON) scripts/build_master_decisions.py
 
 ## Generatsiya qilingan bazalarni tozalaydi (data/ dagi manba fayllarga
 ## tegmaydi — qayta `make db` bilan tiklanadi).
